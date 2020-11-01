@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<epo:EPOPolicySchema xmlns:epo="mcafee-epo-policy" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<EPOPolicyVerInfo vermjr="5" vermin="9" verrel="1" verbld="0"/>
+<EPOPolicySettings name="OAS Test Policy::Settings (3018AF23-CF2A-4F33-AA66-ABBA29EDCF6E)" featureid="ENDP_AM_1000" categoryid="EAM_General_Policies" typeid="EAM_General_Policies" param_int="0" param_str="">
+<Section name="Alerting">
+<Setting name="bShowAlerts" value="1"/>
+<Setting name="szDialogMessage" value="Virus detected ! Please contact your local support"/>
+</Section>
+<Section name="Application">
+<Setting name="TypeItem_0" value="0"/>
+<Setting name="TypeItem_1" value="0"/>
+<Setting name="TypeItem_10" value="0"/>
+<Setting name="TypeItem_2" value="0"/>
+<Setting name="TypeItem_3" value="0"/>
+<Setting name="TypeItem_4" value="0"/>
+<Setting name="TypeItem_5" value="0"/>
+<Setting name="TypeItem_6" value="0"/>
+<Setting name="TypeItem_7" value="0"/>
+<Setting name="TypeItem_8" value="0"/>
+<Setting name="TypeItem_9" value="0"/>
+<Setting name="dwApplicationCount" value="10"/>
+<Setting name="szApplicationItem_0" value="vmware.exe"/>
+<Setting name="szApplicationItem_1" value="vmware-vmx.exe"/>
+<Setting name="szApplicationItem_10" value="CmRcService.exe"/>
+<Setting name="szApplicationItem_2" value="nlnotes.exe"/>
+<Setting name="szApplicationItem_3" value="CMT_MigrationWorker.exe"/>
+<Setting name="szApplicationItem_4" value="CMTProxy.exe"/>
+<Setting name="szApplicationItem_5" value="fcags.exe"/>
+<Setting name="szApplicationItem_6" value="fcagte.exe"/>
+<Setting name="szApplicationItem_7" value="fcagswd.exe"/>
+<Setting name="szApplicationItem_8" value="fcag.exe"/>
+<Setting name="szApplicationItem_9" value="Ccmexec.exe"/>
+</Section>
+<Section name="Default-Detection">
+<Setting name="bApplyNVP" value="1"/>
+<Setting name="bNetworkScanEnabled" value="0"/>
+<Setting name="bScanArchives" value="0"/>
+<Setting name="bScanBackupReads" value="0"/>
+<Setting name="bScanMime" value="0"/>
+<Setting name="bScanReading" value="1"/>
+<Setting name="bScanWriting" value="1"/>
+<Setting name="bUnknownMacroHeuristics" value="0"/>
+<Setting name="bUnknownProgramHeuristics" value="0"/>
+<Setting name="extensionMode" value="1"/>
+<Setting name="szProgExts" value=""/>
+<Setting name="uAction" value="1"/>
+<Setting name="uAction_Program" value="1"/>
+<Setting name="uScanErrorAction" value="4"/>
+<Setting name="uSecAction" value="2"/>
+<Setting name="uSecAction_Program" value="4"/>
+<Setting name="uTimeOutAction" value="4"/>
+</Section>
+<Section name="Default-Detection_Exclusions">
+<Setting name="ExcludedItem_0" value="3|7|C:\Program Files\Lotus\notes\|"/>
+<Setting name="ExcludedItem_1" value="3|7|C:\infappdata\notes\data\|"/>
+<Setting name="ExcludedItem_10" value="3|7|C:\Program Files (x86)\Binary Tree\CMT For Exchange\|"/>
+<Setting name="ExcludedItem_11" value="3|7|C:\Users\SVC_TSWorkerHPE\AppData\Local\Binary Tree\|"/>
+<Setting name="ExcludedItem_12" value="3|7|D:\Apps\Tableau\Tableau Server\|"/>
+<Setting name="ExcludedItem_13" value="3|7|C:\Temp\**\TMProc*\|"/>
+<Setting name="ExcludedItem_14" value="3|3|C:\Temp\**\TMProc*|"/>
+<Setting name="ExcludedItem_15" value="3|7|C:\Windows\CCM\Logs\|"/>
+<Setting name="ExcludedItem_16" value="3|7|C:\Windows\CCMSetup\|"/>
+<Setting name="ExcludedItem_17" value="3|7|C:\Windows\CCMCache\|"/>
+<Setting name="ExcludedItem_18" value="3|7|C:\Windows\CCM\ServiceData\|"/>
+<Setting name="ExcludedItem_19" value="3|3|C:\Windows\CCM\*.sdf|"/>
+<Setting name="ExcludedItem_2" value="3|7|C:\Documents and Settings\All Users\Application Data\Lotus\Notes\data\Shared\|"/>
+<Setting name="ExcludedItem_20" value="3|7|C:\Program Files\McAfee\DLP\|"/>
+<Setting name="ExcludedItem_21" value="3|3|%AppData%\Local\Microsoft\Outlook\*.mycorp.com.pst|"/>
+<Setting name="ExcludedItem_22" value="3|3|%AppData%\Local\Microsoft\Outlook\*.mycorp.com.ost|"/>
+<Setting name="ExcludedItem_23" value="3|3|%AppData%\Local\Microsoft\Outlook\Offline Address Books\*\*.oab|"/>
+<Setting name="ExcludedItem_24" value="3|3|%AppData%\Roaming\Microsoft\Outlook\outlook.srs|"/>
+<Setting name="ExcludedItem_25" value="3|7|C:\Program Files (x86)\IBM\Notes\|"/>
+<Setting name="ExcludedItem_26" value="3|7|C:\Program Files\BANK\Papyrus_SDO\|"/>
+<Setting name="ExcludedItem_27" value="3|7|C:\Program Files\BANK\IHM\|"/>
+<Setting name="ExcludedItem_28" value="3|7|C:\Program Files (x86)\BANK\Papyrus_SDO\|"/>
+<Setting name="ExcludedItem_29" value="3|7|C:\Program Files (x86)\BANK\IHM\|"/>
+<Setting name="ExcludedItem_3" value="3|7|C:\APPS\lotus\notes\|"/>
+<Setting name="ExcludedItem_30" value="3|3|C:\test|File name exclusion full" /> 
+<Setting name="ExcludedItem_31" value="3|5|c:\test2\|Folder exclusion with subfolder" /> 
+<Setting name="ExcludedItem_32" value="3|2|c:\test3\*|Files on exclusions on Read" /> 
+<Setting name="ExcludedItem_33" value="3|1|C:\test4\*|Files exclusions on Write" /> 
+<Setting name="ExcludedItem_34" value="4|3|BEN|File type exclusion full" /> 
+<Setting name="ExcludedItem_35" value="4|2|BEN2|File type exclusion on Read" /> 
+<Setting name="ExcludedItem_36" value="0|3|10|Files age changed 10" /> 
+<Setting name="ExcludedItem_37" value="2|3|20|Files age created 20" /> 
+<Setting name="ExcludedItem_4" value="3|7|D:\APPS\lotus\notes\|"/>
+<Setting name="ExcludedItem_5" value="3|7|C:\ProgramData\Lotus\Notes\Data\Shared\|"/>
+<Setting name="ExcludedItem_6" value="4|3|Log|"/>
+<Setting name="ExcludedItem_7" value="3|7|C:\apps\SplunkUniversalForwarder\|"/>
+<Setting name="ExcludedItem_8" value="3|7|D:\apps\SplunkUniversalForwarder\|"/>
+<Setting name="ExcludedItem_9" value="3|7|D:\Apps\netapp\SANscreen\|"/>
+<Setting name="bOverwriteExclusions" value="1"/>
+<Setting name="dwExclusionCount" value="38"/>
+</Section>
+<Section name="GTI">
+<Setting name="GTISensitivityLevel" value="0"/>
+</Section>
+<Section name="General">
+<Setting name="bAllowDisableViaMcTray" value="0"/>
+<Setting name="bEnforceMaxScanTime" value="1"/>
+<Setting name="bOASEnabled" value="1"/>
+<Setting name="bOnlyUseDefaultConfig" value="0"/>
+<Setting name="bScanBootSectors" value="1"/>
+<Setting name="bStartEnabled" value="1"/>
+<Setting name="dwScannerThreadTimeout" value="45"/>
+<Setting name="enableAMSIObserveMode" value="1"/>
+<Setting name="scanCopyLocalFolders" value="0"/>
+<Setting name="scanCopyNetworkRemovable" value="1"/>
+<Setting name="scanEmailAttachments" value="0"/>
+<Setting name="scanProcessesOnEnable" value="0"/>
+<Setting name="scanShadowCopyDisableStatus" value="0"/>
+<Setting name="scanTrustedInstallers" value="0"/>
+<Setting name="scanUsingAMSIHooks" value="1"/>
+</Section>
+<Section name="HighRisk-Detection">
+<Setting name="bApplyNVP" value="1"/>
+<Setting name="bNetworkScanEnabled" value="0"/>
+<Setting name="bScanArchives" value="0"/>
+<Setting name="bScanBackupReads" value="0"/>
+<Setting name="bScanMime" value="0"/>
+<Setting name="bScanReading" value="1"/>
+<Setting name="bScanWriting" value="1"/>
+<Setting name="bUnknownMacroHeuristics" value="1"/>
+<Setting name="bUnknownProgramHeuristics" value="1"/>
+<Setting name="extensionMode" value="1"/>
+<Setting name="szProgExts" value=""/>
+<Setting name="uAction" value="1"/>
+<Setting name="uAction_Program" value="1"/>
+<Setting name="uScanErrorAction" value="4"/>
+<Setting name="uSecAction" value="2"/>
+<Setting name="uSecAction_Program" value="2"/>
+<Setting name="uTimeOutAction" value="4"/>
+</Section>
+<Section name="HighRisk-Detection_Exclusions">
+<Setting name="bOverwriteExclusions" value="1"/>
+<Setting name="dwExclusionCount" value="0"/>
+</Section>
+<Section name="LowRisk-Detection">
+<Setting name="bApplyNVP" value="1"/>
+<Setting name="bNetworkScanEnabled" value="0"/>
+<Setting name="bScanArchives" value="0"/>
+<Setting name="bScanBackupReads" value="0"/>
+<Setting name="bScanMime" value="0"/>
+<Setting name="bScanReading" value="0"/>
+<Setting name="bScanWriting" value="0"/>
+<Setting name="bUnknownMacroHeuristics" value="0"/>
+<Setting name="bUnknownProgramHeuristics" value="0"/>
+<Setting name="extensionMode" value="2"/>
+<Setting name="szProgExts" value=":::"/>
+<Setting name="uAction" value="1"/>
+<Setting name="uAction_Program" value="1"/>
+<Setting name="uScanErrorAction" value="4"/>
+<Setting name="uSecAction" value="2"/>
+<Setting name="uSecAction_Program" value="2"/>
+<Setting name="uTimeOutAction" value="4"/>
+</Section>
+<Section name="LowRisk-Detection_Exclusions">
+<Setting name="bOverwriteExclusions" value="1"/>
+<Setting name="dwExclusionCount" value="0"/>
+</Section>
+<Section name="ScriptScan">
+<Setting name="scriptScanEnabled" value="1"/>
+</Section>
+<Section name="ScriptScanURLExclItems">
+<Setting name="dwScriptScanURLExclItemCount" value="0"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicyObject name="OAS Test Policy" featureid="ENDP_AM_1000" categoryid="EAM_General_Policies" serverid="TESTSRV" editflag="0" typeid="EAM_General_Policies">
+<description>11/01/2020 Test Policy</description><PolicySettings>OAS Test Policy::Settings (3018AF23-CF2A-4F33-AA66-ABBA29EDCF6E)</PolicySettings>
+</EPOPolicyObject>
+</epo:EPOPolicySchema>
