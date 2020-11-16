@@ -5,7 +5,8 @@
 
 """ ENS Threat Prevention Policies Class """
 
-__all__ = ["estppolicies", "onaccessscan"]
+__all__ = ["estppolicies", "onaccessscan", "ondemandscan"]
 
 from .estppolicies import ESTPPolicies
 from .onaccessscan import ESTPPolicyOnAccessScan, OASProcessList, OASExclusionList, OASURLList
+from .ondemandscan import ESTPPolicyOnDemandScan, ODSLocationList, ODSExclusionList

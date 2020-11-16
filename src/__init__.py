@@ -16,5 +16,6 @@ from .ma.general import McAfeeAgentPolicyGeneral
 from .ma.repository import McAfeeAgentPolicyRepository, RepositoryList
 from .es.tp.estppolicies import ESTPPolicies 
 from .es.tp.onaccessscan import ESTPPolicyOnAccessScan, OASProcessList, OASExclusionList, OASURLList
+from .es.tp.ondemandscan import ESTPPolicyOnDemandScan, ODSLocationList, ODSExclusionList
 from .es.fw.esfwpolicies import ESFWPolicies
 from .es.fw.rules import ESFWPolicyRules

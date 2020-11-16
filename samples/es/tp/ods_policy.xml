@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<epo:EPOPolicySchema xmlns:epo="mcafee-epo-policy" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<EPOPolicyVerInfo vermjr="5" vermin="10" verrel="0" verbld="0"/>
+<EPOPolicySettings name="Ben-ODS::Settings (EE5BF556-A2AE-4E15-9B7A-C890D392D567)" featureid="ENDP_AM_1000" categoryid="EAM_OnDemandScan_Policies" typeid="EAM_OnDemandScan_Policies" param_int="0" param_str="">
+<Section name="FS_Account">
+<Setting name="szDomainName" value=""/>
+<Setting name="szPassword" value=""/>
+<Setting name="szUserName" value=""/>
+</Section>
+<Section name="FS_Exclusions">
+<Setting name="ExcludedItem_0" value="4|0|LOG|"/> 
+<Setting name="bOverwriteExclusions" value="1"/>
+<Setting name="dwExclusionCount" value="1"/>
+</Section>
+<Section name="FS_GTI">
+<Setting name="GTISensitivityLevel" value="3"/>
+</Section>
+<Section name="FS_Performance">
+<Setting name="CPUPercentage" value="80"/>
+<Setting name="SystemUtilization" value="2"/>
+<Setting name="bDeferScanInFullScreen" value="1"/>
+<Setting name="bDeferScanOnBattery" value="1"/>
+<Setting name="bFSEnforceMaxODSThreads" value="1"/>
+<Setting name="bFSEnforceMaxScanTime" value="1"/>
+<Setting name="bInteractiveUserIsIdle" value="0"/>
+<Setting name="bPauseAndCancelScans" value="0"/>
+<Setting name="bPermitUserDefer" value="1"/>
+<Setting name="bResumePausedScans" value="0"/>
+<Setting name="bSystemUtilization" value="0"/>
+<Setting name="bUseCache" value="1"/>
+<Setting name="szDeferMessage" value="McAfee Endpoint Security is about to scan your system."/>
+<Setting name="uDeferTime" value="23"/>
+<Setting name="uFSScannerMaxODSThreads" value="5"/>
+<Setting name="uFSScannerThreadTimeOut" value="45"/>
+<Setting name="uMessageDuration" value="45"/>
+</Section>
+<Section name="FS_Remediation">
+<Setting name="uAction" value="1"/>
+<Setting name="uAction_Program" value="1"/>
+<Setting name="uSecAction" value="2"/>
+<Setting name="uSecAction_Program" value="2"/>
+</Section>
+<Section name="FS_ScanOptions">
+<Setting name="ExtensionMode" value="1"/>
+<Setting name="bDetectUnwantedPrograms" value="1"/>
+<Setting name="bScanArchives" value="1"/>
+<Setting name="bScanBootSectors" value="1"/>
+<Setting name="bScanFilesMigratedToStorage" value="0"/>
+<Setting name="bScanMime" value="0"/>
+<Setting name="bScanSubDirs" value="1"/>
+<Setting name="bUnknownMacroHeuristics" value="1"/>
+<Setting name="bUnknownProgramHeuristics" value="1"/>
+<Setting name="dwScanItemCount" value="17"/>
+<Setting name="szProgExts" value=""/>
+<Setting name="szScanItem0" value="SpecialScanForRootkits"/>
+<Setting name="szScanItem1" value="SpecialMemory"/>
+<Setting name="szScanItem10" value="WinDir"/>
+<Setting name="szScanItem11" value="ProgramFilesDir"/>
+<Setting name="szScanItem12" value="TempDir"/>
+<Setting name="szScanItem13" value="SpecialRecycleName"/>
+<Setting name="szScanItem14" value="C:\TestBen"/>
+<Setting name="szScanItem15" value="D:\Apps"/>
+<Setting name="szScanItem16" value="SpecialRegistry"/>
+<Setting name="szScanItem2" value="SpecialCritical"/>
+<Setting name="szScanItem3" value="My Computer"/>
+<Setting name="szScanItem4" value="LocalDrives"/>
+<Setting name="szScanItem5" value="All fixed disks"/>
+<Setting name="szScanItem6" value="All removable media"/>
+<Setting name="szScanItem7" value="All Network drives"/>
+<Setting name="szScanItem8" value="HomeDir"/>
+<Setting name="szScanItem9" value="ProfileDir"/>
+</Section>
+<Section name="QS_Account">
+<Setting name="szDomainName" value=""/>
+<Setting name="szPassword" value=""/>
+<Setting name="szUserName" value=""/>
+</Section>
+<Section name="QS_Exclusions">
+<Setting name="bOverwriteExclusions" value="1"/>
+<Setting name="dwExclusionCount" value="0"/>
+</Section>
+<Section name="QS_GTI">
+<Setting name="GTISensitivityLevel" value="3"/>
+</Section>
+<Section name="QS_Performance">
+<Setting name="CPUPercentage" value="80"/>
+<Setting name="SystemUtilization" value="2"/>
+<Setting name="bDeferScanInFullScreen" value="1"/>
+<Setting name="bDeferScanOnBattery" value="1"/>
+<Setting name="bInteractiveUserIsIdle" value="1"/>
+<Setting name="bPauseAndCancelScans" value="0"/>
+<Setting name="bPermitUserDefer" value="0"/>
+<Setting name="bQSEnforceMaxODSThreads" value="1"/>
+<Setting name="bQSEnforceMaxScanTime" value="1"/>
+<Setting name="bResumePausedScans" value="1"/>
+<Setting name="bSystemUtilization" value="1"/>
+<Setting name="bUseCache" value="1"/>
+<Setting name="szDeferMessage" value="McAfee Endpoint Security is about to scan your system."/>
+<Setting name="uDeferTime" value="23"/>
+<Setting name="uMessageDuration" value="45"/>
+<Setting name="uQSScannerMaxODSThreads" value="5"/>
+<Setting name="uQSScannerThreadTimeOut" value="45"/>
+</Section>
+<Section name="QS_Remediation">
+<Setting name="uAction" value="1"/>
+<Setting name="uAction_Program" value="1"/>
+<Setting name="uSecAction" value="2"/>
+<Setting name="uSecAction_Program" value="2"/>
+</Section>
+<Section name="QS_ScanOptions">
+<Setting name="ExtensionMode" value="1"/>
+<Setting name="bDetectUnwantedPrograms" value="1"/>
+<Setting name="bScanArchives" value="0"/>
+<Setting name="bScanBootSectors" value="1"/>
+<Setting name="bScanFilesMigratedToStorage" value="0"/>
+<Setting name="bScanMime" value="0"/>
+<Setting name="bScanSubDirs" value="1"/>
+<Setting name="bUnknownMacroHeuristics" value="1"/>
+<Setting name="bUnknownProgramHeuristics" value="1"/>
+<Setting name="dwScanItemCount" value="5"/>
+<Setting name="szProgExts" value=""/>
+<Setting name="szScanItem0" value="SpecialMemory"/>
+<Setting name="szScanItem1" value="SpecialCritical"/>
+<Setting name="szScanItem2" value="WinDir"/>
+<Setting name="szScanItem3" value="TempDir"/>
+<Setting name="szScanItem4" value="SpecialRegistry"/>
+</Section>
+<Section name="RS_Exclusions">
+<Setting name="bOverwriteExclusions" value="1"/>
+<Setting name="dwExclusionCount" value="0"/>
+</Section>
+<Section name="RS_GTI">
+<Setting name="GTISensitivityLevel" value="3"/>
+</Section>
+<Section name="RS_Performance">
+<Setting name="SystemUtilization" value="2"/>
+<Setting name="bUseCache" value="0"/>
+</Section>
+<Section name="RS_Remediation">
+<Setting name="uAction" value="1"/>
+<Setting name="uAction_Program" value="1"/>
+<Setting name="uSecAction" value="6"/>
+<Setting name="uSecAction_Program" value="6"/>
+</Section>
+<Section name="RS_ScanOptions">
+<Setting name="ExtensionMode" value="1"/>
+<Setting name="bDetectUnwantedPrograms" value="1"/>
+<Setting name="bScanArchives" value="1"/>
+<Setting name="bScanBootSectors" value="0"/>
+<Setting name="bScanFilesMigratedToStorage" value="0"/>
+<Setting name="bScanMime" value="1"/>
+<Setting name="bScanSubDirs" value="1"/>
+<Setting name="bUnknownMacroHeuristics" value="1"/>
+<Setting name="bUnknownProgramHeuristics" value="1"/>
+<Setting name="szProgExts" value=""/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicyObject name="Ben-ODS" featureid="ENDP_AM_1000" categoryid="EAM_OnDemandScan_Policies" serverid="W2K12R2EPO510" editflag="0" typeid="EAM_OnDemandScan_Policies">
+<description></description><PolicySettings>Ben-ODS::Settings (EE5BF556-A2AE-4E15-9B7A-C890D392D567)</PolicySettings>
+</EPOPolicyObject>
+</epo:EPOPolicySchema>
