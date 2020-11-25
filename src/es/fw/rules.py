@@ -31,7 +31,6 @@ class ESFWPolicyRules(Policy):
     def load_policy(self):
         policy_obj = self.root.find('EPOPolicyObject')
         for policy_ref in policy_obj.findall('PolicySettings'):
-            #print(policy_ref.text)
             policy_set = self.root.find('./EPOPolicySettings[@name="{}"]'.format(policy_ref.text))
             set_type = int(policy_set.get('param_int'))
             if set_type == 100:
@@ -41,7 +40,7 @@ class ESFWPolicyRules(Policy):
             elif set_type == 104:
                 self.__load_aggreagate(policy_set)
             else:
-                print('Unknown value:{}'.format(set_type))
+                raise ValueError('Unknown param_int value int policy:{}'.format(set_type))
         return True
 
     def __load_sequence(self, policy_settings):
@@ -151,3 +150,31 @@ class ESFWPolicyRules(Policy):
                       header+'|   ', intf, self.rul[seq].get('TransportProtocol', 'Any')))
             if self.seq.__contains__(seq):
                 self.print_sequences(seq, level+1, header+'|   ')
+
+    def get_sequences(self, seq_id = 'root'):
+        """
+        DRAFT - Return all the rules with a global Json dictionary.
+        """
+        if seq_id == 'root':
+            item = dict()
+            item['Action'] = 'ROOT'
+            children = list()
+            for seq in self.seq[seq_id]:
+                children.append(self.get_sequences(seq))
+            item['Children'] = children
+        else:
+            item = self.rul[seq_id]
+            # Does this rule contains Aggregate references, if so proceed in consequence
+            agg_ref = item.get('AggRef', None)
+            if agg_ref is not None:
+                aggregates = list()
+                for ref in agg_ref:
+                    aggregates.append(self.agg[ref])
+                item['AggRef'] = aggregates
+            # If this sequence contains other sequences so proceeed in consequence
+            if self.seq.__contains__(seq_id):
+                children = list()
+                for seq in self.seq[seq_id]:
+                    children.append(self.get_sequences(seq))
+                item['Children'] = children
+        return item
