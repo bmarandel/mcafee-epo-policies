@@ -1,4 +1,4 @@
-# McAfee ePolicy Orchestrator Polices Python Class Library
+# McAfee ePolicy Orchestrator Policies Python Class Library
 
 ## Overview
 
