@@ -147,13 +147,15 @@ class Policies(XmlObject):
         """
         if self.contain(type_id, name):
             policy = copy.deepcopy(self.root)
+            settings = list()
             for policy_obj in policy.findall('EPOPolicyObject'):
                 if (policy_obj.attrib['typeid'] == type_id) and (policy_obj.attrib['name'] == name):
-                    policy_ref = policy_obj.find('PolicySettings').text
+                    for policy_ref in policy_obj.findall('PolicySettings'):
+                        settings.append(policy_ref.text)
                 else:
                     policy.remove(policy_obj)
             for policy_obj in policy.findall('EPOPolicySettings'):
-                if policy_obj.attrib['name'] != policy_ref:
+                if policy_obj.attrib['name'] not in settings:
                     policy.remove(policy_obj)
         else:
             policy = None
@@ -166,14 +168,15 @@ class Policies(XmlObject):
         """
         policy = self.get_policy(type_id, template)
         if policy is not None:
-            policy_ref = '{}::Settings ({})'.format(name, str(uuid.uuid4()).upper())
-            policy_obj = policy.find('EPOPolicySettings')
-            policy_obj.set('name', policy_ref)
             policy_obj = policy.find('EPOPolicyObject')
             policy_obj.set('name', name)
-            policy_obj.find('PolicySettings').text = policy_ref
+            for policy_set in policy_obj.findall('PolicySettings'):
+                policy_old = policy_set.text
+                policy_ref = '{}::Settings ({})'.format(name, str(uuid.uuid4()).upper())
+                policy_set.text = policy_ref
+                policy_set = policy.find('EPOPolicySettings[@name="{}"]'.format(policy_old))
+                policy_set.set('name', policy_ref)
         return policy
-
 
 class Policy(XmlObject):
     """
@@ -227,6 +230,44 @@ class Policy(XmlObject):
             success = True
         elif force:
             section_obj = self.root.find('./EPOPolicySettings/Section[@name="{}"]'.format(section))
+            setting_obj = et.SubElement(section_obj, 'Setting', {"name":setting, "value":value})
+            success = True
+        return success
+
+    def get_policy_setting_value(self, policy_set, section, setting):
+        """
+        Returns the current value of a Setting from a specific Section for a PolicySetting.
+
+        :param: policy_set: The EPOPolicySetting where to search for the Section.
+        :param: section: The Section where to search for the Setting.
+        :param: setting: The Setting where to return the value.
+        :return: The value of the setting or None if the setting doesn't exist.
+        """
+        setting_obj = self.root.find('./EPOPolicySettings[@name="{}"]'.format(policy_set) +
+                                     '/Section[@name="{}"]'.format(section) +
+                                     '/Setting[@name="{}"]'.format(setting))
+        return setting_obj.get('value') if setting_obj is not None else None
+
+    def set_policy_setting_value(self, policy_set, section, setting, value, force=False):
+        """
+        Set the value of an existing Setting for a specific Section and PolicySetting
+
+        :param: policy_set: The EPOPolicySetting where to search for the Section.
+        :param: section: The Section where to search for the Setting.
+        :param: setting: The Setting where to return the value.
+        :param: force: If True the setting is created even if it doesn't exist.
+        :return: True or False.
+        """
+        success = False
+        setting_obj = self.root.find('./EPOPolicySettings[@name="{}"]'.format(policy_set) +
+                                     '/Section[@name="{}"]'.format(section) +
+                                     '/Setting[@name="{}"]'.format(setting))
+        if setting_obj is not None:
+            setting_obj.set('value', value)
+            success = True
+        elif force:
+            section_obj = self.root.find('./EPOPolicySettings[@name="{}"]'.format(policy_set) +
+                                         '/Section[@name="{}"]'.format(section))
             setting_obj = et.SubElement(section_obj, 'Setting', {"name":setting, "value":value})
             success = True
         return success

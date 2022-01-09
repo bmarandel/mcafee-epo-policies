@@ -38,3 +38,14 @@ class Gti():
         '5' = VERY_HIGH
     """
     DISABLED, VERY_LOW, LOW, MEDIUM, HIGH, VERY_HIGH = ['{}'.format(r) for r in range(6)]
+
+class Severity():
+    """
+    Severity constants can be used with Endpoint Security, Threat Prevention Exploit Prevention policy
+        '0' = DISABLED
+        '1' = INFORMATIONAL
+        '2' = LOW
+        '3' = MEDIUM
+        '4' = HIGH
+    """
+    DISABLED, INFORMATIONAL, LOW, MEDIUM, HIGH = ['{}'.format(r) for r in range(5)]
