@@ -1,2 +1,0 @@
-pip3 uninstall mcafee-epo-policies
-pip3 install dist/mcafee_epo_policies*.whl
