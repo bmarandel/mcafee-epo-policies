@@ -1,4 +1,8 @@
 .DS_Store
+
+# Editor settings (personal preference, not shared).
+/.vscode/
+
 # Compiled python modules.
 *.pyc
 __pycache__/
