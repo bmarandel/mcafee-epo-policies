@@ -49,3 +49,36 @@ class Severity():
         '4' = HIGH
     """
     DISABLED, INFORMATIONAL, LOW, MEDIUM, HIGH = ['{}'.format(r) for r in range(5)]
+
+class Language():
+    """
+    Language constants can be used with McAfee Agent, Troubleshooting policy
+    (agent_language property) instead of remembering the raw Windows LCID hex
+    code shown in the "Select language used by agent" dropdown.
+
+    Only UI_DEFAULT ('0000') and ENGLISH ('0409') have been confirmed against
+    real ePO exports so far. The rest follow the standard Windows LCID table
+    for the language names listed in that dropdown but have not been
+    individually confirmed - please report any mismatch you notice.
+    """
+    UI_DEFAULT = '0000'
+    CHINESE_SIMPLIFIED = '0804'
+    CHINESE_TRADITIONAL = '0404'
+    CZECH = '0405'
+    DANISH = '0406'
+    DUTCH = '0413'
+    ENGLISH = '0409'
+    FINNISH = '040B'
+    FRENCH = '040C'
+    GERMAN = '0407'
+    ITALIAN = '0410'
+    JAPANESE = '0411'
+    KOREAN = '0412'
+    NORWEGIAN = '0414'
+    POLISH = '0415'
+    PORTUGUESE = '0816'
+    PORTUGUESE_BRAZILIAN = '0416'
+    RUSSIAN = '0419'
+    SPANISH = '040A'
+    SWEDISH = '041D'
+    TURKISH = '041F'

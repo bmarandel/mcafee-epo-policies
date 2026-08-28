@@ -1,0 +1,3781 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<epo:EPOPolicySchema xmlns:epo="mcafee-epo-policy" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<EPOPolicyVerInfo vermjr="5" vermin="10" verrel="0" verbld="0"/>
+<EPOPolicySettings name="Demo::Settings (00287868-EB04-4267-B5CF-28676286AA54)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="100" param_str="100">
+<Section name="100">
+<Setting name="+RuleIDSequence#0" value="234bb998-2a27-4c91-934e-da4483e98c08"/>
+<Setting name="+RuleIDSequence#1" value="5391d0c7-870b-4037-8856-4a14618c085b"/>
+<Setting name="RuleListID" value="7e14bc1d-8993-4464-89e9-1a31b5112cfe"/>
+<Setting name="_RuleIDSequence" value="2"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (036A2948-0FAD-49A6-8E35-53D48E073AED)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+LocalPort#0" value=""/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value="500"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="17"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="OUT"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="bbadb7d2-075a-4652-828d-c18b49f12946"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow outbound IKE traffic"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (051A1BBA-5454-41FA-ABD1-C91FBABBEEB0)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+RemoteAddress#0" value="0000:0000:0000:0000:0000:0000:0000:0001"/>
+<Setting name="+RemoteAddress#1" value="0000:0000:0000:0000:0000:ffff:ffff:ffff"/>
+<Setting name="+RemoteAddress#2" value="0000:0000:0000:0000:0000:ffff:7f00:0001"/>
+<Setting name="GUID" value="6a2f1cd1-dad1-4fd7-ab25-08c2212e1533"/>
+<Setting name="LastModified" value="2011-07-27T00:10:41.033+02:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Name" value="Allow general traffic2 IP"/>
+<Setting name="Note" value=""/>
+<Setting name="RemoteNetID" value="6a2f1cd1-dad1-4fd7-ab25-08c2212e1533"/>
+<Setting name="Type" value="65546"/>
+<Setting name="_RemoteAddress" value="3"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (06A8CD26-7294-4498-9CB4-E93EC9F32492)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+LocalPort#0" value=""/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value="25"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="6"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="OUT"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="f580afc6-c4b1-4e10-8de7-8420304c10cc"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow outbound SMTP traffic"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (0AFE1A7C-7938-41EA-9F66-9E429E7686AF)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="100" param_str="100">
+<Section name="100">
+<Setting name="+RuleIDSequence#0" value="e24daf83-2e24-4c5c-9418-a9f6cd983d90"/>
+<Setting name="+RuleIDSequence#1" value="0387dc39-21ec-4f01-a740-c12d82ea8051"/>
+<Setting name="RuleListID" value="dc5a3b9c-c0f2-4d56-8018-4b8d5c9f253d"/>
+<Setting name="_RuleIDSequence" value="2"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (12DA74BF-4800-4596-9F6E-12381C9570F2)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+AppDescription#0" value=""/>
+<Setting name="+AppHash#0" value="00000000000000000000000000000000"/>
+<Setting name="+AppName#0" value="SQLSERVR"/>
+<Setting name="+AppPath#0" value="**\SQLSERVR.EXE"/>
+<Setting name="+AppSigner#0" value=""/>
+<Setting name="GUID" value="4a5729ef-251f-4915-bda1-7b0c36c7f430"/>
+<Setting name="LastModified" value="2009-07-10T01:35:55.531+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Note" value=""/>
+<Setting name="Type" value="65547"/>
+<Setting name="_AppDescription" value="1"/>
+<Setting name="_AppHash" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppPath" value="1"/>
+<Setting name="_AppSigner" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (14E4B31F-6746-417F-B687-F434BC5CD3A9)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+AppDescription#0" value=""/>
+<Setting name="+AppHash#0" value="00000000000000000000000000000000"/>
+<Setting name="+AppName#0" value="McAfee signed executables 7"/>
+<Setting name="+AppPath#0" value=""/>
+<Setting name="+AppSigner#0" value="CN=McAfee VTP signed"/>
+<Setting name="GUID" value="a138586b-48f5-4fa4-863b-0eb033fc76cd"/>
+<Setting name="LastModified" value="2010-06-04T19:25:30.109+02:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Note" value=""/>
+<Setting name="Type" value="65547"/>
+<Setting name="_AppDescription" value="1"/>
+<Setting name="_AppHash" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppPath" value="1"/>
+<Setting name="_AppSigner" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (2511BE66-2979-4D86-A5BC-F30BE490E3E8)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+LocalPort#0" value=""/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value=""/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="6"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="OUT"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="d1d7ff4c-92db-41cd-a7bb-c4c925d45612"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow outbound TCP traffic"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (27C35B33-03FF-4A22-805A-C148574762E3)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+AggRef#0" value="a7660665-a70b-49e8-9885-5cb4810edb05"/>
+<Setting name="+AppExeSet#0" value="0"/>
+<Setting name="+AppGUID#0" value="a7660665-a70b-49e8-9885-5cb4810edb06"/>
+<Setting name="+AppLastModified#0" value="2009-07-10T01:35:55.531+02:00"/>
+<Setting name="+AppLastModifyingUsername#0" value="McAfee, LLC."/>
+<Setting name="+AppName#0" value="SYSTEM"/>
+<Setting name="+AppNote#0" value=""/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="OUT"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="ace91adb-da95-46c3-8e61-e0b71f358e04"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2014-03-28T19:00:00.000+01:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow outbound System application"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="1"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_AggRef" value="1"/>
+<Setting name="_AppExeSet" value="1"/>
+<Setting name="_AppGUID" value="1"/>
+<Setting name="_AppLastModified" value="1"/>
+<Setting name="_AppLastModifyingUsername" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppNote" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (2DB6D20F-6535-4A31-9D38-5B65D05B53D2)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="Action" value="JUMP"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="EITHER"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="51d9d72d-a248-4e83-9c3f-1b33a95c2894"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:35:55.515+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="ePolicy Orchestrator server"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_TcpFlags" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (2E152276-7952-46CB-AB36-49EE823E0D22)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+RemoteAddress#0" value="[trusted]"/>
+<Setting name="GUID" value="40327e92-5b50-4183-aecf-4e9b53e2ceea"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Name" value="Defined Networks"/>
+<Setting name="Note" value=""/>
+<Setting name="RemoteNetID" value="1ad89597-ce1c-4fdc-a687-8d719ddb70dd"/>
+<Setting name="Type" value="65546"/>
+<Setting name="_RemoteAddress" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (320A5F33-D62A-40EE-AF0A-2019C9ACEA25)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+AppDescription#0" value=""/>
+<Setting name="+AppHash#0" value="00000000000000000000000000000000"/>
+<Setting name="+AppName#0" value="services.exe"/>
+<Setting name="+AppPath#0" value="*\Windows\system32\services.exe"/>
+<Setting name="+AppSigner#0" value=""/>
+<Setting name="GUID" value="b0559848-3332-44dc-9333-deb5d7ba8e93"/>
+<Setting name="LastModified" value="2009-07-10T01:35:55.531+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Note" value=""/>
+<Setting name="Type" value="65547"/>
+<Setting name="_AppDescription" value="1"/>
+<Setting name="_AppHash" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppPath" value="1"/>
+<Setting name="_AppSigner" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (32688DB6-E856-4B4C-A047-45453D000C95)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+AggRef#0" value="272ef610-be4a-45bf-856b-9b3721de5dcc"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="IN"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="ae02d3db-11e3-4fdb-9f7d-f004cee03e23"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2014-07-02T20:00:00.000+02:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow inbound traffic from special IP addresses"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="1"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_AggRef" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (32AB688E-D3FA-4EA3-BFF4-28903DE5EA96)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+AggRef#0" value="fa536bbc-82fb-4f79-8a24-5b3e903d4d5f"/>
+<Setting name="+LocalPort#0" value="135"/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value=""/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="6"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="IN"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="6173bc17-4c76-4384-a9c8-a2dc51d59c73"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow inbound RCP service"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_AggRef" value="1"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (32D008D3-1208-483C-8D00-5E4E26F7470D)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+LocalPort#0" value=""/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value="445"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="17"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="OUT"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="64fb5efb-e956-4e3f-9372-a70085aef00f"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow outbound SMB over UDP"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (34CAD257-0473-4227-A253-79FC95DFD642)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+AppDescription#0" value=""/>
+<Setting name="+AppHash#0" value="00000000000000000000000000000000"/>
+<Setting name="+AppName#0" value="McAfee signed executables 6"/>
+<Setting name="+AppPath#0" value=""/>
+<Setting name="+AppSigner#0" value="CN=MCAFEE INTERNATIONAL LTD., OU=R&amp;D, OU=DIGITAL ID CLASS 3 - MICROSOFT SOFTWARE VALIDATION V2, O=MCAFEE INTERNATIONAL LTD., L=HOVE, ST=EAST SUSSEX, C=GB"/>
+<Setting name="GUID" value="7c0a4d67-3682-4bc5-8d2f-c4126a85d792"/>
+<Setting name="LastModified" value="2010-06-04T19:25:30.109+02:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Note" value=""/>
+<Setting name="Type" value="65547"/>
+<Setting name="_AppDescription" value="1"/>
+<Setting name="_AppHash" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppPath" value="1"/>
+<Setting name="_AppSigner" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (360C104C-1B08-44C7-B281-2CE02A313DEE)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+AppDescription#0" value=""/>
+<Setting name="+AppHash#0" value="00000000000000000000000000000000"/>
+<Setting name="+AppName#0" value="svchost.exe"/>
+<Setting name="+AppPath#0" value="*\Windows\system32\svchost.exe"/>
+<Setting name="+AppSigner#0" value=""/>
+<Setting name="GUID" value="f89d36f2-a0da-4bc6-bd6c-56b144435efe"/>
+<Setting name="LastModified" value="2009-07-10T01:35:55.531+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Note" value=""/>
+<Setting name="Type" value="65547"/>
+<Setting name="_AppDescription" value="1"/>
+<Setting name="_AppHash" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppPath" value="1"/>
+<Setting name="_AppSigner" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (377CEC3E-E9CA-4B8F-96CD-F2C3A04B51E2)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+AggRef#0" value="f9f7d114-e344-4cc3-9f72-c32c21aa166e"/>
+<Setting name="+LocalPort#0" value="139"/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value=""/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="6"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="IN"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="66093885-d56f-4765-91b0-cec6c6c8cb16"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow inbound NetBIOS sessions over TCP"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_AggRef" value="1"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (3CC59E51-DF4B-4141-8673-2AC21600B47B)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+NetworkProtocol#0" value="34958"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="EITHER"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="665ea2f1-47ef-4056-8685-1172350f4f5f"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2010-01-14T22:35:09.140+01:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow 802.1X authentication"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_NetworkProtocol" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (41E7A7CD-9F71-40E6-A0F6-33EC70956B03)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+AppDescription#0" value=""/>
+<Setting name="+AppHash#0" value="00000000000000000000000000000000"/>
+<Setting name="+AppName#0" value="SYSTEM"/>
+<Setting name="+AppPath#0" value="**\SYSTEM"/>
+<Setting name="+AppSigner#0" value=""/>
+<Setting name="GUID" value="a7660665-a70b-49e8-9885-5cb4810edb05"/>
+<Setting name="LastModified" value="2009-07-10T01:35:55.531+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Note" value=""/>
+<Setting name="Type" value="65547"/>
+<Setting name="_AppDescription" value="1"/>
+<Setting name="_AppHash" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppPath" value="1"/>
+<Setting name="_AppSigner" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (44A9FF5A-C5B5-43C6-8FF5-53C96C1904ED)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+LocalPort#0" value="445"/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value=""/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="6"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="IN"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="5fef05b3-9eaf-48e1-9c8e-1bbe83737727"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow inbound SMB over TCP"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (4A4B372F-DFCA-42FE-95C6-12678EF1B03B)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+LocalPort#0" value=""/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value="143, 993"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="6"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="OUT"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="7427485c-b236-4da2-845e-f7d89ffa4590"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow outbound IMAP traffic"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (50978812-7960-4FCF-A701-18335B489AA1)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="100" param_str="100">
+<Section name="100">
+<Setting name="+RuleIDSequence#0" value="ace91adb-da95-46c3-8e61-e0b71f358e04"/>
+<Setting name="+RuleIDSequence#1" value="5536a2fe-04f5-4cd4-90c9-4d5432ac1c33"/>
+<Setting name="+RuleIDSequence#10" value="7947d01a-0443-4424-8f17-e58b802cdeec"/>
+<Setting name="+RuleIDSequence#2" value="e5596ad5-1c4b-45bc-9931-758e68844466"/>
+<Setting name="+RuleIDSequence#3" value="0efd567a-40ea-4247-8422-e13df7320ce3"/>
+<Setting name="+RuleIDSequence#4" value="be889696-4bc5-4c5f-96f8-2e3afa0ad0b1"/>
+<Setting name="+RuleIDSequence#5" value="eb471652-d27c-4af0-b3b8-ee4ceb292d95"/>
+<Setting name="+RuleIDSequence#6" value="ddb06a40-b5fc-4ce3-a508-d627c037e8e6"/>
+<Setting name="+RuleIDSequence#7" value="e04ec438-012f-4fe1-88dd-33a1f72fe324"/>
+<Setting name="+RuleIDSequence#8" value="9e3aa639-e987-4aa9-87ac-dfbe0ef623c4"/>
+<Setting name="+RuleIDSequence#9" value="ae02d3db-11e3-4fdb-9f7d-f004cee03e23"/>
+<Setting name="RuleListID" value="103277ec-78e5-4dad-9c07-0cb58b355633"/>
+<Setting name="_RuleIDSequence" value="11"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (524F6345-61CC-482B-9F3C-1F92815CD714)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+RemoteAddress#0" value="[trusted]"/>
+<Setting name="GUID" value="fa536bbc-82fb-4f79-8a24-5b3e903d4d5f"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Name" value="Defined Networks"/>
+<Setting name="Note" value=""/>
+<Setting name="RemoteNetID" value="2f9a16b9-38dd-4e41-842e-cc77b4013479"/>
+<Setting name="Type" value="65546"/>
+<Setting name="_RemoteAddress" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (5295D04B-904E-4AF2-97EE-F7E11FE4A7C2)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+LocalPort#0" value="1024-65535"/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value="21"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="6"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="OUT"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="e24daf83-2e24-4c5c-9418-a9f6cd983d90"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow outbound FTP client connections"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (564D11E8-EFB5-4504-9885-6D86349ECF6D)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+AggRef#0" value="d7be057d-368f-4382-abb0-1819c89cb991"/>
+<Setting name="+LocalPort#0" value="139"/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value=""/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="17"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="IN"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="adb376b0-d986-4634-9305-54c2bb5a51c7"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow inbound NetBIOS sessions over UDP"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_AggRef" value="1"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (598C9897-CC7F-4714-9CBB-623A86B1A042)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+AppDescription#0" value=""/>
+<Setting name="+AppHash#0" value="00000000000000000000000000000000"/>
+<Setting name="+AppName#0" value="APACHE"/>
+<Setting name="+AppPath#0" value="**\APACHE.EXE"/>
+<Setting name="+AppSigner#0" value=""/>
+<Setting name="GUID" value="d95a599a-a566-4c35-86a6-3d0eb6b91bcd"/>
+<Setting name="LastModified" value="2009-07-10T01:35:55.531+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Note" value=""/>
+<Setting name="Type" value="65547"/>
+<Setting name="_AppDescription" value="1"/>
+<Setting name="_AppHash" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppPath" value="1"/>
+<Setting name="_AppSigner" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (59B738C6-8969-4AFE-9761-8628ABC3A5E8)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="Action" value="JUMP"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="EITHER"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="adad72d5-65bc-4dbe-b295-4c9acd573f0e"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Mail clients"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_TcpFlags" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (5C19C618-4651-4D89-AA23-86C6BEBAD4D0)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+LocalPort#0" value=""/>
+<Setting name="+RemotePort#0" value="53"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="17"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="OUT"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="e04ec438-012f-4fe1-88dd-33a1f72fe324"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2014-03-28T19:00:00.000+01:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow DNS traffic"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="1"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (5C522FC7-AD39-4F1D-A0EF-0E0CFBE3039A)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+AppDescription#0" value=""/>
+<Setting name="+AppHash#0" value="00000000000000000000000000000000"/>
+<Setting name="+AppName#0" value="McAfee signed executables 6"/>
+<Setting name="+AppPath#0" value=""/>
+<Setting name="+AppSigner#0" value="CN=McAfee VTP signed"/>
+<Setting name="GUID" value="a30adb8f-1aed-408c-86be-2fbdc1c084ce"/>
+<Setting name="LastModified" value="2019-06-11T00:04:10.343+02:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Note" value=""/>
+<Setting name="Type" value="65547"/>
+<Setting name="_AppDescription" value="1"/>
+<Setting name="_AppHash" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppPath" value="1"/>
+<Setting name="_AppSigner" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (6239CDFB-7D94-47E9-BA32-89C6D613860A)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+AggRef#0" value="1842875f-48d3-44a7-a25d-42df3b1d8b39"/>
+<Setting name="+AppExeSet#0" value="0"/>
+<Setting name="+AppGUID#0" value="c503afcc-7221-4e0f-aae6-efb6a57ceee2"/>
+<Setting name="+AppLastModified#0" value="2009-07-10T01:35:55.531+02:00"/>
+<Setting name="+AppLastModifyingUsername#0" value="McAfee, LLC."/>
+<Setting name="+AppName#0" value="EVENTPARSER"/>
+<Setting name="+AppNote#0" value=""/>
+<Setting name="+LocalPort#0" value=""/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value="80, 1040, 1046"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="6"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="OUT"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="beab359b-31e6-4ef8-9386-1773f1ee2f66"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:35:55.531+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow outbound ePolicy Orchestrator server - EVENTPARSER"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_AggRef" value="1"/>
+<Setting name="_AppExeSet" value="1"/>
+<Setting name="_AppGUID" value="1"/>
+<Setting name="_AppLastModified" value="1"/>
+<Setting name="_AppLastModifyingUsername" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppNote" value="1"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (626F24CE-92C8-4375-8319-657804181C60)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+LocalPort#0" value="445"/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value=""/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="17"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="IN"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="98a29dec-dc43-40b0-a5ad-2875cb818dac"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow inbound SMB over UDP"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (629CF936-5ED4-42DF-93BD-960E01F38C92)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="100" param_str="100">
+<Section name="100">
+<Setting name="+RuleIDSequence#0" value="4719a292-60ff-4403-aebd-a157779127a2"/>
+<Setting name="+RuleIDSequence#1" value="7427485c-b236-4da2-845e-f7d89ffa4590"/>
+<Setting name="+RuleIDSequence#2" value="f580afc6-c4b1-4e10-8de7-8420304c10cc"/>
+<Setting name="RuleListID" value="adad72d5-65bc-4dbe-b295-4c9acd573f0e"/>
+<Setting name="_RuleIDSequence" value="3"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (659DF269-61EE-4091-9359-BA0A83CAC66D)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+AggRef#0" value="40327e92-5b50-4183-aecf-4e9b53e2ceea"/>
+<Setting name="+LocalPort#0" value=""/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value="139"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="17"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="OUT"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="69876519-d1d7-4cf0-86d0-64d524a2c638"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow outbound NetBIOS sessions over UDP"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_AggRef" value="1"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (65D80B9A-7BC6-42F0-ADC7-08AE702F2334)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="Action" value="JUMP"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="EITHER"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="103277ec-78e5-4dad-9c07-0cb58b355633"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2014-03-28T19:00:00.000+01:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="McAfee core networking"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="1"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_TcpFlags" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (66C37F07-30C2-4968-B523-A3E54A2FBC99)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+LocalPort#0" value=""/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value="3389"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="6"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="OUT"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="5391d0c7-870b-4037-8856-4a14618c085b"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow outbound Remote Desktop (RDP) connections"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (674DB3CE-872F-435B-8C68-34CB9EDC628A)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+AggRef#0" value="dc042663-f6de-46af-8088-e0b6787cb409"/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="EITHER"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="e6c638d0-a31a-4704-b1fa-c3a897874155"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2011-07-27T00:11:01.110+02:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow loopback (localhost) traffic"/>
+<Setting name="Note" value="Allow loopback (localhost) traffic"/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_AggRef" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_TcpFlags" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (67909A2A-423A-4D33-9B88-7A244D1B2F58)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+LocalPort#0" value="1024-65535"/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value="1024-65535"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="17"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="OUT"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="7eaf8468-d65e-462a-9758-26b9b3999214"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow all outbound traffic on high UDP ports"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (681BE19B-6CD1-4336-A1FF-280825C24C19)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+AggRef#0" value="ffd78681-9d59-40f4-9b27-52af2a7e820f"/>
+<Setting name="+AggRef#1" value="d97b604b-3173-49bf-beeb-f33b633c3175"/>
+<Setting name="+AppExeSet#0" value="0"/>
+<Setting name="+AppExeSet#1" value="1"/>
+<Setting name="+AppGUID#0" value="0c23934a-93f2-4f0e-88de-cc327671b2f1"/>
+<Setting name="+AppGUID#1" value="4c7a0567-2519-46c1-a541-4152ab051d71"/>
+<Setting name="+AppLastModified#0" value="2009-07-10T01:35:55.531+02:00"/>
+<Setting name="+AppLastModified#1" value="2015-09-01T00:57:40.155+02:00"/>
+<Setting name="+AppLastModifyingUsername#0" value="McAfee, LLC."/>
+<Setting name="+AppLastModifyingUsername#1" value="McAfee, LLC."/>
+<Setting name="+AppName#0" value="TOMCAT5"/>
+<Setting name="+AppName#1" value="TOMCAT7"/>
+<Setting name="+AppNote#0" value=""/>
+<Setting name="+AppNote#1" value=""/>
+<Setting name="+LocalPort#0" value=""/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value="1040, 1046, 8081, 8801"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="6"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="OUT"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="fbce3e9d-1e8b-4448-b277-d92fac9fc556"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2015-09-01T00:57:42.421+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow outbound ePolicy Orchestrator server - TOMCAT"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_AggRef" value="2"/>
+<Setting name="_AppExeSet" value="2"/>
+<Setting name="_AppGUID" value="2"/>
+<Setting name="_AppLastModified" value="2"/>
+<Setting name="_AppLastModifyingUsername" value="2"/>
+<Setting name="_AppName" value="2"/>
+<Setting name="_AppNote" value="2"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (697223CE-2077-4034-8316-12F0F668B084)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+LocalPort#0" value=""/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value="389, 636, 3268-3269"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="17"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="OUT"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="b80d5f4c-3c02-4d0b-b2c4-1cd8a7c45ac0"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow outbound LDAP over UDP"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (6B301F6A-E6F3-43DE-A357-6FE0498ADAAE)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+MessageType#0" value=""/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="58"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="OUT"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="ddb06a40-b5fc-4ce3-a508-d627c037e8e6"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2014-03-28T19:00:00.000+01:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow outbound ICMPv6 traffic"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="1"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_MessageType" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (6D9D2FD6-03AE-4620-A94A-688D5F36241A)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+LocalPort#0" value=""/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value="110, 995"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="6"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="OUT"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="4719a292-60ff-4403-aebd-a157779127a2"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow outbound POP3 traffic"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (7127B2D3-5A30-4491-9B65-7C954B0E6E4C)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+AppDescription#0" value=""/>
+<Setting name="+AppHash#0" value="00000000000000000000000000000000"/>
+<Setting name="+AppName#0" value="winlogon.exe"/>
+<Setting name="+AppPath#0" value="*\Windows\system32\winlogon.exe"/>
+<Setting name="+AppSigner#0" value=""/>
+<Setting name="GUID" value="29cba202-d0b7-4652-996d-953b9152f9f1"/>
+<Setting name="LastModified" value="2009-07-10T01:35:55.531+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Note" value=""/>
+<Setting name="Type" value="65547"/>
+<Setting name="_AppDescription" value="1"/>
+<Setting name="_AppHash" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppPath" value="1"/>
+<Setting name="_AppSigner" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (712A6728-8015-4679-BD2E-C4D7D3870B85)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="100" param_str="100">
+<Section name="100">
+<Setting name="+RuleIDSequence#0" value="82114dbb-5705-4f00-bdb3-e185ce78a4ee"/>
+<Setting name="+RuleIDSequence#1" value="b80d5f4c-3c02-4d0b-b2c4-1cd8a7c45ac0"/>
+<Setting name="+RuleIDSequence#2" value="5fef05b3-9eaf-48e1-9c8e-1bbe83737727"/>
+<Setting name="+RuleIDSequence#3" value="ac0947e9-daaf-4106-a292-d6a244d3056c"/>
+<Setting name="+RuleIDSequence#4" value="98a29dec-dc43-40b0-a5ad-2875cb818dac"/>
+<Setting name="+RuleIDSequence#5" value="64fb5efb-e956-4e3f-9372-a70085aef00f"/>
+<Setting name="RuleListID" value="c0cf2700-f871-4600-b3dd-15531d2713d6"/>
+<Setting name="_RuleIDSequence" value="6"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (78B1A243-4615-4C4B-A781-AD08F1766555)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+AppDescription#0" value=""/>
+<Setting name="+AppHash#0" value="00000000000000000000000000000000"/>
+<Setting name="+AppName#0" value="McAfee signed executables 1"/>
+<Setting name="+AppPath#0" value=""/>
+<Setting name="+AppSigner#0" value="CN=&quot;mcafee, inc.&quot;, OU=engineering, O=&quot;mcafee, inc.&quot;, L=santa clara, ST=california, C=us"/>
+<Setting name="GUID" value="bbfd0427-6a2d-4703-b4e1-d336ebe0eea8"/>
+<Setting name="LastModified" value="2014-08-08T14:52:35.736+02:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Note" value=""/>
+<Setting name="Type" value="65547"/>
+<Setting name="_AppDescription" value="1"/>
+<Setting name="_AppHash" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppPath" value="1"/>
+<Setting name="_AppSigner" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (78B48C63-DCD9-4438-B885-8EFA55C90513)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+AppDescription#0" value=""/>
+<Setting name="+AppHash#0" value="00000000000000000000000000000000"/>
+<Setting name="+AppName#0" value="TOMCAT7"/>
+<Setting name="+AppPath#0" value="**\TOMCAT7.EXE"/>
+<Setting name="+AppSigner#0" value=""/>
+<Setting name="GUID" value="d97b604b-3173-49bf-beeb-f33b633c3175"/>
+<Setting name="LastModified" value="2009-07-10T01:35:55.531+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Note" value=""/>
+<Setting name="Type" value="65547"/>
+<Setting name="_AppDescription" value="1"/>
+<Setting name="_AppHash" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppPath" value="1"/>
+<Setting name="_AppSigner" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (7983EFA2-6823-4B57-8E0F-11CB065DE532)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+AggRef#0" value="7b3e5ea5-bb8b-4bd5-a3a5-76a067e23ade"/>
+<Setting name="+LocalPort#0" value="138"/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value="138"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="17"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="EITHER"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="5b259ce0-dc2f-4bf2-beb6-c79e175db92a"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow NetBIOS datagram service"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_AggRef" value="1"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (7AC901B7-6F11-4BF1-A514-A9035A6233E5)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+LocalPort#0" value="3389"/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value=""/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="6"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="IN"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="234bb998-2a27-4c91-934e-da4483e98c08"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow inbound Remote Desktop (RDP) connections"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (7E98FEC9-40E1-417C-8B73-CB943BD64B29)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+NetworkProtocol#0" value="2054"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="EITHER"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="5536a2fe-04f5-4cd4-90c9-4d5432ac1c33"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2014-03-28T19:00:00.000+01:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value=" Allow ARP traffic"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="1"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_NetworkProtocol" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (7F65F211-EB84-4B1B-AC4D-A0D2796DC581)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="47"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="EITHER"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="796d63dc-ee20-4b3c-8b80-903b96bf8f2f"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow GRE traffic"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (83814223-5895-41CA-A3F7-353E890D406D)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+AppDescription#0" value=""/>
+<Setting name="+AppHash#0" value="00000000000000000000000000000000"/>
+<Setting name="+AppName#0" value="userinit.exe"/>
+<Setting name="+AppPath#0" value="*\Windows\system32\userinit.exe"/>
+<Setting name="+AppSigner#0" value=""/>
+<Setting name="GUID" value="a95f6492-a703-419a-9498-9e59e9ca60f8"/>
+<Setting name="LastModified" value="2009-07-10T01:35:55.531+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Note" value=""/>
+<Setting name="Type" value="65547"/>
+<Setting name="_AppDescription" value="1"/>
+<Setting name="_AppHash" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppPath" value="1"/>
+<Setting name="_AppSigner" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (83EE8450-47A2-4310-824E-1F1A4699501C)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+LocalPort#0" value="135, 137-139"/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value=""/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="6"/>
+<Setting name="Action" value="BLOCK"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="EITHER"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="d49d7002-7092-44c4-9805-72d878e5cd1c"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Block untrusted NetBIOS sessions over TCP"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (8501AA9B-C88A-4646-9106-AA0FD97D4E51)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+LocalPort#0" value=""/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value="445"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="6"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="OUT"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="ac0947e9-daaf-4106-a292-d6a244d3056c"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow outbound SMB over TCP"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (8967DB85-F377-4D25-B0B8-61C43B6213A7)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+AggRef#0" value="5653512e-0e3a-4a7c-b756-b1fe1969926d"/>
+<Setting name="+AggRef#1" value="aa3f6387-94bd-4a85-93ab-24fe57952a0f"/>
+<Setting name="+AggRef#2" value="c12291ed-1ce5-47a9-98c8-477f1b8c0094"/>
+<Setting name="+AggRef#3" value="f89d36f2-a0da-4bc6-bd6c-56b144435efe"/>
+<Setting name="+AggRef#4" value="0502bf8e-974b-4d27-bd45-5cd21b72b1be"/>
+<Setting name="+AggRef#5" value="b0559848-3332-44dc-9333-deb5d7ba8e93"/>
+<Setting name="+AggRef#6" value="29cba202-d0b7-4652-996d-953b9152f9f1"/>
+<Setting name="+AggRef#7" value="a95f6492-a703-419a-9498-9e59e9ca60f8"/>
+<Setting name="+AppExeSet#0" value="0-7"/>
+<Setting name="+AppGUID#0" value="b0559848-3332-44dc-9333-deb5d7ba8e94"/>
+<Setting name="+AppLastModified#0" value="2009-07-10T01:35:55.531+02:00"/>
+<Setting name="+AppLastModifyingUsername#0" value="McAfee, LLC."/>
+<Setting name="+AppName#0" value="Stock Apps"/>
+<Setting name="+AppNote#0" value=""/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="OUT"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="0efd567a-40ea-4247-8422-e13df7320ce3"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2014-03-28T19:00:00.000+01:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow outbound stock applications"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="1"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_AggRef" value="8"/>
+<Setting name="_AppExeSet" value="1"/>
+<Setting name="_AppGUID" value="1"/>
+<Setting name="_AppLastModified" value="1"/>
+<Setting name="_AppLastModifyingUsername" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppNote" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (8CDCB757-A1D3-4D24-A8C1-43B7A51CD101)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="100" param_str="100">
+<Section name="100">
+<Setting name="+RuleIDSequence#0" value="aca8e086-70cf-4f51-b8b3-c59d450f18c4"/>
+<Setting name="+RuleIDSequence#1" value="4c0c45df-8612-4494-93f2-91452b17a977"/>
+<Setting name="+RuleIDSequence#2" value="fbce3e9d-1e8b-4448-b277-d92fac9fc556"/>
+<Setting name="+RuleIDSequence#3" value="308e7d13-199e-4a3d-b9da-cd94cecaf1ae"/>
+<Setting name="+RuleIDSequence#4" value="4fb5f9b5-20cb-4be1-9d46-495572790d0d"/>
+<Setting name="+RuleIDSequence#5" value="37279b5c-a228-4380-8d85-bfd422cc78b1"/>
+<Setting name="+RuleIDSequence#6" value="beab359b-31e6-4ef8-9386-1773f1ee2f66"/>
+<Setting name="RuleListID" value="51d9d72d-a248-4e83-9c3f-1b33a95c2894"/>
+<Setting name="_RuleIDSequence" value="7"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (8FE4350F-8158-4485-9623-335A53D09146)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+AppDescription#0" value=""/>
+<Setting name="+AppHash#0" value="00000000000000000000000000000000"/>
+<Setting name="+AppName#0" value="EVENTPARSER"/>
+<Setting name="+AppPath#0" value="**\EVENTPARSER.EXE"/>
+<Setting name="+AppSigner#0" value=""/>
+<Setting name="GUID" value="1842875f-48d3-44a7-a25d-42df3b1d8b39"/>
+<Setting name="LastModified" value="2009-07-10T01:35:55.531+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Note" value=""/>
+<Setting name="Type" value="65547"/>
+<Setting name="_AppDescription" value="1"/>
+<Setting name="_AppHash" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppPath" value="1"/>
+<Setting name="_AppSigner" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (91B4D41E-FCD1-4AD9-8FF1-40B6DA2FF0C1)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+LocalPort#0" value=""/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value="8443"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="6"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="OUT"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="37279b5c-a228-4380-8d85-bfd422cc78b1"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:35:55.531+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow ePolicy Orchestrator console"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (92601EFB-2AEC-4425-865A-4759219A957A)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+AggRef#0" value="2e31c5be-aace-45b0-a67b-12daadaabad5"/>
+<Setting name="+LocalPort#0" value=""/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value="139"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="6"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="OUT"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="b16b5521-3653-4a6f-9aee-c08ef2f3705d"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow outbound NetBIOS sessions over TCP"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_AggRef" value="1"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (92B97CC1-8878-4B8C-A2ED-E9503BB35884)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+AggRef#0" value="a138586b-48f5-4fa4-863b-0eb033fc76cd"/>
+<Setting name="+AggRef#1" value="7c0a4d67-3682-4bc5-8d2f-c4126a85d792"/>
+<Setting name="+AggRef#2" value="54bc56c9-2e27-43eb-b2e8-1e3182483476"/>
+<Setting name="+AggRef#3" value="3a0ae4b5-8fa6-4f1a-b773-a127eb23025a"/>
+<Setting name="+AggRef#4" value="78d42865-4aad-4634-a5d7-a89b7b723245"/>
+<Setting name="+AggRef#5" value="d5df9d17-bdda-47ff-b8f3-22f1be7ace90"/>
+<Setting name="+AggRef#6" value="3430e7a4-5c1a-443d-9a55-7b43905cdf13"/>
+<Setting name="+AppExeSet#0" value="0-6"/>
+<Setting name="+AppGUID#0" value="49e4766e-4d3c-4304-9209-85f968b055c2"/>
+<Setting name="+AppLastModified#0" value="2010-06-04T19:25:33.062+02:00"/>
+<Setting name="+AppLastModifyingUsername#0" value="admin"/>
+<Setting name="+AppName#0" value="McAfee signed applications"/>
+<Setting name="+AppNote#0" value=""/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="EITHER"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="23:59"/>
+<Setting name="GUID" value="3fa71fa0-a16c-4fee-b8ce-80fd93928609"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2010-06-17T01:34:30.838+02:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow McAfee signed applications"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_AggRef" value="7"/>
+<Setting name="_AppExeSet" value="1"/>
+<Setting name="_AppGUID" value="1"/>
+<Setting name="_AppLastModified" value="1"/>
+<Setting name="_AppLastModifyingUsername" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppNote" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (9588B6FA-73C5-4860-9110-CAC5D5BE8D8B)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+AppDescription#0" value=""/>
+<Setting name="+AppHash#0" value="00000000000000000000000000000000"/>
+<Setting name="+AppName#0" value="McAfee signed executables 1"/>
+<Setting name="+AppPath#0" value=""/>
+<Setting name="+AppSigner#0" value="CN=&quot;mcafee, inc.&quot;, OU=engineering, O=&quot;mcafee, inc.&quot;, L=santa clara, ST=california, C=us"/>
+<Setting name="GUID" value="3a0ae4b5-8fa6-4f1a-b773-a127eb23025a"/>
+<Setting name="LastModified" value="2014-08-08T14:52:35.736+02:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Note" value=""/>
+<Setting name="Type" value="65547"/>
+<Setting name="_AppDescription" value="1"/>
+<Setting name="_AppHash" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppPath" value="1"/>
+<Setting name="_AppSigner" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (9F8ED339-1307-41B7-BDE8-593F88AC03CF)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+RemoteAddress#0" value="[trusted]"/>
+<Setting name="GUID" value="20318c77-4627-4c62-9023-6feb9f13ba66"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Name" value="Defined Networks"/>
+<Setting name="Note" value=""/>
+<Setting name="RemoteNetID" value="ee1ef207-c4a2-42f9-b38c-0321b50c3c4e"/>
+<Setting name="Type" value="65546"/>
+<Setting name="_RemoteAddress" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (A19D7D29-2BCD-4970-B0F9-5E4B31737DE7)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="Action" value="JUMP"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="EITHER"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="ffce3f06-4809-4017-bcd3-d2aaecd44627"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="VPN"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_TcpFlags" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (A29D5746-6D27-42B2-AC59-DA9F550474F8)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+AppDescription#0" value=""/>
+<Setting name="+AppHash#0" value="00000000000000000000000000000000"/>
+<Setting name="+AppName#0" value="lsass.exe"/>
+<Setting name="+AppPath#0" value="*\Windows\system32\lsass.exe"/>
+<Setting name="+AppSigner#0" value=""/>
+<Setting name="GUID" value="aa3f6387-94bd-4a85-93ab-24fe57952a0f"/>
+<Setting name="LastModified" value="2009-07-10T01:35:55.531+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Note" value=""/>
+<Setting name="Type" value="65547"/>
+<Setting name="_AppDescription" value="1"/>
+<Setting name="_AppHash" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppPath" value="1"/>
+<Setting name="_AppSigner" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (A32803FD-3634-40FA-89F9-40D4C28EEC15)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+RemoteAddress#0" value="[trusted]"/>
+<Setting name="GUID" value="f9f7d114-e344-4cc3-9f72-c32c21aa166e"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Name" value="Defined Networks"/>
+<Setting name="Note" value=""/>
+<Setting name="RemoteNetID" value="c228ca1f-dcea-4266-acbe-f284c118c380"/>
+<Setting name="Type" value="65546"/>
+<Setting name="_RemoteAddress" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (A53123AB-D8FE-428A-B023-7F75318EE986)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+MessageType#0" value=""/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="1"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="OUT"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="eb471652-d27c-4af0-b3b8-ee4ceb292d95"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2014-03-28T19:00:00.000+01:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow outbound ICMPv4  traffic"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="1"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_MessageType" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (A63E2A30-F3A1-4CE2-9E16-B1E15B1DAD97)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+RemoteAddress#0" value="[trusted]"/>
+<Setting name="GUID" value="9fd73b2b-3f02-4b25-bd2d-459264f4b612"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Name" value="Defined Networks"/>
+<Setting name="Note" value=""/>
+<Setting name="RemoteNetID" value="6009acb7-230b-4d02-bae1-35216316a1ce"/>
+<Setting name="Type" value="65546"/>
+<Setting name="_RemoteAddress" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (ABA0B4E8-80A6-4279-A896-9CAF2C9820CD)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+RemoteAddress#0" value="[trusted]"/>
+<Setting name="GUID" value="881b6f1e-2a77-4204-9c6d-2ecf89838235"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Name" value="Defined Networks"/>
+<Setting name="Note" value=""/>
+<Setting name="RemoteNetID" value="3f2b86bf-8bfe-4c0a-b610-a39dd8e13ee4"/>
+<Setting name="Type" value="65546"/>
+<Setting name="_RemoteAddress" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (AD63BB80-2CC8-47DA-9A98-9D2D662C17CB)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="100" param_str="100">
+<Section name="100">
+<Setting name="+RuleIDSequence#0" value="665ea2f1-47ef-4056-8685-1172350f4f5f"/>
+<Setting name="+RuleIDSequence#1" value="494c8854-c9dc-41c4-976d-d84f86b56ee6"/>
+<Setting name="+RuleIDSequence#2" value="96a9e2ba-261e-4f4b-ac9c-5c2eb784d246"/>
+<Setting name="+RuleIDSequence#3" value="96e61466-1e21-4fe4-8114-d9ac4a164b75"/>
+<Setting name="RuleListID" value="909b2561-5483-4195-bc56-61b655707da5"/>
+<Setting name="_RuleIDSequence" value="4"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (AF14F9A5-4574-4780-9D02-BC93D2B86E8C)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+AppDescription#0" value=""/>
+<Setting name="+AppHash#0" value="00000000000000000000000000000000"/>
+<Setting name="+AppName#0" value="McAfee signed executables 3"/>
+<Setting name="+AppPath#0" value=""/>
+<Setting name="+AppSigner#0" value="CN=&quot;mcafee, inc.&quot;, OU=engineering, OU=digital id class 3 - microsoft software validation v2, O=&quot;mcafee, inc.&quot;, L=santa clara, ST=oregon, C=us"/>
+<Setting name="GUID" value="3430e7a4-5c1a-443d-9a55-7b43905cdf13"/>
+<Setting name="LastModified" value="2010-06-04T19:25:30.109+02:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Note" value=""/>
+<Setting name="Type" value="65547"/>
+<Setting name="_AppDescription" value="1"/>
+<Setting name="_AppHash" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppPath" value="1"/>
+<Setting name="_AppSigner" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (B208E8FC-3CB8-4111-ACB2-E535579AAF2E)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+AppDescription#0" value=""/>
+<Setting name="+AppHash#0" value="00000000000000000000000000000000"/>
+<Setting name="+AppName#0" value="dns.exe"/>
+<Setting name="+AppPath#0" value="*\Windows\system32\dns.exe"/>
+<Setting name="+AppSigner#0" value=""/>
+<Setting name="GUID" value="0502bf8e-974b-4d27-bd45-5cd21b72b1be"/>
+<Setting name="LastModified" value="2009-07-10T01:35:55.531+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Note" value=""/>
+<Setting name="Type" value="65547"/>
+<Setting name="_AppDescription" value="1"/>
+<Setting name="_AppHash" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppPath" value="1"/>
+<Setting name="_AppSigner" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (B262F5C9-952C-4880-B842-924612B71929)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="50"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="EITHER"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="f2d50ff3-e6de-41e6-9adf-7f3dacb521d9"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow IPsec ESP traffic"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (B3625235-D428-4843-BBE8-A56FA8A4F7BD)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+LocalPort#0" value="123"/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value="123"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="17"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="EITHER"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="96e61466-1e21-4fe4-8114-d9ac4a164b75"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow Network Time Protocol traffic"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (B85A335B-0628-49AD-921A-05FC5F6B70C1)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+AppDescription#0" value=""/>
+<Setting name="+AppHash#0" value="00000000000000000000000000000000"/>
+<Setting name="+AppName#0" value="McAfee signed executables 2"/>
+<Setting name="+AppPath#0" value=""/>
+<Setting name="+AppSigner#0" value="CN=&quot;mcafee, inc.&quot;, OU=iis, OU=digital id class 3 - microsoft software validation v2, O=&quot;mcafee, inc.&quot;, L=santa clara, ST=california, C=us"/>
+<Setting name="GUID" value="6fcf5f2b-71f5-4aec-a0f7-95d8291a38cb"/>
+<Setting name="LastModified" value="2014-08-08T14:52:35.736+02:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Note" value=""/>
+<Setting name="Type" value="65547"/>
+<Setting name="_AppDescription" value="1"/>
+<Setting name="_AppHash" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppPath" value="1"/>
+<Setting name="_AppSigner" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (B9BA17FB-F690-478D-872F-8D2F4EF676B4)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+AggRef#0" value="881b6f1e-2a77-4204-9c6d-2ecf89838235"/>
+<Setting name="+LocalPort#0" value="139"/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value=""/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="6"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="IN"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="79742345-acc9-498c-834f-420f57c9f643"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow inbound NetBIOS sessions"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_AggRef" value="1"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (BADCC7AD-9F2D-45D1-899F-32F0E4C09AE8)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+AggRef#0" value="20318c77-4627-4c62-9023-6feb9f13ba66"/>
+<Setting name="+LocalPort#0" value=""/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value="135"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="6"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="OUT"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="cbc4d82b-1c6f-4d7f-b5d2-575c0ddd8e88"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow outbound RCP service"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_AggRef" value="1"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (BB77E834-2CDB-43C8-A4B1-3CD5B8292924)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+RemoteAddress#0" value="0000:0000:0000:0000:0000:0000:0000:0000"/>
+<Setting name="+RemoteAddress#1" value="0000:0000:0000:0000:0000:ffff:0000:0000"/>
+<Setting name="GUID" value="272ef610-be4a-45bf-856b-9b3721de5dcc"/>
+<Setting name="LastModified" value="2014-07-03T00:10:41.033+02:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Name" value="Allow special traffic1 IP"/>
+<Setting name="Note" value=""/>
+<Setting name="RemoteNetID" value="804f2af3-e521-4100-a36b-d5b45f507dd6"/>
+<Setting name="Type" value="65546"/>
+<Setting name="_RemoteAddress" value="2"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (BB83610C-323E-4ABD-B2D8-34DCAAE55AE0)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+LocalPort#0" value="1024-65535"/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value="161"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="17"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="EITHER"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="f74e8238-3e45-4fa2-a3e9-5ca1bd29bcb9"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow SNMP traffic"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (BEAEB3C6-7732-4CC4-AAB9-8880D7F73503)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+AppDescription#0" value=""/>
+<Setting name="+AppHash#0" value="00000000000000000000000000000000"/>
+<Setting name="+AppName#0" value="spoolsv.exe"/>
+<Setting name="+AppPath#0" value="*\Windows\system32\spoolsv.exe"/>
+<Setting name="+AppSigner#0" value=""/>
+<Setting name="GUID" value="5653512e-0e3a-4a7c-b756-b1fe1969926d"/>
+<Setting name="LastModified" value="2009-07-10T01:35:55.531+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Note" value=""/>
+<Setting name="Type" value="65547"/>
+<Setting name="_AppDescription" value="1"/>
+<Setting name="_AppHash" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppPath" value="1"/>
+<Setting name="_AppSigner" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (C0002C6F-CA24-46D6-A9D5-A382584AD704)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+LocalPort#0" value="135, 137-139"/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value=""/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="17"/>
+<Setting name="Action" value="BLOCK"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="EITHER"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="ba6cd2e8-c048-4670-b58b-3697d0443eaa"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Block untrusted NetBIOS sessions over UDP"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (C222B67E-3949-41F9-8F90-F635068D53F7)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+LocalPort#0" value="68"/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value="67"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="17"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="OUT"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="494c8854-c9dc-41c4-976d-d84f86b56ee6"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow BOOTP traffic"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (C2809577-29F6-4FEB-BC29-FA3180F95E27)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+AppDescription#0" value=""/>
+<Setting name="+AppHash#0" value="00000000000000000000000000000000"/>
+<Setting name="+AppName#0" value="McAfee signed executables 2"/>
+<Setting name="+AppPath#0" value=""/>
+<Setting name="+AppSigner#0" value="CN=&quot;mcafee, inc.&quot;, OU=iis, OU=digital id class 3 - microsoft software validation v2, O=&quot;mcafee, inc.&quot;, L=santa clara, ST=california, C=us"/>
+<Setting name="GUID" value="54bc56c9-2e27-43eb-b2e8-1e3182483476"/>
+<Setting name="LastModified" value="2010-06-04T19:25:30.109+02:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Note" value=""/>
+<Setting name="Type" value="65547"/>
+<Setting name="_AppDescription" value="1"/>
+<Setting name="_AppHash" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppPath" value="1"/>
+<Setting name="_AppSigner" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (C2D00D43-A717-4C9D-A923-0847B63A2A64)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+AppDescription#0" value=""/>
+<Setting name="+AppHash#0" value="00000000000000000000000000000000"/>
+<Setting name="+AppName#0" value="alg.exe"/>
+<Setting name="+AppPath#0" value="*\Windows\system32\alg.exe"/>
+<Setting name="+AppSigner#0" value=""/>
+<Setting name="GUID" value="c12291ed-1ce5-47a9-98c8-477f1b8c0094"/>
+<Setting name="LastModified" value="2009-07-10T01:35:55.531+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Note" value=""/>
+<Setting name="Type" value="65547"/>
+<Setting name="_AppDescription" value="1"/>
+<Setting name="_AppHash" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppPath" value="1"/>
+<Setting name="_AppSigner" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (C501FCBB-06FA-4AB0-BB2D-12FD8BB1605F)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+AggRef#0" value="9fd73b2b-3f02-4b25-bd2d-459264f4b612"/>
+<Setting name="+LocalPort#0" value="137"/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value="137"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="17"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="EITHER"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="676d8cd5-cb2f-44b6-92c1-b149576f7f7f"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow NetBIOS name service"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_AggRef" value="1"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (C751B65F-4B43-4569-A37B-FDC97401F802)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+AggRef#0" value="4a5729ef-251f-4915-bda1-7b0c36c7f430"/>
+<Setting name="+AppExeSet#0" value="0"/>
+<Setting name="+AppGUID#0" value="43e6ebc8-5463-4443-92a0-66e9fb94b53a"/>
+<Setting name="+AppLastModified#0" value="2009-07-10T01:35:55.531+02:00"/>
+<Setting name="+AppLastModifyingUsername#0" value="McAfee, LLC."/>
+<Setting name="+AppName#0" value="SQLSERVR"/>
+<Setting name="+AppNote#0" value=""/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="IN"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="4fb5f9b5-20cb-4be1-9d46-495572790d0d"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2015-08-31T23:43:18.722+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow inbound ePolicy Orchestrator server - SQLSERVER"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_AggRef" value="1"/>
+<Setting name="_AppExeSet" value="1"/>
+<Setting name="_AppGUID" value="1"/>
+<Setting name="_AppLastModified" value="1"/>
+<Setting name="_AppLastModifyingUsername" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppNote" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_TcpFlags" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (C8B5D2FB-C5CE-4089-9E01-5F4FC3AF2975)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="100" param_str="100">
+<Section name="100">
+<Setting name="+RuleIDSequence#0" value="6173bc17-4c76-4384-a9c8-a2dc51d59c73"/>
+<Setting name="+RuleIDSequence#1" value="cbc4d82b-1c6f-4d7f-b5d2-575c0ddd8e88"/>
+<Setting name="+RuleIDSequence#10" value="ba6cd2e8-c048-4670-b58b-3697d0443eaa"/>
+<Setting name="+RuleIDSequence#2" value="676d8cd5-cb2f-44b6-92c1-b149576f7f7f"/>
+<Setting name="+RuleIDSequence#3" value="5b259ce0-dc2f-4bf2-beb6-c79e175db92a"/>
+<Setting name="+RuleIDSequence#4" value="69876519-d1d7-4cf0-86d0-64d524a2c638"/>
+<Setting name="+RuleIDSequence#5" value="79742345-acc9-498c-834f-420f57c9f643"/>
+<Setting name="+RuleIDSequence#6" value="b16b5521-3653-4a6f-9aee-c08ef2f3705d"/>
+<Setting name="+RuleIDSequence#7" value="adb376b0-d986-4634-9305-54c2bb5a51c7"/>
+<Setting name="+RuleIDSequence#8" value="66093885-d56f-4765-91b0-cec6c6c8cb16"/>
+<Setting name="+RuleIDSequence#9" value="d49d7002-7092-44c4-9805-72d878e5cd1c"/>
+<Setting name="RuleListID" value="8c5c6a1b-596a-4b0d-a8f0-7264113720cc"/>
+<Setting name="_RuleIDSequence" value="11"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (CC28C0AF-9837-4D07-892D-596991489120)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+LocalAddress#0" value="0000:0000:0000:0000:0000:0000:0000:0001"/>
+<Setting name="+LocalAddress#1" value="0000:0000:0000:0000:0000:ffff:7f00:0001"/>
+<Setting name="GUID" value="dc042663-f6de-46af-8088-e0b6787cb409"/>
+<Setting name="LastModified" value="2011-07-27T00:10:41.033+02:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Name" value="localhost"/>
+<Setting name="Note" value=""/>
+<Setting name="Type" value="65541"/>
+<Setting name="_LocalAddress" value="2"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (CC9E280C-7294-411F-8DE0-E7AC93659BF2)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+AggRef#0" value="ead3e6e9-db70-4a85-a2b4-8605ba82d8a1"/>
+<Setting name="+AppExeSet#0" value="0"/>
+<Setting name="+AppGUID#0" value="31759789-296c-4818-b7fb-694bde73c561"/>
+<Setting name="+AppLastModified#0" value="2009-10-23T02:31:58.627+02:00"/>
+<Setting name="+AppLastModifyingUsername#0" value="admin"/>
+<Setting name="+AppName#0" value="APACHE"/>
+<Setting name="+AppNote#0" value=""/>
+<Setting name="+LocalPort#0" value="443"/>
+<Setting name="+RemotePort#0" value=""/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="6"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="IN"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="23:59"/>
+<Setting name="GUID" value="4c0c45df-8612-4494-93f2-91452b17a977"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2015-09-01T00:01:05.535+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow inbound ePolicy Orchestrator server - APACHE"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_AggRef" value="1"/>
+<Setting name="_AppExeSet" value="1"/>
+<Setting name="_AppGUID" value="1"/>
+<Setting name="_AppLastModified" value="1"/>
+<Setting name="_AppLastModifyingUsername" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppNote" value="1"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (CCCB4B67-DFF9-4856-966E-9390D9BB2CE5)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+AggRef#0" value="319dedab-ee3f-4ce3-a9ac-f9490f64e3ed"/>
+<Setting name="+AggRef#1" value="f6add55e-0cfc-4ef9-8e60-a8553bd6187b"/>
+<Setting name="+AppExeSet#0" value="0"/>
+<Setting name="+AppExeSet#1" value="1"/>
+<Setting name="+AppGUID#0" value="50777fd9-bed7-463f-8e4f-c67a5ce522e5"/>
+<Setting name="+AppGUID#1" value="e7bbe44b-3e1c-4a75-9e14-f2945d0cfa54"/>
+<Setting name="+AppLastModified#0" value="2009-07-10T01:35:55.531+02:00"/>
+<Setting name="+AppLastModified#1" value="2015-09-01T00:56:59.674+02:00"/>
+<Setting name="+AppLastModifyingUsername#0" value="McAfee, LLC."/>
+<Setting name="+AppLastModifyingUsername#1" value="McAfee, LLC."/>
+<Setting name="+AppName#0" value="TOMCAT5"/>
+<Setting name="+AppName#1" value="TOMCAT7"/>
+<Setting name="+AppNote#0" value=""/>
+<Setting name="+AppNote#1" value=""/>
+<Setting name="+LocalPort#0" value="8443-8444"/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value=""/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="6"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="IN"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="308e7d13-199e-4a3d-b9da-cd94cecaf1ae"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2015-09-01T00:57:42.421+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow inbound ePolicy Orchestrator server - TOMCAT"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_AggRef" value="2"/>
+<Setting name="_AppExeSet" value="2"/>
+<Setting name="_AppGUID" value="2"/>
+<Setting name="_AppLastModified" value="2"/>
+<Setting name="_AppLastModifyingUsername" value="2"/>
+<Setting name="_AppName" value="2"/>
+<Setting name="_AppNote" value="2"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (D2974D47-1027-47EA-8B86-E14805C099C1)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+AppDescription#0" value=""/>
+<Setting name="+AppHash#0" value="00000000000000000000000000000000"/>
+<Setting name="+AppName#0" value="McAfee signed executables 3"/>
+<Setting name="+AppPath#0" value=""/>
+<Setting name="+AppSigner#0" value="CN=&quot;mcafee, inc.&quot;, OU=engineering, OU=digital id class 3 - microsoft software validation v2, O=&quot;mcafee, inc.&quot;, L=santa clara, ST=oregon, C=us"/>
+<Setting name="GUID" value="e9046712-ee9d-408a-8683-88ff287b153f"/>
+<Setting name="LastModified" value="2014-08-08T14:52:35.736+02:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Note" value=""/>
+<Setting name="Type" value="65547"/>
+<Setting name="_AppDescription" value="1"/>
+<Setting name="_AppHash" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppPath" value="1"/>
+<Setting name="_AppSigner" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (D2BE0F33-9BC0-45BE-90BD-021A1C26C2B8)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+AppDescription#0" value=""/>
+<Setting name="+AppHash#0" value="00000000000000000000000000000000"/>
+<Setting name="+AppName#0" value="McAfee signed executables 4"/>
+<Setting name="+AppPath#0" value=""/>
+<Setting name="+AppSigner#0" value="CN=&quot;McAfee, Inc.&quot;, OU=Engineering, O=&quot;McAfee, Inc.&quot;, L=Santa Clara, ST=California, C=US"/>
+<Setting name="GUID" value="78d42865-4aad-4634-a5d7-a89b7b723245"/>
+<Setting name="LastModified" value="2010-06-04T19:25:30.109+02:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Note" value=""/>
+<Setting name="Type" value="65547"/>
+<Setting name="_AppDescription" value="1"/>
+<Setting name="_AppHash" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppPath" value="1"/>
+<Setting name="_AppSigner" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (D688E33F-1C51-44FB-B70F-C2B7BCBF9593)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+AppDescription#0" value=""/>
+<Setting name="+AppHash#0" value="00000000000000000000000000000000"/>
+<Setting name="+AppName#0" value="McAfee signed executables 4"/>
+<Setting name="+AppPath#0" value=""/>
+<Setting name="+AppSigner#0" value="CN=Intel Corporation, OU=ISecG Enterprise, O=Intel Corporation, STREET=2200 Mission College Blvd, STREET=FM1-110, L=Santa Clara, ST=CA, POSTALCODE=95054, C=US"/>
+<Setting name="GUID" value="109b6e81-0512-4017-8d4c-dd2a90b9519d"/>
+<Setting name="LastModified" value="2014-08-08T14:52:35.736+02:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Note" value=""/>
+<Setting name="Type" value="65547"/>
+<Setting name="_AppDescription" value="1"/>
+<Setting name="_AppHash" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppPath" value="1"/>
+<Setting name="_AppSigner" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (D6EFC477-A3F4-4A3A-828D-0A656D75BD7C)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+AppDescription#0" value=""/>
+<Setting name="+AppHash#0" value="00000000000000000000000000000000"/>
+<Setting name="+AppName#0" value="McAfee signed executables 5"/>
+<Setting name="+AppPath#0" value=""/>
+<Setting name="+AppSigner#0" value="CN=MCAFEE INTERNATIONAL LTD., OU=R&amp;D, OU=DIGITAL ID CLASS 3 - MICROSOFT SOFTWARE VALIDATION V2, O=MCAFEE INTERNATIONAL LTD., L=HOVE, ST=EAST SUSSEX, C=GB"/>
+<Setting name="GUID" value="e9c65eb1-7ced-4905-8b2c-2aa070e33126"/>
+<Setting name="LastModified" value="2014-08-08T14:52:35.736+02:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Note" value=""/>
+<Setting name="Type" value="65547"/>
+<Setting name="_AppDescription" value="1"/>
+<Setting name="_AppHash" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppPath" value="1"/>
+<Setting name="_AppSigner" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (D7B94DDB-42EF-42ED-AF7C-557B5E69231E)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+RemoteAddress#0" value="[trusted]"/>
+<Setting name="GUID" value="2e31c5be-aace-45b0-a67b-12daadaabad5"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Name" value="Defined Networks"/>
+<Setting name="Note" value=""/>
+<Setting name="RemoteNetID" value="2ec9cf3f-41f8-42e8-b2f5-0e1fa755440f"/>
+<Setting name="Type" value="65546"/>
+<Setting name="_RemoteAddress" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (D979417B-70B5-48AC-B666-51B9FBF0344A)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+AppDescription#0" value=""/>
+<Setting name="+AppHash#0" value="00000000000000000000000000000000"/>
+<Setting name="+AppName#0" value="APACHE"/>
+<Setting name="+AppPath#0" value="**\APACHE.EXE"/>
+<Setting name="+AppSigner#0" value=""/>
+<Setting name="GUID" value="ead3e6e9-db70-4a85-a2b4-8605ba82d8a1"/>
+<Setting name="LastModified" value="2009-07-10T01:35:55.531+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Note" value=""/>
+<Setting name="Type" value="65547"/>
+<Setting name="_AppDescription" value="1"/>
+<Setting name="_AppHash" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppPath" value="1"/>
+<Setting name="_AppSigner" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (D986B630-9FE5-4576-BBA5-800D3682E46B)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+LocalPort#0" value="500"/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value=""/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="17"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="IN"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="ddad1f66-d178-4b1c-b68a-637a2622d31b"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow inbound IKE traffic"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (DE29975E-08AA-4CEA-9E2F-7646948459C1)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+AggRef#0" value="e9c65eb1-7ced-4905-8b2c-2aa070e33126"/>
+<Setting name="+AggRef#1" value="6fcf5f2b-71f5-4aec-a0f7-95d8291a38cb"/>
+<Setting name="+AggRef#2" value="bbfd0427-6a2d-4703-b4e1-d336ebe0eea8"/>
+<Setting name="+AggRef#3" value="109b6e81-0512-4017-8d4c-dd2a90b9519d"/>
+<Setting name="+AggRef#4" value="e9046712-ee9d-408a-8683-88ff287b153f"/>
+<Setting name="+AggRef#5" value="a30adb8f-1aed-408c-86be-2fbdc1c084ce"/>
+<Setting name="+AppExeSet#0" value="0-5"/>
+<Setting name="+AppGUID#0" value="e6757eb3-c0ff-4421-b73f-b50f57b1e146"/>
+<Setting name="+AppLastModified#0" value="2014-08-08T14:52:37.671+02:00"/>
+<Setting name="+AppLastModifyingUsername#0" value="McAfee, LLC."/>
+<Setting name="+AppName#0" value="McAfee Applications"/>
+<Setting name="+AppNote#0" value=""/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="EITHER"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="23:59"/>
+<Setting name="GUID" value="be889696-4bc5-4c5f-96f8-2e3afa0ad0b1"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2014-08-08T14:52:39.945+02:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow McAfee applications"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="1"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_AggRef" value="6"/>
+<Setting name="_AppExeSet" value="1"/>
+<Setting name="_AppGUID" value="1"/>
+<Setting name="_AppLastModified" value="1"/>
+<Setting name="_AppLastModifyingUsername" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppNote" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (DF063548-8097-468F-B77A-4CBA1FBAD160)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="Action" value="JUMP"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="EITHER"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="909b2561-5483-4195-bc56-61b655707da5"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Basic networking (required)"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_TcpFlags" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (DF566512-9FB4-4AA4-8DE4-25264E9413AB)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="Action" value="JUMP"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="EITHER"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="7e14bc1d-8993-4464-89e9-1a31b5112cfe"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Network tools"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_TcpFlags" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (DF7C660D-0133-4EF4-8A71-DD0310C50F7D)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+LocalPort#0" value=""/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value="389, 636, 3268-3269"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="6"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="OUT"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="82114dbb-5705-4f00-bdb3-e185ce78a4ee"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow outbound LDAP over TCP"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (E1D48E2D-FE95-4125-B06C-C0A4BA836218)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+AggRef#0" value="d95a599a-a566-4c35-86a6-3d0eb6b91bcd"/>
+<Setting name="+AppExeSet#0" value="0"/>
+<Setting name="+AppGUID#0" value="b38e0a14-d10e-4fd8-b67a-e3f9e146b778"/>
+<Setting name="+AppLastModified#0" value="2009-07-10T01:35:55.531+02:00"/>
+<Setting name="+AppLastModifyingUsername#0" value="McAfee, LLC."/>
+<Setting name="+AppName#0" value="APACHE"/>
+<Setting name="+AppNote#0" value=""/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="OUT"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="aca8e086-70cf-4f51-b8b3-c59d450f18c4"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2015-08-31T23:38:21.027+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow outbound ePolicy Orchestrator server - APACHE"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_AggRef" value="1"/>
+<Setting name="_AppExeSet" value="1"/>
+<Setting name="_AppGUID" value="1"/>
+<Setting name="_AppLastModified" value="1"/>
+<Setting name="_AppLastModifyingUsername" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppNote" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_TcpFlags" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (E1E99033-51FA-438B-BF32-54D0571423E6)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="Action" value="JUMP"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="EITHER"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="8c5c6a1b-596a-4b0d-a8f0-7264113720cc"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="NetBIOS"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_TcpFlags" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (E29F70AB-0B69-499E-AC0B-7AED2C0C03F0)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="Action" value="JUMP"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="EITHER"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="dc5a3b9c-c0f2-4d56-8018-4b8d5c9f253d"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Web/FTP"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_TcpFlags" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (E2C58EAA-A00E-4CB1-A7E6-E8CAFBC376FE)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+RemoteAddress#0" value="[trusted]"/>
+<Setting name="GUID" value="d7be057d-368f-4382-abb0-1819c89cb991"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Name" value="Defined Networks"/>
+<Setting name="Note" value=""/>
+<Setting name="RemoteNetID" value="f4520689-207d-4fbe-85d1-29d027cf4b33"/>
+<Setting name="Type" value="65546"/>
+<Setting name="_RemoteAddress" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (EB3DB634-B97A-414F-96B8-476CD85020DF)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+AggRef#0" value="6a2f1cd1-dad1-4fd7-ab25-08c2212e1533"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="OUT"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="9e3aa639-e987-4aa9-87ac-dfbe0ef623c4"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2014-03-28T19:00:00.000+01:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow outbound loopback and broadcast traffic"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="1"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_AggRef" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (EC0D7BBF-847D-4BF0-AE05-2D062836DF1A)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="100" param_str="100">
+<Section name="100">
+<Setting name="+RuleIDSequence#0" value="103277ec-78e5-4dad-9c07-0cb58b355633"/>
+<Setting name="+RuleIDSequence#1" value="3fa71fa0-a16c-4fee-b8ce-80fd93928609"/>
+<Setting name="+RuleIDSequence#10" value="0827ad10-6307-4829-b601-c92b5888dc55"/>
+<Setting name="+RuleIDSequence#11" value="f74e8238-3e45-4fa2-a3e9-5ca1bd29bcb9"/>
+<Setting name="+RuleIDSequence#12" value="d1d7ff4c-92db-41cd-a7bb-c4c925d45612"/>
+<Setting name="+RuleIDSequence#13" value="7eaf8468-d65e-462a-9758-26b9b3999214"/>
+<Setting name="+RuleIDSequence#14" value="e6c638d0-a31a-4704-b1fa-c3a897874155"/>
+<Setting name="+RuleIDSequence#2" value="51d9d72d-a248-4e83-9c3f-1b33a95c2894"/>
+<Setting name="+RuleIDSequence#3" value="909b2561-5483-4195-bc56-61b655707da5"/>
+<Setting name="+RuleIDSequence#4" value="ffce3f06-4809-4017-bcd3-d2aaecd44627"/>
+<Setting name="+RuleIDSequence#5" value="c0cf2700-f871-4600-b3dd-15531d2713d6"/>
+<Setting name="+RuleIDSequence#6" value="8c5c6a1b-596a-4b0d-a8f0-7264113720cc"/>
+<Setting name="+RuleIDSequence#7" value="dc5a3b9c-c0f2-4d56-8018-4b8d5c9f253d"/>
+<Setting name="+RuleIDSequence#8" value="adad72d5-65bc-4dbe-b295-4c9acd573f0e"/>
+<Setting name="+RuleIDSequence#9" value="7e14bc1d-8993-4464-89e9-1a31b5112cfe"/>
+<Setting name="_RuleIDSequence" value="15"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (EC4AF5BB-FD13-4367-8071-74AE8C0FCB1A)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+NetworkProtocol#0" value="34958"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="EITHER"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="e5596ad5-1c4b-45bc-9931-758e68844466"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2014-03-28T19:00:00.000+01:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow EAPOL traffic"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="1"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_NetworkProtocol" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (F212E10B-B7CD-4397-A3AA-F3BA20057F48)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+AppDescription#0" value=""/>
+<Setting name="+AppHash#0" value="00000000000000000000000000000000"/>
+<Setting name="+AppName#0" value="TOMCAT5"/>
+<Setting name="+AppPath#0" value="**\TOMCAT5.EXE"/>
+<Setting name="+AppSigner#0" value=""/>
+<Setting name="GUID" value="ffd78681-9d59-40f4-9b27-52af2a7e820f"/>
+<Setting name="LastModified" value="2009-07-10T01:35:55.531+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Note" value=""/>
+<Setting name="Type" value="65547"/>
+<Setting name="_AppDescription" value="1"/>
+<Setting name="_AppHash" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppPath" value="1"/>
+<Setting name="_AppSigner" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (F22C786C-915B-4C8F-B421-5A7AC9A7309C)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+RemoteAddress#0" value="[trusted]"/>
+<Setting name="GUID" value="7b3e5ea5-bb8b-4bd5-a3a5-76a067e23ade"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Name" value="Defined Networks"/>
+<Setting name="Note" value=""/>
+<Setting name="RemoteNetID" value="d7aaadf5-a4f4-42a0-a536-de63a9db6e4b"/>
+<Setting name="Type" value="65546"/>
+<Setting name="_RemoteAddress" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (F6E7D142-3D58-4EF0-8FC2-8FAB863F7C61)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+LocalPort#0" value=""/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value="53"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="17"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="OUT"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="96a9e2ba-261e-4f4b-ac9c-5c2eb784d246"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow DNS traffic"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (F818D774-0B4C-47D4-A6AB-CED30141BB0E)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+LocalPort#0" value=""/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+NetworkProtocol#1" value="34525"/>
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+RemotePort#0" value="80, 443"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="6"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="OUT"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="0387dc39-21ec-4f01-a740-c12d82ea8051"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow outbound HTTP/HTTPS traffic"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="2"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (FAEFD1FF-A57E-437F-BA07-E0D10FDCC9FD)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+LocalPort#0" value="68"/>
+<Setting name="+RemotePort#0" value="67"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="17"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="OUT"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="23:59"/>
+<Setting name="GUID" value="7947d01a-0443-4424-8f17-e58b802cdeec"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2014-08-08T20:36:01.994+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Allow BOOTP traffic"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="1"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (FBB2D225-3CE0-4577-BE5C-373B3F9F4433)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+AppDescription#0" value=""/>
+<Setting name="+AppHash#0" value="00000000000000000000000000000000"/>
+<Setting name="+AppName#0" value="TOMCAT5"/>
+<Setting name="+AppPath#0" value="**\TOMCAT5.EXE"/>
+<Setting name="+AppSigner#0" value=""/>
+<Setting name="GUID" value="319dedab-ee3f-4ce3-a9ac-f9490f64e3ed"/>
+<Setting name="LastModified" value="2009-07-10T01:35:55.531+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Note" value=""/>
+<Setting name="Type" value="65547"/>
+<Setting name="_AppDescription" value="1"/>
+<Setting name="_AppHash" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppPath" value="1"/>
+<Setting name="_AppSigner" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (FD646A62-CED4-4C8E-96F7-E468BDDFF183)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+AppDescription#0" value=""/>
+<Setting name="+AppHash#0" value="00000000000000000000000000000000"/>
+<Setting name="+AppName#0" value="TOMCAT7"/>
+<Setting name="+AppPath#0" value="**\TOMCAT7.EXE"/>
+<Setting name="+AppSigner#0" value=""/>
+<Setting name="GUID" value="f6add55e-0cfc-4ef9-8e60-a8553bd6187b"/>
+<Setting name="LastModified" value="2009-07-10T01:35:55.531+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Note" value=""/>
+<Setting name="Type" value="65547"/>
+<Setting name="_AppDescription" value="1"/>
+<Setting name="_AppHash" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppPath" value="1"/>
+<Setting name="_AppSigner" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (FD68ED6F-9983-4733-AA77-65780F94B4E9)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+AppDescription#0" value=""/>
+<Setting name="+AppHash#0" value="00000000000000000000000000000000"/>
+<Setting name="+AppName#0" value="McAfee signed executables 5"/>
+<Setting name="+AppPath#0" value=""/>
+<Setting name="+AppSigner#0" value="CN=Intel Corporation, OU=ISecG Enterprise, O=Intel Corporation, STREET=2200 Mission College Blvd, STREET=FM1-110, L=Santa Clara, ST=CA, POSTALCODE=95054, C=US"/>
+<Setting name="GUID" value="d5df9d17-bdda-47ff-b8f3-22f1be7ace90"/>
+<Setting name="LastModified" value="2010-06-04T19:25:30.109+02:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Note" value=""/>
+<Setting name="Type" value="65547"/>
+<Setting name="_AppDescription" value="1"/>
+<Setting name="_AppHash" value="1"/>
+<Setting name="_AppName" value="1"/>
+<Setting name="_AppPath" value="1"/>
+<Setting name="_AppSigner" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (FF8C45F8-F8A2-4F4D-93AC-F6C0D6A4BA94)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+PhysicalMedium#0" value="WIRED"/>
+<Setting name="+PhysicalMedium#1" value="WIRELESS"/>
+<Setting name="+PhysicalMedium#2" value="VPN"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="Action" value="JUMP"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="EITHER"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="0:00"/>
+<Setting name="GUID" value="c0cf2700-f871-4600-b3dd-15531d2713d6"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2009-07-10T01:17:49.000+02:00"/>
+<Setting name="LastModifyingUsername" value="McAfee, LLC."/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Windows AD authentication"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="0"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_PhysicalMedium" value="3"/>
+<Setting name="_TcpFlags" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo::Settings (FFEE6CCD-8343-4537-8346-F8BD374551C4)" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="100" param_str="100">
+<Section name="100">
+<Setting name="+RuleIDSequence#0" value="f2d50ff3-e6de-41e6-9adf-7f3dacb521d9"/>
+<Setting name="+RuleIDSequence#1" value="ddad1f66-d178-4b1c-b68a-637a2622d31b"/>
+<Setting name="+RuleIDSequence#2" value="796d63dc-ee20-4b3c-8b80-903b96bf8f2f"/>
+<Setting name="+RuleIDSequence#3" value="bbadb7d2-075a-4652-828d-c18b49f12946"/>
+<Setting name="RuleListID" value="ffce3f06-4809-4017-bcd3-d2aaecd44627"/>
+<Setting name="_RuleIDSequence" value="4"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo:Group:0827ad10-6307-4829-b601-c92b5888dc55" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+AggRef#0" value="22cf7cfe-863a-407a-8e39-378efe02f027"/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="Action" value="JUMP"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="EITHER"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="23:59"/>
+<Setting name="GUID" value="0827ad10-6307-4829-b601-c92b5888dc55"/>
+<Setting name="Intrusion" value="0"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2021-03-18T23:32:16.961+01:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Logged" value="0"/>
+<Setting name="Name" value="Test CAG"/>
+<Setting name="Note" value=""/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="0"/>
+<Setting name="ScheduleEndHours" value="23"/>
+<Setting name="ScheduleEndMinutes" value="59"/>
+<Setting name="ScheduleStartHours" value="0"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="0"/>
+<Setting name="_AggRef" value="1"/>
+<Setting name="_NetworkProtocol" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo:Location:22cf7cfe-863a-407a-8e39-378efe02f027" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+DefaultGateway#0" value="0000:0000:0000:0000:0000:ffff:0a0a:0101"/>
+<Setting name="+DefaultGateway#1" value="0000:0000:0000:0000:0000:ffff:c0a8:0101"/>
+<Setting name="+DhcpServer#0" value="0000:0000:0000:0000:0000:ffff:c0a8:0164"/>
+<Setting name="+DhcpServer#1" value="0000:0000:0000:0000:0000:ffff:c0a8:0165"/>
+<Setting name="+DnsServer#0" value="0000:0000:0000:0000:0000:ffff:0a0a:0102"/>
+<Setting name="+DnsServer#1" value="0000:0000:0000:0000:0000:ffff:c0a8:0102"/>
+<Setting name="+DnsSuffix#0" value="trusted.net"/>
+<Setting name="+DnsSuffix#1" value="local.net"/>
+<Setting name="+DomainReachable#0" value="internal.secured.domain.net"/>
+<Setting name="+DomainReachable#1" value="toto.test.net"/>
+<Setting name="+PrimaryWINS#0" value="0000:0000:0000:0000:0000:ffff:c0a8:0103"/>
+<Setting name="+RegKey#0" value="HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\Tcpip\Parameters\Domain=primary.test.net"/>
+<Setting name="+SecondaryWINS#0" value="0000:0000:0000:0000:0000:ffff:0a0a:0103"/>
+<Setting name="GUID" value="22cf7cfe-863a-407a-8e39-378efe02f027"/>
+<Setting name="Isolated" value="1"/>
+<Setting name="LastModified" value="2021-03-18T23:32:16.961+01:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Name" value="LAN"/>
+<Setting name="Note" value=""/>
+<Setting name="RequireEpoReachable" value="1"/>
+<Setting name="Type" value="65543"/>
+<Setting name="_DefaultGateway" value="2"/>
+<Setting name="_DhcpServer" value="2"/>
+<Setting name="_DnsServer" value="2"/>
+<Setting name="_DnsSuffix" value="2"/>
+<Setting name="_DomainReachable" value="2"/>
+<Setting name="_PrimaryWINS" value="1"/>
+<Setting name="_RegKey" value="1"/>
+<Setting name="_SecondaryWINS" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo:NamedNetwork:415e4e9d-41d4-4eea-8e86-bd1ded729974:Remote" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+RemoteAddress#0" value="super.server.net"/>
+<Setting name="+RemoteAddress#1" value="0000:0000:0000:0000:0000:ffff:ac10:0100/120"/>
+<Setting name="+RemoteAddress#2" value="0000:0000:0000:0000:0000:ffff:ac10:0264"/>
+<Setting name="+RemoteAddress#3" value="0000:0000:0000:0000:0000:ffff:ac10:6401-0000:0000:0000:0000:0000:ffff:ac10:640a"/>
+<Setting name="GUID" value="c0c84a88-368d-4e65-94b1-363809ca21a2"/>
+<Setting name="LastModified" value="2020-12-14T23:55:50.535+01:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Name" value="Remote DMZ"/>
+<Setting name="Note" value=""/>
+<Setting name="RemoteNetID" value="415e4e9d-41d4-4eea-8e86-bd1ded729974"/>
+<Setting name="Type" value="65546"/>
+<Setting name="_RemoteAddress" value="4"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo:NamedNetwork:48789470-cdab-4517-a9b9-59d584ac529e:Remote" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+RemoteAddress#0" value="0000:0000:0000:0000:0000:ffff:0000:0000-0000:0000:0000:0000:0000:ffff:ffff:ffff"/>
+<Setting name="GUID" value="396dc26e-22cc-476a-88e9-6d9c26bc2913"/>
+<Setting name="LastModified" value="2020-12-14T23:56:17.209+01:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Name" value="Any IPV4"/>
+<Setting name="Note" value="The any IPv4 object."/>
+<Setting name="RemoteNetID" value="48789470-cdab-4517-a9b9-59d584ac529e"/>
+<Setting name="Type" value="65546"/>
+<Setting name="_RemoteAddress" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo:NamedNetwork:50d9ec2f-082a-4f54-afab-cbd9a846b959" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+LocalAddress#0" value="0000:0000:0000:0000:0000:ffff:0000:0000"/>
+<Setting name="GUID" value="50d9ec2f-082a-4f54-afab-cbd9a846b959"/>
+<Setting name="LastModified" value="2020-12-14T23:54:22.781+01:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Name" value="Local Subnet"/>
+<Setting name="Note" value="The local subnet"/>
+<Setting name="Type" value="65541"/>
+<Setting name="_LocalAddress" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo:NamedNetwork:772a5a69-a6df-408b-8cff-aad0f23a6319:Remote" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+RemoteAddress#0" value="0000:0000:0000:0000:0000:0000:0000:0000-ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff"/>
+<Setting name="GUID" value="f822bd65-6888-4e4e-be1d-a6428af84e3f"/>
+<Setting name="LastModified" value="2020-12-14T23:56:44.485+01:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Name" value="Any IPv6"/>
+<Setting name="Note" value="The any IPv6 object"/>
+<Setting name="RemoteNetID" value="772a5a69-a6df-408b-8cff-aad0f23a6319"/>
+<Setting name="Type" value="65546"/>
+<Setting name="_RemoteAddress" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo:NamedNetwork:912d441e-0e8b-41d7-9a42-af633f2b9617" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="104" param_str="AggregateCriterion">
+<Section name="AggregateCriterion">
+<Setting name="+LocalAddress#0" value="[trusted]"/>
+<Setting name="GUID" value="912d441e-0e8b-41d7-9a42-af633f2b9617"/>
+<Setting name="LastModified" value="2020-12-14T23:50:10.194+01:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Name" value="Not Trusted"/>
+<Setting name="Note" value="Not trusted networks"/>
+<Setting name="Type" value="65541"/>
+<Setting name="_LocalAddress" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo:Rule:67820d9f-1337-4ee0-8cd6-0643a56ad579" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="101" param_str="101">
+<Section name="101">
+<Setting name="+AggRef#0" value="912d441e-0e8b-41d7-9a42-af633f2b9617"/>
+<Setting name="+AggRef#1" value="50d9ec2f-082a-4f54-afab-cbd9a846b959"/>
+<Setting name="+AggRef#2" value="c0c84a88-368d-4e65-94b1-363809ca21a2"/>
+<Setting name="+AggRef#3" value="f822bd65-6888-4e4e-be1d-a6428af84e3f"/>
+<Setting name="+AggRef#4" value="396dc26e-22cc-476a-88e9-6d9c26bc2913"/>
+<Setting name="+LocalPort#0" value="1000-5000, 6001"/>
+<Setting name="+NetworkProtocol#0" value="2048"/>
+<Setting name="+RemotePort#0" value="80, 443"/>
+<Setting name="+TcpFlags#0" value="0"/>
+<Setting name="+TransportProtocol#0" value="6"/>
+<Setting name="Action" value="ALLOW"/>
+<Setting name="ClickTimeout" value="0"/>
+<Setting name="Direction" value="EITHER"/>
+<Setting name="Enabled" value="1"/>
+<Setting name="EndTime" value="23:59"/>
+<Setting name="GUID" value="67820d9f-1337-4ee0-8cd6-0643a56ad579"/>
+<Setting name="Intrusion" value="1"/>
+<Setting name="Invert" value="0"/>
+<Setting name="LastModified" value="2020-12-14T23:56:52.808+01:00"/>
+<Setting name="LastModifyingUsername" value="admin"/>
+<Setting name="Logged" value="1"/>
+<Setting name="Name" value="Test All"/>
+<Setting name="Note" value="Test all options or at least a maximum"/>
+<Setting name="OffHours" value="NONE"/>
+<Setting name="ScheduleDisableDuringTime" value="0"/>
+<Setting name="ScheduleEnabled" value="1"/>
+<Setting name="ScheduleEndHours" value="20"/>
+<Setting name="ScheduleEndMinutes" value="0"/>
+<Setting name="ScheduleStartHours" value="8"/>
+<Setting name="ScheduleStartMinutes" value="0"/>
+<Setting name="StartTime" value="0:00"/>
+<Setting name="ViewOnly" value="0"/>
+<Setting name="WeekMask" value="62"/>
+<Setting name="_AggRef" value="5"/>
+<Setting name="_LocalPort" value="1"/>
+<Setting name="_NetworkProtocol" value="1"/>
+<Setting name="_RemotePort" value="1"/>
+<Setting name="_TcpFlags" value="1"/>
+<Setting name="_TransportProtocol" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo:Sequence:0827ad10-6307-4829-b601-c92b5888dc55" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" typeid="FireCore_FW_Rules" param_int="100" param_str="100">
+<Section name="100">
+<Setting name="+RuleIDSequence#0" value="67820d9f-1337-4ee0-8cd6-0643a56ad579"/>
+<Setting name="RuleListID" value="0827ad10-6307-4829-b601-c92b5888dc55"/>
+<Setting name="_RuleIDSequence" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicyObject name="Demo" featureid="ENDP_FW_META_FW" categoryid="FireCore_FW_Rules" serverid="W2K12R2EPO510" editflag="0" typeid="FireCore_FW_Rules">
+<description></description><PolicySettings>Demo::Settings (00287868-EB04-4267-B5CF-28676286AA54)</PolicySettings>
+<PolicySettings>Demo::Settings (036A2948-0FAD-49A6-8E35-53D48E073AED)</PolicySettings>
+<PolicySettings>Demo::Settings (051A1BBA-5454-41FA-ABD1-C91FBABBEEB0)</PolicySettings>
+<PolicySettings>Demo::Settings (06A8CD26-7294-4498-9CB4-E93EC9F32492)</PolicySettings>
+<PolicySettings>Demo::Settings (0AFE1A7C-7938-41EA-9F66-9E429E7686AF)</PolicySettings>
+<PolicySettings>Demo::Settings (12DA74BF-4800-4596-9F6E-12381C9570F2)</PolicySettings>
+<PolicySettings>Demo::Settings (14E4B31F-6746-417F-B687-F434BC5CD3A9)</PolicySettings>
+<PolicySettings>Demo::Settings (2511BE66-2979-4D86-A5BC-F30BE490E3E8)</PolicySettings>
+<PolicySettings>Demo::Settings (27C35B33-03FF-4A22-805A-C148574762E3)</PolicySettings>
+<PolicySettings>Demo::Settings (2DB6D20F-6535-4A31-9D38-5B65D05B53D2)</PolicySettings>
+<PolicySettings>Demo::Settings (2E152276-7952-46CB-AB36-49EE823E0D22)</PolicySettings>
+<PolicySettings>Demo::Settings (320A5F33-D62A-40EE-AF0A-2019C9ACEA25)</PolicySettings>
+<PolicySettings>Demo::Settings (32688DB6-E856-4B4C-A047-45453D000C95)</PolicySettings>
+<PolicySettings>Demo::Settings (32AB688E-D3FA-4EA3-BFF4-28903DE5EA96)</PolicySettings>
+<PolicySettings>Demo::Settings (32D008D3-1208-483C-8D00-5E4E26F7470D)</PolicySettings>
+<PolicySettings>Demo::Settings (34CAD257-0473-4227-A253-79FC95DFD642)</PolicySettings>
+<PolicySettings>Demo::Settings (360C104C-1B08-44C7-B281-2CE02A313DEE)</PolicySettings>
+<PolicySettings>Demo::Settings (377CEC3E-E9CA-4B8F-96CD-F2C3A04B51E2)</PolicySettings>
+<PolicySettings>Demo::Settings (3CC59E51-DF4B-4141-8673-2AC21600B47B)</PolicySettings>
+<PolicySettings>Demo::Settings (41E7A7CD-9F71-40E6-A0F6-33EC70956B03)</PolicySettings>
+<PolicySettings>Demo::Settings (44A9FF5A-C5B5-43C6-8FF5-53C96C1904ED)</PolicySettings>
+<PolicySettings>Demo::Settings (4A4B372F-DFCA-42FE-95C6-12678EF1B03B)</PolicySettings>
+<PolicySettings>Demo::Settings (50978812-7960-4FCF-A701-18335B489AA1)</PolicySettings>
+<PolicySettings>Demo::Settings (524F6345-61CC-482B-9F3C-1F92815CD714)</PolicySettings>
+<PolicySettings>Demo::Settings (5295D04B-904E-4AF2-97EE-F7E11FE4A7C2)</PolicySettings>
+<PolicySettings>Demo::Settings (564D11E8-EFB5-4504-9885-6D86349ECF6D)</PolicySettings>
+<PolicySettings>Demo::Settings (598C9897-CC7F-4714-9CBB-623A86B1A042)</PolicySettings>
+<PolicySettings>Demo::Settings (59B738C6-8969-4AFE-9761-8628ABC3A5E8)</PolicySettings>
+<PolicySettings>Demo::Settings (5C19C618-4651-4D89-AA23-86C6BEBAD4D0)</PolicySettings>
+<PolicySettings>Demo::Settings (5C522FC7-AD39-4F1D-A0EF-0E0CFBE3039A)</PolicySettings>
+<PolicySettings>Demo::Settings (6239CDFB-7D94-47E9-BA32-89C6D613860A)</PolicySettings>
+<PolicySettings>Demo::Settings (626F24CE-92C8-4375-8319-657804181C60)</PolicySettings>
+<PolicySettings>Demo::Settings (629CF936-5ED4-42DF-93BD-960E01F38C92)</PolicySettings>
+<PolicySettings>Demo::Settings (659DF269-61EE-4091-9359-BA0A83CAC66D)</PolicySettings>
+<PolicySettings>Demo::Settings (65D80B9A-7BC6-42F0-ADC7-08AE702F2334)</PolicySettings>
+<PolicySettings>Demo::Settings (66C37F07-30C2-4968-B523-A3E54A2FBC99)</PolicySettings>
+<PolicySettings>Demo::Settings (674DB3CE-872F-435B-8C68-34CB9EDC628A)</PolicySettings>
+<PolicySettings>Demo::Settings (67909A2A-423A-4D33-9B88-7A244D1B2F58)</PolicySettings>
+<PolicySettings>Demo::Settings (681BE19B-6CD1-4336-A1FF-280825C24C19)</PolicySettings>
+<PolicySettings>Demo::Settings (697223CE-2077-4034-8316-12F0F668B084)</PolicySettings>
+<PolicySettings>Demo::Settings (6B301F6A-E6F3-43DE-A357-6FE0498ADAAE)</PolicySettings>
+<PolicySettings>Demo::Settings (6D9D2FD6-03AE-4620-A94A-688D5F36241A)</PolicySettings>
+<PolicySettings>Demo::Settings (7127B2D3-5A30-4491-9B65-7C954B0E6E4C)</PolicySettings>
+<PolicySettings>Demo::Settings (712A6728-8015-4679-BD2E-C4D7D3870B85)</PolicySettings>
+<PolicySettings>Demo::Settings (78B1A243-4615-4C4B-A781-AD08F1766555)</PolicySettings>
+<PolicySettings>Demo::Settings (78B48C63-DCD9-4438-B885-8EFA55C90513)</PolicySettings>
+<PolicySettings>Demo::Settings (7983EFA2-6823-4B57-8E0F-11CB065DE532)</PolicySettings>
+<PolicySettings>Demo::Settings (7AC901B7-6F11-4BF1-A514-A9035A6233E5)</PolicySettings>
+<PolicySettings>Demo::Settings (7E98FEC9-40E1-417C-8B73-CB943BD64B29)</PolicySettings>
+<PolicySettings>Demo::Settings (7F65F211-EB84-4B1B-AC4D-A0D2796DC581)</PolicySettings>
+<PolicySettings>Demo::Settings (83814223-5895-41CA-A3F7-353E890D406D)</PolicySettings>
+<PolicySettings>Demo::Settings (83EE8450-47A2-4310-824E-1F1A4699501C)</PolicySettings>
+<PolicySettings>Demo::Settings (8501AA9B-C88A-4646-9106-AA0FD97D4E51)</PolicySettings>
+<PolicySettings>Demo::Settings (8967DB85-F377-4D25-B0B8-61C43B6213A7)</PolicySettings>
+<PolicySettings>Demo::Settings (8CDCB757-A1D3-4D24-A8C1-43B7A51CD101)</PolicySettings>
+<PolicySettings>Demo::Settings (8FE4350F-8158-4485-9623-335A53D09146)</PolicySettings>
+<PolicySettings>Demo::Settings (91B4D41E-FCD1-4AD9-8FF1-40B6DA2FF0C1)</PolicySettings>
+<PolicySettings>Demo::Settings (92601EFB-2AEC-4425-865A-4759219A957A)</PolicySettings>
+<PolicySettings>Demo::Settings (92B97CC1-8878-4B8C-A2ED-E9503BB35884)</PolicySettings>
+<PolicySettings>Demo::Settings (9588B6FA-73C5-4860-9110-CAC5D5BE8D8B)</PolicySettings>
+<PolicySettings>Demo::Settings (9F8ED339-1307-41B7-BDE8-593F88AC03CF)</PolicySettings>
+<PolicySettings>Demo::Settings (A19D7D29-2BCD-4970-B0F9-5E4B31737DE7)</PolicySettings>
+<PolicySettings>Demo::Settings (A29D5746-6D27-42B2-AC59-DA9F550474F8)</PolicySettings>
+<PolicySettings>Demo::Settings (A32803FD-3634-40FA-89F9-40D4C28EEC15)</PolicySettings>
+<PolicySettings>Demo::Settings (A53123AB-D8FE-428A-B023-7F75318EE986)</PolicySettings>
+<PolicySettings>Demo::Settings (A63E2A30-F3A1-4CE2-9E16-B1E15B1DAD97)</PolicySettings>
+<PolicySettings>Demo::Settings (ABA0B4E8-80A6-4279-A896-9CAF2C9820CD)</PolicySettings>
+<PolicySettings>Demo::Settings (AD63BB80-2CC8-47DA-9A98-9D2D662C17CB)</PolicySettings>
+<PolicySettings>Demo::Settings (AF14F9A5-4574-4780-9D02-BC93D2B86E8C)</PolicySettings>
+<PolicySettings>Demo::Settings (B208E8FC-3CB8-4111-ACB2-E535579AAF2E)</PolicySettings>
+<PolicySettings>Demo::Settings (B262F5C9-952C-4880-B842-924612B71929)</PolicySettings>
+<PolicySettings>Demo::Settings (B3625235-D428-4843-BBE8-A56FA8A4F7BD)</PolicySettings>
+<PolicySettings>Demo::Settings (B85A335B-0628-49AD-921A-05FC5F6B70C1)</PolicySettings>
+<PolicySettings>Demo::Settings (B9BA17FB-F690-478D-872F-8D2F4EF676B4)</PolicySettings>
+<PolicySettings>Demo::Settings (BADCC7AD-9F2D-45D1-899F-32F0E4C09AE8)</PolicySettings>
+<PolicySettings>Demo::Settings (BB77E834-2CDB-43C8-A4B1-3CD5B8292924)</PolicySettings>
+<PolicySettings>Demo::Settings (BB83610C-323E-4ABD-B2D8-34DCAAE55AE0)</PolicySettings>
+<PolicySettings>Demo::Settings (BEAEB3C6-7732-4CC4-AAB9-8880D7F73503)</PolicySettings>
+<PolicySettings>Demo::Settings (C0002C6F-CA24-46D6-A9D5-A382584AD704)</PolicySettings>
+<PolicySettings>Demo::Settings (C222B67E-3949-41F9-8F90-F635068D53F7)</PolicySettings>
+<PolicySettings>Demo::Settings (C2809577-29F6-4FEB-BC29-FA3180F95E27)</PolicySettings>
+<PolicySettings>Demo::Settings (C2D00D43-A717-4C9D-A923-0847B63A2A64)</PolicySettings>
+<PolicySettings>Demo::Settings (C501FCBB-06FA-4AB0-BB2D-12FD8BB1605F)</PolicySettings>
+<PolicySettings>Demo::Settings (C751B65F-4B43-4569-A37B-FDC97401F802)</PolicySettings>
+<PolicySettings>Demo::Settings (C8B5D2FB-C5CE-4089-9E01-5F4FC3AF2975)</PolicySettings>
+<PolicySettings>Demo::Settings (CC28C0AF-9837-4D07-892D-596991489120)</PolicySettings>
+<PolicySettings>Demo::Settings (CC9E280C-7294-411F-8DE0-E7AC93659BF2)</PolicySettings>
+<PolicySettings>Demo::Settings (CCCB4B67-DFF9-4856-966E-9390D9BB2CE5)</PolicySettings>
+<PolicySettings>Demo::Settings (D2974D47-1027-47EA-8B86-E14805C099C1)</PolicySettings>
+<PolicySettings>Demo::Settings (D2BE0F33-9BC0-45BE-90BD-021A1C26C2B8)</PolicySettings>
+<PolicySettings>Demo::Settings (D688E33F-1C51-44FB-B70F-C2B7BCBF9593)</PolicySettings>
+<PolicySettings>Demo::Settings (D6EFC477-A3F4-4A3A-828D-0A656D75BD7C)</PolicySettings>
+<PolicySettings>Demo::Settings (D7B94DDB-42EF-42ED-AF7C-557B5E69231E)</PolicySettings>
+<PolicySettings>Demo::Settings (D979417B-70B5-48AC-B666-51B9FBF0344A)</PolicySettings>
+<PolicySettings>Demo::Settings (D986B630-9FE5-4576-BBA5-800D3682E46B)</PolicySettings>
+<PolicySettings>Demo::Settings (DE29975E-08AA-4CEA-9E2F-7646948459C1)</PolicySettings>
+<PolicySettings>Demo::Settings (DF063548-8097-468F-B77A-4CBA1FBAD160)</PolicySettings>
+<PolicySettings>Demo::Settings (DF566512-9FB4-4AA4-8DE4-25264E9413AB)</PolicySettings>
+<PolicySettings>Demo::Settings (DF7C660D-0133-4EF4-8A71-DD0310C50F7D)</PolicySettings>
+<PolicySettings>Demo::Settings (E1D48E2D-FE95-4125-B06C-C0A4BA836218)</PolicySettings>
+<PolicySettings>Demo::Settings (E1E99033-51FA-438B-BF32-54D0571423E6)</PolicySettings>
+<PolicySettings>Demo::Settings (E29F70AB-0B69-499E-AC0B-7AED2C0C03F0)</PolicySettings>
+<PolicySettings>Demo::Settings (E2C58EAA-A00E-4CB1-A7E6-E8CAFBC376FE)</PolicySettings>
+<PolicySettings>Demo::Settings (EB3DB634-B97A-414F-96B8-476CD85020DF)</PolicySettings>
+<PolicySettings>Demo::Settings (EC0D7BBF-847D-4BF0-AE05-2D062836DF1A)</PolicySettings>
+<PolicySettings>Demo::Settings (EC4AF5BB-FD13-4367-8071-74AE8C0FCB1A)</PolicySettings>
+<PolicySettings>Demo::Settings (F212E10B-B7CD-4397-A3AA-F3BA20057F48)</PolicySettings>
+<PolicySettings>Demo::Settings (F22C786C-915B-4C8F-B421-5A7AC9A7309C)</PolicySettings>
+<PolicySettings>Demo::Settings (F6E7D142-3D58-4EF0-8FC2-8FAB863F7C61)</PolicySettings>
+<PolicySettings>Demo::Settings (F818D774-0B4C-47D4-A6AB-CED30141BB0E)</PolicySettings>
+<PolicySettings>Demo::Settings (FAEFD1FF-A57E-437F-BA07-E0D10FDCC9FD)</PolicySettings>
+<PolicySettings>Demo::Settings (FBB2D225-3CE0-4577-BE5C-373B3F9F4433)</PolicySettings>
+<PolicySettings>Demo::Settings (FD646A62-CED4-4C8E-96F7-E468BDDFF183)</PolicySettings>
+<PolicySettings>Demo::Settings (FD68ED6F-9983-4733-AA77-65780F94B4E9)</PolicySettings>
+<PolicySettings>Demo::Settings (FF8C45F8-F8A2-4F4D-93AC-F6C0D6A4BA94)</PolicySettings>
+<PolicySettings>Demo::Settings (FFEE6CCD-8343-4537-8346-F8BD374551C4)</PolicySettings>
+<PolicySettings>Demo:Group:0827ad10-6307-4829-b601-c92b5888dc55</PolicySettings>
+<PolicySettings>Demo:Location:22cf7cfe-863a-407a-8e39-378efe02f027</PolicySettings>
+<PolicySettings>Demo:NamedNetwork:415e4e9d-41d4-4eea-8e86-bd1ded729974:Remote</PolicySettings>
+<PolicySettings>Demo:NamedNetwork:48789470-cdab-4517-a9b9-59d584ac529e:Remote</PolicySettings>
+<PolicySettings>Demo:NamedNetwork:50d9ec2f-082a-4f54-afab-cbd9a846b959</PolicySettings>
+<PolicySettings>Demo:NamedNetwork:772a5a69-a6df-408b-8cff-aad0f23a6319:Remote</PolicySettings>
+<PolicySettings>Demo:NamedNetwork:912d441e-0e8b-41d7-9a42-af633f2b9617</PolicySettings>
+<PolicySettings>Demo:Rule:67820d9f-1337-4ee0-8cd6-0643a56ad579</PolicySettings>
+<PolicySettings>Demo:Sequence:0827ad10-6307-4829-b601-c92b5888dc55</PolicySettings>
+</EPOPolicyObject>
+</epo:EPOPolicySchema>

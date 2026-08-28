@@ -9,6 +9,7 @@ Those classes will be used as the base Class object to create other modules for 
 product policy managed by ePolicy Orchestrator.
 """
 
+import re
 import uuid
 import copy
 import xml.etree.ElementTree as et
@@ -33,7 +34,7 @@ class XmlObject():
         """
         Returns the current XML content, UTF-8 encoded (binary).
         """
-        return et.tostring(self.root, encoding='utf8', method='xml')
+        return et.tostring(self.root, encoding='UTF-8', method='xml')
 
     def set_xml_content(self, xml_data):
         """
@@ -271,3 +272,124 @@ class Policy(XmlObject):
             setting_obj = et.SubElement(section_obj, 'Setting', {"name":setting, "value":value})
             success = True
         return success
+
+    def get_indexed_list(self, section, count_setting, item_template, start=0):
+        """
+        Read a repeating flat list of scalar values: a Setting named
+        `count_setting` holds the row count, and one Setting per row is named
+        `item_template.format(row)`, rows numbered from `start`.
+
+        :param: section: The Section holding the list.
+        :param: count_setting: The Setting name holding the row count.
+        :param: item_template: A format string with one "{}" for the row number.
+        :param: start: The row number of the first row (default 0).
+        :return: A list of strings, or None if the section doesn't exist.
+        """
+        section_obj = self.root.find('./EPOPolicySettings/Section[@name="{}"]'.format(section))
+        if section_obj is None:
+            return None
+        count_obj = section_obj.find('Setting[@name="{}"]'.format(count_setting))
+        max_rows = int(count_obj.get('value')) if count_obj is not None else 0
+        values = []
+        for row in range(start, start + max_rows):
+            setting_obj = section_obj.find('Setting[@name="{}"]'.format(item_template.format(row)))
+            values.append(setting_obj.get('value'))
+        return values
+
+    def set_indexed_list(self, section, count_setting, item_template, values, start=0):
+        """
+        Write a repeating flat list (see get_indexed_list). Only the count
+        setting and the row settings matching `item_template` are touched;
+        any other Setting already present in the section is left untouched.
+        The count setting is always written, even when `values` is empty.
+
+        :param: section: The Section holding the list.
+        :param: count_setting: The Setting name holding the row count.
+        :param: item_template: A format string with one "{}" for the row number.
+        :param: values: The list of string values to write.
+        :param: start: The row number of the first row (default 0).
+        :return: True if the section exists, False otherwise.
+        """
+        section_obj = self.root.find('./EPOPolicySettings/Section[@name="{}"]'.format(section))
+        if section_obj is None:
+            return False
+        count_obj = section_obj.find('Setting[@name="{}"]'.format(count_setting))
+        if count_obj is not None:
+            section_obj.remove(count_obj)
+        # ePO sometimes leaves stale row settings behind beyond the declared
+        # count (e.g. after a site is removed via the console), so cleanup is
+        # done by name pattern rather than by trusting the old count value -
+        # otherwise a newly written row can collide with a leftover one and
+        # get shadowed by it on the next read.
+        prefix, _, suffix = item_template.partition('{}')
+        pattern = re.compile('^{}\\d+{}$'.format(re.escape(prefix), re.escape(suffix)))
+        for setting_obj in section_obj.findall('Setting'):
+            if pattern.match(setting_obj.get('name')):
+                section_obj.remove(setting_obj)
+        et.SubElement(section_obj, 'Setting', {"name":count_setting, "value":str(len(values))})
+        for offset, value in enumerate(values):
+            row = start + offset
+            et.SubElement(section_obj, 'Setting',
+                          {"name":item_template.format(row), "value":value})
+        return True
+
+    def get_indexed_table(self, section, count_setting, keys, start=0):
+        """
+        Read a repeating table: a Setting named `count_setting` holds the row
+        count, and for each name in `keys`, one Setting per row is named
+        "{key}_{row}", rows numbered from `start`.
+
+        :param: section: The Section holding the table.
+        :param: count_setting: The Setting name holding the row count.
+        :param: keys: The list of column names.
+        :param: start: The row number of the first row (default 0).
+        :return: A list of dicts (one per row, columns = keys), or None if
+                 the section doesn't exist.
+        """
+        section_obj = self.root.find('./EPOPolicySettings/Section[@name="{}"]'.format(section))
+        if section_obj is None:
+            return None
+        count_obj = section_obj.find('Setting[@name="{}"]'.format(count_setting))
+        max_rows = int(count_obj.get('value')) if count_obj is not None else 0
+        table = []
+        for row in range(start, start + max_rows):
+            row_value = {}
+            for key in keys:
+                setting_obj = section_obj.find('Setting[@name="{}_{}"]'.format(key, row))
+                row_value[key] = setting_obj.get('value')
+            table.append(row_value)
+        return table
+
+    def set_indexed_table(self, section, count_setting, keys, table, start=0):
+        """
+        Write a repeating table (see get_indexed_table). Only the count
+        setting and the "{key}_{row}" settings for `keys` are touched. The
+        count setting is always written, even when `table` is empty.
+
+        :param: section: The Section holding the table.
+        :param: count_setting: The Setting name holding the row count.
+        :param: keys: The list of column names.
+        :param: table: The list of dicts (one per row, columns = keys) to write.
+        :param: start: The row number of the first row (default 0).
+        :return: True if the section exists, False otherwise.
+        """
+        section_obj = self.root.find('./EPOPolicySettings/Section[@name="{}"]'.format(section))
+        if section_obj is None:
+            return False
+        count_obj = section_obj.find('Setting[@name="{}"]'.format(count_setting))
+        if count_obj is not None:
+            section_obj.remove(count_obj)
+        # See set_indexed_list: cleanup by name pattern, not by the old count,
+        # since ePO can leave stale row settings behind beyond it.
+        patterns = [re.compile('^{}_\\d+$'.format(re.escape(key))) for key in keys]
+        for setting_obj in section_obj.findall('Setting'):
+            name = setting_obj.get('name')
+            if any(pattern.match(name) for pattern in patterns):
+                section_obj.remove(setting_obj)
+        et.SubElement(section_obj, 'Setting', {"name":count_setting, "value":str(len(table))})
+        for offset, row_value in enumerate(table):
+            row = start + offset
+            for key in keys:
+                et.SubElement(section_obj, 'Setting',
+                              {"name":'{}_{}'.format(key, row), "value":row_value[key]})
+        return True

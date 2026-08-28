@@ -1,26 +1,85 @@
 # McAfee ePolicy Orchestrator Policies Python Class Library
 
+![PyPI](https://img.shields.io/pypi/v/mcafee_epo_policies)
+![Python](https://img.shields.io/badge/python-3.8%2B-blue)
+![Status](https://img.shields.io/badge/status-alpha-orange)
+![License](https://img.shields.io/github/license/bmarandel/mcafee-epo-policies)
+![Top language](https://img.shields.io/github/languages/top/bmarandel/mcafee-epo-policies)
+
 ## Overview
 
-The intent of this package is to give you some simple Class to read and manipulate Policy document from the Policy Catalog of McAfee ePolicy Orchestrator.
+This package provides a set of Python classes to read, inspect, and modify policy
+documents exported from the Policy Catalog of McAfee ePolicy Orchestrator (ePO),
+without needing to know the underlying XML schema. Each supported policy is
+exposed as an object with named properties (e.g. `policy.asci = 15`) instead of
+raw Section/Setting XML lookups.
 
-## Documentation
+## Supported policies
 
-Sorry, I did not took time yet to write the documentation of that package, except the documentation within each python function for each class.
+| Product | Policy | Status |
+|---|---|---|
+| McAfee Agent | General | Full read/write |
+| McAfee Agent | Repository | Full read/write |
+| McAfee Agent | Troubleshooting | Full read/write |
+| McAfee Agent | Custom Properties | Full read/write |
+| McAfee Agent | Product Improvement Program (Telemetry) | Full read/write |
+| ENS Threat Prevention | On-Access Scan | Full read/write |
+| ENS Threat Prevention | On-Demand Scan | Full read/write |
+| ENS Threat Prevention | Exploit Prevention | Partial (signatures/expert rules full read/write; application rules read + enable/disable; process exclusions not yet implemented) |
+| ENS Firewall | Rules | Read-only / reporting (editing not yet implemented) |
+
+McAfee Agent policy coverage is complete - all 5 McAfee Agent policy types are implemented.
 
 ## Installation
 
-* Download the latest release
-* Run the following command to install the package
 ```
 pip install mcafee_epo_policies
 ```
 
+## Usage
+
+```python
+from mcafee_epo_policies import McAfeeAgentPolicies, McAfeeAgentPolicyGeneral
+
+# Load a Policies export (XML) from the ePO Policy Catalog
+with open('EPOAGENTMETA_policies.xml', 'rb') as f:
+    policies = McAfeeAgentPolicies(f.read())
+
+# List the policies contained in the export
+print(policies.list())
+
+# Extract one policy and wrap it for editing
+policy_xml = policies.get_policy('General', 'My Custom Policy')
+policy = McAfeeAgentPolicyGeneral(policy_xml)
+
+# Read and change a setting through a property, instead of raw XML
+print(policy.asci)
+policy.asci = 15
+
+# Save the edited policy, ready to re-import into ePO
+policy.save_to_file('My Custom Policy - edited.xml')
+```
+
+## Examples
+
+The [`examples/`](examples/) directory has short, runnable scripts covering
+McAfee Agent (General/Repository), ENS Threat Prevention (On-Access Scan,
+On-Demand Scan), and ENS Firewall (Rules reporting).
+
+## Documentation
+
+There is no separate documentation site yet; every class and method has a
+docstring describing which ePO UI setting it maps to.
+
+## Requirements
+
+Python 3.8 or later.
+
 ## Bugs and Feedback
 
-For bugs, questions and discussions please use the [Github Issues](https://github.com/bmarandel/mcafee-epo-policies/issues).
+For bugs, questions and discussions please use the [GitHub Issues](https://github.com/bmarandel/mcafee-epo-policies/issues).
 
-## LICENSE
+## License
 
 Copyright 2020 Benjamin Marandel
 

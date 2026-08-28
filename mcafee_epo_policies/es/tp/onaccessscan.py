@@ -214,6 +214,39 @@ class ESTPPolicyOnAccessScan(Policy):
     scan_shadow_copy = property(get_scan_shadow_copy, set_scan_shadow_copy)
 
     # ------------------------------ On-Access Policy ------------------------------
+    # Ransomware:
+    #	Detect unknown ransomware based on behaviour
+    def get_detect_unknown_ransomware(self):
+        """
+        Get state of Detect unknown ransomware based on behaviour
+        """
+        return self.get_setting_value('General', 'detectUnknownRansomware')
+
+    def set_detect_unknown_ransomware(self, mode):
+        """
+        Set state of Detect unknown ransomware based on behaviour
+        """
+        return self.set_setting_value('General', 'detectUnknownRansomware', mode)
+
+    detect_unknown_ransomware = property(get_detect_unknown_ransomware,
+                                         set_detect_unknown_ransomware)
+
+    #	Create ransomware bait files on file system
+    def get_ransomware_bait_files(self):
+        """
+        Get state of Create ransomware bait files on file system
+        """
+        return self.get_setting_value('General', 'ransomwareBaitFiles')
+
+    def set_ransomware_bait_files(self, mode):
+        """
+        Set state of Create ransomware bait files on file system
+        """
+        return self.set_setting_value('General', 'ransomwareBaitFiles', mode)
+
+    ransomware_bait_files = property(get_ransomware_bait_files, set_ransomware_bait_files)
+
+    # ------------------------------ On-Access Policy ------------------------------
     # McAfee GTI:
     #	Enable McAfee GTI
     #   0 = OFF         Gti().DISABLED
@@ -331,51 +364,29 @@ class ESTPPolicyOnAccessScan(Policy):
         (Standard settings will apply to all unlisted processes.)
         Return a ProcessList object.
         """
-        table = None
-        section_obj = self.root.find('./EPOPolicySettings/Section[@name="Application"]')
-        if section_obj is not None:
-            setting_obj = section_obj.find('Setting[@name="dwApplicationCount"]')
-            max_rows = int(setting_obj.get('value'))
-            table = list()
-            for row in range(max_rows):
-                row_value = list()
-                setting_obj = section_obj.find('Setting[@name="szApplicationItem_{}"]'.format(row))
-                row_value.append(setting_obj.get('value'))
-                setting_obj = section_obj.find('Setting[@name="TypeItem_{}"]'.format(row))
-                if setting_obj.get('value') == '0':
-                    row_value.append('Low Risk')
-                else:
-                    row_value.append('High Risk')
-                table.append(row_value)
-        return table
+        rows = self.get_indexed_table('Application', 'dwApplicationCount',
+                                      ['szApplicationItem', 'TypeItem'])
+        if rows is None:
+            return None
+        return [[row['szApplicationItem'], 'Low Risk' if row['TypeItem'] == '0' else 'High Risk']
+                for row in rows]
 
     def set_process_list(self, table):
         """
         Set the process list with a ProcessList object as input
         Return true or false.
         """
-        success = False
-        section_obj = self.root.find('./EPOPolicySettings/Section[@name="Application"]')
-        if section_obj is not None:
-            success = True
-            parent_obj = self.root.find('./EPOPolicySettings')
-            parent_obj.remove(section_obj)
-            section_obj = et.SubElement(parent_obj, 'Section', name='Application')
-            if len(table) > 0:
-                et.SubElement(section_obj, 'Setting',
-                              {"name":'dwApplicationCount', "value":str(len(table))})
-                for index, row in enumerate(table):
-                    et.SubElement(section_obj, 'Setting',
-                                  {"name":'szApplicationItem_{}'.format(index), "value":row[0]})
-                    if row[1] == 'Low Risk':
-                        et.SubElement(section_obj, 'Setting',
-                                      {"name":'TypeItem_x{}'.format(index), "value":'0'})
-                    elif row[1] == 'High Risk':
-                        et.SubElement(section_obj, 'Setting',
-                                      {"name":'TypeItem_x{}'.format(index), "value":'1'})
-                    else:
-                        raise ValueError('Risk level unknown: {}.'.format(row[1]))
-        return success
+        rows = []
+        for name, risk in table:
+            if risk == 'Low Risk':
+                type_item = '0'
+            elif risk == 'High Risk':
+                type_item = '1'
+            else:
+                raise ValueError('Risk level unknown: {}.'.format(risk))
+            rows.append({'szApplicationItem': name, 'TypeItem': type_item})
+        return self.set_indexed_table('Application', 'dwApplicationCount',
+                                      ['szApplicationItem', 'TypeItem'], rows)
 
     process_list = property(get_process_list, set_process_list)
 
@@ -736,42 +747,18 @@ class ESTPPolicyOnAccessScan(Policy):
         Get exclusions list
         Return a list that can be used as ProcessList object.
         """
-        table = None
-        section_obj = self.root.find('./EPOPolicySettings/Section[@name="{}"]'.format(__section__))
-        if section_obj is not None:
-            setting_obj = section_obj.find('Setting[@name="dwExclusionCount"]')
-            max_rows = int(setting_obj.get('value'))
-            if max_rows > 0:
-                table = list()
-                for row in range(max_rows):
-                    setting_obj = section_obj.find('Setting[@name="ExcludedItem_{}"]'.format(row))
-                    row_values = setting_obj.get('value').split('|')
-                    table.append(row_values)
-        return table
+        values = self.get_indexed_list(__section__, 'dwExclusionCount', 'ExcludedItem_{}')
+        if not values:
+            return None
+        return [value.split('|') for value in values]
 
     def set_exclusion_list(self, table, __section__='Default-Detection_Exclusions'):
         """
         Set exclusions list
         Use a list or a ProcessList object as input
         """
-        success = False
-        section_obj = self.root.find('./EPOPolicySettings/Section[@name="{}"]'.format(__section__))
-        if section_obj is not None:
-            success = True
-            parent_obj = self.root.find('./EPOPolicySettings')
-            parent_obj.remove(section_obj)
-            section_obj = et.SubElement(parent_obj, 'Section', name=__section__)
-            if len(table) > 0:
-                et.SubElement(section_obj, 'Setting',
-                              {"name":'dwExclusionCount', "value":str(len(table))})
-                for index, row in enumerate(table):
-                    exclusion = row[0] + '|' + row[1] + '|' + row[2] + '|' + row[3]
-                    et.SubElement(section_obj, 'Setting',
-                                  {"name":'ExcludedItem_{}'.format(index), "value":exclusion})
-            else:
-                et.SubElement(section_obj, 'Setting',
-                              {"name":'dwExclusionCount', "value":'0'})
-        return success
+        values = ['|'.join(row) for row in table]
+        return self.set_indexed_list(__section__, 'dwExclusionCount', 'ExcludedItem_{}', values)
 
     exclusion_list = property(get_exclusion_list, set_exclusion_list)
 
@@ -1301,34 +1288,16 @@ class ESTPPolicyOnAccessScan(Policy):
         Get Excluded URLs
         Return a list or an URLList object
         """
-        excluded_urls = list()
-        max_rows = int(self.get_setting_value('ScriptScanURLExclItems',
-                                              'dwScriptScanURLExclItemCount'))
-        for row in range(max_rows):
-            excluded_urls.append(self.get_setting_value('ScriptScanURLExclItems',
-                                                        'ScriptScanExclusionURL_{}'.format(row)))
-        return excluded_urls
+        return self.get_indexed_list('ScriptScanURLExclItems', 'dwScriptScanURLExclItemCount',
+                                     'ScriptScanExclusionURL_{}')
 
     def set_script_scan_exclusions(self, excluded_urls):
         """
         Set Excluded URLs
         Use URLList object as input
         """
-        success = False
-        section_obj = self.root.find('./EPOPolicySettings/Section[@name="ScriptScanURLExclItems"]')
-        if section_obj is not None:
-            success = True
-            parent_obj = self.root.find('./EPOPolicySettings')
-            parent_obj.remove(section_obj)
-            section_obj = et.SubElement(parent_obj, 'Section', name='ScriptScanURLExclItems')
-            et.SubElement(section_obj, 'Setting',
-                          {"name":'dwScriptScanURLExclItemCount', "value":str(len(excluded_urls))})
-            # Determine if there are some excluded urls
-            if len(excluded_urls) > 0:
-                for index, url in enumerate(excluded_urls):
-                    et.SubElement(section_obj, 'Setting',
-                                  {"name":'ScriptScanExclusionURL_{}'.format(index), "value":url})
-        return success
+        return self.set_indexed_list('ScriptScanURLExclItems', 'dwScriptScanURLExclItemCount',
+                                     'ScriptScanExclusionURL_{}', excluded_urls)
 
     script_scan_exclusions = property(get_script_scan_exclusions, set_script_scan_exclusions)
 
@@ -1338,8 +1307,8 @@ class OASProcessList:
     All process names are associated to a risk level: Low or High.
     """
 
-    def __init__(self, process_list = list()):
-        self.proc_list = process_list
+    def __init__(self, process_list=None):
+        self.proc_list = process_list if process_list is not None else []
 
     def __repr__(self):
         return '<OASProcessList which contains {} process(s)>'.format(len(self.proc_list))
@@ -1425,8 +1394,8 @@ class OASURLList:
     The OASURLList class can be used to edit the list of excluded URL.
     """
 
-    def __init__(self, excluded_urls = list()):
-        self.url_list = excluded_urls
+    def __init__(self, excluded_urls=None):
+        self.url_list = excluded_urls if excluded_urls is not None else []
 
     def __repr__(self):
         return '<OASURLList which contains {} exclusion(s)>'.format(len(self.url_list))

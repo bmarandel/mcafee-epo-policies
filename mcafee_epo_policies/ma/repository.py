@@ -29,63 +29,26 @@ class McAfeeAgentPolicyRepository(Policy):
         """
         Get a table (list of list) of sites within the Repository policy
         """
-        table = None
-        section_obj = self.root.find('./EPOPolicySettings/Section[@name="InetManager"]')
-        if section_obj is not None:
-            # If there are some disabled sites, build a list of
-            disabled_sites = []
-            setting_obj = section_obj.find('Setting[@name="DisabledSiteNum"]')
-            if setting_obj is not None:
-                max_rows = int(setting_obj.get('value'))
-                for row in range(max_rows):
-                    setting_obj = section_obj.find('Setting[@name="DisabledSites_{}"]'.format(row))
-                    disabled_sites.append(setting_obj.get('value'))
-            setting_obj = section_obj.find('Setting[@name="SitelistOrderNum"]')
-            max_rows = int(setting_obj.get('value'))
-            table = []
-            for row in range(max_rows):
-                row_value = []
-                setting_obj = section_obj.find('Setting[@name="SitelistOrder_{}"]'.format(row))
-                row_value.append(setting_obj.get('value'))
-                if row_value[0] in disabled_sites:
-                    row_value.append('Disabled')
-                else:
-                    row_value.append('Enabled')
-                table.append(row_value)
+        sites = self.get_indexed_list('InetManager', 'SitelistOrderNum', 'SitelistOrder_{}')
+        if sites is None:
+            return None
+        disabled_sites = self.get_indexed_list('InetManager', 'DisabledSiteNum', 'DisabledSites_{}')
+        table = []
+        for site in sites:
+            state = 'Disabled' if disabled_sites and site in disabled_sites else 'Enabled'
+            table.append([site, state])
         return table
 
     def set_site_list(self, table):
         """
         Set a table (list of list) of sites within the Repository policy
         """
-        success = False
-        section_obj = self.root.find('./EPOPolicySettings/Section[@name="InetManager"]')
-        if section_obj is not None:
-            success = True
-            parent_obj = self.root.find('./EPOPolicySettings')
-            parent_obj.remove(section_obj)
-            section_obj = et.SubElement(parent_obj, 'Section', name='InetManager')
-            # Determine if there are some disabled sites
-            disabled_sites = [row[0] for row in table if row[1] == 'Disabled']
-            if disabled_sites:
-                et.SubElement(section_obj,
-                              'Setting',
-                              {"name":'DisabledSiteNum', "value":str(len(disabled_sites))})
-                for index, site in enumerate(disabled_sites):
-                    et.SubElement(section_obj,
-                                  'Setting',
-                                  {"name":'DisabledSites_{}'.format(index), "value":site})
-            # Add all sites
-            sites = [row[0] for row in table]
-            if sites:
-                et.SubElement(section_obj,
-                              'Setting',
-                              {"name":'SitelistOrderNum', "value":str(len(sites))})
-                for index, site in enumerate(sites):
-                    et.SubElement(section_obj,
-                                  'Setting',
-                                  {"name":'SitelistOrder_{}'.format(index), "value":site})
-        return success
+        disabled_sites = [row[0] for row in table if row[1] == 'Disabled']
+        success = self.set_indexed_list('InetManager', 'DisabledSiteNum',
+                                        'DisabledSites_{}', disabled_sites)
+        sites = [row[0] for row in table]
+        return self.set_indexed_list('InetManager', 'SitelistOrderNum',
+                                     'SitelistOrder_{}', sites) and success
 
 class RepositoryList():
     """

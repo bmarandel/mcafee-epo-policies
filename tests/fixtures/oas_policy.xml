@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<epo:EPOPolicySchema xmlns:epo="mcafee-epo-policy" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<EPOPolicyVerInfo vermjr="5" vermin="10" verrel="0" verbld="0"/>
+<EPOPolicySettings name="Demo (ePO Server)::Settings (DF2B3D00-0F9C-4C61-B793-25631292AA58)" featureid="ENDP_AM_1000" categoryid="EAM_General_Policies" typeid="EAM_General_Policies" param_int="0" param_str="">
+<Section name="Alerting">
+<Setting name="bShowAlerts" value="1"/>
+<Setting name="szDialogMessage" value="IDS_OAS_DEFAULT_THREAT_MESSAGE"/>
+</Section>
+<Section name="Application">
+<Setting name="TypeItem_0" value="1"/>
+<Setting name="TypeItem_1" value="1"/>
+<Setting name="TypeItem_10" value="1"/>
+<Setting name="TypeItem_11" value="1"/>
+<Setting name="TypeItem_12" value="1"/>
+<Setting name="TypeItem_13" value="1"/>
+<Setting name="TypeItem_14" value="1"/>
+<Setting name="TypeItem_15" value="1"/>
+<Setting name="TypeItem_16" value="1"/>
+<Setting name="TypeItem_17" value="1"/>
+<Setting name="TypeItem_18" value="1"/>
+<Setting name="TypeItem_19" value="1"/>
+<Setting name="TypeItem_2" value="1"/>
+<Setting name="TypeItem_20" value="1"/>
+<Setting name="TypeItem_21" value="1"/>
+<Setting name="TypeItem_22" value="1"/>
+<Setting name="TypeItem_23" value="1"/>
+<Setting name="TypeItem_24" value="1"/>
+<Setting name="TypeItem_25" value="1"/>
+<Setting name="TypeItem_26" value="1"/>
+<Setting name="TypeItem_27" value="1"/>
+<Setting name="TypeItem_28" value="1"/>
+<Setting name="TypeItem_29" value="1"/>
+<Setting name="TypeItem_3" value="1"/>
+<Setting name="TypeItem_30" value="1"/>
+<Setting name="TypeItem_31" value="1"/>
+<Setting name="TypeItem_32" value="1"/>
+<Setting name="TypeItem_33" value="1"/>
+<Setting name="TypeItem_34" value="1"/>
+<Setting name="TypeItem_35" value="1"/>
+<Setting name="TypeItem_36" value="1"/>
+<Setting name="TypeItem_37" value="1"/>
+<Setting name="TypeItem_38" value="1"/>
+<Setting name="TypeItem_39" value="1"/>
+<Setting name="TypeItem_4" value="1"/>
+<Setting name="TypeItem_40" value="1"/>
+<Setting name="TypeItem_41" value="1"/>
+<Setting name="TypeItem_42" value="0"/>
+<Setting name="TypeItem_43" value="0"/>
+<Setting name="TypeItem_44" value="0"/>
+<Setting name="TypeItem_45" value="0"/>
+<Setting name="TypeItem_46" value="0"/>
+<Setting name="TypeItem_47" value="0"/>
+<Setting name="TypeItem_48" value="0"/>
+<Setting name="TypeItem_5" value="1"/>
+<Setting name="TypeItem_6" value="1"/>
+<Setting name="TypeItem_7" value="1"/>
+<Setting name="TypeItem_8" value="1"/>
+<Setting name="TypeItem_9" value="1"/>
+<Setting name="dwApplicationCount" value="49"/>
+<Setting name="szApplicationItem_0" value="4nt.exe"/>
+<Setting name="szApplicationItem_1" value="agent.exe"/>
+<Setting name="szApplicationItem_10" value="firefox.exe"/>
+<Setting name="szApplicationItem_11" value="ftp.exe"/>
+<Setting name="szApplicationItem_12" value="gdonkey.exe"/>
+<Setting name="szApplicationItem_13" value="gnucleus.exe"/>
+<Setting name="szApplicationItem_14" value="ICQ.exe"/>
+<Setting name="szApplicationItem_15" value="Iexplore.exe"/>
+<Setting name="szApplicationItem_16" value="inetinfo.exe"/>
+<Setting name="szApplicationItem_17" value="mirc.exe"/>
+<Setting name="szApplicationItem_18" value="mobsync.exe"/>
+<Setting name="szApplicationItem_19" value="mosaic.exe"/>
+<Setting name="szApplicationItem_2" value="aim.exe"/>
+<Setting name="szApplicationItem_20" value="mozilla.exe"/>
+<Setting name="szApplicationItem_21" value="MsAccess.exe"/>
+<Setting name="szApplicationItem_22" value="MsImn.exe"/>
+<Setting name="szApplicationItem_23" value="msmsgs.exe"/>
+<Setting name="szApplicationItem_24" value="msn6.exe"/>
+<Setting name="szApplicationItem_25" value="neo20.exe"/>
+<Setting name="szApplicationItem_26" value="netscape.Exe"/>
+<Setting name="szApplicationItem_27" value="netscp6.exe"/>
+<Setting name="szApplicationItem_28" value="opera.exe"/>
+<Setting name="szApplicationItem_29" value="Outlook.exe"/>
+<Setting name="szApplicationItem_3" value="bearshare.exe"/>
+<Setting name="szApplicationItem_30" value="PowerPnt.exe"/>
+<Setting name="szApplicationItem_31" value="tftp.exe"/>
+<Setting name="szApplicationItem_32" value="Visio32.exe"/>
+<Setting name="szApplicationItem_33" value="waol.exe"/>
+<Setting name="szApplicationItem_34" value="WinPM-32.exe"/>
+<Setting name="szApplicationItem_35" value="WinWord.Exe"/>
+<Setting name="szApplicationItem_36" value="ws_ftp.exe"/>
+<Setting name="szApplicationItem_37" value="wscript.exe"/>
+<Setting name="szApplicationItem_38" value="wuauclt.exe"/>
+<Setting name="szApplicationItem_39" value="xolox.exe"/>
+<Setting name="szApplicationItem_4" value="Cmd.Exe"/>
+<Setting name="szApplicationItem_40" value="ypager.exe"/>
+<Setting name="szApplicationItem_41" value="yupdate.exe"/>
+<Setting name="szApplicationItem_42" value="apache.exe"/>
+<Setting name="szApplicationItem_43" value="tomcat9.exe"/>
+<Setting name="szApplicationItem_44" value="sqlagent.exe"/>
+<Setting name="szApplicationItem_45" value="sqlbrowser.exe"/>
+<Setting name="szApplicationItem_46" value="sqlservr.exe"/>
+<Setting name="szApplicationItem_47" value="sqlwriter.exe"/>
+<Setting name="szApplicationItem_48" value="sqlceip.exe"/>
+<Setting name="szApplicationItem_5" value="cscript.exe"/>
+<Setting name="szApplicationItem_6" value="eudora.exe"/>
+<Setting name="szApplicationItem_7" value="Excel.exe"/>
+<Setting name="szApplicationItem_8" value="Explorer.exe"/>
+<Setting name="szApplicationItem_9" value="FileNavigator.exe"/>
+</Section>
+<Section name="Default-Detection">
+<Setting name="bApplyNVP" value="1"/>
+<Setting name="bNetworkScanEnabled" value="0"/>
+<Setting name="bScanArchives" value="0"/>
+<Setting name="bScanBackupReads" value="0"/>
+<Setting name="bScanMime" value="0"/>
+<Setting name="bScanReading" value="1"/>
+<Setting name="bScanReadingByPass" value="1"/>
+<Setting name="bScanWriting" value="1"/>
+<Setting name="bScanWritingByPass" value="1"/>
+<Setting name="bUnknownMacroHeuristics" value="1"/>
+<Setting name="bUnknownProgramHeuristics" value="1"/>
+<Setting name="extensionMode" value="1"/>
+<Setting name="szProgExts" value=""/>
+<Setting name="uAction" value="1"/>
+<Setting name="uAction_Program" value="1"/>
+<Setting name="uScanErrorAction" value="3"/>
+<Setting name="uSecAction" value="2"/>
+<Setting name="uSecAction_Program" value="2"/>
+<Setting name="uTimeOutAction" value="4"/>
+</Section>
+<Section name="Default-Detection_Exclusions">
+<Setting name="bOverwriteExclusions" value="1"/>
+<Setting name="dwExclusionCount" value="0"/>
+</Section>
+<Section name="GTI">
+<Setting name="GTISensitivityLevel" value="5"/>
+</Section>
+<Section name="General">
+<Setting name="bAllowDisableViaMcTray" value="0"/>
+<Setting name="bEnforceMaxScanTime" value="1"/>
+<Setting name="bOASEnabled" value="1"/>
+<Setting name="bOnlyUseDefaultConfig" value="0"/>
+<Setting name="bScanBootSectors" value="1"/>
+<Setting name="bStartEnabled" value="1"/>
+<Setting name="detectUnknownRansomware" value="1"/>
+<Setting name="dwScannerThreadTimeout" value="45"/>
+<Setting name="enableAMSIObserveMode" value="0"/>
+<Setting name="ransomwareBaitFiles" value="0"/>
+<Setting name="scanCopyLocalFolders" value="0"/>
+<Setting name="scanCopyNetworkRemovable" value="1"/>
+<Setting name="scanEmailAttachments" value="0"/>
+<Setting name="scanProcessesOnEnable" value="0"/>
+<Setting name="scanShadowCopyDisableStatus" value="0"/>
+<Setting name="scanTrustedInstallers" value="0"/>
+<Setting name="scanUsingAMSIHooks" value="1"/>
+</Section>
+<Section name="HighRisk-Detection">
+<Setting name="bApplyNVP" value="1"/>
+<Setting name="bNetworkScanEnabled" value="0"/>
+<Setting name="bScanArchives" value="1"/>
+<Setting name="bScanBackupReads" value="0"/>
+<Setting name="bScanMime" value="0"/>
+<Setting name="bScanReading" value="1"/>
+<Setting name="bScanReadingByPass" value="1"/>
+<Setting name="bScanWriting" value="1"/>
+<Setting name="bScanWritingByPass" value="1"/>
+<Setting name="bUnknownMacroHeuristics" value="1"/>
+<Setting name="bUnknownProgramHeuristics" value="1"/>
+<Setting name="extensionMode" value="1"/>
+<Setting name="szProgExts" value=""/>
+<Setting name="uAction" value="1"/>
+<Setting name="uAction_Program" value="1"/>
+<Setting name="uScanErrorAction" value="3"/>
+<Setting name="uSecAction" value="2"/>
+<Setting name="uSecAction_Program" value="2"/>
+<Setting name="uTimeOutAction" value="4"/>
+</Section>
+<Section name="HighRisk-Detection_Exclusions">
+<Setting name="bOverwriteExclusions" value="1"/>
+<Setting name="dwExclusionCount" value="0"/>
+</Section>
+<Section name="LowRisk-Detection">
+<Setting name="bApplyNVP" value="1"/>
+<Setting name="bNetworkScanEnabled" value="0"/>
+<Setting name="bScanArchives" value="0"/>
+<Setting name="bScanBackupReads" value="0"/>
+<Setting name="bScanMime" value="0"/>
+<Setting name="bScanReading" value="0"/>
+<Setting name="bScanReadingByPass" value="0"/>
+<Setting name="bScanWriting" value="0"/>
+<Setting name="bScanWritingByPass" value="0"/>
+<Setting name="bUnknownMacroHeuristics" value="0"/>
+<Setting name="bUnknownProgramHeuristics" value="0"/>
+<Setting name="extensionMode" value="1"/>
+<Setting name="szProgExts" value=""/>
+<Setting name="uAction" value="1"/>
+<Setting name="uAction_Program" value="1"/>
+<Setting name="uScanErrorAction" value="3"/>
+<Setting name="uSecAction" value="2"/>
+<Setting name="uSecAction_Program" value="2"/>
+<Setting name="uTimeOutAction" value="4"/>
+</Section>
+<Section name="LowRisk-Detection_Exclusions">
+<Setting name="bOverwriteExclusions" value="1"/>
+<Setting name="dwExclusionCount" value="0"/>
+</Section>
+<Section name="ScriptScan">
+<Setting name="scriptScanEnabled" value="1"/>
+</Section>
+<Section name="ScriptScanURLExclItems">
+<Setting name="dwScriptScanURLExclItemCount" value="0"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicyObject name="Demo (ePO Server)" featureid="ENDP_AM_1000" categoryid="EAM_General_Policies" serverid="W2022EPO510" editflag="0" typeid="EAM_General_Policies">
+<description></description><PolicySettings>Demo (ePO Server)::Settings (DF2B3D00-0F9C-4C61-B793-25631292AA58)</PolicySettings>
+</EPOPolicyObject>
+</epo:EPOPolicySchema>

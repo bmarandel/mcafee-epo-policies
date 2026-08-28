@@ -7,6 +7,7 @@
 This module defines the class McAfeeAgentPolicyGeneral.
 """
 
+import os
 import xml.etree.ElementTree as et
 from ..policies import Policy
 
@@ -29,40 +30,16 @@ class McAfeeAgentPolicyGeneral(Policy):
         """
         Get a table (list of list) of a specific section in the XML content
         """
-        table = None
-        section_obj = self.root.find('./EPOPolicySettings/Section[@name="{}"]'.format(section))
-        if section_obj is not None:
-            setting_obj = section_obj.find('Setting[@name="NumberOfItems"]')
-            max_rows = int(setting_obj.get('value'))
-            max_cols = len(keys)
-            table = []
-            for row in range(max_rows):
-                row_value = {}
-                for col in range(max_cols):
-                    setting_obj = section_obj.find('Setting[@name="{}_{}"]'.format(keys[col], row))
-                    row_value[keys[col]] = setting_obj.get('value')
-                table.append(row_value)
-        return table
+        return self.get_indexed_table(section, 'NumberOfItems', keys)
 
     def set_table_value(self, section, table):
         """
         Set a table (list of list) of a specific section in the XML content
         """
-        success = False
-        section_obj = self.root.find('./EPOPolicySettings/Section[@name="{}"]'.format(section))
-        if section_obj is not None:
-            success = True
-            max_rows = len(table)
-            keys = table[0].keys()
-            parent_obj = self.root.find('./EPOPolicySettings')
-            parent_obj.remove(section_obj)
-            section_obj = et.SubElement(parent_obj, 'Section', name=section)
-            et.SubElement(section_obj, 'Setting', {"name":'NumberOfItems', "value":str(max_rows)})
-            for row in range(max_rows):
-                for key in keys:
-                    et.SubElement(section_obj,
-                                  'Setting',
-                                  {"name":'{}_{}'.format(key, row), "value":table[row][key]})
+        if not table:
+            return False
+        keys = table[0].keys()
+        return self.set_indexed_table(section, 'NumberOfItems', keys, table)
         return success
 
     # ------------------------------ GENERAL TAB ------------------------------
@@ -117,7 +94,7 @@ class McAfeeAgentPolicyGeneral(Policy):
         """
         return self.set_setting_value('General', 'bAllowUpdateSecurity', mode)
 
-    allow_update_security = property(set_allow_update_security, get_allow_update_security)
+    allow_update_security = property(get_allow_update_security, set_allow_update_security)
 
     #   Enable McAfee system tray icon in a remote desktop session
     def get_mcafee_system_tray_icon_rdp(self):
@@ -233,11 +210,12 @@ class McAfeeAgentPolicyGeneral(Policy):
         Set state of Enable msgbus authentication using test certificates
         """
         if mode == '1':
-            f_root = open('__root__.ca', 'rt')
+            module_dir = os.path.dirname(__file__)
+            f_root = open(os.path.join(module_dir, '__root__.ca'), 'rt')
             root_ca = f_root.read()
             f_root.close()
             self.set_setting_value('General', 'TestCertRootCA', root_ca)
-            f_signer = open('__signer__.ca', 'rt')
+            f_signer = open(os.path.join(module_dir, '__signer__.ca'), 'rt')
             signer_ca = f_signer.read()
             f_signer.close()
             self.set_setting_value('General', 'TestCertSignerCA', signer_ca)
@@ -246,8 +224,7 @@ class McAfeeAgentPolicyGeneral(Policy):
             self.set_setting_value('General', 'TestCertSignerCA', '')
         return self.set_setting_value('General', 'IsTestCertAuthenticationEnabled', mode)
 
-    get_test_cert_authentication = property(get_test_cert_authentication,
-                                            set_test_cert_authentication)
+    test_cert_authentication = property(get_test_cert_authentication)
 
     # ------------------------------ GENERAL TAB ------------------------------
     # Reboot options after product deployment (Windows only):
@@ -266,7 +243,7 @@ class McAfeeAgentPolicyGeneral(Policy):
         self.set_setting_value('UpdaterService', 'EnableRebootUI', mode)
         return self.set_setting_value('General', 'ShowRebootUI', mode)
 
-    prompt_user_on_reboot = property(get_prompt_user_on_reboot, get_prompt_user_on_reboot)
+    prompt_user_on_reboot = property(get_prompt_user_on_reboot, set_prompt_user_on_reboot)
 
     #    Force automatic reboot after (seconds):
     def get_auto_reboot_after(self):
@@ -550,53 +527,17 @@ class McAfeeAgentPolicyGeneral(Policy):
         """
         Get the Relay Server list
         """
-        table = None
-        section = 'RelayService'
         keys = ['relayselect', 'relayip', 'relayport']
-        section_obj = self.root.find('./EPOPolicySettings/Section[@name="{}"]'.format(section))
-        if section_obj is not None:
-            setting_obj = section_obj.find('Setting[@name="RelayServerCount"]')
-            max_rows = int(setting_obj.get('value'))
-            max_cols = len(keys)
-            table = []
-            for row in range(1, max_rows+1):
-                row_value = {}
-                for col in range(max_cols):
-                    setting_obj = section_obj.find('Setting[@name="{}_{}"]'.format(keys[col], row))
-                    row_value[keys[col]] = setting_obj.get('value')
-                table.append(row_value)
-        return table
+        return self.get_indexed_table('RelayService', 'RelayServerCount', keys, start=1)
 
     def set_relay_server_list(self, table):
         """
         Set the Relay Server list
         """
-        success = False
-        section = 'RelayService'
-        section_obj = self.root.find('./EPOPolicySettings/Section[@name="{}"]'.format(section))
-        if section_obj is not None:
-            success = True
-            max_rows = len(table)
-            keys = table[0].keys()
-            # Remove existing entries
-            for setting_obj in section_obj.findall('Setting'):
-                if ('relayip' in setting_obj.attrib['name'] or
-                        'relayselect' in setting_obj.attrib['name'] or
-                        'relayport' in setting_obj.attrib['name']):
-                    section_obj.remove(setting_obj)
-            setting_obj = section_obj.find('Setting[@name="RelayServerCount"]')
-            if setting_obj is not None:
-                section_obj.remove(setting_obj)
-            # Create Tag with Value with the current table
-            et.SubElement(section_obj,
-                          'Setting',
-                          {"name":'RelayServerCount', "value":str(max_rows)})
-            for row in range(max_rows):
-                for key in keys:
-                    et.SubElement(section_obj,
-                                  'Setting',
-                                  {"name":'{}_{}'.format(key, row+1), "value":table[row][key]})
-        return success
+        if not table:
+            return False
+        keys = table[0].keys()
+        return self.set_indexed_table('RelayService', 'RelayServerCount', keys, table, start=1)
 
     relay_server_list = property(get_relay_server_list, set_relay_server_list)
 
@@ -795,7 +736,7 @@ class McAfeeAgentPolicyGeneral(Policy):
         self.set_setting_value('AgentLogging', 'LogMaxRollover', str(int_count), force)
         return self.set_setting_value('LoggerService', 'LogMaxRollover', str(int_count), force)
 
-    log_roll_over = property(get_log_roll_over, get_log_roll_over)
+    log_roll_over = property(get_log_roll_over, set_log_roll_over)
 
     # Remote logging:
     #   Enable remote Logging
@@ -981,7 +922,7 @@ class McAfeeAgentPolicyGeneral(Policy):
         """
         return self.set_setting_value('P2pService', 'EnableClient', mode)
 
-    p2p_client = property(get_p2p_client, get_p2p_client)
+    p2p_client = property(get_p2p_client, set_p2p_client)
 
     #   Enable Peer-to-Peer Serving
     def get_p2p_server(self):
@@ -1073,4 +1014,4 @@ class McAfeeAgentPolicyGeneral(Policy):
         """
         return self.set_setting_value('Deployment', 'EnableCompatibilityCheck', mode)
 
-    dep_compatibility_check = property(get_dep_compatibility_check, get_dep_compatibility_check)
+    dep_compatibility_check = property(get_dep_compatibility_check, set_dep_compatibility_check)

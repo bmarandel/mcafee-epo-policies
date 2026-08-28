@@ -28,8 +28,8 @@ class ExclusionList:
     Notes: Notes of the exclusion
     """
 
-    def __init__(self, exclusion_list = list()):
-        self.excl_list = exclusion_list
+    def __init__(self, exclusion_list=None):
+        self.excl_list = exclusion_list if exclusion_list is not None else []
 
     def __repr__(self):
         return '<ExclusionList which contains {} exclusion(s)>'.format(len(self.excl_list))

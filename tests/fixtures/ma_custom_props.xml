@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<epo:EPOPolicySchema xmlns:epo="mcafee-epo-policy" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<EPOPolicyVerInfo vermjr="5" vermin="10" verrel="0" verbld="0"/>
+<EPOPolicySettings name="My Default::Settings (494B15B4-B95D-4F33-9A9E-663EEB7DFFB9)" featureid="EPOAGENTMETA" categoryid="Custom Props" typeid="CustomProps" param_int="0" param_str="">
+<Section name="CustomProps">
+<Setting name="AllowClientEditing_1" value="1"/>
+<Setting name="AllowClientEditing_2" value="1"/>
+<Setting name="AllowClientEditing_3" value="1"/>
+<Setting name="AllowClientEditing_4" value="1"/>
+<Setting name="AllowClientEditing_5" value="1"/>
+<Setting name="AllowClientEditing_6" value="1"/>
+<Setting name="AllowClientEditing_7" value="1"/>
+<Setting name="AllowClientEditing_8" value="1"/>
+<Setting name="NumberOfCustomProps" value="8"/>
+<Setting name="OverwriteBlanks" value="1"/>
+<Setting name="Visibility_1" value="1"/>
+<Setting name="Visibility_2" value="1"/>
+<Setting name="Visibility_3" value="1"/>
+<Setting name="Visibility_4" value="1"/>
+<Setting name="Visibility_5" value="1"/>
+<Setting name="Visibility_6" value="1"/>
+<Setting name="Visibility_7" value="1"/>
+<Setting name="Visibility_8" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicyObject name="My Default" featureid="EPOAGENTMETA" categoryid="Custom Props" serverid="W2022EPO510" editflag="0" typeid="CustomProps">
+<description></description><PolicySettings>My Default::Settings (494B15B4-B95D-4F33-9A9E-663EEB7DFFB9)</PolicySettings>
+</EPOPolicyObject>
+</epo:EPOPolicySchema>

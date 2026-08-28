@@ -183,18 +183,8 @@ class ESTPPolicyOnDemandScan(Policy):
         'SpecialRegistry':          'Registry'
         Note for 'File or folder' simply use the full path directly.
         """
-        table = None
-        section_obj = self.root.find('./EPOPolicySettings/Section[@name="{}_ScanOptions"]'.format(__section))
-        if section_obj is not None:
-            setting_obj = section_obj.find('Setting[@name="dwScanItemCount"]')
-            max_rows = int(setting_obj.get('value'))
-            if max_rows > 0:
-                table = list()
-                for row in range(max_rows):
-                    setting_obj = section_obj.find('Setting[@name="szScanItem{}"]'.format(row))
-                    row_value = setting_obj.get('value')
-                    table.append(row_value)
-        return table
+        values = self.get_indexed_list(__section + '_ScanOptions', 'dwScanItemCount', 'szScanItem{}')
+        return values if values else None
 
     def set_fs_locations(self, table, __section='FS'):
         """
@@ -217,31 +207,8 @@ class ESTPPolicyOnDemandScan(Policy):
         'SpecialRegistry':          'Registry'
         Note for 'File or folder' simply use the full path directly.
         """
-        success = False
-        section_obj = self.root.find('./EPOPolicySettings/Section[@name="{}_ScanOptions"]'.format(__section))
-        if section_obj is not None:
-            success = True
-            # Get how many row already exist and remove the setting object
-            setting_obj = section_obj.find('Setting[@name="dwScanItemCount"]')
-            max_rows = int(setting_obj.get('value'))
-            section_obj.remove(setting_obj)
-            # Is there some items to remove?
-            if max_rows > 0:
-                # For each row find the object and remove it
-                for i in range(max_rows):
-                    setting_obj = section_obj.find('Setting[@name="szScanItem{}"]'.format(i))
-                    section_obj.remove(setting_obj)
-            # Is there some items to insert?
-            if len(table) > 0:
-                et.SubElement(section_obj, 'Setting',
-                              {"name":'dwScanItemCount', "value":str(len(table))})
-                for index, location in enumerate(table):
-                    et.SubElement(section_obj, 'Setting',
-                                  {"name":'szScanItem{}'.format(index), "value":location})
-            else:
-                et.SubElement(section_obj, 'Setting',
-                              {"name":'dwScanItemCount', "value":'0'})
-        return success
+        return self.set_indexed_list(__section + '_ScanOptions', 'dwScanItemCount',
+                                     'szScanItem{}', table)
 
     fs_locations = property(get_fs_locations, set_fs_locations)
 
@@ -317,42 +284,19 @@ class ESTPPolicyOnDemandScan(Policy):
         Get exclusions list for Full Scan
         Return a list that can be used as ProcessList object.
         """
-        table = None
-        section_obj = self.root.find('./EPOPolicySettings/Section[@name="{}_Exclusions"]'.format(__section))
-        if section_obj is not None:
-            setting_obj = section_obj.find('Setting[@name="dwExclusionCount"]')
-            max_rows = int(setting_obj.get('value'))
-            if max_rows > 0:
-                table = list()
-                for row in range(max_rows):
-                    setting_obj = section_obj.find('Setting[@name="ExcludedItem_{}"]'.format(row))
-                    row_values = setting_obj.get('value').split('|')
-                    table.append(row_values)
-        return table
+        values = self.get_indexed_list(__section + '_Exclusions', 'dwExclusionCount', 'ExcludedItem_{}')
+        if not values:
+            return None
+        return [value.split('|') for value in values]
 
     def set_fs_exclusion_list(self, table, __section='FS'):
         """
         Set exclusions list for Full Scan
         Use a list or a ProcessList object as input
         """
-        success = False
-        section_obj = self.root.find('./EPOPolicySettings/Section[@name="{}_Exclusions"]'.format(__section))
-        if section_obj is not None:
-            success = True
-            parent_obj = self.root.find('./EPOPolicySettings')
-            parent_obj.remove(section_obj)
-            section_obj = et.SubElement(parent_obj, 'Section', name=__section + '_Exclusions')
-            if len(table) > 0:
-                et.SubElement(section_obj, 'Setting',
-                              {"name":'dwExclusionCount', "value":str(len(table))})
-                for index, row in enumerate(table):
-                    exclusion = row[0] + '|' + row[1] + '|' + row[2] + '|' + row[3]
-                    et.SubElement(section_obj, 'Setting',
-                                  {"name":'ExcludedItem_{}'.format(index), "value":exclusion})
-            else:
-                et.SubElement(section_obj, 'Setting',
-                              {"name":'dwExclusionCount', "value":'0'})
-        return success
+        values = ['|'.join(row) for row in table]
+        return self.set_indexed_list(__section + '_Exclusions', 'dwExclusionCount',
+                                     'ExcludedItem_{}', values)
 
     fs_exclusion_list = property(get_fs_exclusion_list, set_fs_exclusion_list)
 
@@ -658,7 +602,7 @@ class ESTPPolicyOnDemandScan(Policy):
         '0': Limit maximum CPU usage
         '1': System utilization
         """
-        return self.set_setting_value(__section + '_Performace', 'bSystemUtilization', level)
+        return self.set_setting_value(__section + '_Performance', 'bSystemUtilization', level)
 
     fs_performance_level = property(get_fs_performance_level, set_fs_performance_level)
 
@@ -1626,8 +1570,8 @@ class ODSLocationList():
     Note for 'File or folder' simply use the full path directly.
     """
 
-    def __init__(self, location_list = list()):
-        self.loc_list = location_list
+    def __init__(self, location_list=None):
+        self.loc_list = location_list if location_list is not None else []
 
     def __repr__(self):
         return '<ODSLocationList which contains {} location(s)>'.format(len(self.loc_list))

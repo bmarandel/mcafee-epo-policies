@@ -1,0 +1,21 @@
+.DS_Store
+# Compiled python modules.
+*.pyc
+__pycache__/
+
+# Setuptools distribution folder.
+/dist/
+/build/
+
+# Python egg metadata, regenerated from source files by setuptools.
+/*.egg-info
+/*.egg
+
+# Project virtual environment.
+/.venv/
+
+# Test cache.
+/.pytest_cache/
+
+# Private project tracking, not for the public repo.
+/TODO.md

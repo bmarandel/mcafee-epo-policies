@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mcafee_epo_policies"
+version = "0.2.0"
+description = "McAfee ePolicy Orchestrator Policies Python Class Library"
+readme = "README.md"
+license = "Apache-2.0"
+authors = [{ name = "Benjamin Marandel" }]
+requires-python = ">=3.8"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: System Administrators",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Programming Language :: Python :: 3",
+]
+
+[project.urls]
+Homepage = "https://github.com/bmarandel/mcafee-epo-policies"
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[tool.setuptools.packages.find]
+include = ["mcafee_epo_policies*"]
+
+[tool.setuptools.package-data]
+"mcafee_epo_policies.ma" = ["*.ca"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

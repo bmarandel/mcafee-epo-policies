@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<epo:EPOPolicySchema xmlns:epo="mcafee-epo-policy" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<EPOPolicyVerInfo vermjr="5" vermin="10" verrel="0" verbld="0"/>
+<EPOPolicySettings name="Demo (English)::Settings (37A9E129-8FF9-4E1F-B9DF-B5C76C5BFC3C)" featureid="EPOAGENTMETA" categoryid="Troubleshooting" typeid="Troubleshooting" param_int="0" param_str="">
+<Section name="General">
+<Setting name="AgentLanguage" value="0409"/>
+<Setting name="IsHealthcheckEnabled" value="1"/>
+<Setting name="ServerId" value="8A3F542A-70ED-403F-93DA-2B963B358A03"/>
+<Setting name="bEnableAgentLangSelection" value="1"/>
+</Section>
+<Section name="LanguageOptions">
+<Setting name="AgentLanguage" value="0409"/>
+<Setting name="bEnableAgentLangSelection" value="1"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicyObject name="Demo (English)" featureid="EPOAGENTMETA" categoryid="Troubleshooting" serverid="W2022EPO510" editflag="0" typeid="Troubleshooting">
+<description>The Trellix Default policy is configured with settings recommended by Trellix to protect many environments</description><PolicySettings>Demo (English)::Settings (37A9E129-8FF9-4E1F-B9DF-B5C76C5BFC3C)</PolicySettings>
+</EPOPolicyObject>
+</epo:EPOPolicySchema>

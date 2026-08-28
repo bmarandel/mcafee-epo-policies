@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<epo:EPOPolicySchema xmlns:epo="mcafee-epo-policy" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<EPOPolicyVerInfo vermjr="5" vermin="10" verrel="0" verbld="0"/>
+<EPOPolicySettings name="My Default::Settings (6D62F226-AA7C-46C8-8853-D27B9D6D7553)" featureid="EPOAGENTMETA" categoryid="Product Improvement Program" typeid="Telemetry" param_int="0" param_str="">
+<Section name="Telemetry">
+<Setting name="branch" value="Current"/>
+<Setting name="maxTelemetrySize" value="10"/>
+<Setting name="optIn" value="true"/>
+<Setting name="serverLevelInstallFlag" value="true"/>
+<Setting name="timer" value="86400000"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicyObject name="My Default" featureid="EPOAGENTMETA" categoryid="Product Improvement Program" serverid="W2022EPO510" editflag="0" typeid="Telemetry">
+<description></description><PolicySettings>My Default::Settings (6D62F226-AA7C-46C8-8853-D27B9D6D7553)</PolicySettings>
+</EPOPolicyObject>
+</epo:EPOPolicySchema>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<epo:EPOPolicySchema xmlns:epo="mcafee-epo-policy" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<EPOPolicyVerInfo vermjr="5" vermin="10" verrel="0" verbld="0"/>
+<EPOPolicySettings name="My Default::Settings (86C4E281-7319-4F70-8CC7-DB138ED91600)" featureid="EPOAGENTMETA" categoryid="Repository" typeid="Repository" param_int="0" param_str="">
+<Section name="Advanced">
+<Setting name="OverwriteClientSites" value="1"/>
+<Setting name="nMaxHopLimit" value="15"/>
+<Setting name="nMaxPingTimeout" value="30"/>
+<Setting name="uiFindNearestMethod" value="0"/>
+</Section>
+<Section name="General">
+<Setting name="IsHealthcheckEnabled" value="1"/>
+<Setting name="ServerId" value="8A3F542A-70ED-403F-93DA-2B963B358A03"/>
+</Section>
+<Section name="InetManager">
+<Setting name="DisabledSiteNum" value="0"/>
+<Setting name="DisabledSites_0" value="Local Source"/>
+<Setting name="SitelistOrderNum" value="2"/>
+<Setting name="SitelistOrder_0" value="ePO_W2022EPO510"/>
+<Setting name="SitelistOrder_1" value="Trellix HTTPS"/>
+<Setting name="SitelistOrder_2" value="Local Source"/>
+<Setting name="includeReposByDefault" value="0"/>
+</Section>
+<Section name="License">
+<Setting name="LicenseKey" value=""/>
+</Section>
+<Section name="ProxySettings">
+<Setting name="256_szFtpProxyPassword" value=""/>
+<Setting name="256_szHttpProxyPassword" value=""/>
+<Setting name="bAllowUserToConfigureProxy" value="0"/>
+<Setting name="bBypassLocalAddress" value="0"/>
+<Setting name="bUseFtpAuthentication" value="0"/>
+<Setting name="bUseHttpAuthentication" value="0"/>
+<Setting name="bUseSingleProxySettings" value="0"/>
+<Setting name="szFtpProxyPassword" value=""/>
+<Setting name="szFtpProxyServer" value=""/>
+<Setting name="szFtpProxyUser" value=""/>
+<Setting name="szHttpProxyPassword" value=""/>
+<Setting name="szHttpProxyServer" value=""/>
+<Setting name="szHttpProxyUser" value=""/>
+<Setting name="uiFtpProxyPort" value="21"/>
+<Setting name="uiHttpProxyPort" value="80"/>
+<Setting name="uiNumExceptions" value="0"/>
+<Setting name="uiUseProxyType" value="1"/>
+</Section>
+<Section name="SiteList">
+<Setting name="uiNumberOfSites" value="0"/>
+</Section>
+<Section name="VersionControl">
+<Setting name="Version" value="00000000000000"/>
+</Section>
+</EPOPolicySettings>
+<EPOPolicyObject name="My Default" featureid="EPOAGENTMETA" categoryid="Repository" serverid="W2022EPO510" editflag="0" typeid="Repository">
+<description></description><PolicySettings>My Default::Settings (86C4E281-7319-4F70-8CC7-DB138ED91600)</PolicySettings>
+</EPOPolicyObject>
+</epo:EPOPolicySchema>
