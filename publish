@@ -1,3 +1,2 @@
 twine check dist/*
 twine upload dist/*
-cp -Rv mcafee_epo_policies/ ../../GitHub/mcafee-epo-policies/src
