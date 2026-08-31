@@ -14,6 +14,11 @@ policy out of a `Policies` collection, or from `Policy.load_from_file`).
   Scan location and a file type exclusion.
 - **`firewall_rules.py`** - ENS Firewall: export the rule tree as a Markdown
   report (read-only - rule editing isn't supported yet).
+- **`set-proc-exclusions.py`** - ENS Threat Prevention On-Access Scan: bulk
+  utility that reads a plain text list of process names or full paths (one
+  per line), adds each `.exe` as "Low Risk" in the policy's Process
+  Settings, and makes sure the Low Risk profile is set to skip scanning
+  entirely. Takes two arguments - see `python3 examples/set-proc-exclusions.py -h`.
 
 Run any script with `-h`-style usage by calling it without arguments, e.g.:
 
