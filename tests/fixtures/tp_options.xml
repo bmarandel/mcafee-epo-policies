@@ -1,0 +1,28 @@
+<ns0:EPOPolicySchema xmlns:ns0="mcafee-epo-policy">
+<EPOPolicyVerInfo vermjr="5" vermin="10" verrel="0" verbld="0" />
+<EPOPolicySettings name="Claude - TP Options Test::Settings (E3ECD758-4A6B-4975-B72D-705A75F2A3E5)" featureid="ENDP_AM_1000" categoryid="EAM_CommonScan_Policies" typeid="EAM_CommonScan_Policies" param_int="0" param_str="">
+<Section name="DataAnalysis">
+<Setting name="bDATReputation" value="1" />
+<Setting name="bGTIFeedback" value="1" />
+<Setting name="bSafetyPulse" value="1" />
+</Section>
+<Section name="DetectionItems">
+<Setting name="UserDefinedDetection_0" value="claudetest.exe:Claude test PUP" />
+<Setting name="dwDetectionItemCount" value="1" />
+</Section>
+<Section name="General">
+<Setting name="overwriteClientDetectionExclusions" value="0" />
+</Section>
+<Section name="QuarantineManager">
+<Setting name="dwQuarantineAge" value="30" />
+<Setting name="szQuarantineDirectory" value="&lt;SYSTEM_DRIVE&gt;\Quarantine" />
+</Section>
+<Section name="SpyExclItems">
+<Setting name="DescriptionSpywareItem_0" value="Claude test exclusion" />
+<Setting name="SpywareItem_0" value="EICAR test file" />
+<Setting name="dwSpywareExclCount" value="1" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicyObject name="Claude - TP Options Test" featureid="ENDP_AM_1000" categoryid="EAM_CommonScan_Policies" serverid="W2022EPO510" editflag="0" typeid="EAM_CommonScan_Policies">
+<description /><PolicySettings>Claude - TP Options Test::Settings (E3ECD758-4A6B-4975-B72D-705A75F2A3E5)</PolicySettings>
+</EPOPolicyObject></ns0:EPOPolicySchema>

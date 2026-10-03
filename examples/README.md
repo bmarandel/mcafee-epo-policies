@@ -14,6 +14,15 @@ policy out of a `Policies` collection, or from `Policy.load_from_file`).
   Scan location and a file type exclusion.
 - **`firewall_rules.py`** - ENS Firewall: export the rule tree as a Markdown
   report (read-only - rule editing isn't supported yet).
+- **`access_protection.py`** - ENS Threat Prevention Access Protection: list
+  the rules, create a user-defined rule (executables, user names, subrules),
+  block a Trellix-defined rule and add an exclusion.
+- **`policy_documentation.py`** - ENS Threat Prevention / Firewall: from a
+  full product export, write one Markdown document per policy (all ENS
+  policy types) (console
+  sections, settings tables, document control section for the review and
+  approval). Takes the export file, then optionally the output folder and
+  the author name.
 - **`set-proc-exclusions.py`** - ENS Threat Prevention On-Access Scan: bulk
   utility that reads a plain text list of process names or full paths (one
   per line), adds each `.exe` as "Low Risk" in the policy's Process

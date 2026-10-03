@@ -46,3 +46,14 @@ def test_fs_exclusion_list(ods_policy):
     excl_list = ODSExclusionList(exclusions)
     assert len(excl_list.excl_list) == 1
     assert excl_list.contains_file_type('LOG') is True
+
+
+def test_gti_level(ods_policy):
+    # GTISensitivityLevel lives in the <scan>_GTI section (was looked up in
+    # <scan>_ScanOptions, so the getter returned None and the setter failed).
+    assert ods_policy.fs_gti_level == '3'
+    assert ods_policy.qs_gti_level == '3'
+    assert ods_policy.rs_gti_level == '3'
+    assert ods_policy.set_fs_gti_level('5')
+    assert ods_policy.fs_gti_level == '5'
+    assert ods_policy.qs_gti_level == '3'

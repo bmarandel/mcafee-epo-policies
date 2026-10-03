@@ -105,6 +105,19 @@ class ExclusionList:
             txt += '\n| {0:70}| {1:12}| {2:13}| {3:30}|'.format(item, subfolder, when, notes)
         return txt
 
+    def md_rows(self):
+        """
+        Returns the exclusions as rows for a Markdown table, with the console
+        columns: Item, Exclude Subfolders, Read/Write, Notes.
+        """
+        rows = []
+        for what, when, value, *notes in self.excl_list:
+            # A note containing "|" (the storage separator) is split by ePO.
+            subfolder, read_write = self.__define_rights__(int(when), what)
+            rows.append([self.__define_item__(what, value), subfolder, read_write,
+                         '|'.join(notes)])
+        return rows
+
     def __add_excl__(self, what, int_when, value, notes):
         if what not in ['0', '2', '3', '4']:
             raise ValueError('What to excluded value must be within ["0", "2", "3", "4"].')

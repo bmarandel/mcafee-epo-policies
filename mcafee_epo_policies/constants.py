@@ -39,6 +39,19 @@ class Gti():
     """
     DISABLED, VERY_LOW, LOW, MEDIUM, HIGH, VERY_HIGH = ['{}'.format(r) for r in range(6)]
 
+class OASState():
+    """
+    OASState constants can be used with Endpoint Security, Threat Prevention OAS policy
+    (on_access_scan property), radio buttons of the "On-Access Scan" group:
+        '1' = ENABLED                  Enable
+        '0' = DISABLED                 Disable
+        '2' = DISABLED_UNREGISTER_WSC  Disable and unregister with Windows Security Center
+
+    '2' is not an ePO value: the console stores it as bOASEnabled = 0 plus
+    bUnregisterWithWSC = 1 (checked against ePO 5.10 exports).
+    """
+    DISABLED, ENABLED, DISABLED_UNREGISTER_WSC = ['{}'.format(r) for r in range(3)]
+
 class Severity():
     """
     Severity constants can be used with Endpoint Security, Threat Prevention Exploit Prevention policy

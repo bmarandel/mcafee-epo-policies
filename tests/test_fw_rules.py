@@ -34,3 +34,18 @@ def test_get_content(fw_policy):
     assert content.startswith('# McAfee core networking/')
     assert 'Allow outbound System application' in content
     assert 'Action: ALLOW' in content
+
+
+def test_icmp_message_type(fw_policy):
+    # A lab ePO 5.10 policy had ICMP rules without MessageType setting (and
+    # one with the code '255' = All): get_content() used to crash on them.
+    rule = next(rul for rul in fw_policy.rul.values() if rul['Name'].strip() ==
+                'Allow outbound ICMPv4  traffic'.strip())
+    del rule['MessageType']
+    assert 'Protocol: ICMP/Any\r\nMessage Type: All' in fw_policy.get_content()
+    # '255' is "All" in the console rule editor (ePO 5.10).
+    rule['MessageType'] = ['255']
+    assert 'Protocol: ICMP/Any\r\nMessage Type: All' in fw_policy.get_content()
+    rule['MessageType'] = ['254']
+    assert 'Message Type: Type 254' in fw_policy.get_content()
+    assert 'ICMP (Type 254)' in fw_policy.to_markdown()

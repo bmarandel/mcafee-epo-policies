@@ -1,0 +1,588 @@
+<ns0:EPOPolicySchema xmlns:ns0="mcafee-epo-policy">
+<EPOPolicyVerInfo vermjr="5" vermin="10" verrel="0" verbld="0" />
+<EPOPolicySettings name="AccessProtectionSettings_Rule_13221882-b0df-4c16-a738-79ee01b2b76a (B97C62AC-86C8-4223-9C9F-594ABC620C37)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="" param_str="">
+<Section name="APRule102">
+<Setting name="Block" value="1" />
+<Setting name="Executable#0_ID" value="9bcb0832-f82c-47f3-bc14-7b34a95e4d83" />
+<Setting name="Executable#0_IncludeStatus" value="include" />
+<Setting name="Executable#0_Name" value="Claude Exe Include" />
+<Setting name="Executable#0_Notes" value="Exe include notes" />
+<Setting name="Executable#0_Parameter#0_Name" value="OBJECT_NAME" />
+<Setting name="Executable#0_Parameter#0_Value" value="**\claudeinc.exe" />
+<Setting name="Executable#0_Parameter#1_Name" value="MD5" />
+<Setting name="Executable#0_Parameter#1_Value" value="0123456789ABCDEF0123456789ABCDEF" />
+<Setting name="Executable#0_Parameter#2_Name" value="CERT_NAME" />
+<Setting name="Executable#0_Parameter#2_Value" value="CN=CLAUDE TEST SIGNER, O=CLAUDE TEST, C=US" />
+<Setting name="Executable#0_ParameterCount" value="3" />
+<Setting name="Executable#1_ID" value="4f5f7107-5955-4308-873b-5597f9d92d47" />
+<Setting name="Executable#1_IncludeStatus" value="exclude" />
+<Setting name="Executable#1_Name" value="Claude Exe Exclude" />
+<Setting name="Executable#1_Notes" value="" />
+<Setting name="Executable#1_Parameter#0_Name" value="OBJECT_NAME" />
+<Setting name="Executable#1_Parameter#0_Value" value="" />
+<Setting name="Executable#1_Parameter#1_Name" value="MD5" />
+<Setting name="Executable#1_Parameter#1_Value" value="" />
+<Setting name="Executable#1_Parameter#2_Name" value="CERT_NAME" />
+<Setting name="Executable#1_Parameter#2_Value" value="**" />
+<Setting name="Executable#1_ParameterCount" value="3" />
+<Setting name="ExecutableCount" value="2" />
+<Setting name="Note" value="Claude test notes" />
+<Setting name="Parameter#0_ID" value="1ed27894-dffc-48da-b5c4-0094af2f88c8" />
+<Setting name="Parameter#0_IncludeStatus" value="exclude" />
+<Setting name="Parameter#0_Name" value="EXP_USER_NAME" />
+<Setting name="Parameter#0_Value" value="Local\System" />
+<Setting name="Parameter#1_ID" value="490d237a-afca-42d3-8694-ea7211b30426" />
+<Setting name="Parameter#1_IncludeStatus" value="include" />
+<Setting name="Parameter#1_Name" value="EXP_USER_NAME" />
+<Setting name="Parameter#1_Value" value="CLAUDETEST\user1" />
+<Setting name="ParameterCount" value="2" />
+<Setting name="Report" value="1" />
+<Setting name="RuleID" value="13221882-b0df-4c16-a738-79ee01b2b76a" />
+<Setting name="RuleName" value="Claude AP Test Rule" />
+<Setting name="RuleType" value="Custom" />
+<Setting name="SubRule#0_Class" value="VALUE" />
+<Setting name="SubRule#0_ExecutableCount" value="0" />
+<Setting name="SubRule#0_ID" value="9c2bfa40-2cd1-4db2-a5a5-b2592e9c0bf9" />
+<Setting name="SubRule#0_Name" value="Claude Sub Value" />
+<Setting name="SubRule#0_Operations" value="read write" />
+<Setting name="SubRule#0_Parameter#0_ID" value="5816d532-f690-4a3d-a51d-ee5c6fb8ae10" />
+<Setting name="SubRule#0_Parameter#0_IncludeStatus" value="exclude" />
+<Setting name="SubRule#0_Parameter#0_Name" value="OBJECT_NAME" />
+<Setting name="SubRule#0_Parameter#0_Value" value="HKLM\SOFTWARE\ClaudeTest\Value1" />
+<Setting name="SubRule#0_ParameterCount" value="1" />
+<Setting name="SubRule102#0_Class" value="FILE" />
+<Setting name="SubRule102#0_ExecutableCount" value="0" />
+<Setting name="SubRule102#0_ID" value="d40c87c4-b460-48a9-b385-de4536ed5e5e" />
+<Setting name="SubRule102#0_Name" value="Claude Sub Rename" />
+<Setting name="SubRule102#0_Operations" value="rename" />
+<Setting name="SubRule102#0_Parameter#0_ID" value="c3cc5d16-6265-4277-8377-4cdc63b8fbaa" />
+<Setting name="SubRule102#0_Parameter#0_IncludeStatus" value="include" />
+<Setting name="SubRule102#0_Parameter#0_Name" value="OBJECT_NAME" />
+<Setting name="SubRule102#0_Parameter#0_Value" value="C:\ClaudeSrc\*.doc" />
+<Setting name="SubRule102#0_Parameter#1_ID" value="3fdaa9fc-e1e1-42bb-822d-fd9d015a1296" />
+<Setting name="SubRule102#0_Parameter#1_IncludeStatus" value="include" />
+<Setting name="SubRule102#0_Parameter#1_Name" value="TARGET_OBJECT_NAME" />
+<Setting name="SubRule102#0_Parameter#1_Value" value="*.claudelocked" />
+<Setting name="SubRule102#0_ParameterCount" value="2" />
+<Setting name="SubRule102#1_Class" value="PROCESS" />
+<Setting name="SubRule102#1_Executable#0_ID" value="6e993e4b-c70a-4bb3-8f8d-8c496ef1a3b6" />
+<Setting name="SubRule102#1_Executable#0_IncludeStatus" value="include" />
+<Setting name="SubRule102#1_Executable#0_Name" value="Claude Target Exe" />
+<Setting name="SubRule102#1_Executable#0_Notes" value="Target exe notes" />
+<Setting name="SubRule102#1_Executable#0_Parameter#0_Name" value="OBJECT_NAME" />
+<Setting name="SubRule102#1_Executable#0_Parameter#0_Value" value="claudetarget.exe" />
+<Setting name="SubRule102#1_Executable#0_Parameter#1_Name" value="MD5" />
+<Setting name="SubRule102#1_Executable#0_Parameter#1_Value" value="" />
+<Setting name="SubRule102#1_Executable#0_Parameter#2_Name" value="CERT_NAME" />
+<Setting name="SubRule102#1_Executable#0_Parameter#2_Value" value="" />
+<Setting name="SubRule102#1_Executable#0_ParameterCount" value="3" />
+<Setting name="SubRule102#1_ExecutableCount" value="1" />
+<Setting name="SubRule102#1_ID" value="86801b76-9cc9-4d72-b752-b9d56476257b" />
+<Setting name="SubRule102#1_Name" value="Claude Sub Process" />
+<Setting name="SubRule102#1_Operations" value="ex_proc_open_terminate ex_proc_run_target" />
+<Setting name="SubRule102#1_ParameterCount" value="0" />
+<Setting name="SubRule102#2_Class" value="KEY" />
+<Setting name="SubRule102#2_ExecutableCount" value="0" />
+<Setting name="SubRule102#2_ID" value="61928d2c-b0d5-44aa-b5de-f4e3bde66df6" />
+<Setting name="SubRule102#2_Name" value="Claude Sub Key" />
+<Setting name="SubRule102#2_Operations" value="delete restore_key set_security write" />
+<Setting name="SubRule102#2_Parameter#0_ID" value="d13855db-d942-468d-8cb3-025d14fd531d" />
+<Setting name="SubRule102#2_Parameter#0_IncludeStatus" value="include" />
+<Setting name="SubRule102#2_Parameter#0_Name" value="OBJECT_NAME" />
+<Setting name="SubRule102#2_Parameter#0_Value" value="HKLM\SOFTWARE\ClaudeTest\**" />
+<Setting name="SubRule102#2_ParameterCount" value="1" />
+<Setting name="SubRule102#3_Class" value="FILE" />
+<Setting name="SubRule102#3_ExecutableCount" value="0" />
+<Setting name="SubRule102#3_ID" value="dacc9610-9a8b-4768-a4b9-33aa927412c8" />
+<Setting name="SubRule102#3_Name" value="Claude Sub Files" />
+<Setting name="SubRule102#3_Operations" value="create rename write_attribute" />
+<Setting name="SubRule102#3_Parameter#0_ID" value="adefa8b6-887b-4124-85d8-33d28907e0ca" />
+<Setting name="SubRule102#3_Parameter#0_IncludeStatus" value="include" />
+<Setting name="SubRule102#3_Parameter#0_Name" value="OBJECT_NAME" />
+<Setting name="SubRule102#3_Parameter#0_Value" value="*.claudetest" />
+<Setting name="SubRule102#3_Parameter#1_ID" value="67c96353-d545-4121-a4b9-3b6cb8395ec6" />
+<Setting name="SubRule102#3_Parameter#1_IncludeStatus" value="exclude" />
+<Setting name="SubRule102#3_Parameter#1_Name" value="OBJECT_NAME" />
+<Setting name="SubRule102#3_Parameter#1_Value" value="C:\ClaudeExcl\**" />
+<Setting name="SubRule102#3_Parameter#2_ID" value="480a6d14-ece6-44b1-95ce-d73d4386d7de" />
+<Setting name="SubRule102#3_Parameter#2_IncludeStatus" value="include" />
+<Setting name="SubRule102#3_Parameter#2_Name" value="EXP_DRIVE_TYPE" />
+<Setting name="SubRule102#3_Parameter#2_Value" value="DT_REMOVABLE" />
+<Setting name="SubRule102#3_ParameterCount" value="3" />
+<Setting name="SubRule102Count" value="4" />
+<Setting name="SubRule105#0_Class" value="SERVICE" />
+<Setting name="SubRule105#0_ExecutableCount" value="0" />
+<Setting name="SubRule105#0_ID" value="cee2fa5e-dc63-441b-9dbd-4f4415d9583c" />
+<Setting name="SubRule105#0_Name" value="Claude Sub Service" />
+<Setting name="SubRule105#0_Operations" value="srv_delete srv_startup srv_stop" />
+<Setting name="SubRule105#0_Parameter#0_ID" value="a30d033d-b841-4601-8f12-36ac21862c2f" />
+<Setting name="SubRule105#0_Parameter#0_IncludeStatus" value="include" />
+<Setting name="SubRule105#0_Parameter#0_Name" value="OBJECT_NAME" />
+<Setting name="SubRule105#0_Parameter#0_Value" value="ClaudeSvc" />
+<Setting name="SubRule105#0_Parameter#1_ID" value="61474a2b-f030-4e35-a925-d9c8c1328897" />
+<Setting name="SubRule105#0_Parameter#1_IncludeStatus" value="exclude" />
+<Setting name="SubRule105#0_Parameter#1_Name" value="TARGET_OBJECT_NAME" />
+<Setting name="SubRule105#0_Parameter#1_Value" value="Claude Test Service" />
+<Setting name="SubRule105#0_ParameterCount" value="2" />
+<Setting name="SubRule105Count" value="1" />
+<Setting name="SubRuleCount" value="1" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="AccessProtectionSettings_Rule_a69bca2b-02e7-46a8-a477-d798058f5b53 (8E7FB8B3-A9D6-454E-8695-8296FC272C4B)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="" param_str="">
+<Section name="APLinuxRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="ParameterCount" value="0" />
+<Setting name="Report" value="1" />
+<Setting name="RuleID" value="a69bca2b-02e7-46a8-a477-d798058f5b53" />
+<Setting name="RuleName" value="Claude Linux Rule" />
+<Setting name="RuleType" value="Custom" />
+<Setting name="SubRule#0_Class" value="FILE" />
+<Setting name="SubRule#0_ExecutableCount" value="0" />
+<Setting name="SubRule#0_ID" value="6d8aa8dd-c04a-40cc-94bc-0804730918b2" />
+<Setting name="SubRule#0_Name" value="Claude Linux Sub" />
+<Setting name="SubRule#0_Operations" value="chown hardlink write" />
+<Setting name="SubRule#0_Parameter#0_ID" value="613cb363-28db-4e35-b468-87e33f1f2375" />
+<Setting name="SubRule#0_Parameter#0_IncludeStatus" value="include" />
+<Setting name="SubRule#0_Parameter#0_Name" value="OBJECT_NAME" />
+<Setting name="SubRule#0_Parameter#0_Value" value="/opt/claudetest/**" />
+<Setting name="SubRule#0_ParameterCount" value="1" />
+<Setting name="SubRuleCount" value="1" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - AP Rule Test::Settings (070AA365-0BC5-4BB0-9AF9-ACF11F4DA798)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="PREVENT_PROGRAMS_AUTORUN" />
+<Setting name="RuleName" value="IDS_AP_RULE_PREVENT_PROGRAMS_AUTORUN" />
+<Setting name="RuleType" value="Canned" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - AP Rule Test::Settings (07C2BE86-BF72-4F3A-9D6C-430144B66D04)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="PREVENT_FILES_TEMP" />
+<Setting name="RuleName" value="IDS_AP_RULE_PREVENT_FILES_TEMP" />
+<Setting name="RuleType" value="Canned" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - AP Rule Test::Settings (0EE4F2F9-3239-4D10-A5FD-3072F8EE99C4)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="SPOOF_WIN_PROCESS" />
+<Setting name="RuleName" value="IDS_AP_RULE_SPOOF_WIN_PROCESS" />
+<Setting name="RuleType" value="Canned" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - AP Rule Test::Settings (1AD8933A-8CD0-4696-A509-32E56BC1F899)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="1" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="1" />
+<Setting name="RuleID" value="CREATE_AUTORUN" />
+<Setting name="RuleName" value="IDS_AP_RULE_CREATE_AUTORUN" />
+<Setting name="RuleType" value="Canned" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - AP Rule Test::Settings (2DE4FEB0-9C6D-4666-9AC1-01A125E0AE5A)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="DISABLE_REGTASK" />
+<Setting name="RuleName" value="IDS_AP_RULE_DISABLE_REGTASK" />
+<Setting name="RuleType" value="Canned" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - AP Rule Test::Settings (2E3ABEC4-ED8D-4790-8301-9CBE93552476)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="PROTECT_NETWORK_SETTINGS" />
+<Setting name="RuleName" value="IDS_AP_RULE_PROTECT_NETWORK_SETTINGS" />
+<Setting name="RuleType" value="Canned" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - AP Rule Test::Settings (36A57598-AB34-415A-B42F-72E3F44297D7)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="INSTALL_NEWCLSIDS" />
+<Setting name="RuleName" value="IDS_AP_RULE_INSTALL_NEWCLSIDS" />
+<Setting name="RuleType" value="Canned" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - AP Rule Test::Settings (41553149-C4F8-438F-A549-094A19244E5D)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="PROTECT_ENS_LOG_FOLDER" />
+<Setting name="RuleName" value="IDS_AP_RULE_PROTECT_ENS_LOG_FOLDER" />
+<Setting name="RuleType" value="Canned" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - AP Rule Test::Settings (47E1B46B-C3CA-4391-8F5D-E48AAB4155C0)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APLinuxRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="1" />
+<Setting name="RuleID" value="PREVENT_CREATE_DELETE_RENAME_HARDLINK_STARTUPFILES_LINUX" />
+<Setting name="RuleName" value="IDS_AP_RULE_PREVENT_CREATE_DELETE_RENAME_HARDLINK_STARTUPFILES_LINUX" />
+<Setting name="RuleType" value="Canned" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - AP Rule Test::Settings (5CF6BCD8-2470-4CB5-9CCE-1989480F189B)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APLinuxRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="1" />
+<Setting name="RuleID" value="PREVENT_WRITE_DELETE_RENAME_HARDLINK_PERMISSION_OWNERSHIP_VMWARE_CONFIGFILES_LINUX" />
+<Setting name="RuleName" value="IDS_AP_RULE_PREVENT_WRITE_DELETE_RENAME_HARDLINK_PERMISSION_OWNERSHIP_VMWARE_CONFIGFILES_LINUX" />
+<Setting name="RuleType" value="Canned" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - AP Rule Test::Settings (6574A555-0924-491A-8708-CAD977B6D0D5)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="1" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="1" />
+<Setting name="RuleID" value="PREVENT_PROCESS_DOPPELGANGING_ATTACK" />
+<Setting name="RuleName" value="IDS_AP_RULE_PREVENT_PROCESS_DOPPELGANGING_ATTACK" />
+<Setting name="RuleType" value="Canned" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - AP Rule Test::Settings (70D6C26A-222A-4CE4-9D88-0218A65C1657)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APLinuxRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="1" />
+<Setting name="RuleID" value="PREVENT_READ_WRITE_DELETE_RENAME_HARDLINK_PERMISSION_OWNERSHIP_VMWARE_DEVICES_LINUX" />
+<Setting name="RuleName" value="IDS_AP_RULE_PREVENT_READ_WRITE_DELETE_RENAME_HARDLINK_PERMISSION_OWNERSHIP_VMWARE_DEVICES_LINUX" />
+<Setting name="RuleType" value="Canned" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - AP Rule Test::Settings (7B10CA4B-126C-42D6-B5B8-C2C53AFFC0D7)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="PREVENT_WSL_EXECUTION" />
+<Setting name="RuleName" value="IDS_AP_RULE_PREVENT_WSL_EXECUTION" />
+<Setting name="RuleType" value="Canned" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - AP Rule Test::Settings (A0D5DDCE-59D6-4E50-AC70-B387741E25E3)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="1" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="1" />
+<Setting name="RuleID" value="PREVENT_MIMIKATZ_CREATION" />
+<Setting name="RuleName" value="IDS_AP_RULE_PREVENT_MIMIKATZ_CREATION" />
+<Setting name="RuleType" value="Canned" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - AP Rule Test::Settings (A42B25F1-B20D-4AE3-AAFF-CD257DE30CE4)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="1" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="1" />
+<Setting name="RuleID" value="PREVENT_PROCESS_LAUNCH_ESCONFIGTOOL" />
+<Setting name="RuleName" value="IDS_AP_RULE_PREVENT_PROCESS_LAUNCH_ESCONFIGTOOL" />
+<Setting name="RuleType" value="Canned" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - AP Rule Test::Settings (A4B567A8-D1E3-4309-A237-266D09BAE546)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="EXE_SCRIPT_TEMP" />
+<Setting name="RuleName" value="IDS_AP_RULE_EXE_SCRIPT_TEMP" />
+<Setting name="RuleType" value="Canned" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - AP Rule Test::Settings (A6DF8705-8636-43CB-9F9D-5D1B0C0ACA9C)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APLinuxRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="1" />
+<Setting name="RuleID" value="PREVENT_PERMISSION_OWNERSHIP_STARTUPFILES_LINUX" />
+<Setting name="RuleName" value="IDS_AP_RULE_PREVENT_PERMISSION_OWNERSHIP_STARTUPFILES_LINUX" />
+<Setting name="RuleType" value="Canned" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - AP Rule Test::Settings (A879EAE0-13EA-4A2D-B7F6-462448B3D0E5)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="PREVENT_CREATION_PROGRAMFILES" />
+<Setting name="RuleName" value="IDS_AP_RULE_PREVENT_CREATION_PROGRAMFILES" />
+<Setting name="RuleType" value="Canned" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - AP Rule Test::Settings (ABC42A71-524B-437B-B9F5-0D665D50E927)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="ALTER_FILE_EXT" />
+<Setting name="RuleName" value="IDS_AP_RULE_ALTER_FILE_EXT" />
+<Setting name="RuleType" value="Canned" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - AP Rule Test::Settings (AD886634-AFD1-4557-AC83-DC4AAF6FC35C)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="1" />
+<Setting name="RuleID" value="PREVENT_LAUNCHING_PROGRAMFILES" />
+<Setting name="RuleName" value="IDS_AP_RULE_PREVENT_LAUNCHING_PROGRAMFILES" />
+<Setting name="RuleType" value="Canned" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - AP Rule Test::Settings (AEB92152-3042-443C-B619-FC0EDE82B0AC)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APLinuxRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="1" />
+<Setting name="RuleID" value="PREVENT_WRITE_STARTUPFILES_LINUX" />
+<Setting name="RuleName" value="IDS_AP_RULE_PREVENT_WRITE_STARTUPFILES_LINUX" />
+<Setting name="RuleType" value="Canned" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - AP Rule Test::Settings (AFA54B51-75B2-4B69-997E-40F10F65A9EB)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="1" />
+<Setting name="Executable#0_ID" value="acc8b755-b289-4c29-9157-ac621c8161cb" />
+<Setting name="Executable#0_IncludeStatus" value="include" />
+<Setting name="Executable#0_Name" value="Claude Canned Exe" />
+<Setting name="Executable#0_Notes" value="" />
+<Setting name="Executable#0_Parameter#0_Name" value="OBJECT_NAME" />
+<Setting name="Executable#0_Parameter#0_Value" value="claudecanned.exe" />
+<Setting name="Executable#0_Parameter#1_Name" value="MD5" />
+<Setting name="Executable#0_Parameter#1_Value" value="" />
+<Setting name="Executable#0_Parameter#2_Name" value="CERT_NAME" />
+<Setting name="Executable#0_Parameter#2_Value" value="" />
+<Setting name="Executable#0_ParameterCount" value="3" />
+<Setting name="ExecutableCount" value="1" />
+<Setting name="Note" value="Claude canned notes" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="ALTER_USERRIGHTPOLICY" />
+<Setting name="RuleName" value="IDS_AP_RULE_ALTER_USERRIGHTPOLICY" />
+<Setting name="RuleType" value="Canned" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - AP Rule Test::Settings (BA09412B-E57C-4A4A-9F3F-EF7C70FF0749)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="PROTECT_IE_SETTINGS" />
+<Setting name="RuleName" value="IDS_AP_RULE_PROTECT_IE_SETTINGS" />
+<Setting name="RuleType" value="Canned" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - AP Rule Test::Settings (BA50A76C-5E0C-4AFD-9328-B4303C5C7354)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APLinuxRule">
+<Setting name="Block" value="1" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="1" />
+<Setting name="RuleID" value="PREVENT_MODIFICATION_PASSWORDFILES_LINUX" />
+<Setting name="RuleName" value="IDS_AP_RULE_PREVENT_MODIFICATION_PASSWORDFILES_LINUX" />
+<Setting name="RuleType" value="Canned" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - AP Rule Test::Settings (CC93B76F-E6CC-4F9B-8A23-962E82B75357)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="MAKE_SHARES_RO" />
+<Setting name="RuleName" value="IDS_AP_RULE_MAKE_SHARES_RO" />
+<Setting name="RuleType" value="Canned" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - AP Rule Test::Settings (CF8A5504-97E6-4520-97F7-72866E64376B)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="HIJACK_EXE" />
+<Setting name="RuleName" value="IDS_AP_RULE_HIJACK_EXE" />
+<Setting name="RuleType" value="Canned" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - AP Rule Test::Settings (E1316839-7E79-4369-89C0-18CDFC0A1D42)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="ENABLE_SHARES_RW" />
+<Setting name="RuleName" value="IDS_AP_RULE_ENABLE_SHARES_RW" />
+<Setting name="RuleType" value="Canned" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - AP Rule Test::Settings (E31DAA73-64EB-48B6-B5AE-41693FC6EE63)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="PREVENT_CREATION_WINDOWS" />
+<Setting name="RuleName" value="IDS_AP_RULE_PREVENT_CREATION_WINDOWS" />
+<Setting name="RuleType" value="Canned" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - AP Rule Test::Settings (E5272B8A-490E-490D-A3B7-515DE5272274)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APLinuxRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="1" />
+<Setting name="RuleID" value="PREVENT_CREATION_LINK_SYSTEMFILES_LINUX" />
+<Setting name="RuleName" value="IDS_AP_RULE_PREVENT_CREATION_LINK_SYSTEMFILES_LINUX" />
+<Setting name="RuleType" value="Canned" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - AP Rule Test::Settings (E7EA24AF-1ABB-43BF-AC29-0C24B4F36C44)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="EXE_FILES_TEMP" />
+<Setting name="RuleName" value="IDS_AP_RULE_EXE_FILES_TEMP" />
+<Setting name="RuleType" value="Canned" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - AP Rule Test::Settings (F7337EF6-9306-4907-899A-DB8D93679098)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="INSTALL_BHO" />
+<Setting name="RuleName" value="IDS_AP_RULE_INSTALL_BHO" />
+<Setting name="RuleType" value="Canned" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - AP Rule Test::Settings (FA8D74F5-C565-4B5D-885A-C7DAC1061AC1)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="REMOTE_MODIFY" />
+<Setting name="RuleName" value="IDS_AP_RULE_REMOTE_MODIFY" />
+<Setting name="RuleType" value="Canned" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - AP Rule Test::Settings (FB25A497-6968-4D2A-A213-FABCBFB4D687)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRules">
+<Setting name="Rule_1" value="ALTER_USERRIGHTPOLICY|1|" />
+<Setting name="Rule_10" value="ENABLE_SHARES_RW|0|" />
+<Setting name="Rule_11" value="CREATE_AUTORUN|3|" />
+<Setting name="Rule_12" value="MAKE_SHARES_RO|0|" />
+<Setting name="Rule_13" value="REMOTE_MODIFY|0|" />
+<Setting name="Rule_14" value="EXE_FILES_TEMP|0|" />
+<Setting name="Rule_2" value="ALTER_FILE_EXT|0|" />
+<Setting name="Rule_3" value="DISABLE_REGTASK|0|" />
+<Setting name="Rule_4" value="HIJACK_EXE|0|" />
+<Setting name="Rule_5" value="INSTALL_BHO|0|" />
+<Setting name="Rule_6" value="INSTALL_NEWCLSIDS|0|" />
+<Setting name="Rule_7" value="SPOOF_WIN_PROCESS|0|" />
+<Setting name="Rule_8" value="PROTECT_IE_SETTINGS|0|" />
+<Setting name="Rule_9" value="EXE_SCRIPT_TEMP|0|" />
+<Setting name="dwAPRuleBlocks" value="0" />
+</Section>
+<Section name="BehaviorBlockAP">
+<Setting name="APEnabled" value="1" />
+<Setting name="Executable#0_ID" value="590d7c6c-ec3b-496a-ba9c-02b753e233c9" />
+<Setting name="Executable#0_IncludeStatus" value="exclude" />
+<Setting name="Executable#0_Name" value="Claude Global Excl" />
+<Setting name="Executable#0_Notes" value="Global excl notes" />
+<Setting name="Executable#0_Parameter#0_Name" value="OBJECT_NAME" />
+<Setting name="Executable#0_Parameter#0_Value" value="C:\ClaudeTools\tool.exe" />
+<Setting name="Executable#0_Parameter#1_Name" value="MD5" />
+<Setting name="Executable#0_Parameter#1_Value" value="" />
+<Setting name="Executable#0_Parameter#2_Name" value="CERT_NAME" />
+<Setting name="Executable#0_Parameter#2_Value" value="" />
+<Setting name="Executable#0_ParameterCount" value="3" />
+<Setting name="ExecutableCount" value="1" />
+<Setting name="szGlobalExcludedProcesses" value="C:\ClaudeTools\tool.exe" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicyObject name="Claude - AP Rule Test" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" serverid="W2022EPO510" editflag="0" typeid="EAM_BehaviorBlock_Policies">
+<description /><PolicySettings>AccessProtectionSettings_Rule_13221882-b0df-4c16-a738-79ee01b2b76a (B97C62AC-86C8-4223-9C9F-594ABC620C37)</PolicySettings>
+<PolicySettings>AccessProtectionSettings_Rule_a69bca2b-02e7-46a8-a477-d798058f5b53 (8E7FB8B3-A9D6-454E-8695-8296FC272C4B)</PolicySettings>
+<PolicySettings>Claude - AP Rule Test::Settings (070AA365-0BC5-4BB0-9AF9-ACF11F4DA798)</PolicySettings>
+<PolicySettings>Claude - AP Rule Test::Settings (07C2BE86-BF72-4F3A-9D6C-430144B66D04)</PolicySettings>
+<PolicySettings>Claude - AP Rule Test::Settings (0EE4F2F9-3239-4D10-A5FD-3072F8EE99C4)</PolicySettings>
+<PolicySettings>Claude - AP Rule Test::Settings (1AD8933A-8CD0-4696-A509-32E56BC1F899)</PolicySettings>
+<PolicySettings>Claude - AP Rule Test::Settings (2DE4FEB0-9C6D-4666-9AC1-01A125E0AE5A)</PolicySettings>
+<PolicySettings>Claude - AP Rule Test::Settings (2E3ABEC4-ED8D-4790-8301-9CBE93552476)</PolicySettings>
+<PolicySettings>Claude - AP Rule Test::Settings (36A57598-AB34-415A-B42F-72E3F44297D7)</PolicySettings>
+<PolicySettings>Claude - AP Rule Test::Settings (41553149-C4F8-438F-A549-094A19244E5D)</PolicySettings>
+<PolicySettings>Claude - AP Rule Test::Settings (47E1B46B-C3CA-4391-8F5D-E48AAB4155C0)</PolicySettings>
+<PolicySettings>Claude - AP Rule Test::Settings (5CF6BCD8-2470-4CB5-9CCE-1989480F189B)</PolicySettings>
+<PolicySettings>Claude - AP Rule Test::Settings (6574A555-0924-491A-8708-CAD977B6D0D5)</PolicySettings>
+<PolicySettings>Claude - AP Rule Test::Settings (70D6C26A-222A-4CE4-9D88-0218A65C1657)</PolicySettings>
+<PolicySettings>Claude - AP Rule Test::Settings (7B10CA4B-126C-42D6-B5B8-C2C53AFFC0D7)</PolicySettings>
+<PolicySettings>Claude - AP Rule Test::Settings (A0D5DDCE-59D6-4E50-AC70-B387741E25E3)</PolicySettings>
+<PolicySettings>Claude - AP Rule Test::Settings (A42B25F1-B20D-4AE3-AAFF-CD257DE30CE4)</PolicySettings>
+<PolicySettings>Claude - AP Rule Test::Settings (A4B567A8-D1E3-4309-A237-266D09BAE546)</PolicySettings>
+<PolicySettings>Claude - AP Rule Test::Settings (A6DF8705-8636-43CB-9F9D-5D1B0C0ACA9C)</PolicySettings>
+<PolicySettings>Claude - AP Rule Test::Settings (A879EAE0-13EA-4A2D-B7F6-462448B3D0E5)</PolicySettings>
+<PolicySettings>Claude - AP Rule Test::Settings (ABC42A71-524B-437B-B9F5-0D665D50E927)</PolicySettings>
+<PolicySettings>Claude - AP Rule Test::Settings (AD886634-AFD1-4557-AC83-DC4AAF6FC35C)</PolicySettings>
+<PolicySettings>Claude - AP Rule Test::Settings (AEB92152-3042-443C-B619-FC0EDE82B0AC)</PolicySettings>
+<PolicySettings>Claude - AP Rule Test::Settings (AFA54B51-75B2-4B69-997E-40F10F65A9EB)</PolicySettings>
+<PolicySettings>Claude - AP Rule Test::Settings (BA09412B-E57C-4A4A-9F3F-EF7C70FF0749)</PolicySettings>
+<PolicySettings>Claude - AP Rule Test::Settings (BA50A76C-5E0C-4AFD-9328-B4303C5C7354)</PolicySettings>
+<PolicySettings>Claude - AP Rule Test::Settings (CC93B76F-E6CC-4F9B-8A23-962E82B75357)</PolicySettings>
+<PolicySettings>Claude - AP Rule Test::Settings (CF8A5504-97E6-4520-97F7-72866E64376B)</PolicySettings>
+<PolicySettings>Claude - AP Rule Test::Settings (E1316839-7E79-4369-89C0-18CDFC0A1D42)</PolicySettings>
+<PolicySettings>Claude - AP Rule Test::Settings (E31DAA73-64EB-48B6-B5AE-41693FC6EE63)</PolicySettings>
+<PolicySettings>Claude - AP Rule Test::Settings (E5272B8A-490E-490D-A3B7-515DE5272274)</PolicySettings>
+<PolicySettings>Claude - AP Rule Test::Settings (E7EA24AF-1ABB-43BF-AC29-0C24B4F36C44)</PolicySettings>
+<PolicySettings>Claude - AP Rule Test::Settings (F7337EF6-9306-4907-899A-DB8D93679098)</PolicySettings>
+<PolicySettings>Claude - AP Rule Test::Settings (FA8D74F5-C565-4B5D-885A-C7DAC1061AC1)</PolicySettings>
+<PolicySettings>Claude - AP Rule Test::Settings (FB25A497-6968-4D2A-A213-FABCBFB4D687)</PolicySettings>
+</EPOPolicyObject></ns0:EPOPolicySchema>

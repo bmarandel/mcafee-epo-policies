@@ -1,0 +1,61 @@
+<ns0:EPOPolicySchema xmlns:ns0="mcafee-epo-policy">
+<EPOPolicyVerInfo vermjr="5" vermin="10" verrel="0" verbld="0" />
+<EPOPolicySettings name="Claude - FW Options Test::Settings (867C99E5-5CFF-49B9-A85D-740580D68A99)" featureid="ENDP_FW_META_FW" categoryid="FW_StatusMode" typeid="FW_StatusMode" param_int="8" param_str="FW_StatusMode_OFF">
+<Section name="8">
+<Setting name="+AddressType#0" value="SingleIP" />
+<Setting name="+AddressValue#0" value="192.168.100.20" />
+<Setting name="+BlockedDomains#0" value="blocked.example.com" />
+<Setting name="+BlockedDomains#1" value="*.claudetest.example" />
+<Setting name="+IsTrusted#0" value="1" />
+<Setting name="+TrustedExeDesc#0" value="" />
+<Setting name="+TrustedExeHash#0" value="" />
+<Setting name="+TrustedExeName#0" value="Claude test tool" />
+<Setting name="+TrustedExeNote#0" value="Claude test note" />
+<Setting name="+TrustedExePath#0" value="C:\Tools\claudetest.exe" />
+<Setting name="+TrustedExeSignature#0" value="" />
+<Setting name="AdaptiveModeStatus" value="0" />
+<Setting name="AllowBridgedVmTraffic" value="0" />
+<Setting name="AllowDisableFirewall" value="0" />
+<Setting name="AllowDynamicRules" value="0" />
+<Setting name="AllowIntrusionAlerts" value="1" />
+<Setting name="AllowUnknownProtocol" value="0" />
+<Setting name="BlockAllUntrusted" value="0" />
+<Setting name="BootFw" value="0" />
+<Setting name="CreationDate" value="2026-10-03T17:06:29.941+02:00" />
+<Setting name="CreatorID" value="admin" />
+<Setting name="FWStatus" value="1" />
+<Setting name="FactoryRulesDisableStatus" value="0" />
+<Setting name="GTIConnectivity" value="0" />
+<Setting name="GTIEventStatus" value="0" />
+<Setting name="GTIIn" value="-100" />
+<Setting name="GTIIntrusion" value="0" />
+<Setting name="GTIOut" value="-100" />
+<Setting name="InspectFTP" value="1" />
+<Setting name="IpSpoof" value="0" />
+<Setting name="LastModifierID" value="admin" />
+<Setting name="LastModifyDate" value="2026-10-03T17:07:08.269+02:00" />
+<Setting name="LogAllAllowed" value="0" />
+<Setting name="LogAllBlocked" value="1" />
+<Setting name="MandateUserComments" value="0" />
+<Setting name="MergeRules" value="1" />
+<Setting name="Name" value="FW_StatusMode_OFF" />
+<Setting name="RetainFirewallStatus" value="0" />
+<Setting name="TCPTimeout" value="30" />
+<Setting name="UntrustedExecutableObserveMode" value="0" />
+<Setting name="VCTimeout" value="30" />
+<Setting name="ViewState" value="1" />
+<Setting name="_AddressType" value="1" />
+<Setting name="_AddressValue" value="1" />
+<Setting name="_BlockedDomains" value="2" />
+<Setting name="_IsTrusted" value="1" />
+<Setting name="_TrustedExeDesc" value="1" />
+<Setting name="_TrustedExeHash" value="1" />
+<Setting name="_TrustedExeName" value="1" />
+<Setting name="_TrustedExeNote" value="1" />
+<Setting name="_TrustedExePath" value="1" />
+<Setting name="_TrustedExeSignature" value="1" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicyObject name="Claude - FW Options Test" featureid="ENDP_FW_META_FW" categoryid="FW_StatusMode" serverid="W2022EPO510" editflag="0" typeid="FW_StatusMode">
+<description /><PolicySettings>Claude - FW Options Test::Settings (867C99E5-5CFF-49B9-A85D-740580D68A99)</PolicySettings>
+</EPOPolicyObject></ns0:EPOPolicySchema>

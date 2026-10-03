@@ -5,7 +5,8 @@
 
 """ ENS Firewall Policies Class """
 
-__all__ = ["esfwpolicies", "rules"]
+__all__ = ["esfwpolicies", "rules", "options"]
 
 from .esfwpolicies import ESFWPolicies
 from .rules import ESFWPolicyRules
+from .options import ESFWPolicyOptions

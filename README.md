@@ -12,28 +12,38 @@ This package provides a set of Python classes to read, inspect, and modify polic
 documents exported from the Policy Catalog of McAfee ePolicy Orchestrator (ePO),
 without needing to know the underlying XML schema. Each supported policy is
 exposed as an object with named properties (e.g. `policy.asci = 15`) instead of
-raw Section/Setting XML lookups.
+raw Section/Setting XML lookups. Policies can also be exported as a Markdown
+document (`to_markdown()` / `save_markdown()`, see "Policy documentation"
+below) to keep a documentation of the enforced security policies.
 
 ## Supported policies
 
-| Product | Policy | Status |
-|---|---|---|
-| McAfee Agent | General | Full read/write |
-| McAfee Agent | Repository | Full read/write |
-| McAfee Agent | Troubleshooting | Full read/write |
-| McAfee Agent | Custom Properties | Full read/write |
-| McAfee Agent | Product Improvement Program (Telemetry) | Full read/write |
-| ENS Threat Prevention | On-Access Scan | Full read/write |
-| ENS Threat Prevention | On-Demand Scan | Full read/write |
-| ENS Threat Prevention | Exploit Prevention | Partial (signatures/expert rules full read/write; application rules read + enable/disable; process exclusions not yet implemented) |
-| ENS Firewall | Rules | Read-only / reporting (editing not yet implemented) |
-| Solidcore - General | Configuration (Client) | Full read/write (CLI password: raw hashes only) |
-| Solidcore - General | Exception Rules (Windows/Unix) | Full read/write |
-| Solidcore - Application Control | Application Control Options (Windows/Unix) | Full read/write |
-| Solidcore - Application Control | Application Control Rules (Windows/Unix) | Full read/write (all tabs); Rule Groups added/removed |
-| Solidcore - Change Control | Change Control Rules (Windows/Unix) | Full read/write (all tabs); Rule Groups added/removed |
-| Solidcore - Integrity Monitor | Integrity Monitoring Rules (Windows/Unix) | Full read/write (all tabs); Rule Groups added/removed |
-| Solidcore | Rule Groups (Application Control, Change Control, Integrity Monitor) | Full read/write of the `scor.rulegroup.export` / `import` files |
+| Product | Policy | Status | Markdown report |
+|---|---|---|---|
+| McAfee Agent | General | Full read/write | Not yet |
+| McAfee Agent | Repository | Full read/write | Not yet |
+| McAfee Agent | Troubleshooting | Full read/write | Not yet |
+| McAfee Agent | Custom Properties | Full read/write | Not yet |
+| McAfee Agent | Product Improvement Program (Telemetry) | Full read/write | Not yet |
+| ENS Threat Prevention | On-Access Scan | Full read/write | Yes |
+| ENS Threat Prevention | On-Demand Scan | Full read/write | Yes |
+| ENS Threat Prevention | Exploit Prevention | Partial (signatures/expert rules full read/write; application rules read + enable/disable; process exclusions not yet implemented) | Yes |
+| ENS Threat Prevention | Access Protection | Full read/write: rules (user-defined created/edited/removed, Trellix-defined Block/Report/executables/notes), subrules, exclusions | Yes |
+| ENS Threat Prevention | Options | Full read/write | Yes |
+| ENS Firewall | Rules | Read-only / reporting (editing not yet implemented) | Yes |
+| ENS Firewall | Options | Full read/write | Yes |
+| Solidcore - General | Configuration (Client) | Full read/write (CLI password: raw hashes only) | Not yet |
+| Solidcore - General | Exception Rules (Windows/Unix) | Full read/write | Not yet |
+| Solidcore - Application Control | Application Control Options (Windows/Unix) | Full read/write | Not yet |
+| Solidcore - Application Control | Application Control Rules (Windows/Unix) | Full read/write (all tabs); Rule Groups added/removed | Not yet |
+| Solidcore - Change Control | Change Control Rules (Windows/Unix) | Full read/write (all tabs); Rule Groups added/removed | Not yet |
+| Solidcore - Integrity Monitor | Integrity Monitoring Rules (Windows/Unix) | Full read/write (all tabs); Rule Groups added/removed | Not yet |
+| Solidcore | Rule Groups (Application Control, Change Control, Integrity Monitor) | Full read/write of the `scor.rulegroup.export` / `import` files | Not yet |
+
+The "Markdown report" column tells which policy types support the Markdown
+export (`to_markdown()` / `save_markdown()`); for the other policy classes
+these methods raise `NotImplementedError` for now (`SCRuleGroups` has no
+Markdown export method yet).
 
 McAfee Agent policy coverage is complete - all 5 McAfee Agent policy types are implemented.
 
@@ -71,6 +81,48 @@ policy.asci = 15
 # Save the edited policy, ready to re-import into ePO
 policy.save_to_file('My Custom Policy - edited.xml')
 ```
+
+### Policy documentation (Markdown)
+
+Most companies must keep a documentation of the security policies they
+enforce (audits, compliance). `to_markdown()` returns a Markdown document of a
+policy, as close as possible to the ePO console: a metadata header (product,
+policy category, name, ePO server and version, date), a table of contents,
+one section per console tab with the console labels, settings as
+"Setting | Value" tables, lists (exclusions, signatures, firewall rules...)
+as numbered tables, and a document control section (review/approval
+sign-off, change history) to fill in. `save_markdown()` writes it to a file.
+
+```python
+policy.save_markdown('On-Access Scan - My Custom Policy.md',
+                     author='Jane Doe', reviewers=['CISO'])
+```
+
+Available for all ENS policy types: Threat Prevention (On-Access Scan,
+On-Demand Scan, Exploit Prevention, Access Protection, Options) and Firewall
+(Options, and Rules documented as a firewall review: a rule summary numbered
+in evaluation order, then one detail card per group/rule). Labels, order and
+displayed items were checked against the ePO 5.10 console (e.g. Exploit
+Prevention lists the same 486 signatures as the console). See
+`examples/policy_documentation.py`.
+
+### ENS Access Protection rules
+
+```python
+from mcafee_epo_policies import (ESTPPolicyAccessProtection, APRule, APSubRule, APTarget,
+                                 APExecutable, APUserName)
+
+rule = APRule('Block ransomware extensions', block=True, report=True)
+rule.add_executable(APExecutable('Backup agent', path='**\\backupagent.exe', inclusion='exclude'))
+rule.add_user_name(APUserName('Local\\System', inclusion='exclude'))
+rule.add_subrule(APSubRule('Ransomware extensions', APSubRule.FILES, ['create', 'rename'],
+                           targets=[APTarget('*.locky'), APTarget('*.lockbit')]))
+policy.add_rule(rule)                                  # policy: ESTPPolicyAccessProtection
+policy.set_rule_block('PREVENT_MIMIKATZ_CREATION', '1')  # Trellix-defined rule
+```
+
+Subrule types and operation codes are listed in `APSubRule.OPERATIONS` (Windows)
+and `APSubRule.LINUX_OPERATIONS` (Linux rules), with the console labels.
 
 ### Solidcore
 
@@ -147,6 +199,34 @@ docstring describing which ePO UI setting it maps to.
 Python 3.8 or later.
 
 ## History
+
+### 0.4.0 - 2026-10-03
+
+**Added**
+- Markdown documentation of policies: `Policy.to_markdown()` /
+  `save_markdown()` with Markdown helpers (`md_table`, `md_settings`...), for
+  all ENS policy types; `examples/policy_documentation.py`.
+- `ESTPPolicyAccessProtection` (ENS TP Access Protection) with an object model
+  following the console workflow: `APRule`, `APSubRule`, `APTarget`,
+  `APExecutable`, `APUserName` - rules are created, edited and removed
+  (`add_rule()`, `update_rule()`, `remove_rule()`), exclusions too; checked end
+  to end (built with the library, imported into ePO, shown as expected in the
+  console, exported back unchanged); `examples/access_protection.py`.
+  `ESTPPolicyOptions` (ENS TP Options: Quarantine Manager,
+  Detection Exclusion, custom unwanted programs, Proactive Data Analysis) and
+  `ESFWPolicyOptions` (ENS Firewall Options, including DNS Blocking, Defined
+  Networks and Trusted Executables).
+- `OASState` constants: the On-Access Scan "Disable and unregister with
+  Windows Security Center" option (stored by ePO as `bOASEnabled` = 0 plus
+  `bUnregisterWithWSC` = 1), supported by the `on_access_scan` property.
+
+**Fixed**
+- On-Demand Scan: the GTI sensitivity level getters/setters (`fs_`, `qs_`,
+  `rs_gti_level`) looked for the setting in the wrong section (returned None,
+  setter failed).
+- ENS Firewall: `get_content()` crashed on ICMP rules without message type.
+- Exploit Prevention: debug messages printed when loading a policy or applying
+  a `SearchFilter`.
 
 ### 0.3.0 - 2026-10-03
 

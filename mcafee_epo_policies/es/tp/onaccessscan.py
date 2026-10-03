@@ -23,23 +23,41 @@ class ESTPPolicyOnAccessScan(Policy):
             if self.get_type() != 'EAM_General_Policies':
                 raise ValueError('Wrong policy! Policy type must be "EAM_General_Policies".')
 
+    MD_PRODUCT = 'Endpoint Security Threat Prevention'
+    MD_CATEGORY = 'On-Access Scan'
+
     def __repr__(self):
         return 'ESTPPolicyOnAccessScan()'
 
     # ------------------------------ On-Access Policy ------------------------------
     # On-Access Scan:
     #   Enable On-Access Scan
+    #   Disable and unregister with Windows Security Center
+    #   '1' = Enable                     OASState().ENABLED
+    #   '0' = Disable                    OASState().DISABLED
+    #   '2' = Disable and unregister     OASState().DISABLED_UNREGISTER_WSC
+    #         (stored as bOASEnabled = 0 and bUnregisterWithWSC = 1)
     def get_on_access_scan(self):
         """
-        Get the On-Access Scan feature state
+        Get the On-Access Scan feature state: '1' (Enable), '0' (Disable)
+        or '2' (Disable and unregister with Windows Security Center).
         """
-        return self.get_setting_value('General', 'bOASEnabled')
+        mode = self.get_setting_value('General', 'bOASEnabled')
+        if mode == '0' and self.get_setting_value('General', 'bUnregisterWithWSC') == '1':
+            mode = '2'
+        return mode
 
     def set_on_access_scan(self, mode):
         """
-        Set the On-Access Scan feature state
+        Set the On-Access Scan feature state: '1' (Enable), '0' (Disable)
+        or '2' (Disable and unregister with Windows Security Center).
+        bUnregisterWithWSC is created if missing, as the console does on save.
         """
-        return self.set_setting_value('General', 'bOASEnabled', mode)
+        if mode not in ['0', '1', '2']:
+            raise ValueError('Mode must be within ["0", "1", "2"].')
+        self.set_setting_value('General', 'bUnregisterWithWSC', '1' if mode == '2' else '0',
+                               force=True)
+        return self.set_setting_value('General', 'bOASEnabled', '1' if mode == '1' else '0')
 
     on_access_scan = property(get_on_access_scan, set_on_access_scan)
 
@@ -1300,6 +1318,141 @@ class ESTPPolicyOnAccessScan(Policy):
                                      'ScriptScanExclusionURL_{}', excluded_urls)
 
     script_scan_exclusions = property(get_script_scan_exclusions, set_script_scan_exclusions)
+
+    # ------------------------------ Markdown export ------------------------------
+    # Console labels (ePO 5.10, ENS 10.7): see Policy.to_markdown().
+    __MD_OAS_STATE = {'0': 'Disable', '1': 'Enable',
+                      '2': 'Disable and unregister with Windows Security Center'}
+    __MD_GTI = {'0': 'Disabled', '1': 'Very low', '2': 'Low', '3': 'Medium',
+                '4': 'High', '5': 'Very high'}
+    __MD_WHEN = {'0': 'Do not scan when reading from or writing to disk',
+                 '1': 'When writing to disk', '2': 'When reading from disk',
+                 '3': 'Let Trellix decide',
+                 '4': 'Let me decide: When writing to disk',
+                 '5': 'Let me decide: When reading from disk',
+                 '6': 'Let me decide: When writing to and reading from disk'}
+    __MD_WHAT = {'1': 'All files', '2': 'Default and specified file types',
+                 '3': 'Default and specified file types (also scan for macros in all files)',
+                 '4': 'Specified file types only'}
+    # Resource IDs stored in place of the console default texts.
+    __MD_MESSAGES = {'IDS_OAS_DEFAULT_THREAT_MESSAGE':
+                     'Trellix Endpoint Security detected a threat.'}
+    __MD_ACTION = {'1': 'Clean files', '2': 'Delete files', '3': 'Deny access to files',
+                   '4': 'Allow access to files'}
+
+    def __md_process_type(self, section):
+        """
+        Returns the Markdown of one "Process Types" tab (Standard, High Risk
+        or Low Risk) from its Detection section.
+        """
+        check = self.md_check
+        action = lambda setting: self.__MD_ACTION.get(
+            self.get_setting_value(section, setting), self.get_setting_value(section, setting))
+        what, extensions = self.get_what_to_scan(section)
+        what_label = self.__MD_WHAT.get(what, what)
+        if what in ['2', '3', '4']:
+            what_label += ' ({})'.format(extensions if extensions else 'no additional file type')
+        text = '#### Scanning\n\n'
+        text += self.md_settings([
+            ['When to scan', self.__MD_WHEN.get(self.get_when_to_scan(section))],
+            ['What to scan', what_label],
+            ['On network drives', check(self.get_scan_network_drives(section))],
+            ['Opened for backups (Windows only)', check(self.get_scan_backups(section))],
+            ['Compressed archive files', check(self.get_scan_archives(section))],
+            ['Compressed MIME-encoded files', check(self.get_scan_mime(section))],
+            ['Additional scan options: Detect unwanted programs',
+             check(self.get_scan_pup(section))],
+            ['Additional scan options: Detect unknown program threats',
+             check(self.get_scan_unknown_threats(section))],
+            ['Additional scan options: Detect unknown macro threats',
+             check(self.get_scan_unknown_macro(section))]])
+        text += '\n#### Actions\n\n'
+        text += self.md_settings([
+            ['Threat detection first response', action('uAction')],
+            ['Threat detection - If first response fails', action('uSecAction')],
+            ['Unwanted program first response', action('uAction_Program')],
+            ['Unwanted program - If first response fails', action('uSecAction_Program')],
+            ['On Timeout (Linux only)', action('uTimeOutAction')],
+            ['On Scan Error (Linux only)', action('uScanErrorAction')]])
+        text += '\n#### Exclusions\n\n'
+        rows = OASExclusionList(self.get_exclusion_list(section + '_Exclusions')).md_rows()
+        text += self.md_table(['Item', 'Exclude Subfolders', 'Read/Write', 'Notes'], rows,
+                              numbered=True)
+        text += '\n' + self.md_settings([
+            ['Overwrite exclusions configured on the client',
+             check(self.get_overwrite_exclusions(section + '_Exclusions'))]])
+        return text
+
+    def md_sections(self):
+        """
+        Returns the policy content as a list of (heading, markdown) tuples,
+        in the order of the ePO console (see Policy.to_markdown).
+        """
+        check = self.md_check
+        sections = []
+        max_scan_time = 'Yes ({} seconds)'.format(self.get_max_scan_time()) \
+            if self.get_max_scan_time_enforced() == '1' else 'No'
+        sections.append(('On-Access Scan', self.md_settings([
+            ['On-Access Scan', self.__MD_OAS_STATE.get(self.get_on_access_scan(),
+                                                       self.get_on_access_scan())],
+            ['Enable On-Access Scan on system startup (Windows only)',
+             check(self.get_scan_on_startup())],
+            ['Allow users to disable On-Access Scan from the Trellix system tray icon '
+             '(Windows only)', check(self.get_allow_user_to_disable_oas())],
+            ['Specify maximum number of seconds for each file scan', max_scan_time],
+            ['Scan boot sectors (Windows only)', check(self.get_scan_boot_sectors())],
+            ['Scan processes on service startup and content update (Windows only)',
+             check(self.get_scan_process_startup())],
+            ['Scan trusted installers (Windows only)', check(self.get_scan_trusted_installers())],
+            ['Scan when copying between local folders (Windows only)',
+             check(self.get_scan_copy_between_local_folders())],
+            ['Scan when copying from network folders and removable drives (Windows only)',
+             check(self.get_scan_copy_from_network())],
+            ['Detect suspicious email attachments (Windows only)',
+             check(self.get_scan_email_attachments())],
+            ['Disable read/write scan of Shadow Copy volumes for SYSTEM process '
+             '(improves performance) (Windows only)',
+             check(self.get_setting_value('General', 'scanShadowCopyDisableStatus'))]])))
+        sections.append(('Ransomware', self.md_settings([
+            ['Detect unknown ransomware based on behaviour',
+             check(self.get_detect_unknown_ransomware())],
+            ['Create ransomware bait files on file system',
+             check(self.get_ransomware_bait_files())]])))
+        gti_level = self.get_gti_level()
+        sections.append(('Trellix GTI', self.md_settings([
+            ['Enable Trellix GTI', 'No' if gti_level in [None, '0'] else 'Yes'],
+            ['Sensitivity level', self.__MD_GTI.get(gti_level, gti_level)]])))
+        sections.append(('Antimalware Scan Interface (Windows only)', self.md_settings([
+            ['Enable AMSI (provides enhanced script scanning)', check(self.get_scan_amsi())],
+            ['Enable Observe mode (Events are generated but actions are not enforced)',
+             check(self.get_scan_amsi_observe_mode())]])))
+        sections.append(('Threat Detection User Messaging (Windows only)', self.md_settings([
+            ['Display the On-Access Scan window to users when a threat is detected',
+             check(self.get_show_alert())],
+            ['Message', self.__MD_MESSAGES.get(self.get_alert_message(),
+                                               self.get_alert_message())]])))
+        standard_only = self.get_use_standard_settings_only() == '1'
+        text = self.md_settings([[
+            'Process Settings', 'Use Standard settings for all processes' if standard_only
+            else 'Configure different settings for High Risk and Low Risk processes']])
+        process_types = [('Standard', 'Default-Detection')]
+        if not standard_only:
+            text += '\nStandard settings will apply to all unlisted processes.\n\n'
+            text += self.md_table(['Process', 'Process Type'], self.get_process_list() or [],
+                                  numbered=True)
+            process_types += [('High Risk', 'HighRisk-Detection'),
+                              ('Low Risk', 'LowRisk-Detection')]
+        for label, section in process_types:
+            text += '\n### Process Type: {}\n\n'.format(label)
+            text += self.__md_process_type(section)
+        sections.append(('Process Settings', text))
+        text = self.md_settings([['Enable ScriptScan', check(self.get_script_scan())]])
+        text += '\n### Exclude these URLs or partial URLs\n\n'
+        text += self.md_table(['URL'], [[url] for url in self.get_script_scan_exclusions() or []],
+                              numbered=True)
+        sections.append(('ScriptScan (Windows only)', text))
+        return sections
+
 
 class OASProcessList:
     """

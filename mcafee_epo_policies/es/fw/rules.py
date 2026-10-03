@@ -28,8 +28,11 @@ class ESFWPolicyRules(Policy):
         self.rul = dict()
         self.agg = dict()
 
+    MD_PRODUCT = 'Endpoint Security Firewall'
+    MD_CATEGORY = 'Rules'
+
     def __repr__(self):
-        return 'ESTPPolicyOnAccessScan()'
+        return 'ESFWPolicyRules()'
 
     def load_policy(self):
         policy_obj = self.root.find('EPOPolicyObject')
@@ -243,17 +246,18 @@ class ESFWPolicyRules(Policy):
         #   Users can select only one MessageType
         mt = self.rul[rul_seq].get('MessageType')
         if tp == 'ICMP' or tp == 'ICMPv6':
-            txt += '\r\nMessage Type: '
-            if mt[0] == '':
-                txt += 'All'
-            else:
-                if tp == 'ICMP':
-                    mts = MessageTypes()
-                else:
-                    mts = MessageTypesv6()
-                txt += mts.get_name(mt[0])
+            txt += '\r\nMessage Type: ' + self.__get_message_type(tp, mt)
 
         return txt
+
+    def __get_message_type(self, transport, message_type):
+        # No MessageType setting, an empty value or '255' (checked in the
+        # ePO 5.10 rule editor): all message types. Unknown codes are shown as is.
+        if not message_type or message_type[0] in ['', '255']:
+            return 'All'
+        mts = MessageTypes() if transport == 'ICMP' else MessageTypesv6()
+        name = mts.get_name(message_type[0])
+        return name if name != 'None' else 'Type {}'.format(message_type[0])
 
     def __get_ipaddress(self, str_ip):
         txt = str_ip
@@ -491,3 +495,173 @@ class ESFWPolicyRules(Policy):
                 # If yes, run recurcively the function to display all the children.
                 txt += self.get_content(seq, level+1, header+'  ')
         return txt
+
+    # ------------------------------ Markdown export ------------------------------
+    # Rule base documented as a firewall review: a summary table numbering
+    # the groups/rules in evaluation order (1, 1.1, 1.2...), then one detail
+    # card per group/rule. See Policy.to_markdown().
+    __MD_DAYS = [(2, 'Monday'), (4, 'Tuesday'), (8, 'Wednesday'), (16, 'Thursday'),
+                 (32, 'Friday'), (64, 'Saturday'), (128, 'Sunday')]
+
+    def __md_walk(self, seq_id='root', prefix=''):
+        """
+        Returns the (number, rule GUID, depth) of every group/rule, in
+        evaluation order.
+        """
+        items = []
+        for index, seq in enumerate(self.seq.get(seq_id, []), 1):
+            number = '{}{}'.format(prefix, index)
+            items.append((number, seq, number.count('.')))
+            if seq in self.seq:
+                items += self.__md_walk(seq, number + '.')
+        return items
+
+    def __md_aggregates(self, rul, key):
+        """
+        Returns the aggregates (network/application objects) of a rule
+        holding the property key, e.g. 'LocalAddress', 'RemoteAddress', 'AppName'.
+        """
+        return [self.agg[ref] for ref in rul.get('AggRef', []) or []
+                if ref in self.agg and key in self.agg[ref]]
+
+    def __md_networks(self, rul, key):
+        """
+        Returns the local/remote networks of a rule ('Any' if none).
+        """
+        networks = ['{}: {}'.format(agg['Name'], ', '.join(self.__get_ipaddress(addr)
+                                                           for addr in agg[key]))
+                    for agg in self.__md_aggregates(rul, key)]
+        return '\n'.join(networks) if networks else 'Any'
+
+    def __md_ports(self, rul, key):
+        ports = [port for port in rul.get(key, None) or [] if port]
+        return ', '.join(ports) if ports else 'Any'
+
+    def __md_applications(self, rul):
+        """
+        Returns the applications of a rule: name, then path, signer and
+        MD5 hash when defined ('All' if none).
+        """
+        apps = []
+        for agg in self.__md_aggregates(rul, 'AppName'):
+            for index, name in enumerate(agg['AppName']):
+                details = []
+                for key, label in [('AppPath', 'path'), ('AppSigner', 'signer'),
+                                   ('AppHash', 'MD5')]:
+                    values = agg.get(key, [])
+                    value = values[index] if index < len(values) else ''
+                    if value and value.strip('0'):
+                        details.append('{}: {}'.format(label, value))
+                apps.append('{} ({})'.format(name, ', '.join(details)) if details else name)
+        return '\n'.join(apps) if apps else 'All'
+
+    def __md_protocols(self, rul):
+        """
+        Returns (network protocol, transport protocol) labels.
+        """
+        # Labels of the console rule editor ("Any protocol", "IPv4 protocol"...).
+        network = rul.get('NetworkProtocol', None)
+        names = [NetworkProtocols().get_name(ref) for ref in network or []]
+        network = 'Any protocol' if not names else ', '.join(
+            name + ' protocol' if name in ['IPv4', 'IPv6'] else name for name in names)
+        transport = rul.get('TransportProtocol', None)
+        transport = 'All Protocols' if not transport else InternetProtocols().get_name(
+            transport[0])
+        if transport in ['ICMP', 'ICMPv6']:
+            message = self.__get_message_type(transport, rul.get('MessageType', None))
+            transport += ' (all message types)' if message == 'All' else ' ({})'.format(message)
+        return network, transport
+
+    def __md_schedule(self, rul):
+        if rul.get('ScheduleEnabled') != '1':
+            return 'No'
+        mask = int(rul.get('WeekMask', '0'))
+        days = [day for bit, day in self.__MD_DAYS if mask & bit]
+        return '{} from {} to {}'.format(', '.join(days), rul.get('StartTime', ''),
+                                         rul.get('EndTime', ''))
+
+    def __md_location(self, agg):
+        """
+        Returns the rows of a location (group aggregate).
+        """
+        check = self.md_check
+        rows = [['Location name', agg['Name']],
+                ['Isolate this connection', check(agg.get('Isolated'))],
+                ['Require ePO reachability', check(agg.get('RequireEpoReachable'))]]
+        for key, label in [('DnsSuffix', 'Connection-specific DNS suffix'),
+                           ('DefaultGateway', 'Default gateway'),
+                           ('DhcpServer', 'DHCP server'), ('DnsServer', 'DNS server'),
+                           ('PrimaryWINS', 'Primary WINS server'),
+                           ('SecondaryWINS', 'Secondary WINS server'),
+                           ('DomainReachable', 'Domain reachability (HTTPS)'),
+                           ('RegKey', 'Registry key')]:
+            values = agg.get(key, None)
+            if values:
+                if key in ['DefaultGateway', 'DhcpServer', 'DnsServer', 'PrimaryWINS',
+                           'SecondaryWINS']:
+                    values = [self.__get_ipaddress(value) for value in values]
+                rows.append([label, '\n'.join(values)])
+        return rows
+
+    def md_sections(self):
+        """
+        Returns the policy content as a list of (heading, markdown) tuples:
+        rules summary and rule details (see Policy.to_markdown).
+        """
+        if not self.seq:
+            self.load_policy()
+        walk = self.__md_walk()
+        summary = []
+        details = ''
+        for number, seq, depth in walk:
+            rul = self.rul[seq]
+            is_group = rul['Action'] == 'JUMP'
+            name = rul['Name'].strip()
+            network, transport = self.__md_protocols(rul)
+            status = 'Enabled' if rul.get('Enabled', '1') == '1' else 'Disabled'
+            if is_group:
+                summary.append([number, '[Group] {}'.format(name), status, '',
+                                rul['Direction'].capitalize(), network, transport,
+                                '', '', '', ''])
+            else:
+                local = self.__md_networks(rul, 'LocalAddress')
+                remote = self.__md_networks(rul, 'RemoteAddress')
+                summary.append([number, name, status, rul['Action'].capitalize(),
+                                rul['Direction'].capitalize(), network, transport,
+                                '{} (port {})'.format(local, self.__md_ports(rul, 'LocalPort')),
+                                '{} (port {})'.format(remote, self.__md_ports(rul, 'RemotePort')),
+                                self.__md_applications(rul), self.md_check(rul.get('Logged'))])
+            details += '\n### {} {}{}\n\n'.format(number, name, ' (group)' if is_group else '')
+            rows = [['Status', status]]
+            if not is_group:
+                rows += [['Action', rul['Action'].capitalize()],
+                         ['Treat match as intrusion (Windows & Linux only)',
+                          self.md_check(rul.get('Intrusion'))],
+                         ['Log matching traffic', self.md_check(rul.get('Logged'))]]
+            rows += [['Direction', rul['Direction'].capitalize()],
+                     ['Connection types', self.__get_connection_type(seq)],
+                     ['Network protocol', network], ['Transport protocol', transport]]
+            if is_group:
+                locations = [self.agg[ref] for ref in rul.get('AggRef', []) or []
+                             if ref in self.agg and 'Isolated' in self.agg[ref]]
+                rows += [['Location', 'Yes' if locations else 'No']]
+                for agg in locations:
+                    rows += self.__md_location(agg)
+            else:
+                rows += [['Local networks', self.__md_networks(rul, 'LocalAddress')],
+                         ['Local port', self.__md_ports(rul, 'LocalPort')],
+                         ['Remote networks', self.__md_networks(rul, 'RemoteAddress')],
+                         ['Remote port', self.__md_ports(rul, 'RemotePort')],
+                         ['Applications (Windows & Mac only)', self.__md_applications(rul)],
+                         ['Schedule (Windows & Linux only)', self.__md_schedule(rul)]]
+            rows += [['Notes', rul.get('Note', '')],
+                     ['Last changed', self.__get_last_changed(seq).rstrip('.')]]
+            details += self.md_settings(rows)
+        groups = len([item for item in walk if self.rul[item[1]]['Action'] == 'JUMP'])
+        text = 'Rules are evaluated from top to bottom; the first rule matching the ' \
+               'traffic applies. {} rule(s) in {} group(s).\n\n'.format(
+                   len(walk) - groups, groups)
+        text += self.md_table(['#', 'Name', 'Status', 'Action', 'Direction', 'Network protocol',
+                               'Transport protocol', 'Local', 'Remote', 'Applications', 'Log'],
+                              summary)
+        return [('Rules summary', text), ('Rule details', details.lstrip('\n'))]

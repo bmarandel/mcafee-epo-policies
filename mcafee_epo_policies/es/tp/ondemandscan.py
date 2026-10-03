@@ -31,8 +31,163 @@ class ESTPPolicyOnDemandScan(Policy):
             if self.get_type() != 'EAM_OnDemandScan_Policies':
                 raise ValueError('Wrong policy! Policy type must be "EAM_OnDemandScan_Policies".')
 
+    MD_PRODUCT = 'Endpoint Security Threat Prevention'
+    MD_CATEGORY = 'On-Demand Scan'
+
     def __repr__(self):
         return 'ESTPPolicyOnDemandScan()'
+
+    # ------------------------------ Markdown export ------------------------------
+    # One section per scan type (console tabs), see Policy.to_markdown().
+    __MD_LOCATIONS = {'SpecialScanForRootkits': 'Memory for rootkits',
+                      'SpecialMemory': 'Running processes',
+                      'SpecialCritical': 'Registered files',
+                      'My Computer': 'My computer',
+                      'LocalDrives': 'All local drives',
+                      'All fixed disks': 'All fixed drives',
+                      'All removable media': 'All removable drives',
+                      'All Network drives': 'All mapped drives',
+                      'HomeDir': 'Home folder',
+                      'ProfileDir': 'User profile folder',
+                      'WinDir': 'Windows folder',
+                      'ProgramFilesDir': 'Program Files folder',
+                      'TempDir': 'Temp folder',
+                      'SpecialRecycleName': 'Recycle bin',
+                      'SpecialRegistry': 'Registry'}
+    __MD_FILE_TYPES = {'1': 'All files', '2': 'Default and specified file types',
+                       '3': 'Default and specified file types (also scan for macros in all files)',
+                       '4': 'Specified file types only'}
+    __MD_GTI = {'0': 'Disabled', '1': 'Very low', '2': 'Low', '3': 'Medium',
+                '4': 'High', '5': 'Very high'}
+    __MD_ACTION = {'1': 'Clean files', '2': 'Delete files', '6': 'Continue scanning'}
+    __MD_UTILIZATION = {'1': 'Low', '2': 'Below normal', '3': 'Normal'}
+
+    def __md_scan_type(self, scan):
+        """
+        Returns the Markdown of one scan type tab: scan = 'FS' (Full Scan),
+        'QS' (Quick Scan) or 'RS' (Right-click Scan), one "###" group per
+        console box. The getters of the Full Scan are used for the three of
+        them (section prefix as argument).
+        """
+        check = self.md_check
+        value = lambda section, setting: self.get_setting_value(scan + section, setting)
+        label = lambda table, raw: table.get(raw, raw)
+        # Right-click Scan is Windows only: the console tags each box instead.
+        windows = ' (Windows only)'
+        box = lambda name: '### {}{}\n\n'.format(name, windows if scan == 'RS' else '')
+        item = lambda name: name if scan == 'RS' else name + windows
+        rows = [[item('Boot sectors'), check(self.get_fs_boot_sectors(scan))],
+                [item('Files that have been migrated to storage'),
+                 check(self.get_fs_files_to_storage(scan))],
+                ['Compressed MIME-encoded files', check(self.get_fs_mime(scan))],
+                ['Compressed archive files', check(self.get_fs_archives(scan))]]
+        if scan == 'RS':
+            rows.append(['Subfolders', check(self.get_fs_subfolders(scan))])
+        text = box('What to Scan') + self.md_settings(rows)
+        text += '\n' + box('Additional Scan Options') + self.md_settings([
+            ['Detect unwanted programs', check(self.get_fs_pup(scan))],
+            ['Detect unknown program threats', check(self.get_fs_unknown_threats(scan))],
+            ['Detect unknown macro threats', check(self.get_fs_unknown_macro(scan))]])
+        if scan != 'RS':
+            # Right-click Scan: the location is the object right-clicked.
+            text += '\n### Scan Locations\n\n'
+            text += self.md_settings([['Scan subfolders', check(self.get_fs_subfolders(scan))]])
+            text += '\nSpecify locations:\n\n'
+            text += self.md_table(['Location'],
+                                  [[label(self.__MD_LOCATIONS, location)]
+                                   for location in self.get_fs_locations(scan) or []],
+                                  numbered=True)
+        file_types, extensions = self.get_fs_file_types(scan)
+        file_types_label = label(self.__MD_FILE_TYPES, file_types)
+        if file_types in ['2', '3', '4']:
+            file_types_label += ' ({})'.format(extensions if extensions else
+                                               'no additional file type')
+        text += '\n' + box('File Types to Scan') + self.md_settings([
+            ['File types to scan', file_types_label]])
+        gti_level = self.get_fs_gti_level(scan)
+        text += '\n' + box('Trellix GTI') + self.md_settings([
+            ['Enable Trellix GTI', None if gti_level is None else
+             ('No' if gti_level == '0' else 'Yes')],
+            ['Sensitivity level', label(self.__MD_GTI, gti_level)]])
+        text += '\n' + box('Exclusions')
+        # On-Demand Scan exclusions have no Read/Write column in the console.
+        rows = [[row[0], row[1], row[3]]
+                for row in ODSExclusionList(self.get_fs_exclusion_list(scan)).md_rows()]
+        text += self.md_table(['Item', 'Exclude Subfolders', 'Notes'], rows, numbered=True)
+        text += '\n' + self.md_settings([
+            [item('Overwrite exclusions configured on the client'),
+             check(self.get_fs_overwrite_exclusions(scan))]])
+        first = value('_Remediation', 'uAction')
+        first_pup = value('_Remediation', 'uAction_Program')
+        text += '\n' + box('Actions') + self.md_settings([
+            ['Threat detection first response', label(self.__MD_ACTION, first)],
+            ['If first response fails',
+             None if first == '6' else label(self.__MD_ACTION, value('_Remediation', 'uSecAction'))],
+            ['Unwanted program first response', label(self.__MD_ACTION, first_pup)],
+            ['If first response fails (unwanted program)',
+             None if first_pup == '6' else
+             label(self.__MD_ACTION, value('_Remediation', 'uSecAction_Program'))]])
+        if scan != 'RS':
+            idle = value('_Performance', 'bInteractiveUserIsIdle')
+            text += '\n### Scheduled Scan Options\n\n'
+            rows = [['When to scan', None if idle is None else
+                     ('Scan only when the system is idle (Windows & Mac only)' if idle == '1'
+                      else 'Scan anytime')]]
+            if idle == '1':
+                rows += [['User can resume paused scans (Windows only)',
+                          check(value('_Performance', 'bResumePausedScans'))]]
+            else:
+                defer = value('_Performance', 'bPermitUserDefer')
+                rows += [['User can defer scans (Windows only)', check(defer)]]
+                if defer == '1':
+                    rows += [['Maximum number of times user can defer for one hour',
+                              value('_Performance', 'uDeferTime')],
+                             ['User message', value('_Performance', 'szDeferMessage')],
+                             ['Message duration (seconds)',
+                              value('_Performance', 'uMessageDuration')]]
+                rows += [['User can pause and cancel scans (Windows only)',
+                          check(value('_Performance', 'bPauseAndCancelScans'))],
+                         ['Do not scan when the system is in presentation mode (Windows only)',
+                          check(value('_Performance', 'bDeferScanInFullScreen'))]]
+            rows += [['Do not scan when the system is on battery power (Windows & Mac only)',
+                      check(value('_Performance', 'bDeferScanOnBattery'))]]
+            text += self.md_settings(rows)
+        rows = [['Use the scan cache', check(value('_Performance', 'bUseCache'))]]
+        if scan != 'RS':
+            for enforce, setting, name in [
+                    ('EnforceMaxScanTime', 'ScannerThreadTimeOut',
+                     'Specify maximum number of seconds for each file scan (Linux only)'),
+                    ('EnforceMaxODSThreads', 'ScannerMaxODSThreads',
+                     'Specify maximum number of threads allowed (Linux only)')]:
+                enabled = value('_Performance', 'b{}{}'.format(scan, enforce))
+                rows.append([name, None if enabled is None else
+                             ('Yes ({})'.format(value('_Performance', 'u{}{}'.format(scan, setting)))
+                              if enabled == '1' else 'No')])
+        utilization = label(self.__MD_UTILIZATION, value('_Performance', 'SystemUtilization'))
+        if scan != 'RS' and value('_Performance', 'bSystemUtilization') == '0':
+            rows.append(['Limit maximum CPU usage (Windows & Linux only)',
+                         '{}%'.format(value('_Performance', 'CPUPercentage'))])
+        else:
+            rows.append([item('System utilization'), utilization])
+        text += '\n' + box('Performance') + self.md_settings(rows)
+        if self.root.find('./EPOPolicySettings/Section[@name="{}_Account"]'.format(scan)) \
+                is not None:
+            text += '\n### Account (Windows only)\n\n'
+            text += 'Enter user account for scanning network devices\n\n'
+            text += self.md_settings([
+                ['User name', value('_Account', 'szUserName')],
+                ['Password', '(set)' if value('_Account', 'szPassword') else ''],
+                ['Domain', value('_Account', 'szDomainName')]])
+        return text
+
+    def md_sections(self):
+        """
+        Returns the policy content as a list of (heading, markdown) tuples,
+        one per scan type (see Policy.to_markdown).
+        """
+        return [('Full Scan', self.__md_scan_type('FS')),
+                ('Quick Scan', self.__md_scan_type('QS')),
+                ('Right-click Scan (Windows only)', self.__md_scan_type('RS'))]
 
     # ------------------------------ On-Demand Policy - Full Scan ------------------------------
     # What to Scan:
@@ -264,7 +419,7 @@ class ESTPPolicyOnDemandScan(Policy):
         """
         Get the GTI level (Use Gti class from constants) for Full Scan
         """
-        return self.get_setting_value(__section + '_ScanOptions', 'GTISensitivityLevel')
+        return self.get_setting_value(__section + '_GTI', 'GTISensitivityLevel')
 
     def set_fs_gti_level(self, level, __section='FS'):
         """
@@ -272,7 +427,7 @@ class ESTPPolicyOnDemandScan(Policy):
         """
         if level not in ['0', '1', '2', '3', '4', '5']:
             raise ValueError('GTI sensitivity level must be within ["0", "1", "2", "3", "4", "5"].')
-        return self.set_setting_value(__section + '_ScanOptions', 'GTISensitivityLevel', level)
+        return self.set_setting_value(__section + '_GTI', 'GTISensitivityLevel', level)
 
     fs_gti_level = property(get_fs_gti_level, set_fs_gti_level)
 
