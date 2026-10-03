@@ -10,8 +10,7 @@ firewall_rules.py
 Example for the mcafee_epo_policies package: load an ENS Firewall Rules
 policy and export its rule tree as a Markdown report.
 
-Note: ESFWPolicyRules is currently read-only/reporting - there is no
-supported way yet to edit firewall rules through this library.
+To change the rules, see firewall_rule_editing.py.
 
 Usage:
     python3 firewall_rules.py <policy.xml> [output.md]

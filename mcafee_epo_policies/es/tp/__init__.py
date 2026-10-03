@@ -10,7 +10,8 @@ __all__ = ["estppolicies", "onaccessscan", "ondemandscan", "exploitprevention", 
 from .estppolicies import ESTPPolicies
 from .onaccessscan import ESTPPolicyOnAccessScan, OASProcessList, OASExclusionList, OASURLList
 from .ondemandscan import ESTPPolicyOnDemandScan, ODSLocationList, ODSExclusionList
-from .exploitprevention import ESTPPolicyExploitPrevention, SearchFilter
+from .exploitprevention import (ESTPPolicyExploitPrevention, SearchFilter, EPExclusion, EPAppRule,
+                                EPExecutable)
 from .options import ESTPPolicyOptions
 from .accessprotection import (ESTPPolicyAccessProtection, APRule, APSubRule, APTarget,
                                APExecutable, APUserName)

@@ -819,7 +819,7 @@ class ESTPPolicyAccessProtection(Policy):
         for index, rule in enumerate(rules, 1):
             if not (rule.executables or rule.user_names or rule.subrules):
                 continue
-            details += '\n### {}. {}\n\n'.format(index, rule.name)
+            details += '\n### {}. {}\n\n'.format(index, self.md_heading(rule.name))
             details += self.md_settings([
                 ['Action: Block', yes_no(rule.block)], ['Action: Report', yes_no(rule.report)],
                 ['Origin', rule.origin], ['Operating System', rule.os], ['Notes', rule.notes]])
@@ -833,7 +833,7 @@ class ESTPPolicyAccessProtection(Policy):
                 typ = subrule.type
                 operations = (APSubRule.LINUX_OPERATIONS if subrule.linux
                               else APSubRule.OPERATIONS).get(typ, {})
-                details += '\n#### Subrule: {}\n\n'.format(subrule.name)
+                details += '\n#### Subrule: {}\n\n'.format(self.md_heading(subrule.name))
                 details += self.md_settings([
                     ['Subrule type', APSubRule.TYPES.get(typ, typ)],
                     ['Operations', ', '.join(operations.get(op, op)

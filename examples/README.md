@@ -13,7 +13,18 @@ policy out of a `Policies` collection, or from `Policy.load_from_file`).
 - **`on_demand_scan.py`** - ENS Threat Prevention On-Demand Scan: add a Full
   Scan location and a file type exclusion.
 - **`firewall_rules.py`** - ENS Firewall: export the rule tree as a Markdown
-  report (read-only - rule editing isn't supported yet).
+  report.
+- **`firewall_rule_editing.py`** - ENS Firewall Rules: print the rule tree,
+  add a group with a location holding a rule (networks, application,
+  schedule), move a rule into it, disable a rule and remove another one.
+- **`firewall_recon_detection.py`** - ENS Firewall Rules: add network
+  reconnaissance detection rules ("honey ports") at the end of a policy - one
+  group per server profile (Windows Server roles and Microsoft products,
+  third-party applications on Windows, Linux), one Block + "Treat match as
+  intrusion" + Log rule per service not already allowed by the policy, the
+  MITRE ATT&CK technique (T1046 by default, `--technique T1595.001` for
+  internet facing servers) in the rule name shown by the ePO intrusion
+  events. Run it again to replace the groups.
 - **`access_protection.py`** - ENS Threat Prevention Access Protection: list
   the rules, create a user-defined rule (executables, user names, subrules),
   block a Trellix-defined rule and add an exclusion.

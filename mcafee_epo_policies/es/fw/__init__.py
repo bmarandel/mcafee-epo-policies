@@ -8,5 +8,6 @@
 __all__ = ["esfwpolicies", "rules", "options"]
 
 from .esfwpolicies import ESFWPolicies
-from .rules import ESFWPolicyRules
+from .rules import (ESFWPolicyRules, FWRule, FWGroup, FWNetwork, FWApplication, FWExecutable,
+                    FWLocation, FWAddress)
 from .options import ESFWPolicyOptions

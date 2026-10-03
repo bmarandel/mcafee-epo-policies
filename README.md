@@ -27,10 +27,10 @@ below) to keep a documentation of the enforced security policies.
 | McAfee Agent | Product Improvement Program (Telemetry) | Full read/write | Not yet |
 | ENS Threat Prevention | On-Access Scan | Full read/write | Yes |
 | ENS Threat Prevention | On-Demand Scan | Full read/write | Yes |
-| ENS Threat Prevention | Exploit Prevention | Partial (signatures/expert rules full read/write; application rules read + enable/disable; process exclusions not yet implemented) | Yes |
+| ENS Threat Prevention | Exploit Prevention | Full read/write: signatures/expert rules, exclusions, Application Protection Rules (user-defined created/edited/removed, Trellix-defined status/inclusion/executables/notes) | Yes |
 | ENS Threat Prevention | Access Protection | Full read/write: rules (user-defined created/edited/removed, Trellix-defined Block/Report/executables/notes), subrules, exclusions | Yes |
 | ENS Threat Prevention | Options | Full read/write | Yes |
-| ENS Firewall | Rules | Read-only / reporting (editing not yet implemented) | Yes |
+| ENS Firewall | Rules | Full read/write: rules, groups (sub groups, location, timed group), networks, applications, schedule | Yes |
 | ENS Firewall | Options | Full read/write | Yes |
 | Solidcore - General | Configuration (Client) | Full read/write (CLI password: raw hashes only) | Not yet |
 | Solidcore - General | Exception Rules (Windows/Unix) | Full read/write | Not yet |
@@ -124,6 +124,34 @@ policy.set_rule_block('PREVENT_MIMIKATZ_CREATION', '1')  # Trellix-defined rule
 Subrule types and operation codes are listed in `APSubRule.OPERATIONS` (Windows)
 and `APSubRule.LINUX_OPERATIONS` (Linux rules), with the console labels.
 
+### ENS Firewall rules
+
+```python
+from mcafee_epo_policies import (FWRule, FWGroup, FWNetwork, FWApplication, FWExecutable,
+                                 FWLocation, FWAddress)
+
+rule = FWRule('Allow backup server', FWRule.ALLOW, FWRule.OUT, log=True,
+              transport_protocol=FWRule.TCP, remote_ports=['443', '8400-8410'],
+              remote_networks=[FWNetwork('Backup servers', ['10.10.0.0/24', 'backup.example.com'])],
+              applications=[FWApplication('Backup agent', [
+                  FWExecutable('agent', path='**\\backupagent.exe', signer='CN=Example Corp')])])
+rule.set_schedule(['Monday', 'Friday'], '20:00', '23:59')
+group = FWGroup('Office', location=FWLocation('Office LAN', dns_suffixes=['corp.example.com'],
+                                             default_gateways=['10.0.0.1']),
+                rules=[rule])
+policy.add_rule(group, position=1)                    # policy: ESFWPolicyRules
+policy.move_rule('Allow SNMP traffic', group, 0)
+snmp = policy.get_rule('Allow SNMP traffic')
+snmp.enabled = False
+policy.update_rule(snmp)
+policy.remove_rule('Allow all outbound traffic on high UDP ports')
+```
+
+Addresses are written as in the console (single IP, subnet, range, FQDN, IPv6,
+or `FWAddress.LOCAL_SUBNET`, `TRUSTED`, `ANY_IPV4`, `ANY_IPV6`). Rules and groups
+locked by the catalog (shown with a "View" link in the console, e.g. "Trellix
+core networking") can't be changed. See `examples/firewall_rule_editing.py`.
+
 ### Solidcore
 
 Solidcore policies are exported all together, for every Solidcore feature
@@ -185,7 +213,7 @@ Monitoring Rules (Unix)); `SCPolicies.list()` shows them.
 
 The [`examples/`](examples/) directory has short, runnable scripts covering
 McAfee Agent (General/Repository), ENS Threat Prevention (On-Access Scan,
-On-Demand Scan, process exclusions), ENS Firewall (Rules reporting), and
+On-Demand Scan, process exclusions), ENS Firewall (Rules reporting and editing), and
 Solidcore (Application Control, Integrity Monitor and Change Control policies,
 Rule Groups - some of them working directly against an ePO server).
 
@@ -199,6 +227,72 @@ docstring describing which ePO UI setting it maps to.
 Python 3.8 or later.
 
 ## History
+
+### 0.5.0 - 2026-10-03
+
+**Added**
+- Exploit Prevention exclusions, full read/write: `EPExclusion` (one class
+  method per Exclusion Type of the console: `illegal_api()`,
+  `file_process_registry()`, `service()`, `network_ips()`, `linux()`, with
+  the console checks) and `EPExecutable` (process / caller module: path, MD5,
+  signer); `get_exclusions()`, `set_exclusions()`, `add_exclusion()`,
+  `remove_exclusion()` on `ESTPPolicyExploitPrevention`. Every section kept
+  by ePO for current and older clients is written. Storage learnt from
+  exclusions created in the ePO 5.10 console; a policy built by the library
+  was imported, displayed and exported back unchanged.
+- Exploit Prevention Application Protection Rules, full read/write:
+  `EPAppRule` (Name, Status, Inclusion Status, Executables as
+  `APExecutable`, Notes) and `get_application_rules()`,
+  `get_application_rule()`, `add_application_rule()`,
+  `update_application_rule()`, `remove_application_rule()`. User-defined
+  rules can be created and removed; for Trellix-defined rules, as in the
+  console, everything but the name can be changed. Storage learnt from rules
+  created in the ePO 5.10 console; a policy with a rule added and a
+  Trellix-defined rule changed by the library was imported, displayed as
+  expected and both rules were exported back unchanged (on import ePO gives
+  new executable IDs and dates to the untouched Trellix-defined rules). See
+  `examples/exploit_prevention.py`.
+- ENS Firewall Rules, full read/write: the rule tree as objects (`FWRule`,
+  `FWGroup` with its rules, location `FWLocation` and timed group setting,
+  `FWNetwork` local/remote networks, `FWApplication` and `FWExecutable`,
+  schedule, `FWAddress` for the console address forms) and `get_rules()`,
+  `get_all_rules()`, `get_rule()`, `add_rule()`, `update_rule()`,
+  `remove_rule()`, `move_rule()` on `ESFWPolicyRules`. Storage learnt from a
+  rule, a group and a location created in the ePO 5.10 console; a policy
+  built by the library (a group with a sub group, rules with networks,
+  applications and schedule; console-made and Trellix rules changed, moved
+  and removed) was imported, displayed as expected and exported back
+  unchanged. The lengths are checked against the console fields (rule name
+  100 characters...): ePO imports a longer rule name but the console then
+  fails to open the policy. See `examples/firewall_rule_editing.py`.
+- `examples/firewall_recon_detection.py`: adds network reconnaissance
+  detection rules to an ENS Firewall Rules policy (MITRE ATT&CK T1046 /
+  T1595.001): Block + "Treat match as intrusion" + Log rules at the end of the
+  policy for the ports of the usual Windows Server, third-party and Linux
+  services not already allowed, so that a port scan raises intrusion events
+  in ePO without changing what the firewall blocks.
+- Markdown export: the Exploit Prevention Exclusions table (console columns)
+  and the details of each exclusion, instead of a count; the Executables
+  column of the Application Protection Rules now shows the paths as the
+  console does (`path;path;`).
+
+**Fixed**
+- ENS Firewall Rules: `load_policy()` crashed on an empty group (its sequence
+  has no rule count); the schedule of the Markdown export and of
+  `get_content()` showed Sunday when it wasn't selected (Sunday is the first
+  bit of the WeekMask, not the last) and always 0:00 - 23:59 (the times are
+  stored in ScheduleStart/End Hours/Minutes).
+- `Policies.new_policy()`: a copy of an Exploit Prevention policy with
+  exclusions kept their IDs, and the ePO console then failed to open the
+  imported copy ("An unexpected error occurred."). The copy now gets new
+  exclusion IDs.
+
+**Security**
+- Markdown export: policy, section, rule and subrule names written in headings
+  are now escaped (new `Policy.md_heading()`), like the table cells already
+  were. In 0.4.0 a name containing HTML (e.g. a rule named
+  `<img src=x onerror=...>` by someone allowed to edit the policy in ePO)
+  could be rendered as HTML by Markdown viewers that allow raw HTML.
 
 ### 0.4.0 - 2026-10-03
 

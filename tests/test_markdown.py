@@ -189,7 +189,7 @@ def test_ep_sections(ep_policy, capsys):
     assert '| 3718 |' not in text  # SignatureIsDeleted = 1
     assert '| 20001 | Google Chrome Launch | High | Yes | Yes | Enabled | Processes | ' \
         'User-defined | Windows |' in text
-    assert '| 1 | .Net Framework Host | Enabled | Include | \\*\\*\\\\PresentationHost.exe |' \
+    assert '| 1 | .Net Framework Host | Enabled | Include | \\*\\*\\\\PresentationHost.exe; |' \
         in text
     assert text.count('| Trellix-defined |\n') >= 179
 
@@ -241,3 +241,37 @@ def test_fw_sections(fw_policy):
     assert '| Location name | LAN |' in text
     assert '| Default gateway | 10.10.1.1<br>192.168.1.1 |' in text
     assert '| Last changed | By admin on 2014/03/28 at 19:00:00 UTC+01:00 |' in text
+
+
+def test_md_heading():
+    assert Policy.md_heading('<b>x</b>\n# y') == '&lt;b&gt;x&lt;/b&gt; # y'
+    assert Policy.md_heading(None) == ''
+
+
+def test_no_html_injection(oas_policy, fw_policy):
+    # Names come from the policy (anyone allowed to edit it in ePO): they
+    # must not inject HTML/Markdown in headings of the generated document.
+    payload = '<img src=x onerror=alert(1)>'
+    oas_policy.root.find('EPOPolicyObject').set('name', payload + '\n# Fake heading')
+    text = oas_policy.to_markdown()
+    assert text.startswith('# &lt;img src=x onerror=alert(1)&gt; # Fake heading\n')
+    assert '\n# Fake heading' not in text
+    fw_policy.load_policy()
+    rule = next(rule for rule in fw_policy.rul.values() if rule['Name'] == 'Allow DNS traffic')
+    rule['Name'] = payload
+    text = fw_policy.to_markdown()
+    assert '<img' not in text
+    assert '### 1.8 &lt;img src=x onerror=alert(1)&gt;\n' in text
+
+
+def test_no_html_injection_access_protection():
+    from mcafee_epo_policies import ESTPPolicyAccessProtection, APRule, APSubRule, APTarget
+    policy = ESTPPolicyAccessProtection()
+    policy.load_from_file(str(FIXTURES / 'ap_policy_rules.xml'))
+    rule = APRule('<img src=x onerror=alert(1)>', report=True)
+    rule.add_subrule(APSubRule('<script>alert(1)</script>', APSubRule.FILES, ['read'],
+                               targets=[APTarget('<b>a</b>')]))
+    policy.add_rule(rule)
+    text = policy.to_markdown()
+    assert '<img' not in text and '<script' not in text and '<b>' not in text
+    assert '#### Subrule: &lt;script&gt;alert(1)&lt;/script&gt;\n' in text
