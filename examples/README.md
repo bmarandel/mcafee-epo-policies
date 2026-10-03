@@ -20,6 +20,48 @@ policy out of a `Policies` collection, or from `Policy.load_from_file`).
   Settings, and makes sure the Low Risk profile is set to skip scanning
   entirely. Takes two arguments - see `python3 examples/set-proc-exclusions.py -h`.
 
+- **`solidcore_application_control.py`** - Solidcore Application Control
+  Rules (Windows): from a full Solidcore export, list the policies, then copy
+  one (keeping its shared Rule Groups) with an updater, a trusted directory
+  and an execution control rule added. Takes two arguments - the export file
+  and the name of the policy to copy.
+
+- **`solidcore_rule_groups.py`** - Solidcore Rule Groups: create a user
+  defined Application Control Rule Group and make a policy use it; writes
+  `rule_group.xml` (for `scor.rulegroup.import`) and `policy.xml` (for
+  `policy.importPolicy`, after the Rule Group). Takes three arguments - the
+  Solidcore export, the policy name and the new Rule Group name.
+
+### Working directly against ePO (Solidcore)
+
+These scripts export and import policies and Rule Groups with the ePO API,
+through the "mcafee-epo" client (`pip install mcafee-epo`, or
+`pip install mcafee_epo_policies[examples]`) and the shared helper
+`epo_solidcore.py`. Set the connection with `--url`/`--user` or the
+`EPO_URL`/`EPO_USER`/`EPO_PASSWORD` environment variables (the password is
+asked if not set); `--insecure` skips the server certificate check (lab
+servers), `--dry-run` only writes the XML files. They can be run again: they
+update what the previous run created.
+
+- **`solidcore_app_control_sample.py`** - retrieves the Application Control
+  Rules (Windows) policy "App CTRL Windows Sample" (created with the Trellix
+  and Windows Update Rule Groups if missing), adds one example item in each
+  tab (updaters, certificate with `--certificate`, installer, directory, user,
+  executable files, exclusion, filters, execution control), creates a
+  "Sample - Microsoft SQL Server" Rule Group and adds it to the policy.
+- **`solidcore_fim_windows_critical_files.py`** - creates the Integrity
+  Monitoring Rules (Windows) policy "FIM Windows Server 2019 Sample" from a
+  blank policy, with the Trellix "Windows 2019 Server (64 bit) Base Filters"
+  Rule Group and a new "Windows Critical Config Files" Rule Group: Windows
+  configuration and data files worth monitoring (no executables), with the
+  reasons documented in the script.
+- **`solidcore_change_control_critical_files.py`** - creates the Change
+  Control Rules (Windows) policy "CC Windows Critical Files Sample" from some
+  files of "Windows Critical Config Files" (run the FIM script first):
+  write-protects the name resolution files and the Run/RunOnce registry
+  keys. Read-Protect is deliberately not used: it is disabled by default
+  because of its impact on the system performance.
+
 Run any script with `-h`-style usage by calling it without arguments, e.g.:
 
 ```

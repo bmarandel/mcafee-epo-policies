@@ -1,0 +1,329 @@
+<ns0:EPOPolicySchema xmlns:ns0="mcafee-epo-policy">
+<EPOPolicyVerInfo vermjr="5" vermin="10" verrel="0" verbld="0" />
+<EPOPolicySettings name="Claude - AWL Options (Windows)::Settings (69096576-206D-416A-9113-DDBF6DD5F7D1)" featureid="SCOR_AWL" categoryid="AWL Options (Windows)" typeid="AWL Options (Windows)" param_int="0" param_str="">
+<Section name="General_Rule_1">
+<Setting name="banner_msg" value="Claude banner" />
+<Setting name="feature_name" value="self-approval" />
+<Setting name="timeout" value="120" />
+<Setting name="type" value="sadlg" />
+</Section>
+<Section name="General_Rule_10">
+<Setting name="enforce" value="false" />
+<Setting name="name" value="ob-logging" />
+<Setting name="status" value="1" />
+<Setting name="type" value="features" />
+</Section>
+<Section name="General_Rule_11">
+<Setting name="enforce" value="false" />
+<Setting name="name" value="pkg-ctrl" />
+<Setting name="status" value="1" />
+<Setting name="type" value="features" />
+</Section>
+<Section name="General_Rule_12">
+<Setting name="enforce" value="false" />
+<Setting name="name" value="pkg-ctrl-bypass" />
+<Setting name="status" value="1" />
+<Setting name="type" value="features" />
+</Section>
+<Section name="General_Rule_13">
+<Setting name="enforce" value="false" />
+<Setting name="name" value="pkg-ctrl-allow-uninstall" />
+<Setting name="status" value="1" />
+<Setting name="type" value="features" />
+</Section>
+<Section name="General_Rule_14">
+<Setting name="enforce" value="false" />
+<Setting name="name" value="sau" />
+<Setting name="status" value="0" />
+<Setting name="type" value="features" />
+</Section>
+<Section name="General_Rule_15">
+<Setting name="epo_url" value="https://10.0.0.1:8443/SOLIDCORE_META/showEvents.do?seqNo={seqno}&amp;hostName={hostname}&amp;detectedUTC={detectedUtc}" />
+<Setting name="event_msg" value="Trellix Application Control prevented installation of ActiveX Component of {company_name} by {user_name}" />
+<Setting name="event_name" value="ACTX_INSTALL_PREVENTED" />
+<Setting name="mailto" value="sec@claude.test" />
+<Setting name="raise_immediately" value="false" />
+<Setting name="show_in_popup" value="true" />
+<Setting name="subject" value="Claude subject" />
+<Setting name="type" value="event-cust-msg" />
+<Setting name="website" value="www.claude.test" />
+</Section>
+<Section name="General_Rule_16">
+<Setting name="epo_url" value="https://10.0.0.1:8443/SOLIDCORE_META/showEvents.do?seqNo={seqno}&amp;hostName={hostname}&amp;detectedUTC={detectedUtc}" />
+<Setting name="event_msg" value="Trellix Application Control blocked process {process_name} based on defined execution control rules." />
+<Setting name="event_name" value="BLOCKED_PROCESS_INTERACTIVE_MODE" />
+<Setting name="mailto" value="sec@claude.test" />
+<Setting name="raise_immediately" value="false" />
+<Setting name="show_in_popup" value="true" />
+<Setting name="subject" value="Claude subject" />
+<Setting name="type" value="event-cust-msg" />
+<Setting name="website" value="www.claude.test" />
+</Section>
+<Section name="General_Rule_17">
+<Setting name="epo_url" value="https://10.0.0.1:8443/SOLIDCORE_META/showEvents.do?seqNo={seqno}&amp;hostName={hostname}&amp;detectedUTC={detectedUtc}" />
+<Setting name="event_msg" value="Claude test {file_name}" />
+<Setting name="event_name" value="EXECUTION_DENIED" />
+<Setting name="mailto" value="sec@claude.test" />
+<Setting name="raise_immediately" value="false" />
+<Setting name="show_in_popup" value="false" />
+<Setting name="subject" value="Claude subject" />
+<Setting name="type" value="event-cust-msg" />
+<Setting name="website" value="www.claude.test" />
+</Section>
+<Section name="General_Rule_18">
+<Setting name="epo_url" value="https://10.0.0.1:8443/SOLIDCORE_META/showEvents.do?seqNo={seqno}&amp;hostName={hostname}&amp;detectedUTC={detectedUtc}" />
+<Setting name="event_msg" value="Trellix Application Control prevented an attempt to hijack the process {process_name} (Process Id: {process_id}, User: {user_name}), by executing code from an address outside of code pages region. Faulting address {faulting_addr}. The process was terminated." />
+<Setting name="event_name" value="NX_VIOLATION_DETECTED" />
+<Setting name="mailto" value="sec@claude.test" />
+<Setting name="raise_immediately" value="false" />
+<Setting name="show_in_popup" value="true" />
+<Setting name="subject" value="Claude subject" />
+<Setting name="type" value="event-cust-msg" />
+<Setting name="website" value="www.claude.test" />
+</Section>
+<Section name="General_Rule_19">
+<Setting name="epo_url" value="https://10.0.0.1:8443/SOLIDCORE_META/showEvents.do?seqNo={seqno}&amp;hostName={hostname}&amp;detectedUTC={detectedUtc}" />
+<Setting name="event_msg" value="Trellix Application Control prevented package modification by {file_name} by user {user_name}" />
+<Setting name="event_name" value="PKG_MODIFICATION_PREVENTED" />
+<Setting name="mailto" value="sec@claude.test" />
+<Setting name="raise_immediately" value="false" />
+<Setting name="show_in_popup" value="true" />
+<Setting name="subject" value="Claude subject" />
+<Setting name="type" value="event-cust-msg" />
+<Setting name="website" value="www.claude.test" />
+</Section>
+<Section name="General_Rule_2">
+<Setting name="enforce" value="true" />
+<Setting name="name" value="self-approval" />
+<Setting name="status" value="1" />
+<Setting name="type" value="features" />
+</Section>
+<Section name="General_Rule_20">
+<Setting name="epo_url" value="https://10.0.0.1:8443/SOLIDCORE_META/showEvents.do?seqNo={seqno}&amp;hostName={hostname}&amp;detectedUTC={detectedUtc}" />
+<Setting name="event_msg" value="Trellix Application Control prevented an attempt to execute file {file_name} at path {process_name}  by User: {user_name} based on defined execution control rules." />
+<Setting name="event_name" value="PREVENTED_FILE_EXECUTION" />
+<Setting name="mailto" value="sec@claude.test" />
+<Setting name="raise_immediately" value="false" />
+<Setting name="show_in_popup" value="true" />
+<Setting name="subject" value="Claude subject" />
+<Setting name="type" value="event-cust-msg" />
+<Setting name="website" value="www.claude.test" />
+</Section>
+<Section name="General_Rule_21">
+<Setting name="epo_url" value="https://10.0.0.1:8443/SOLIDCORE_META/showEvents.do?seqNo={seqno}&amp;hostName={hostname}&amp;detectedUTC={detectedUtc}" />
+<Setting name="event_msg" value="Trellix Application Control detected an attempt to exploit process {process_name} from address {faulting_addr}." />
+<Setting name="event_name" value="PROCESS_HIJACKED" />
+<Setting name="mailto" value="sec@claude.test" />
+<Setting name="raise_immediately" value="false" />
+<Setting name="show_in_popup" value="true" />
+<Setting name="subject" value="Claude subject" />
+<Setting name="type" value="event-cust-msg" />
+<Setting name="website" value="www.claude.test" />
+</Section>
+<Section name="General_Rule_22">
+<Setting name="epo_url" value="https://10.0.0.1:8443/SOLIDCORE_META/showEvents.do?seqNo={seqno}&amp;hostName={hostname}&amp;detectedUTC={detectedUtc}" />
+<Setting name="event_msg" value="Trellix Application Control prevented an attempt to read file {file_name} by process {process_name} (Process Id: {process_id}, User: {user_name})." />
+<Setting name="event_name" value="READ_DENIED" />
+<Setting name="mailto" value="sec@claude.test" />
+<Setting name="raise_immediately" value="false" />
+<Setting name="show_in_popup" value="true" />
+<Setting name="subject" value="Claude subject" />
+<Setting name="type" value="event-cust-msg" />
+<Setting name="website" value="www.claude.test" />
+</Section>
+<Section name="General_Rule_23">
+<Setting name="epo_url" value="https://10.0.0.1:8443/SOLIDCORE_META/showEvents.do?seqNo={seqno}&amp;hostName={hostname}&amp;detectedUTC={detectedUtc}" />
+<Setting name="event_msg" value="Trellix Application Control prevented an attempt to hijack the process {process_name} (Process Id: {process_id}, User: {user_name}), by executing code from non-relocatable dll {relocated_dll_name}. Faulting address {faulting_addr}." />
+<Setting name="event_name" value="VASR_VIOLATION_DETECTED" />
+<Setting name="mailto" value="sec@claude.test" />
+<Setting name="raise_immediately" value="false" />
+<Setting name="show_in_popup" value="true" />
+<Setting name="subject" value="Claude subject" />
+<Setting name="type" value="event-cust-msg" />
+<Setting name="website" value="www.claude.test" />
+</Section>
+<Section name="General_Rule_24">
+<Setting name="epo_url" value="https://10.0.0.1:8443/SOLIDCORE_META/showEvents.do?seqNo={seqno}&amp;hostName={hostname}&amp;detectedUTC={detectedUtc}" />
+<Setting name="event_msg" value="Trellix Application Control prevented an attempt to modify file {file_name} by process {process_name} (Process Id: {process_id}, User: {user_name})." />
+<Setting name="event_name" value="WRITE_DENIED" />
+<Setting name="mailto" value="sec@claude.test" />
+<Setting name="raise_immediately" value="false" />
+<Setting name="show_in_popup" value="true" />
+<Setting name="subject" value="Claude subject" />
+<Setting name="type" value="event-cust-msg" />
+<Setting name="website" value="www.claude.test" />
+</Section>
+<Section name="General_Rule_25">
+<Setting name="name" value="CriticalProcList" />
+<Setting name="type" value="config" />
+<Setting name="value" value="wordpad.exe,dllhost.exe,runonce.exe,regedit.exe,dwm.exe,winzip32.exe,notepad.exe,winlogon.exe,explorer.exe,xcopy.exe,taskhost.exe,lsass.exe,syswow64\userinit.exe,rundll32.exe,ntvdm.exe,system32\services.exe,system32\smss.exe,SearchProtocolHost.exe,firefox.exe,reg.exe,iexplore.exe,winzip64.exe,taskmgr.exe,cscript.exe,outlook.exe,vmwareuser.exe,SearchFilterHost.exe,system32\userinit.exe,wscript.exe,msiexec.exe,chrome.exe,regedt32.exe,system,winrar.exe,msedge.exe,system32\csrss.exe,plugin-container.exe,svchost.exe,cmd.exe,winword.exe" />
+</Section>
+<Section name="General_Rule_26">
+<Setting name="name" value="inv-exclude-base-os-files" />
+<Setting name="type" value="scor-extn-internal-setting" />
+<Setting name="value" value="true" />
+</Section>
+<Section name="General_Rule_27">
+<Setting name="name" value="PullInvTimeout" />
+<Setting name="type" value="config" />
+<Setting name="value" value="691200" />
+</Section>
+<Section name="General_Rule_28">
+<Setting name="name" value="InvDiffTimeout" />
+<Setting name="type" value="config" />
+<Setting name="value" value="14400" />
+</Section>
+<Section name="General_Rule_29">
+<Setting name="action" value="exclude" />
+<Setting name="condition-type_0" value="File" />
+<Setting name="condition-type_1" value="Mrsf" />
+<Setting name="match-type_0" value="begins" />
+<Setting name="match-type_1" value="equals" />
+<Setting name="pattern_0" value="%WINDIR%\" />
+<Setting name="pattern_1" value="yes" />
+<Setting name="rule-uuid" value="4feeed2d-5de8-47e5-8199-35a75d121b7b" />
+<Setting name="type" value="advanced-inv-exclusion" />
+</Section>
+<Section name="General_Rule_3">
+<Setting name="name" value="SelfApprovalOptions" />
+<Setting name="type" value="config" />
+<Setting name="value" value="0" />
+</Section>
+<Section name="General_Rule_30">
+<Setting name="action" value="exclude" />
+<Setting name="condition-type_0" value="File" />
+<Setting name="match-type_0" value="begins" />
+<Setting name="pattern_0" value="%WINDIR%\winsxs\" />
+<Setting name="rule-uuid" value="718a4d26-b107-4a1d-9d67-1eeeddd2f30f" />
+<Setting name="type" value="advanced-inv-exclusion" />
+</Section>
+<Section name="General_Rule_31">
+<Setting name="enforce" value="true" />
+<Setting name="name" value="tie-reputation" />
+<Setting name="status" value="1" />
+<Setting name="type" value="features" />
+</Section>
+<Section name="General_Rule_32">
+<Setting name="enforce" value="true" />
+<Setting name="name" value="gti-reputation" />
+<Setting name="status" value="0" />
+<Setting name="type" value="features" />
+</Section>
+<Section name="General_Rule_33">
+<Setting name="name" value="AllowBinariesByReputation" />
+<Setting name="type" value="config" />
+<Setting name="value" value="1" />
+</Section>
+<Section name="General_Rule_34">
+<Setting name="name" value="BlockBinariesByReputation" />
+<Setting name="type" value="config" />
+<Setting name="value" value="1" />
+</Section>
+<Section name="General_Rule_35">
+<Setting name="name" value="IsATDSubmissionAllowed" />
+<Setting name="type" value="config" />
+<Setting name="value" value="0" />
+</Section>
+<Section name="General_Rule_36">
+<Setting name="name" value="AllowReputationLevel" />
+<Setting name="type" value="config" />
+<Setting name="value" value="99" />
+</Section>
+<Section name="General_Rule_37">
+<Setting name="name" value="BlockReputationLevel" />
+<Setting name="type" value="config" />
+<Setting name="value" value="15" />
+</Section>
+<Section name="General_Rule_38">
+<Setting name="name" value="ATDReputationLevel" />
+<Setting name="type" value="config" />
+<Setting name="value" value="30" />
+</Section>
+<Section name="General_Rule_39">
+<Setting name="name" value="ATDFileSizeLimit" />
+<Setting name="type" value="config" />
+<Setting name="value" value="6" />
+</Section>
+<Section name="General_Rule_4">
+<Setting name="name" value="SaDlgConfig" />
+<Setting name="type" value="config" />
+<Setting name="value" value="1" />
+</Section>
+<Section name="General_Rule_40">
+<Setting name="name" value="TieEnterpriseLevelTrustEnable" />
+<Setting name="type" value="config" />
+<Setting name="value" value="1" />
+</Section>
+<Section name="General_Rule_41">
+<Setting name="name" value="GtiTargetURL" />
+<Setting name="type" value="config" />
+<Setting name="value" value="https://solidcore.rest.gti.trellix.com/1" />
+</Section>
+<Section name="General_Rule_42">
+<Setting name="name" value="GtiHostName" />
+<Setting name="type" value="config" />
+<Setting name="value" value="solidcore.rest.gti.trellix.com" />
+</Section>
+<Section name="General_Rule_43">
+<Setting name="name" value="GtiUserName" />
+<Setting name="type" value="config" />
+<Setting name="value" value="is-mace-prod" />
+</Section>
+<Section name="General_Rule_44">
+<Setting name="name" value="ExtraSetting_1" />
+<Setting name="type" value="config" />
+<Setting name="value" value="LyPxpZEpV6V8dhbAiSn1M465hTON6lsTFN30TJprKCc=" />
+</Section>
+<Section name="General_Rule_45">
+<Setting name="name" value="GtiRequestBodyMaxSizeBytes" />
+<Setting name="type" value="config" />
+<Setting name="value" value="16384" />
+</Section>
+<Section name="General_Rule_46">
+<Setting name="name" value="GtiServerPem1" />
+<Setting name="type" value="config" />
+<Setting name="value" value="-----BEGIN CERTIFICATE-----&#10;MIIFJTCCBMqgAwIBAgIQNGYPc8YVfN5Yb4UvCESpvDAKBggqhkjOPQQDAjBgMQsw&#10;CQYDVQQGEwJHQjEYMBYGA1UEChMPU2VjdGlnbyBMaW1pdGVkMTcwNQYDVQQDEy5T&#10;ZWN0aWdvIFB1YmxpYyBTZXJ2ZXIgQXV0aGVudGljYXRpb24gQ0EgT1YgRTM2MB4X&#10;DTI1MDcwMzAwMDAwMFoXDTI2MDcwMzIzNTk1OVowXjELMAkGA1UEBhMCVVMxEzAR&#10;BgNVBAgTCkNhbGlmb3JuaWExGTAXBgNVBAoTEE11c2FydWJyYSBVUyBMTEMxHzAd&#10;BgNVBAMMFioucmVzdC5ndGkudHJlbGxpeC5jb20wWTATBgcqhkjOPQIBBggqhkjO&#10;PQMBBwNCAASv2+h8jg3nYzCABXaIUHBa0aPvmeByLL89LC5TiwLOZK0BIlRygJ8z&#10;oXk/CqYR+btLpmkHN8RIfsfwV3Zbz0jNo4IDZjCCA2IwHwYDVR0jBBgwFoAUTDh6&#10;JTRr/fmPGmAcknGqZ/mCN+swHQYDVR0OBBYEFLYGsZDoNAeHjNr3BgO9ZCF29KC3&#10;MA4GA1UdDwEB/wQEAwIHgDAMBgNVHRMBAf8EAjAAMB0GA1UdJQQWMBQGCCsGAQUF&#10;BwMBBggrBgEFBQcDAjBKBgNVHSAEQzBBMDUGDCsGAQQBsjEBAgEDBDAlMCMGCCsG&#10;AQUFBwIBFhdodHRwczovL3NlY3RpZ28uY29tL0NQUzAIBgZngQwBAgIwVAYDVR0f&#10;BE0wSzBJoEegRYZDaHR0cDovL2NybC5zZWN0aWdvLmNvbS9TZWN0aWdvUHVibGlj&#10;U2VydmVyQXV0aGVudGljYXRpb25DQU9WRTM2LmNybDCBhAYIKwYBBQUHAQEEeDB2&#10;ME8GCCsGAQUFBzAChkNodHRwOi8vY3J0LnNlY3RpZ28uY29tL1NlY3RpZ29QdWJs&#10;aWNTZXJ2ZXJBdXRoZW50aWNhdGlvbkNBT1ZFMzYuY3J0MCMGCCsGAQUFBzABhhdo&#10;dHRwOi8vb2NzcC5zZWN0aWdvLmNvbTA3BgNVHREEMDAughYqLnJlc3QuZ3RpLnRy&#10;ZWxsaXguY29tghRyZXN0Lmd0aS50cmVsbGl4LmNvbTCCAX8GCisGAQQB1nkCBAIE&#10;ggFvBIIBawFpAHYA2AlVO5RPev/IFhlvlE+Fq7D4/F6HVSYPFdEucrtFSxQAAAGX&#10;z6hu6AAABAMARzBFAiATjz4ngcA1LC2+EJBLUn4VDvIYgVABZO9/cbDE7eOgwwIh&#10;AMSF8at8x+djNewjQT1GpJjZo9pKBpg8ygD0BhHdXYMbAHYArKswcGzr7IQx9BPS&#10;9JFfER5CJEOx8qaMTzwrO6ceAsMAAAGXz6hurgAABAMARzBFAiB+7+rWTrQC+bjV&#10;IclU4cwL4CL993fKBhz7etcAaY1vaQIhAI6Db8dZh8PvTUaBzyhpMoDQ2Y1eyNnq&#10;EWtR2KQKa3MPAHcA1219ENGn9XfCx+lf1wC/+YLJM1pl4dCzAXMXwMjFaXcAAAGX&#10;z6huewAABAMASDBGAiEAlgObbMkoFJbEHcGoZlANzP/0HSe10Wz1fMGXK6pusagC&#10;IQCxew+0TpfO0/A562wXhkvxTM3Nr8XfQ8gW+waN53TG9TAKBggqhkjOPQQDAgNJ&#10;ADBGAiEA1WfGUPfwp4g5DSXlELSt+excXJTvzIAGxsFDuVhfGBYCIQCYelbzf30M&#10;pVhIuQpWylP8evTH+hP4dLHfdw9KYOblag==&#10;-----END CERTIFICATE-----&#10;" />
+</Section>
+<Section name="General_Rule_5">
+<Setting name="enforce" value="false" />
+<Setting name="name" value="execution-control" />
+<Setting name="status" value="1" />
+<Setting name="type" value="features" />
+</Section>
+<Section name="General_Rule_6">
+<Setting name="enforce" value="false" />
+<Setting name="name" value="mp" />
+<Setting name="status" value="1" />
+<Setting name="type" value="features" />
+</Section>
+<Section name="General_Rule_7">
+<Setting name="enforce" value="false" />
+<Setting name="name" value="mp-casp" />
+<Setting name="status" value="1" />
+<Setting name="type" value="features" />
+</Section>
+<Section name="General_Rule_8">
+<Setting name="enforce" value="false" />
+<Setting name="name" value="mp-nx" />
+<Setting name="status" value="1" />
+<Setting name="type" value="features" />
+</Section>
+<Section name="General_Rule_9">
+<Setting name="enforce" value="false" />
+<Setting name="name" value="mp-vasr" />
+<Setting name="status" value="1" />
+<Setting name="type" value="features" />
+</Section>
+<Section name="scor_info">
+<Setting name="group_name" value="My Rules" />
+<Setting name="group_type" value="awl_options" />
+<Setting name="platforms" value="WIN" />
+<Setting name="readOnly" value="false" />
+</Section>
+<Section name="scor_meta">
+<Setting name="enforce-features-from-policy" value="false" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicyObject name="Claude - AWL Options (Windows)" featureid="SCOR_AWL" categoryid="AWL Options (Windows)" serverid="W2022EPO510" editflag="0" typeid="AWL Options (Windows)">
+<description /><PolicySettings>Claude - AWL Options (Windows)::Settings (69096576-206D-416A-9113-DDBF6DD5F7D1)</PolicySettings>
+</EPOPolicyObject></ns0:EPOPolicySchema>

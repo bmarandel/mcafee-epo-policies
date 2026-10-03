@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mcafee_epo_policies"
-version = "0.2.0"
+version = "0.3.0"
 description = "McAfee ePolicy Orchestrator Policies Python Class Library"
 readme = "README.md"
 license = "Apache-2.0"
@@ -23,6 +23,8 @@ Homepage = "https://github.com/bmarandel/mcafee-epo-policies"
 
 [project.optional-dependencies]
 test = ["pytest>=7"]
+# For the examples working directly against an ePO server (examples/epo_solidcore.py).
+examples = ["mcafee-epo>=1.1"]
 
 [tool.setuptools.packages.find]
 include = ["mcafee_epo_policies*"]

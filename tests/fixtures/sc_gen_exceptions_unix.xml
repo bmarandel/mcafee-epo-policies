@@ -1,0 +1,50 @@
+<ns0:EPOPolicySchema xmlns:ns0="mcafee-epo-policy">
+<EPOPolicyVerInfo vermjr="5" vermin="10" verrel="0" verbld="0" />
+<EPOPolicySettings name="Claude - Exception Rules (Unix)::Settings (BACE2CAB-F58A-4081-984E-A1E49A35C1B3)" featureid="SCOR_GEN" categoryid="Attr Rules (Unix)" typeid="Attr Rules (Unix)" param_int="0" param_str="">
+<Section name="General_Rule_1">
+<Setting name="always_auth" value="false" />
+<Setting name="always_unauth" value="false" />
+<Setting name="file" value="/opt/NAI/LinuxShield/libexec/nailslogd" />
+<Setting name="is_general_attr" value="true" />
+<Setting name="process_ctx_bypass" value="true" />
+<Setting name="type" value="attr" />
+</Section>
+<Section name="General_Rule_2">
+<Setting name="always_auth" value="false" />
+<Setting name="always_unauth" value="false" />
+<Setting name="file" value="/opt/NAI/LinuxShield/libexec/nailsd" />
+<Setting name="is_general_attr" value="true" />
+<Setting name="process_ctx_bypass" value="true" />
+<Setting name="type" value="attr" />
+</Section>
+<Section name="General_Rule_3">
+<Setting name="always_auth" value="false" />
+<Setting name="always_unauth" value="false" />
+<Setting name="file" value="/opt/NAI/LinuxShield/libexec/logepo" />
+<Setting name="is_general_attr" value="true" />
+<Setting name="process_ctx_bypass" value="true" />
+<Setting name="type" value="attr" />
+</Section>
+<Section name="General_Rule_4">
+<Setting name="always_auth" value="false" />
+<Setting name="always_unauth" value="false" />
+<Setting name="file" value="/opt/NAI/LinuxShield/libexec/ods" />
+<Setting name="is_general_attr" value="true" />
+<Setting name="process_ctx_bypass" value="true" />
+<Setting name="type" value="attr" />
+</Section>
+<Section name="General_Rule_5">
+<Setting name="path" value="/opt/claudetest" />
+<Setting name="skipSolidification" value="true" />
+<Setting name="type" value="skiplist" />
+</Section>
+<Section name="scor_info">
+<Setting name="group_name" value="Attributes" />
+<Setting name="group_type" value="attr" />
+<Setting name="platforms" value="UNIX" />
+<Setting name="readOnly" value="true" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicyObject name="Claude - Exception Rules (Unix)" featureid="SCOR_GEN" categoryid="Attr Rules (Unix)" serverid="W2022EPO510" editflag="0" typeid="Attr Rules (Unix)">
+<description /><PolicySettings>Claude - Exception Rules (Unix)::Settings (BACE2CAB-F58A-4081-984E-A1E49A35C1B3)</PolicySettings>
+</EPOPolicyObject></ns0:EPOPolicySchema>

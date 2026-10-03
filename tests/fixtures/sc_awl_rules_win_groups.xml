@@ -1,0 +1,295 @@
+<ns0:EPOPolicySchema xmlns:ns0="mcafee-epo-policy">
+<EPOPolicyVerInfo vermjr="5" vermin="10" verrel="0" verbld="0" />
+<EPOPolicySettings name="Claude - RG Copy IE (Windows)2797c6d5-4934-44fe-a620-40fc09bfa576" featureid="SCOR_AWL" categoryid="AWL Rules (Windows)" typeid="AWL Rules (Windows)" param_int="0" param_str="">
+<Section name="General_Rule_0">
+<Setting name="always_auth" value="false" />
+<Setting name="always_unauth" value="false" />
+<Setting name="anti_debugging_bypass" value="false" />
+<Setting name="casp_bypass" value="false" />
+<Setting name="dep_bypass" value="true" />
+<Setting name="file" value="%ProgramFiles(x86)%\Internet Explorer\iexplore.exe" />
+<Setting name="full_crawl" value="false" />
+<Setting name="installer_detection_bypass" value="false" />
+<Setting name="is_general_attr" value="true" />
+<Setting name="mangling_bypass" value="false" />
+<Setting name="process_ctx_bypass" value="false" />
+<Setting name="process_ctx_reg_bypass" value="false" />
+<Setting name="rebase_dll" value="false" />
+<Setting name="type" value="attr" />
+<Setting name="vasr_rand_bypass" value="false" />
+<Setting name="vasr_reloc_bypass" value="false" />
+</Section>
+<Section name="General_Rule_1">
+<Setting name="always_auth" value="false" />
+<Setting name="always_unauth" value="false" />
+<Setting name="anti_debugging_bypass" value="false" />
+<Setting name="casp_bypass" value="false" />
+<Setting name="dep_bypass" value="true" />
+<Setting name="file" value="%ProgramFiles(x86)%\Internet Explorer\ieinstal.exe" />
+<Setting name="full_crawl" value="false" />
+<Setting name="installer_detection_bypass" value="false" />
+<Setting name="is_general_attr" value="true" />
+<Setting name="mangling_bypass" value="false" />
+<Setting name="process_ctx_bypass" value="false" />
+<Setting name="process_ctx_reg_bypass" value="false" />
+<Setting name="rebase_dll" value="false" />
+<Setting name="type" value="attr" />
+<Setting name="vasr_rand_bypass" value="false" />
+<Setting name="vasr_reloc_bypass" value="false" />
+</Section>
+<Section name="scor_info">
+<Setting name="group_name" value="Claude - RG Copy IE (Windows)" />
+<Setting name="group_type" value="application_control" />
+<Setting name="platforms" value="WIN" />
+<Setting name="readOnly" value="true" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - RG Lib AWL (Windows)64a3e20d-8b6a-44c9-a915-ae17729b8651" featureid="SCOR_AWL" categoryid="AWL Rules (Windows)" typeid="AWL Rules (Windows)" param_int="0" param_str="">
+<Section name="General_Rule_0">
+<Setting name="binary" value="C:\LibRG\up.exe" />
+<Setting name="caseSensitive" value="false" />
+<Setting name="inherit" value="true" />
+<Setting name="log" value="true" />
+<Setting name="parent" value="svc.exe" />
+<Setting name="tag" value="LibRGUpdater" />
+<Setting name="type" value="updater-binary" />
+</Section>
+<Section name="General_Rule_1">
+<Setting name="path" value="C:\LibRG\Data\" />
+<Setting name="skipChangeTracking" value="false" />
+<Setting name="skipDenyWrite" value="false" />
+<Setting name="skipFileOperation" value="false" />
+<Setting name="skipFileOperation_f" value="false" />
+<Setting name="skipRegistry" value="false" />
+<Setting name="skipSolidification" value="true" />
+<Setting name="skipVolume" value="false" />
+<Setting name="type" value="skiplist" />
+</Section>
+<Section name="General_Rule_2">
+<Setting name="action" value="block" />
+<Setting name="process-name" value="mshta.exe" />
+<Setting name="rule-description" value="LibRG block mshta" />
+<Setting name="type" value="execution-control" />
+</Section>
+<Section name="General_Rule_3">
+<Setting name="action" value="exclude" />
+<Setting name="condition-type_0" value="Process" />
+<Setting name="match-type_0" value="equals" />
+<Setting name="pattern_0" value="librg.exe" />
+<Setting name="rule-uuid" value="1a91d7bb-d0af-49ce-865a-43601b48a905" />
+<Setting name="type" value="ob-exclusion" />
+</Section>
+<Section name="General_Rule_4">
+<Setting name="action" value="exclude" />
+<Setting name="condition-type_0" value="Process" />
+<Setting name="match-type_0" value="equals" />
+<Setting name="pattern_0" value="librg.exe" />
+<Setting name="rule-uuid" value="1a91d7bb-d0af-49ce-865a-43601b48a905" />
+<Setting name="type" value="mon-advanced" />
+</Section>
+<Section name="scor_info">
+<Setting name="group_name" value="Claude - RG Lib AWL (Windows)" />
+<Setting name="group_type" value="application_control" />
+<Setting name="platforms" value="WIN" />
+<Setting name="readOnly" value="true" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - RG Policy (Windows)::Settings (1CA4CC5D-2BA0-4135-85B0-1A9739C513F8)" featureid="SCOR_AWL" categoryid="AWL Rules (Windows)" typeid="AWL Rules (Windows)" param_int="0" param_str="">
+<Section name="General_Rule_0">
+<Setting name="binary" value="C:\E2E\up.exe" />
+<Setting name="caseSensitive" value="false" />
+<Setting name="inherit" value="true" />
+<Setting name="library" value="e2e.dll" />
+<Setting name="log" value="false" />
+<Setting name="tag" value="E2EUpdater" />
+<Setting name="type" value="updater-binary" />
+</Section>
+<Section name="General_Rule_1">
+<Setting name="cksum" value="2222222222222222222222222222222222222222" />
+<Setting name="ruletype" value="checksum" />
+<Setting name="showas" value="updater" />
+<Setting name="tag" value="E2EUpdaterSha1" />
+<Setting name="type" value="installer" />
+</Section>
+<Section name="General_Rule_10">
+<Setting name="action" value="exclude" />
+<Setting name="condition-type_0" value="Process" />
+<Setting name="condition-type_1" value="Event" />
+<Setting name="match-type_0" value="equals" />
+<Setting name="match-type_1" value="equals" />
+<Setting name="pattern_0" value="e2e.exe" />
+<Setting name="pattern_1" value="WRITE_DENIED" />
+<Setting name="rule-uuid" value="e841ff65-35cc-4bf9-ad5a-e188f31e31e3" />
+<Setting name="type" value="ob-exclusion" />
+</Section>
+<Section name="General_Rule_11">
+<Setting name="action" value="exclude" />
+<Setting name="condition-type_0" value="Process" />
+<Setting name="condition-type_1" value="Event" />
+<Setting name="match-type_0" value="equals" />
+<Setting name="match-type_1" value="equals" />
+<Setting name="pattern_0" value="e2e.exe" />
+<Setting name="pattern_1" value="WRITE_DENIED" />
+<Setting name="rule-uuid" value="e841ff65-35cc-4bf9-ad5a-e188f31e31e3" />
+<Setting name="type" value="mon-advanced" />
+</Section>
+<Section name="General_Rule_12">
+<Setting name="action" value="exclude" />
+<Setting name="condition-type_0" value="vendor-name" />
+<Setting name="match-type_0" value="equals" />
+<Setting name="pattern_0" value="Claude" />
+<Setting name="rule-uuid" value="2edc4e0c-e0ae-4d6a-ac1b-6b9e7b8380c7" />
+<Setting name="type" value="advanced-inv-exclusion" />
+</Section>
+<Section name="General_Rule_13">
+<Setting name="action" value="block" />
+<Setting name="condition-type_0" value="command_line" />
+<Setting name="condition-type_1" value="user" />
+<Setting name="match-type_0" value="matches" />
+<Setting name="match-type_1" value="notEquals" />
+<Setting name="pattern_0" value=".*-enc.*" />
+<Setting name="pattern_1" value="LAB\admin" />
+<Setting name="process-name" value="powershell.exe" />
+<Setting name="rule-description" value="E2E block encoded PS" />
+<Setting name="type" value="execution-control" />
+</Section>
+<Section name="General_Rule_14">
+<Setting name="block_interactive" value="true" />
+<Setting name="file" value="cmd.exe" />
+<Setting name="type" value="attr" />
+</Section>
+<Section name="General_Rule_2">
+<Setting name="id" value="1" />
+<Setting name="pem_1" value="-----BEGIN CERTIFICATE-----&#10;MIIG/TCCBOWgAwIBAgIMXM0PuYws0AKVlijZMA0GCSqGSIb3DQEBCwUAMFkxCzAJ&#10;BgNVBAYTAkJFMRkwFwYDVQQKExBHbG9iYWxTaWduIG52LXNhMS8wLQYDVQQDEyZH&#10;bG9iYWxTaWduIEdDQyBSNDUgQ29kZVNpZ25pbmcgQ0EgMjAyMDAeFw0yMjA0MDUw&#10;NzUwNDVaFw0yNTA0MDUwNzUwNDVaMGsxCzAJBgNVBAYTAlVTMREwDwYDVQQIEwhE&#10;ZWxhd2FyZTETMBEGA1UEBxMKTmV3IENhc3RsZTEZMBcGA1UEChMQTVVTQVJVQlJB&#10;IFVTIExMQzEZMBcGA1UEAxMQTVVTQVJVQlJBIFVTIExMQzCCAiIwDQYJKoZIhvcN&#10;AQEBBQADggIPADCCAgoCggIBAKbb7RKtxoD6PLAciCM0l+AJm0btHZ0IDYpYh2tc&#10;IA8frHIj3s2inlmxUV+5oGjj3Rux5h9Z9ACPWWivuSRv/kNLzoRTl+2R8zGnya5r&#10;VsWhwSAiBwjo3FT2a32SZodT1nGdnK69S24IyhA+GcaUFoix9NvrwuONP5L4e7b5&#10;UZ9O+XaRopwVTEjaiUKtjJbVl/I/m5Rsd7oUY/hmOj3WIOghmKwUG4rHfKLrCcOU&#10;AI/YqUXtHigvJOyGvsL/rDReWjV6Jl8FJMEnMBI8s0OjMRyp+ksTqBd9GWH38Tw8&#10;HD9XNM4lZKgB7OiVJbijjtXhMYdYX/JRd/Y1H6X+4A6ZUGEGUphjK/7wl43L8TYD&#10;PBO6+PN+PyCjbGlpH5FD77ocppsFdx1rdQ0ZsIZL3hH2RItgbsGNKkHe66qm6KQR&#10;nNnlmF3FyD+oAjKPSit+VEyzGOf/N4akSr/QA98ZRirKsHEJqlYR8a5J2Ly3Vz79&#10;vaiT6fTZXnPZMMl3utxlbuj3if9PshpRZNb/tS2R2fFjezWKX3bnBGrbB8QT+TyI&#10;bmm0bWfbPIMRIOX1Rf2BXZWVBaMyeQHinqY1/IUP0QZkFwoiH3s06m5tbiz0TKBP&#10;B/C/SyDb3tyc/QkdONOwfTwq1F7Y08Uu3gG6UlNXTjr+omh5b2SP50ux2jR9P0rG&#10;vnQZAgMBAAGjggGxMIIBrTAOBgNVHQ8BAf8EBAMCB4AwgZsGCCsGAQUFBwEBBIGO&#10;MIGLMEoGCCsGAQUFBzAChj5odHRwOi8vc2VjdXJlLmdsb2JhbHNpZ24uY29tL2Nh&#10;Y2VydC9nc2djY3I0NWNvZGVzaWduY2EyMDIwLmNydDA9BggrBgEFBQcwAYYxaHR0&#10;cDovL29jc3AuZ2xvYmFsc2lnbi5jb20vZ3NnY2NyNDVjb2Rlc2lnbmNhMjAyMDBW&#10;BgNVHSAETzBNMEEGCSsGAQQBoDIBMjA0MDIGCCsGAQUFBwIBFiZodHRwczovL3d3&#10;dy5nbG9iYWxzaWduLmNvbS9yZXBvc2l0b3J5LzAIBgZngQwBBAEwCQYDVR0TBAIw&#10;ADBFBgNVHR8EPjA8MDqgOKA2hjRodHRwOi8vY3JsLmdsb2JhbHNpZ24uY29tL2dz&#10;Z2NjcjQ1Y29kZXNpZ25jYTIwMjAuY3JsMBMGA1UdJQQMMAoGCCsGAQUFBwMDMB8G&#10;A1UdIwQYMBaAFNqzjcAkkKNrd9MMoFndIWdkdgt4MB0GA1UdDgQWBBSgqY7PKBJR&#10;hT5TisruAL9AuZn9tTANBgkqhkiG9w0BAQsFAAOCAgEACPwtfEuKcetGOLGkuDyH&#10;PJjauLHHNzuQHA1es4ZjxvNtYwNb3WU8D00UA5+hjo7r9J5kqlXSbxgr7QqZLDR1&#10;z5shAN1qFa1VH6eWNbWBcN05DhGcr1LyUpp146Mi6o1j+5AArSrVMt8fYmZBMniy&#10;JfCowjQRZ0Xz1xn26iX9TT9qnj/8oUWet0rRiSi/rHz9ZG1bDjR6JlcOXETFJErl&#10;NVT/ZkD1Jc2GseQYIk/u445LFqzkpd9xM/3qj+dDT2fVefGSQXHeaGDXGLr5tuSU&#10;cYJAX" />
+<Setting name="pem_2" value="cLQGdbZQXQGphSBGBbAHujD481Px3Hs6rqzMvGbd0sBW8ATPS7xmL+TFGQo&#10;NBdnlrn7Okt6EKtkNBHpkpFzm8g3zKMoMqeuWUGJk/c71gPaRlNAJO3ak90m4vo8&#10;uKKozd95y5kAH/xQ9YFa3sh5h8pMwfYAhqYTqnHcPoChuTEpWYis/EPVdZux2rVH&#10;7a6L3ygRWmfmpUNQk+7ON1w3qhqB0Zuyd6HhHDeO4ICARkwP3a6l0ifTQetGaZAU&#10;vn9twSjqEBgBrwfQZzs6TlZMKhIXBLY0Vu5Uyh8eLHv0NoKt/sdY1qglXjwqF8Xw&#10;+/rHqE685O5Ut9hsj7BK6rEviOMYub4Khf5idWmJRg49k9dilGvcDJP9B94NVLA4&#10;q0w1u1rhtKILYxvPJkETwfA=&#10;-----END CERTIFICATE-----&#10;" />
+<Setting name="pem_length" value="2484" />
+<Setting name="tag" value="E2ECert" />
+<Setting name="type" value="cert" />
+<Setting name="updater" value="Yes" />
+</Section>
+<Section name="General_Rule_3">
+<Setting name="cksum" value="3333333333333333333333333333333333333333" />
+<Setting name="ruletype" value="checksum" />
+<Setting name="tag" value="E2EInstaller" />
+<Setting name="type" value="installer" />
+<Setting name="vendor" value="Claude" />
+<Setting name="version" value="E2E Setup\2.0" />
+</Section>
+<Section name="General_Rule_4">
+<Setting name="action" value="Include" />
+<Setting name="path" value="C:\E2E\Trusted" />
+<Setting name="type" value="trusted" />
+<Setting name="updater" value="true" />
+</Section>
+<Section name="General_Rule_5">
+<Setting name="activeDirectoryId" value="" />
+<Setting name="displayName" value="E2E User" />
+<Setting name="groupDN" value="" />
+<Setting name="netbiosName" value="" />
+<Setting name="tag" value="E2EUser" />
+<Setting name="type" value="updater-user" />
+<Setting name="user" value="LAB\e2euser" />
+</Section>
+<Section name="General_Rule_6">
+<Setting name="action" value="Allow" />
+<Setting name="cksum256" value="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" />
+<Setting name="tag" value="E2EAllowSha256" />
+<Setting name="type" value="auth-cksum" />
+</Section>
+<Section name="General_Rule_7">
+<Setting name="always_unauth" value="true" />
+<Setting name="file" value="e2eban.exe" />
+<Setting name="tag" value="E2EBanName" />
+<Setting name="type" value="attr" />
+</Section>
+<Section name="General_Rule_8">
+<Setting name="path" value="C:\E2E\wp" />
+<Setting name="skipChangeTracking" value="false" />
+<Setting name="skipDenyWrite" value="true" />
+<Setting name="skipFileOperation" value="false" />
+<Setting name="skipFileOperation_f" value="false" />
+<Setting name="skipRegistry" value="false" />
+<Setting name="skipSolidification" value="false" />
+<Setting name="skipVolume" value="false" />
+<Setting name="type" value="skiplist" />
+</Section>
+<Section name="General_Rule_9">
+<Setting name="always_auth" value="false" />
+<Setting name="always_unauth" value="false" />
+<Setting name="anti_debugging_bypass" value="false" />
+<Setting name="casp_bypass" value="false" />
+<Setting name="ccv_bypass" value="false" />
+<Setting name="dep_bypass" value="true" />
+<Setting name="dep_bypass_inherit" value="false" />
+<Setting name="file" value="e2e.exe" />
+<Setting name="full_crawl" value="false" />
+<Setting name="installer_detection_bypass" value="false" />
+<Setting name="is_general_attr" value="true" />
+<Setting name="mangling_bypass" value="false" />
+<Setting name="process_ctx_bypass" value="false" />
+<Setting name="process_ctx_reg_bypass" value="false" />
+<Setting name="rebase_dll" value="false" />
+<Setting name="relocate_dll" value="false" />
+<Setting name="type" value="attr" />
+<Setting name="uninstall_bypass" value="false" />
+<Setting name="vasr_force_reloc_bypass" value="false" />
+<Setting name="vasr_rand_bypass" value="false" />
+<Setting name="vasr_reloc_bypass" value="false" />
+</Section>
+<Section name="scor_info">
+<Setting name="group_name" value="My Rules" />
+<Setting name="group_type" value="application_control" />
+<Setting name="platforms" value="WIN" />
+<Setting name="readOnly" value="false" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Internet Explorer (32 bit)56311465-6748-4491-bbb5-a35c0110663e_(4)_" featureid="SCOR_AWL" categoryid="AWL Rules (Windows)" typeid="AWL Rules (Windows)" param_int="0" param_str="">
+<Section name="General_Rule_101">
+<Setting name="always_auth" value="false" />
+<Setting name="always_unauth" value="false" />
+<Setting name="anti_debugging_bypass" value="false" />
+<Setting name="casp_bypass" value="false" />
+<Setting name="dep_bypass" value="true" />
+<Setting name="file" value="%ProgramFiles(x86)%\Internet Explorer\iexplore.exe" />
+<Setting name="full_crawl" value="false" />
+<Setting name="installer_detection_bypass" value="false" />
+<Setting name="is_general_attr" value="true" />
+<Setting name="mangling_bypass" value="false" />
+<Setting name="process_ctx_bypass" value="false" />
+<Setting name="process_ctx_reg_bypass" value="false" />
+<Setting name="rebase_dll" value="false" />
+<Setting name="type" value="attr" />
+<Setting name="vasr_rand_bypass" value="false" />
+<Setting name="vasr_reloc_bypass" value="false" />
+</Section>
+<Section name="General_Rule_102">
+<Setting name="always_auth" value="false" />
+<Setting name="always_unauth" value="false" />
+<Setting name="anti_debugging_bypass" value="false" />
+<Setting name="casp_bypass" value="false" />
+<Setting name="dep_bypass" value="true" />
+<Setting name="file" value="%ProgramFiles(x86)%\Internet Explorer\ieinstal.exe" />
+<Setting name="full_crawl" value="false" />
+<Setting name="installer_detection_bypass" value="false" />
+<Setting name="is_general_attr" value="true" />
+<Setting name="mangling_bypass" value="false" />
+<Setting name="process_ctx_bypass" value="false" />
+<Setting name="process_ctx_reg_bypass" value="false" />
+<Setting name="rebase_dll" value="false" />
+<Setting name="type" value="attr" />
+<Setting name="vasr_rand_bypass" value="false" />
+<Setting name="vasr_reloc_bypass" value="false" />
+</Section>
+<Section name="scor_info">
+<Setting name="group_name" value="Internet Explorer (32 bit)" />
+<Setting name="group_type" value="application_control" />
+<Setting name="platforms" value="WIN" />
+<Setting name="readOnly" value="true" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicyObject name="Claude - RG Policy (Windows)" featureid="SCOR_AWL" categoryid="AWL Rules (Windows)" serverid="W2022EPO510" editflag="0" typeid="AWL Rules (Windows)">
+<description /><PolicySettings>Claude - RG Copy IE (Windows)2797c6d5-4934-44fe-a620-40fc09bfa576</PolicySettings>
+<PolicySettings>Claude - RG Lib AWL (Windows)64a3e20d-8b6a-44c9-a915-ae17729b8651</PolicySettings>
+<PolicySettings>Claude - RG Policy (Windows)::Settings (1CA4CC5D-2BA0-4135-85B0-1A9739C513F8)</PolicySettings>
+<PolicySettings>Internet Explorer (32 bit)56311465-6748-4491-bbb5-a35c0110663e_(4)_</PolicySettings>
+</EPOPolicyObject></ns0:EPOPolicySchema>

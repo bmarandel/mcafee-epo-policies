@@ -1,0 +1,222 @@
+<ns0:EPOPolicySchema xmlns:ns0="mcafee-epo-policy">
+<EPOPolicyVerInfo vermjr="5" vermin="10" verrel="0" verbld="0" />
+<EPOPolicySettings name="Claude - Config Import Test::Settings (26EEE565-DE9C-4E3D-880A-6E923F769D43)" featureid="SCOR_GEN" categoryid="Lockdown Rules" typeid="Lockdown Rules" param_int="0" param_str="">
+<Section name="General_Rule_0">
+<Setting name="password" value="0123456789abcdef0123456789abcdef01234567" />
+<Setting name="password_sha512" value="0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef" />
+<Setting name="salt" value="00000000-0000-0000-0000-000000000000" />
+<Setting name="type" value="local-access-passwd" />
+</Section>
+<Section name="General_Rule_1">
+<Setting name="name" value="FileDiffMaxSize" />
+<Setting name="type" value="config" />
+<Setting name="value" value="1000" />
+</Section>
+<Section name="General_Rule_10">
+<Setting name="name" value="ObSupplierCacheSizeOnWakeup" />
+<Setting name="type" value="config" />
+<Setting name="value" value="700" />
+</Section>
+<Section name="General_Rule_11">
+<Setting name="enforce" value="true" />
+<Setting name="name" value="throttle" />
+<Setting name="status" value="1" />
+<Setting name="type" value="features" />
+</Section>
+<Section name="General_Rule_12">
+<Setting name="enforce" value="true" />
+<Setting name="name" value="throttle-evt" />
+<Setting name="status" value="0" />
+<Setting name="type" value="features" />
+</Section>
+<Section name="General_Rule_13">
+<Setting name="enforce" value="true" />
+<Setting name="name" value="throttle-ob" />
+<Setting name="status" value="1" />
+<Setting name="type" value="features" />
+</Section>
+<Section name="General_Rule_14">
+<Setting name="enforce" value="true" />
+<Setting name="name" value="throttle-inv" />
+<Setting name="status" value="1" />
+<Setting name="type" value="features" />
+</Section>
+<Section name="General_Rule_15">
+<Setting name="attempts" value="4" />
+<Setting name="attempts_within_minutes" value="30" />
+<Setting name="lockdowntime_minutes" value="30" />
+<Setting name="status" value="1" />
+<Setting name="type" value="local-cli-lock" />
+</Section>
+<Section name="General_Rule_17">
+<Setting name="name" value="logFileSize" />
+<Setting name="type" value="config" />
+<Setting name="value" value="5000" />
+</Section>
+<Section name="General_Rule_18">
+<Setting name="name" value="logFileNum" />
+<Setting name="type" value="config" />
+<Setting name="value" value="7" />
+</Section>
+<Section name="General_Rule_19">
+<Setting name="name" value="invMergeTimeout" />
+<Setting name="type" value="config" />
+<Setting name="value" value="1900" />
+</Section>
+<Section name="General_Rule_2">
+<Setting name="name" value="FileDiffAttrOnlyTypes" />
+<Setting name="type" value="config" />
+<Setting name="value" value="zip,7z,rar,gz,tgz,jpg,gif,tiff,png,bmp,pdf,tar,bz,bz2,exe,dll,sys,jar" />
+</Section>
+<Section name="General_Rule_20">
+<Setting name="name" value="invMergeBySizePeriod" />
+<Setting name="type" value="config" />
+<Setting name="value" value="150" />
+</Section>
+<Section name="General_Rule_21">
+<Setting name="name" value="checkCertTrustWithVTP" />
+<Setting name="type" value="config" />
+<Setting name="value" value="1" />
+</Section>
+<Section name="General_Rule_22">
+<Setting name="name" value="allowFailedCertTrustWithVTP" />
+<Setting name="type" value="config" />
+<Setting name="value" value="0" />
+</Section>
+<Section name="General_Rule_23">
+<Setting name="name" value="catalogCertExtractionDisabled" />
+<Setting name="type" value="config" />
+<Setting name="value" value="0" />
+</Section>
+<Section name="General_Rule_24">
+<Setting name="name" value="embeddedCertExtractionDisabled" />
+<Setting name="type" value="config" />
+<Setting name="value" value="0" />
+</Section>
+<Section name="General_Rule_25">
+<Setting name="name" value="pathsWritableOnlyByUpdater" />
+<Setting name="type" value="config" />
+<Setting name="value" value="NA" />
+</Section>
+<Section name="General_Rule_26">
+<Setting name="name" value="mpCompat" />
+<Setting name="type" value="config" />
+<Setting name="value" value="0" />
+</Section>
+<Section name="General_Rule_27">
+<Setting name="name" value="disableDeviceGuardCompat" />
+<Setting name="type" value="config" />
+<Setting name="value" value="0" />
+</Section>
+<Section name="General_Rule_28">
+<Setting name="name" value="skipValidateFileLength" />
+<Setting name="type" value="config" />
+<Setting name="value" value="1" />
+</Section>
+<Section name="General_Rule_3">
+<Setting name="name" value="FileDiffMaxFiles" />
+<Setting name="type" value="config" />
+<Setting name="value" value="100" />
+</Section>
+<Section name="General_Rule_30">
+<Setting name="name" value="isInvBackupEnabled" />
+<Setting name="type" value="config" />
+<Setting name="value" value="0" />
+</Section>
+<Section name="General_Rule_31">
+<Setting name="name" value="isInvBootBackupEnabled" />
+<Setting name="type" value="config" />
+<Setting name="value" value="0" />
+</Section>
+<Section name="General_Rule_32">
+<Setting name="name" value="soIsTidOptimizationEnabled" />
+<Setting name="type" value="config" />
+<Setting name="value" value="1" />
+</Section>
+<Section name="General_Rule_33">
+<Setting name="name" value="cksumCalcMode" />
+<Setting name="type" value="config" />
+<Setting name="value" value="0" />
+</Section>
+<Section name="General_Rule_34">
+<Setting name="name" value="cksumParallelCalcMode" />
+<Setting name="type" value="config" />
+<Setting name="value" value="0" />
+</Section>
+<Section name="General_Rule_35">
+<Setting name="name" value="enableBinAllowedByCertOrChecksumToBeUpdaters" />
+<Setting name="type" value="config" />
+<Setting name="value" value="0" />
+</Section>
+<Section name="General_Rule_36">
+<Setting name="name" value="volumeMountRefCountDisabled" />
+<Setting name="type" value="config" />
+<Setting name="value" value="0" />
+</Section>
+<Section name="General_Rule_37">
+<Setting name="name" value="unloadUnmountedVolumeDisabled" />
+<Setting name="type" value="config" />
+<Setting name="value" value="0" />
+</Section>
+<Section name="General_Rule_38">
+<Setting name="name" value="inventoryCaseSensitivityEnabled" />
+<Setting name="type" value="config" />
+<Setting name="value" value="0" />
+</Section>
+<Section name="General_Rule_4">
+<Setting name="name" value="InvDiffConfig" />
+<Setting name="type" value="config" />
+<Setting name="value" value="1" />
+</Section>
+<Section name="General_Rule_40">
+<Setting name="name" value="disableReputationCache" />
+<Setting name="type" value="config" />
+<Setting name="value" value="0" />
+</Section>
+<Section name="General_Rule_41">
+<Setting name="name" value="disableCertCheck" />
+<Setting name="type" value="config" />
+<Setting name="value" value="0" />
+</Section>
+<Section name="General_Rule_42">
+<Setting name="name" value="isTrustedLocalGroupEnabled" />
+<Setting name="type" value="config" />
+<Setting name="value" value="1" />
+</Section>
+<Section name="General_Rule_5">
+<Setting name="name" value="InvDiffConfig2" />
+<Setting name="type" value="config" />
+<Setting name="value" value="2" />
+</Section>
+<Section name="General_Rule_6">
+<Setting name="name" value="AgentEventsThresholdOnWakeup" />
+<Setting name="type" value="config" />
+<Setting name="value" value="2000" />
+</Section>
+<Section name="General_Rule_7">
+<Setting name="name" value="SupplierCacheSizeOnWakeup" />
+<Setting name="type" value="config" />
+<Setting name="value" value="7000" />
+</Section>
+<Section name="General_Rule_8">
+<Setting name="name" value="InvDiffAgentEventsThreshold" />
+<Setting name="type" value="config" />
+<Setting name="value" value="21000" />
+</Section>
+<Section name="General_Rule_9">
+<Setting name="name" value="ObAgentEventsThresholdOnWakeup" />
+<Setting name="type" value="config" />
+<Setting name="value" value="100" />
+</Section>
+<Section name="scor_info">
+<Setting name="group_name" value="My Rules" />
+<Setting name="group_type" value="local_access_passwd" />
+<Setting name="platforms" value="WIN|UNIX" />
+<Setting name="readOnly" value="false" />
+</Section>
+</EPOPolicySettings>
+
+<EPOPolicyObject name="Claude - Config Import Test" featureid="SCOR_GEN" categoryid="Lockdown Rules" serverid="W2022EPO510" editflag="0" typeid="Lockdown Rules">
+<description /><PolicySettings>Claude - Config Import Test::Settings (26EEE565-DE9C-4E3D-880A-6E923F769D43)</PolicySettings>
+</EPOPolicyObject>
+</ns0:EPOPolicySchema>

@@ -1,0 +1,70 @@
+<ns0:EPOPolicySchema xmlns:ns0="mcafee-epo-policy">
+<EPOPolicyVerInfo vermjr="5" vermin="10" verrel="0" verbld="0" />
+<EPOPolicySettings name="Claude - E2E CC Rules (Windows)::Settings (26647D7A-09D1-414C-935C-B2F216C05D69)" featureid="SCOR_CC" categoryid="CC Rules (Windows)" typeid="CC Rules (Windows)" param_int="0" param_str="">
+<Section name="General_Rule_1">
+<Setting name="action" value="Include" />
+<Setting name="pattern" value="C:\Claude\wp.cfg" />
+<Setting name="type" value="wp-file" />
+</Section>
+<Section name="General_Rule_10">
+<Setting name="activeDirectoryId" value="" />
+<Setting name="displayName" value="Deployer" />
+<Setting name="groupDN" value="" />
+<Setting name="netbiosName" value="" />
+<Setting name="tag" value="E2EDeployer" />
+<Setting name="type" value="updater-user" />
+<Setting name="user" value="LAB\deployer" />
+</Section>
+<Section name="General_Rule_2">
+<Setting name="action" value="Include" />
+<Setting name="pattern" value="HKEY_LOCAL_MACHINE\SOFTWARE\Claude" />
+<Setting name="type" value="wp-reg" />
+</Section>
+<Section name="General_Rule_3">
+<Setting name="action" value="Exclude" />
+<Setting name="pattern" value="C:\Claude\secret.txt" />
+<Setting name="type" value="rp-file" />
+</Section>
+<Section name="General_Rule_4">
+<Setting name="action" value="Include" />
+<Setting name="pattern" value="C:\E2E\Secrets\" />
+<Setting name="type" value="rp-file" />
+</Section>
+<Section name="General_Rule_5">
+<Setting name="action" value="Exclude" />
+<Setting name="pattern" value="C:\E2E\Secrets\public.txt" />
+<Setting name="type" value="rp-file" />
+</Section>
+<Section name="General_Rule_6">
+<Setting name="action" value="Include" />
+<Setting name="pattern" value="C:\E2E\app.cfg" />
+<Setting name="type" value="wp-file" />
+</Section>
+<Section name="General_Rule_7">
+<Setting name="action" value="Include" />
+<Setting name="pattern" value="HKEY_LOCAL_MACHINE\SOFTWARE\E2E" />
+<Setting name="type" value="wp-reg" />
+</Section>
+<Section name="General_Rule_8">
+<Setting name="action" value="Exclude" />
+<Setting name="pattern" value="HKEY_LOCAL_MACHINE\SOFTWARE\E2E\Cache" />
+<Setting name="type" value="wp-reg" />
+</Section>
+<Section name="General_Rule_9">
+<Setting name="binary" value="C:\E2E\deploy.exe" />
+<Setting name="caseSensitive" value="false" />
+<Setting name="inherit" value="true" />
+<Setting name="log" value="true" />
+<Setting name="tag" value="E2EDeploy" />
+<Setting name="type" value="updater-binary" />
+</Section>
+<Section name="scor_info">
+<Setting name="group_name" value="My Rules" />
+<Setting name="group_type" value="change_control" />
+<Setting name="platforms" value="WIN" />
+<Setting name="readOnly" value="false" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicyObject name="Claude - E2E CC Rules (Windows)" featureid="SCOR_CC" categoryid="CC Rules (Windows)" serverid="W2022EPO510" editflag="0" typeid="CC Rules (Windows)">
+<description /><PolicySettings>Claude - E2E CC Rules (Windows)::Settings (26647D7A-09D1-414C-935C-B2F216C05D69)</PolicySettings>
+</EPOPolicyObject></ns0:EPOPolicySchema>

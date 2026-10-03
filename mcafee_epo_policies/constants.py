@@ -82,3 +82,65 @@ class Language():
     SPANISH = '040A'
     SWEDISH = '041D'
     TURKISH = '041F'
+
+class SCException():
+    """
+    SCException constants can be used with Solidcore, General > Exception Rules
+    policy (SCGENPolicyExceptionRules) to select the type of an exclusion, as
+    shown in the "Add exclusion rules" dialog of the ePO console.
+
+    Exclusions applying to a process/file name (stored as an 'attr' rule):
+        CASP                        Disable buffer overflow protection (CASP) for a process
+        NX                          Disable buffer overflow protection (NX) for a process on
+                                    64-bit Windows
+        VASR_FORCED_RELOCATION      Disable ROP protection for a process using Forced
+                                    Relocation (VASR)
+        VASR_DLL_RELOCATION         Disable ROP protection for a DLL using DLL Relocation (VASR)
+        VASR_STACK_RANDOMIZATION    Disable ROP protection for a process using Stack
+                                    Randomization (VASR)
+        ALLOW_UNINSTALLATIONS       Allow uninstallations
+        PROCESS_CONTEXT             Exclude file from write-protection rules and allow script
+                                    execution (Windows and Unix)
+        PROCESS_CONTEXT_REGISTRY    Exclude file from registry operations
+    Exclusions applying to a path or a volume (stored as a 'skiplist' rule):
+        IGNORE_FILE_OPERATIONS      Ignore path for file operations
+        EXCLUDE_FILE_OPERATIONS     Exclude path from file operations
+        EXCLUDE_WRITE_PROTECTION    Exclude path from write-protection rules
+        EXCLUDE_ALLOW_LIST          Exclude local path and all its files and sub-directories
+                                    from the allow list (Windows and Unix)
+        EXCLUDE_VOLUME              Exclude volume from Application Control protection
+    Only the two exclusions marked "(Windows and Unix)" are offered for Unix.
+    """
+    CASP = 'casp_bypass'
+    NX = 'dep_bypass'
+    VASR_FORCED_RELOCATION = 'vasr_force_reloc_bypass'
+    VASR_DLL_RELOCATION = 'vasr_reloc_bypass'
+    VASR_STACK_RANDOMIZATION = 'vasr_rand_bypass'
+    ALLOW_UNINSTALLATIONS = 'uninstall_bypass'
+    PROCESS_CONTEXT = 'process_ctx_bypass'
+    PROCESS_CONTEXT_REGISTRY = 'process_ctx_reg_bypass'
+    IGNORE_FILE_OPERATIONS = 'skipFileOperation'
+    EXCLUDE_FILE_OPERATIONS = 'skipFileOperation_f'
+    EXCLUDE_WRITE_PROTECTION = 'skipDenyWrite'
+    EXCLUDE_ALLOW_LIST = 'skipSolidification'
+    EXCLUDE_VOLUME = 'skipVolume'
+
+class SCReputation():
+    """
+    SCReputation constants can be used with Solidcore, Application Control Options
+    policy (SCAWLPolicyOptions) for the reputation levels of the Reputation tab:
+        '99' = KNOWN_TRUSTED            This is a trusted file.
+        '85' = MOST_LIKELY_TRUSTED      Almost certainly a trusted file.
+        '70' = MIGHT_BE_TRUSTED         Appears to be a benign file.
+        '50' = UNKNOWN                  Cannot determine at this time.
+        '30' = MIGHT_BE_MALICIOUS       Appears to be a suspicious file.
+        '15' = MOST_LIKELY_MALICIOUS    Almost certainly a malicious file.
+        '1'  = KNOWN_MALICIOUS          This is a malicious file.
+    """
+    KNOWN_TRUSTED = '99'
+    MOST_LIKELY_TRUSTED = '85'
+    MIGHT_BE_TRUSTED = '70'
+    UNKNOWN = '50'
+    MIGHT_BE_MALICIOUS = '30'
+    MOST_LIKELY_MALICIOUS = '15'
+    KNOWN_MALICIOUS = '1'

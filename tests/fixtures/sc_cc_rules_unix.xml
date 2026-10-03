@@ -1,0 +1,31 @@
+<ns0:EPOPolicySchema xmlns:ns0="mcafee-epo-policy">
+<EPOPolicyVerInfo vermjr="5" vermin="10" verrel="0" verbld="0" />
+<EPOPolicySettings name="Claude - E2E CC Rules (Unix)::Settings (DE90224E-07CB-46FF-8D0F-A7891C4E2D9D)" featureid="SCOR_CC" categoryid="CC Rules (Unix)" typeid="CC Rules (Unix)" param_int="0" param_str="">
+<Section name="General_Rule_0">
+<Setting name="action" value="Include" />
+<Setting name="pattern" value="/etc/e2e/secret" />
+<Setting name="type" value="rp-file" />
+</Section>
+<Section name="General_Rule_1">
+<Setting name="action" value="Include" />
+<Setting name="pattern" value="/etc/e2e/" />
+<Setting name="type" value="wp-file" />
+</Section>
+<Section name="General_Rule_2">
+<Setting name="binary" value="/usr/bin/e2e-deploy" />
+<Setting name="caseSensitive" value="false" />
+<Setting name="inherit" value="true" />
+<Setting name="log" value="true" />
+<Setting name="tag" value="E2EDeploy" />
+<Setting name="type" value="updater-binary" />
+</Section>
+<Section name="scor_info">
+<Setting name="group_name" value="My Rules" />
+<Setting name="group_type" value="change_control" />
+<Setting name="platforms" value="UNIX" />
+<Setting name="readOnly" value="false" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicyObject name="Claude - E2E CC Rules (Unix)" featureid="SCOR_CC" categoryid="CC Rules (Unix)" serverid="W2022EPO510" editflag="0" typeid="CC Rules (Unix)">
+<description /><PolicySettings>Claude - E2E CC Rules (Unix)::Settings (DE90224E-07CB-46FF-8D0F-A7891C4E2D9D)</PolicySettings>
+</EPOPolicyObject></ns0:EPOPolicySchema>

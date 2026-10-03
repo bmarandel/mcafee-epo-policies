@@ -1,0 +1,81 @@
+<ns0:EPOPolicySchema xmlns:ns0="mcafee-epo-policy">
+<EPOPolicyVerInfo vermjr="5" vermin="10" verrel="0" verbld="0" />
+<EPOPolicySettings name="Claude - Exception Rules (Windows)::Settings (159232EC-2257-4542-B7D1-C8C39F81C7E4)" featureid="SCOR_GEN" categoryid="Attr Rules (Windows)" typeid="Attr Rules (Windows)" param_int="0" param_str="">
+<Section name="General_Rule_1">
+<Setting name="path" value="\ClaudeTest\wp" />
+<Setting name="skipChangeTracking" value="false" />
+<Setting name="skipDenyWrite" value="true" />
+<Setting name="skipFileOperation" value="false" />
+<Setting name="skipFileOperation_f" value="false" />
+<Setting name="skipRegistry" value="false" />
+<Setting name="skipSolidification" value="false" />
+<Setting name="skipVolume" value="false" />
+<Setting name="type" value="skiplist" />
+</Section>
+<Section name="General_Rule_2">
+<Setting name="path" value="Z:" />
+<Setting name="skipChangeTracking" value="false" />
+<Setting name="skipDenyWrite" value="false" />
+<Setting name="skipFileOperation" value="false" />
+<Setting name="skipFileOperation_f" value="false" />
+<Setting name="skipRegistry" value="false" />
+<Setting name="skipSolidification" value="false" />
+<Setting name="skipVolume" value="true" />
+<Setting name="type" value="skiplist" />
+</Section>
+<Section name="General_Rule_3">
+<Setting name="always_auth" value="false" />
+<Setting name="always_unauth" value="false" />
+<Setting name="anti_debugging_bypass" value="false" />
+<Setting name="casp_bypass" value="true" />
+<Setting name="ccv_bypass" value="false" />
+<Setting name="dep_bypass" value="false" />
+<Setting name="dep_bypass_inherit" value="false" />
+<Setting name="file" value="claudetest.exe" />
+<Setting name="full_crawl" value="false" />
+<Setting name="installer_detection_bypass" value="false" />
+<Setting name="is_general_attr" value="true" />
+<Setting name="mangling_bypass" value="false" />
+<Setting name="process_ctx_bypass" value="false" />
+<Setting name="process_ctx_reg_bypass" value="false" />
+<Setting name="rebase_dll" value="false" />
+<Setting name="relocate_dll" value="false" />
+<Setting name="type" value="attr" />
+<Setting name="uninstall_bypass" value="false" />
+<Setting name="vasr_force_reloc_bypass" value="false" />
+<Setting name="vasr_rand_bypass" value="false" />
+<Setting name="vasr_reloc_bypass" value="false" />
+</Section>
+<Section name="General_Rule_4">
+<Setting name="always_auth" value="false" />
+<Setting name="always_unauth" value="false" />
+<Setting name="anti_debugging_bypass" value="false" />
+<Setting name="casp_bypass" value="false" />
+<Setting name="ccv_bypass" value="false" />
+<Setting name="dep_bypass" value="false" />
+<Setting name="dep_bypass_inherit" value="false" />
+<Setting name="file" value="claudetest.dll" />
+<Setting name="full_crawl" value="false" />
+<Setting name="installer_detection_bypass" value="false" />
+<Setting name="is_general_attr" value="true" />
+<Setting name="mangling_bypass" value="false" />
+<Setting name="process_ctx_bypass" value="false" />
+<Setting name="process_ctx_reg_bypass" value="false" />
+<Setting name="rebase_dll" value="false" />
+<Setting name="relocate_dll" value="false" />
+<Setting name="type" value="attr" />
+<Setting name="uninstall_bypass" value="false" />
+<Setting name="vasr_force_reloc_bypass" value="false" />
+<Setting name="vasr_rand_bypass" value="false" />
+<Setting name="vasr_reloc_bypass" value="true" />
+</Section>
+<Section name="scor_info">
+<Setting name="group_name" value="Attributes" />
+<Setting name="group_type" value="attr" />
+<Setting name="platforms" value="WIN" />
+<Setting name="readOnly" value="true" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicyObject name="Claude - Exception Rules (Windows)" featureid="SCOR_GEN" categoryid="Attr Rules (Windows)" serverid="W2022EPO510" editflag="0" typeid="Attr Rules (Windows)">
+<description /><PolicySettings>Claude - Exception Rules (Windows)::Settings (159232EC-2257-4542-B7D1-C8C39F81C7E4)</PolicySettings>
+</EPOPolicyObject></ns0:EPOPolicySchema>

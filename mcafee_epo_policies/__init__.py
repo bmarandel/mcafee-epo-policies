@@ -12,9 +12,9 @@ try:
 except PackageNotFoundError:
     __version__ = "0.0.0"
 
-__all__ = ["constants", "policies", "ma", "es"]
+__all__ = ["constants", "policies", "ma", "es", "sc"]
 
-from .constants import State, Priority, Gti, Severity, Language
+from .constants import State, Priority, Gti, Severity, Language, SCException, SCReputation
 from .policies import Policies, Policy
 from .ma.mapolicies import McAfeeAgentPolicies
 from .ma.general import McAfeeAgentPolicyGeneral
@@ -28,3 +28,10 @@ from .es.tp.ondemandscan import ESTPPolicyOnDemandScan, ODSLocationList, ODSExcl
 from .es.tp.exploitprevention import ESTPPolicyExploitPrevention, SearchFilter
 from .es.fw.esfwpolicies import ESFWPolicies
 from .es.fw.rules import ESFWPolicyRules
+from .sc.scpolicies import SCPolicies, SCPolicy
+from .sc.rules import SCRules, SCExclusionRules, SCUpdaterRules
+from .sc.gen import SCGENPolicyConfiguration, SCGENPolicyExceptionRules
+from .sc.awl import SCAWLPolicyOptions, SCAWLPolicyRules
+from .sc.cc import SCCCPolicyRules
+from .sc.fim import SCFIMPolicyRules
+from .sc.rulegroups import SCRuleGroups, SCRuleGroup, SCAWLRuleGroup, SCCCRuleGroup, SCFIMRuleGroup

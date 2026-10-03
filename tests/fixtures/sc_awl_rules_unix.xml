@@ -1,0 +1,182 @@
+<ns0:EPOPolicySchema xmlns:ns0="mcafee-epo-policy">
+<EPOPolicyVerInfo vermjr="5" vermin="10" verrel="0" verbld="0" />
+<EPOPolicySettings name="Demo (Test)::Settings (1F830BBD-D436-4142-AB1D-CDAAEE19835B)" featureid="SCOR_AWL" categoryid="AWL Rules (Unix)" typeid="AWL Rules (Unix)" param_int="0" param_str="">
+<Section name="General_Rule_1">
+<Setting name="binary" value="/opt/McAfee/agent/bin/Mue" />
+<Setting name="inherit" value="true" />
+<Setting name="log" value="true" />
+<Setting name="tag" value="AGENT1" />
+<Setting name="type" value="updater-binary" />
+</Section>
+<Section name="General_Rule_10">
+<Setting name="binary" value="/opt/McAfee/ens/tp/bin/mfetpd" />
+<Setting name="inherit" value="true" />
+<Setting name="log" value="true" />
+<Setting name="tag" value="ENS1" />
+<Setting name="type" value="updater-binary" />
+</Section>
+<Section name="General_Rule_11">
+<Setting name="binary" value="/opt/McAfee/ens/esp/bin/mfeespd" />
+<Setting name="inherit" value="true" />
+<Setting name="log" value="true" />
+<Setting name="tag" value="ENS2" />
+<Setting name="type" value="updater-binary" />
+</Section>
+<Section name="General_Rule_12">
+<Setting name="binary" value="/opt/isec/ens/threatprevention/bin/isectpd" />
+<Setting name="inherit" value="true" />
+<Setting name="log" value="true" />
+<Setting name="tag" value="ENS3" />
+<Setting name="type" value="updater-binary" />
+</Section>
+<Section name="General_Rule_2">
+<Setting name="binary" value="/opt/McAfee/agent/bin/Mue_InUse" />
+<Setting name="inherit" value="true" />
+<Setting name="log" value="true" />
+<Setting name="tag" value="AGENT2" />
+<Setting name="type" value="updater-binary" />
+</Section>
+<Section name="General_Rule_3">
+<Setting name="binary" value="/opt/McAfee/agent/bin/maconfig" />
+<Setting name="inherit" value="true" />
+<Setting name="log" value="true" />
+<Setting name="tag" value="AGENT3" />
+<Setting name="type" value="updater-binary" />
+</Section>
+<Section name="General_Rule_4">
+<Setting name="binary" value="/opt/McAfee/agent/bin/mcupdater" />
+<Setting name="inherit" value="true" />
+<Setting name="log" value="true" />
+<Setting name="tag" value="AGENT4" />
+<Setting name="type" value="updater-binary" />
+</Section>
+<Section name="General_Rule_5">
+<Setting name="binary" value="/opt/McAfee/agent/bin/masvc" />
+<Setting name="inherit" value="true" />
+<Setting name="log" value="true" />
+<Setting name="tag" value="AGENT5" />
+<Setting name="type" value="updater-binary" />
+</Section>
+<Section name="General_Rule_6">
+<Setting name="binary" value="/opt/McAfee/agent/bin/macmnsvc" />
+<Setting name="inherit" value="true" />
+<Setting name="log" value="true" />
+<Setting name="tag" value="AGENT6" />
+<Setting name="type" value="updater-binary" />
+</Section>
+<Section name="General_Rule_7">
+<Setting name="binary" value="/opt/McAfee/agent/bin/cmdagent" />
+<Setting name="inherit" value="true" />
+<Setting name="log" value="true" />
+<Setting name="tag" value="AGENT7" />
+<Setting name="type" value="updater-binary" />
+</Section>
+<Section name="General_Rule_8">
+<Setting name="binary" value="/opt/McAfee/agent/bin/macompatsvc" />
+<Setting name="inherit" value="true" />
+<Setting name="log" value="true" />
+<Setting name="tag" value="AGENT8" />
+<Setting name="type" value="updater-binary" />
+</Section>
+<Section name="General_Rule_9">
+<Setting name="binary" value="/opt/McAfee/agent/bin/msaconfig" />
+<Setting name="inherit" value="true" />
+<Setting name="log" value="true" />
+<Setting name="tag" value="AGENT9" />
+<Setting name="type" value="updater-binary" />
+</Section>
+<Section name="scor_info">
+<Setting name="group_name" value="AGENT and ENS Linux" />
+<Setting name="group_type" value="application_control" />
+<Setting name="platforms" value="UNIX" />
+<Setting name="readOnly" value="true" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo (Test)::Settings (770E35CC-AD41-4173-A25B-4CD28361DEDD)" featureid="SCOR_AWL" categoryid="AWL Rules (Unix)" typeid="AWL Rules (Unix)" param_int="0" param_str="">
+<Section name="General_Rule_1">
+<Setting name="binary" value="/opt/McAfee/mvedr/mfemvedr" />
+<Setting name="inherit" value="true" />
+<Setting name="log" value="true" />
+<Setting name="tag" value="EDR1" />
+<Setting name="type" value="updater-binary" />
+</Section>
+<Section name="General_Rule_2">
+<Setting name="binary" value="mfemvedr" />
+<Setting name="inherit" value="true" />
+<Setting name="log" value="true" />
+<Setting name="tag" value="EDR2" />
+<Setting name="type" value="updater-binary" />
+</Section>
+<Section name="General_Rule_3">
+<Setting name="binary" value="/opt/McAfee/Mar/MarService" />
+<Setting name="inherit" value="true" />
+<Setting name="log" value="true" />
+<Setting name="tag" value="MAR1" />
+<Setting name="type" value="updater-binary" />
+</Section>
+<Section name="General_Rule_4">
+<Setting name="binary" value="MarService" />
+<Setting name="inherit" value="true" />
+<Setting name="log" value="true" />
+<Setting name="tag" value="MAR2" />
+<Setting name="type" value="updater-binary" />
+</Section>
+<Section name="General_Rule_5">
+<Setting name="binary" value="xclient" />
+<Setting name="inherit" value="true" />
+<Setting name="log" value="true" />
+<Setting name="tag" value="EDR3" />
+<Setting name="type" value="updater-binary" />
+</Section>
+<Section name="General_Rule_6">
+<Setting name="binary" value="/opt/Trellix/XClient/bin/xclient" />
+<Setting name="inherit" value="true" />
+<Setting name="log" value="true" />
+<Setting name="tag" value="EDR4" />
+<Setting name="type" value="updater-binary" />
+</Section>
+<Section name="scor_info">
+<Setting name="group_name" value="EDR and MAR" />
+<Setting name="group_type" value="application_control" />
+<Setting name="platforms" value="UNIX" />
+<Setting name="readOnly" value="true" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo (Test)::Settings (8E3FD14B-47DF-40DE-8B57-1A3EA71E3538)" featureid="SCOR_AWL" categoryid="AWL Rules (Unix)" typeid="AWL Rules (Unix)" param_int="0" param_str="">
+<Section name="General_Rule_1">
+<Setting name="binary" value="/usr/local/mcafee/solidcore/kcc/static_tool/kcc_static_tool.sh" />
+<Setting name="inherit" value="true" />
+<Setting name="log" value="true" />
+<Setting name="tag" value="KCC1" />
+<Setting name="type" value="updater-binary" />
+</Section>
+<Section name="scor_info">
+<Setting name="group_name" value="KCC" />
+<Setting name="group_type" value="application_control" />
+<Setting name="platforms" value="UNIX" />
+<Setting name="readOnly" value="true" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo (Test)::Settings (B98DF32D-CC3D-4D5D-9531-0122F645F93C)" featureid="SCOR_AWL" categoryid="AWL Rules (Unix)" typeid="AWL Rules (Unix)" param_int="0" param_str="">
+<Section name="scor_info">
+<Setting name="group_name" value="Global Rules" />
+<Setting name="group_type" value="application_control" />
+<Setting name="platforms" value="UNIX" />
+<Setting name="readOnly" value="true" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo (Test)::Settings (D0FA2412-1A6C-4C25-A725-3B2411BA5D59)" featureid="SCOR_AWL" categoryid="AWL Rules (Unix)" typeid="AWL Rules (Unix)" param_int="0" param_str="">
+<Section name="scor_info">
+<Setting name="group_name" value="My Rules" />
+<Setting name="group_type" value="application_control" />
+<Setting name="platforms" value="UNIX" />
+<Setting name="readOnly" value="false" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicyObject name="Demo (Test)" featureid="SCOR_AWL" categoryid="AWL Rules (Unix)" serverid="W2022EPO510" editflag="0" typeid="AWL Rules (Unix)">
+<description /><PolicySettings>Demo (Test)::Settings (1F830BBD-D436-4142-AB1D-CDAAEE19835B)</PolicySettings>
+<PolicySettings>Demo (Test)::Settings (770E35CC-AD41-4173-A25B-4CD28361DEDD)</PolicySettings>
+<PolicySettings>Demo (Test)::Settings (8E3FD14B-47DF-40DE-8B57-1A3EA71E3538)</PolicySettings>
+<PolicySettings>Demo (Test)::Settings (B98DF32D-CC3D-4D5D-9531-0122F645F93C)</PolicySettings>
+<PolicySettings>Demo (Test)::Settings (D0FA2412-1A6C-4C25-A725-3B2411BA5D59)</PolicySettings>
+</EPOPolicyObject></ns0:EPOPolicySchema>

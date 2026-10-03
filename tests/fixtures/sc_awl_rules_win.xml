@@ -1,0 +1,153 @@
+<ns0:EPOPolicySchema xmlns:ns0="mcafee-epo-policy">
+<EPOPolicyVerInfo vermjr="5" vermin="10" verrel="0" verbld="0" />
+<EPOPolicySettings name="Claude - AWL Rules (Windows)::Settings (9E55BC93-F69C-4127-BD82-1AAFF939D922)" featureid="SCOR_AWL" categoryid="AWL Rules (Windows)" typeid="AWL Rules (Windows)" param_int="0" param_str="">
+<Section name="General_Rule_1">
+<Setting name="binary" value="C:\Claude\updater.exe" />
+<Setting name="caseSensitive" value="false" />
+<Setting name="inherit" value="false" />
+<Setting name="log" value="false" />
+<Setting name="parent" value="claudeparent.exe" />
+<Setting name="tag" value="ClaudeUpdater" />
+<Setting name="type" value="updater-binary" />
+</Section>
+<Section name="General_Rule_10">
+<Setting name="action" value="exclude" />
+<Setting name="condition-type_0" value="File" />
+<Setting name="match-type_0" value="equals" />
+<Setting name="pattern_0" value="C:\claude\inv.dll" />
+<Setting name="rule-uuid" value="57a337e4-5ab2-411a-acab-4e6326c80756" />
+<Setting name="type" value="advanced-inv-exclusion" />
+</Section>
+<Section name="General_Rule_11">
+<Setting name="action" value="monitor" />
+<Setting name="condition-type_0" value="path" />
+<Setting name="condition-type_1" value="parent_process_name" />
+<Setting name="match-type_0" value="equals" />
+<Setting name="match-type_1" value="equals" />
+<Setting name="pattern_0" value="C:\Claude\claudeexec.exe" />
+<Setting name="pattern_1" value="cmd.exe" />
+<Setting name="process-name" value="claudeexec.exe" />
+<Setting name="rule-description" value="Claude exec rule" />
+<Setting name="type" value="execution-control" />
+</Section>
+<Section name="General_Rule_2">
+<Setting name="cksum" value="da39a3ee5e6b4b0d3255bfef95601890afd80709" />
+<Setting name="ruletype" value="checksum" />
+<Setting name="showas" value="updater" />
+<Setting name="tag" value="ClaudeSha1" />
+<Setting name="type" value="installer" />
+</Section>
+<Section name="General_Rule_3">
+<Setting name="activeDirectoryId" value="" />
+<Setting name="displayName" value="Claude Test User" />
+<Setting name="groupDN" value="" />
+<Setting name="netbiosName" value="" />
+<Setting name="tag" value="ClaudeUser" />
+<Setting name="type" value="updater-user" />
+<Setting name="user" value="LAB\claudeuser" />
+</Section>
+<Section name="General_Rule_4">
+<Setting name="cksum" value="803291bcc5aa45a0221b4016f62d63a26d3ee4af" />
+<Setting name="ruletype" value="checksum" />
+<Setting name="tag" value="ClaudeInstaller" />
+<Setting name="type" value="installer" />
+<Setting name="vendor" value="McAfee" />
+<Setting name="version" value="McAfee Total Protection\" />
+</Section>
+<Section name="General_Rule_5">
+<Setting name="always_unauth" value="true" />
+<Setting name="file" value="claudeban.exe" />
+<Setting name="tag" value="ClaudeBan" />
+<Setting name="type" value="attr" />
+</Section>
+<Section name="General_Rule_6">
+<Setting name="action" value="Ban" />
+<Setting name="cksum" value="1111111111111111111111111111111111111111" />
+<Setting name="tag" value="ClaudeBanSha" />
+<Setting name="type" value="auth-cksum" />
+</Section>
+<Section name="General_Rule_7">
+<Setting name="action" value="exclude" />
+<Setting name="condition-type_0" value="File" />
+<Setting name="match-type_0" value="equals" />
+<Setting name="pattern_0" value="C:\claude\ob.exe" />
+<Setting name="rule-uuid" value="ebcfd572-b6a2-4717-b2e0-d14bd204286e" />
+<Setting name="type" value="ob-exclusion" />
+</Section>
+<Section name="General_Rule_8">
+<Setting name="action" value="exclude" />
+<Setting name="condition-type_0" value="Process" />
+<Setting name="condition-type_1" value="File" />
+<Setting name="match-type_0" value="equals" />
+<Setting name="match-type_1" value="equals" />
+<Setting name="pattern_0" value="claude.exe" />
+<Setting name="pattern_1" value="C:\Temp\claude.txt" />
+<Setting name="rule-uuid" value="0d1261bb-2ab0-42f2-89b0-71f41ba46e35" />
+<Setting name="type" value="mon-advanced" />
+</Section>
+<Section name="General_Rule_9">
+<Setting name="action" value="exclude" />
+<Setting name="condition-type_0" value="Process" />
+<Setting name="condition-type_1" value="File" />
+<Setting name="match-type_0" value="equals" />
+<Setting name="match-type_1" value="equals" />
+<Setting name="pattern_0" value="claude.exe" />
+<Setting name="pattern_1" value="C:\Temp\claude.txt" />
+<Setting name="rule-uuid" value="0d1261bb-2ab0-42f2-89b0-71f41ba46e35" />
+<Setting name="type" value="ob-exclusion" />
+</Section>
+<Section name="scor_info">
+<Setting name="group_name" value="My Rules" />
+<Setting name="group_type" value="application_control" />
+<Setting name="platforms" value="WIN" />
+<Setting name="readOnly" value="false" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Internet Explorer (32 bit)56311465-6748-4491-bbb5-a35c0110663e_(1)_" featureid="SCOR_AWL" categoryid="AWL Rules (Windows)" typeid="AWL Rules (Windows)" param_int="0" param_str="">
+<Section name="General_Rule_101">
+<Setting name="always_auth" value="false" />
+<Setting name="always_unauth" value="false" />
+<Setting name="anti_debugging_bypass" value="false" />
+<Setting name="casp_bypass" value="false" />
+<Setting name="dep_bypass" value="true" />
+<Setting name="file" value="%ProgramFiles(x86)%\Internet Explorer\iexplore.exe" />
+<Setting name="full_crawl" value="false" />
+<Setting name="installer_detection_bypass" value="false" />
+<Setting name="is_general_attr" value="true" />
+<Setting name="mangling_bypass" value="false" />
+<Setting name="process_ctx_bypass" value="false" />
+<Setting name="process_ctx_reg_bypass" value="false" />
+<Setting name="rebase_dll" value="false" />
+<Setting name="type" value="attr" />
+<Setting name="vasr_rand_bypass" value="false" />
+<Setting name="vasr_reloc_bypass" value="false" />
+</Section>
+<Section name="General_Rule_102">
+<Setting name="always_auth" value="false" />
+<Setting name="always_unauth" value="false" />
+<Setting name="anti_debugging_bypass" value="false" />
+<Setting name="casp_bypass" value="false" />
+<Setting name="dep_bypass" value="true" />
+<Setting name="file" value="%ProgramFiles(x86)%\Internet Explorer\ieinstal.exe" />
+<Setting name="full_crawl" value="false" />
+<Setting name="installer_detection_bypass" value="false" />
+<Setting name="is_general_attr" value="true" />
+<Setting name="mangling_bypass" value="false" />
+<Setting name="process_ctx_bypass" value="false" />
+<Setting name="process_ctx_reg_bypass" value="false" />
+<Setting name="rebase_dll" value="false" />
+<Setting name="type" value="attr" />
+<Setting name="vasr_rand_bypass" value="false" />
+<Setting name="vasr_reloc_bypass" value="false" />
+</Section>
+<Section name="scor_info">
+<Setting name="group_name" value="Internet Explorer (32 bit)" />
+<Setting name="group_type" value="application_control" />
+<Setting name="platforms" value="WIN" />
+<Setting name="readOnly" value="true" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicyObject name="Claude - AWL Rules (Windows)" featureid="SCOR_AWL" categoryid="AWL Rules (Windows)" serverid="W2022EPO510" editflag="0" typeid="AWL Rules (Windows)">
+<description /><PolicySettings>Claude - AWL Rules (Windows)::Settings (9E55BC93-F69C-4127-BD82-1AAFF939D922)</PolicySettings>
+<PolicySettings>Internet Explorer (32 bit)56311465-6748-4491-bbb5-a35c0110663e_(1)_</PolicySettings>
+</EPOPolicyObject></ns0:EPOPolicySchema>

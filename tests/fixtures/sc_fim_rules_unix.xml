@@ -1,0 +1,47 @@
+<ns0:EPOPolicySchema xmlns:ns0="mcafee-epo-policy">
+<EPOPolicyVerInfo vermjr="5" vermin="10" verrel="0" verbld="0" />
+<EPOPolicySettings name="Claude - E2E FIM Rules (Unix)::Settings (9D2129E2-00C5-4997-AF00-F671157D1979)" featureid="SCOR_FIM" categoryid="Mon Rules (Unix)" typeid="Mon Rules (Unix)" param_int="0" param_str="">
+<Section name="General_Rule_0">
+<Setting name="action" value="Include" />
+<Setting name="file-diff" value="true" />
+<Setting name="file-encoding" value="AutoDetect" />
+<Setting name="pattern" value="/etc/e2e.conf" />
+<Setting name="type" value="mon-file" />
+</Section>
+<Section name="General_Rule_1">
+<Setting name="exclude-pattern-count" value="0" />
+<Setting name="file-encoding" value="AutoDetect" />
+<Setting name="include-pattern-count" value="1" />
+<Setting name="include-pattern_1" value="*" />
+<Setting name="pattern" value="/etc/e2e.d/" />
+<Setting name="recurse-dir" value="false" />
+<Setting name="type" value="file-diff-dir" />
+</Section>
+<Section name="General_Rule_2">
+<Setting name="action" value="Exclude" />
+<Setting name="pattern" value="swp" />
+<Setting name="type" value="mon-extn" />
+</Section>
+<Section name="General_Rule_3">
+<Setting name="action" value="Exclude" />
+<Setting name="pattern" value="/usr/sbin/logrotate" />
+<Setting name="type" value="mon-proc" />
+</Section>
+<Section name="General_Rule_4">
+<Setting name="action" value="exclude" />
+<Setting name="condition-type_0" value="File" />
+<Setting name="match-type_0" value="begins" />
+<Setting name="pattern_0" value="/var/tmp/" />
+<Setting name="rule-uuid" value="a1544d77-b79a-462c-8925-79e22a592df4" />
+<Setting name="type" value="mon-advanced" />
+</Section>
+<Section name="scor_info">
+<Setting name="group_name" value="My Rules" />
+<Setting name="group_type" value="mon" />
+<Setting name="platforms" value="UNIX" />
+<Setting name="readOnly" value="false" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicyObject name="Claude - E2E FIM Rules (Unix)" featureid="SCOR_FIM" categoryid="Mon Rules (Unix)" serverid="W2022EPO510" editflag="0" typeid="Mon Rules (Unix)">
+<description /><PolicySettings>Claude - E2E FIM Rules (Unix)::Settings (9D2129E2-00C5-4997-AF00-F671157D1979)</PolicySettings>
+</EPOPolicyObject></ns0:EPOPolicySchema>

@@ -1,0 +1,84 @@
+<ns0:EPOPolicySchema xmlns:ns0="mcafee-epo-policy">
+<EPOPolicyVerInfo vermjr="5" vermin="10" verrel="0" verbld="0" />
+<EPOPolicySettings name="Claude - E2E FIM Rules (Windows)::Settings (4F2BC7BA-5B80-48E7-A6A4-C40FD9FDE7E4)" featureid="SCOR_FIM" categoryid="Mon Rules (Windows)" typeid="Mon Rules (Windows)" param_int="0" param_str="">
+<Section name="General_Rule_1">
+<Setting name="action" value="Include" />
+<Setting name="file-diff" value="true" />
+<Setting name="file-encoding" value="AutoDetect" />
+<Setting name="pattern" value="C:\Claude\fim.ini" />
+<Setting name="type" value="mon-file" />
+</Section>
+<Section name="General_Rule_10">
+<Setting name="action" value="exclude" />
+<Setting name="condition-type_0" value="Event" />
+<Setting name="condition-type_1" value="Process" />
+<Setting name="match-type_0" value="equals" />
+<Setting name="match-type_1" value="ends" />
+<Setting name="pattern_0" value="FILE_MODIFIED" />
+<Setting name="pattern_1" value="\backup.exe" />
+<Setting name="rule-uuid" value="5ed0a50d-6f23-4546-9d92-4d9545ef4021" />
+<Setting name="type" value="mon-advanced" />
+</Section>
+<Section name="General_Rule_2">
+<Setting name="exclude-pattern-count" value="1" />
+<Setting name="exclude-pattern_1" value="*.tmp" />
+<Setting name="file-encoding" value="AutoDetect" />
+<Setting name="include-pattern-count" value="1" />
+<Setting name="include-pattern_1" value="*.cfg" />
+<Setting name="pattern" value="C:\Claude\Dir\" />
+<Setting name="recurse-dir" value="true" />
+<Setting name="type" value="file-diff-dir" />
+</Section>
+<Section name="General_Rule_3">
+<Setting name="action" value="Include" />
+<Setting name="file-diff" value="true" />
+<Setting name="file-encoding" value="UTF8" />
+<Setting name="pattern" value="C:\E2E\watched.ini" />
+<Setting name="type" value="mon-file" />
+</Section>
+<Section name="General_Rule_4">
+<Setting name="action" value="Exclude" />
+<Setting name="pattern" value="C:\E2E\Logs\" />
+<Setting name="type" value="mon-file" />
+</Section>
+<Section name="General_Rule_5">
+<Setting name="exclude-pattern-count" value="1" />
+<Setting name="exclude-pattern_1" value="*.bak" />
+<Setting name="file-encoding" value="AutoDetect" />
+<Setting name="include-pattern-count" value="2" />
+<Setting name="include-pattern_1" value="*.xml" />
+<Setting name="include-pattern_2" value="*.ini" />
+<Setting name="pattern" value="C:\E2E\Conf\" />
+<Setting name="recurse-dir" value="true" />
+<Setting name="type" value="file-diff-dir" />
+</Section>
+<Section name="General_Rule_6">
+<Setting name="action" value="Include" />
+<Setting name="pattern" value="HKEY_LOCAL_MACHINE\SOFTWARE\E2E" />
+<Setting name="type" value="mon-reg" />
+</Section>
+<Section name="General_Rule_7">
+<Setting name="action" value="Exclude" />
+<Setting name="pattern" value="log" />
+<Setting name="type" value="mon-extn" />
+</Section>
+<Section name="General_Rule_8">
+<Setting name="action" value="Exclude" />
+<Setting name="pattern" value="C:\E2E\noisy.exe" />
+<Setting name="type" value="mon-proc" />
+</Section>
+<Section name="General_Rule_9">
+<Setting name="action" value="Exclude" />
+<Setting name="pattern" value="LAB\svc_backup" />
+<Setting name="type" value="mon-user" />
+</Section>
+<Section name="scor_info">
+<Setting name="group_name" value="My Rules" />
+<Setting name="group_type" value="mon" />
+<Setting name="platforms" value="WIN" />
+<Setting name="readOnly" value="false" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicyObject name="Claude - E2E FIM Rules (Windows)" featureid="SCOR_FIM" categoryid="Mon Rules (Windows)" serverid="W2022EPO510" editflag="0" typeid="Mon Rules (Windows)">
+<description /><PolicySettings>Claude - E2E FIM Rules (Windows)::Settings (4F2BC7BA-5B80-48E7-A6A4-C40FD9FDE7E4)</PolicySettings>
+</EPOPolicyObject></ns0:EPOPolicySchema>

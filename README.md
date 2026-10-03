@@ -27,8 +27,20 @@ raw Section/Setting XML lookups.
 | ENS Threat Prevention | On-Demand Scan | Full read/write |
 | ENS Threat Prevention | Exploit Prevention | Partial (signatures/expert rules full read/write; application rules read + enable/disable; process exclusions not yet implemented) |
 | ENS Firewall | Rules | Read-only / reporting (editing not yet implemented) |
+| Solidcore - General | Configuration (Client) | Full read/write (CLI password: raw hashes only) |
+| Solidcore - General | Exception Rules (Windows/Unix) | Full read/write |
+| Solidcore - Application Control | Application Control Options (Windows/Unix) | Full read/write |
+| Solidcore - Application Control | Application Control Rules (Windows/Unix) | Full read/write (all tabs); Rule Groups added/removed |
+| Solidcore - Change Control | Change Control Rules (Windows/Unix) | Full read/write (all tabs); Rule Groups added/removed |
+| Solidcore - Integrity Monitor | Integrity Monitoring Rules (Windows/Unix) | Full read/write (all tabs); Rule Groups added/removed |
+| Solidcore | Rule Groups (Application Control, Change Control, Integrity Monitor) | Full read/write of the `scor.rulegroup.export` / `import` files |
 
 McAfee Agent policy coverage is complete - all 5 McAfee Agent policy types are implemented.
+
+Solidcore (Trellix Application and Change Control) policy coverage is complete -
+all 13 Solidcore policy types of the ePO Policy Catalog are implemented, in the
+`sc` subpackage (`sc.gen`, `sc.awl`, `sc.cc`, `sc.fim`, named after the ePO
+feature IDs SCOR_GEN, SCOR_AWL, SCOR_CC and SCOR_FIM).
 
 ## Installation
 
@@ -60,11 +72,70 @@ policy.asci = 15
 policy.save_to_file('My Custom Policy - edited.xml')
 ```
 
+### Solidcore
+
+Solidcore policies are exported all together, for every Solidcore feature
+(`policy.export productId=SOLIDCORE_META` with the ePO API). Unlike the other
+products, a Solidcore policy is a list of rules, plus references to shared Rule
+Groups: each tab of the ePO console has its own list methods.
+
+```python
+from mcafee_epo_policies import SCPolicies, SCAWLPolicyRules, SCException
+
+with open('SOLIDCORE_META_policies.xml', 'rb') as f:
+    policies = SCPolicies(f.read())
+
+# Copy an Application Control Rules policy (shared Rule Groups are kept)
+policy = SCAWLPolicyRules(policies.new_policy('AWL Rules (Windows)', 'My Copy',
+                                              template='My Rules Policy'))
+print(policy.get_rule_group_names())
+
+policy.add_updater('C:\\Program Files\\MyApp\\updater.exe', 'MyApp updater')
+policy.add_exclusion(SCException.CASP, 'legacy.exe')
+policy.add_execution_control_rule('powershell.exe', 'block',
+                                  [('command_line', 'matches', '.*-enc.*')])
+policy.save_to_file('My Copy.xml')
+```
+
+#### Solidcore Rule Groups
+
+Rule Groups (Menu > Configuration > Solidcore Rules) are exported and imported
+with their own ePO API commands, `scor.rulegroup.export` and
+`scor.rulegroup.import` (without a Rule Group name, the export only contains
+the user defined Rule Groups). `SCRuleGroups` reads and writes those files, and
+each Rule Group is edited with the same methods as the matching policy tabs.
+
+```python
+from mcafee_epo_policies import SCRuleGroups, SCAWLPolicyRules
+
+rule_groups = SCRuleGroups()   # or SCRuleGroups(<scor.rulegroup.export output>)
+group = rule_groups.new_rule_group('My Apps', SCRuleGroups.APPLICATION_CONTROL,
+                                   SCRuleGroups.WINDOWS)
+group.add_updater('C:\\Program Files\\MyApp\\updater.exe', 'MyApp updater')
+rule_groups.save_to_file('rule_group.xml')   # scor.rulegroup.import file=rule_group.xml
+
+policy = SCAWLPolicyRules(policies.get_policy('AWL Rules (Windows)', 'My Policy'))
+policy.add_rule_group(group)                 # policy.importPolicy, after the Rule Group
+```
+
+ePO links a policy to a Rule Group by its name: import the Rule Group before
+the policy that uses it. An existing Rule Group is only replaced by
+`scor.rulegroup.import` with `override=true` (otherwise the import fails, even
+though the API answers success - check the "Import Solidcore Rule Groups"
+server task).
+
+Note: ePO stores some Solidcore policies under an internal type name, used as
+`type_id` (e.g. `Lockdown Rules` for Configuration (Client), `Attr Rules
+(Windows)` for Exception Rules (Windows), `Mon Rules (Unix)` for Integrity
+Monitoring Rules (Unix)); `SCPolicies.list()` shows them.
+
 ## Examples
 
 The [`examples/`](examples/) directory has short, runnable scripts covering
 McAfee Agent (General/Repository), ENS Threat Prevention (On-Access Scan,
-On-Demand Scan), and ENS Firewall (Rules reporting).
+On-Demand Scan, process exclusions), ENS Firewall (Rules reporting), and
+Solidcore (Application Control, Integrity Monitor and Change Control policies,
+Rule Groups - some of them working directly against an ePO server).
 
 ## Documentation
 
@@ -76,6 +147,39 @@ docstring describing which ePO UI setting it maps to.
 Python 3.8 or later.
 
 ## History
+
+### 0.3.0 - 2026-10-03
+
+**Added**
+- Solidcore (Trellix Application and Change Control) support, in the new `sc`
+  subpackage - all 13 Solidcore policy types:
+  - `sc.gen`: `SCGENPolicyConfiguration` (Configuration (Client)) and
+    `SCGENPolicyExceptionRules` (Exception Rules, Windows/Unix);
+  - `sc.awl`: `SCAWLPolicyOptions` and `SCAWLPolicyRules` (Application
+    Control Options and Rules, Windows/Unix);
+  - `sc.cc`: `SCCCPolicyRules` (Change Control Rules, Windows/Unix);
+  - `sc.fim`: `SCFIMPolicyRules` (Integrity Monitoring Rules, Windows/Unix);
+  - `SCPolicies` (Solidcore export), whose `new_policy()` keeps the shared Rule
+    Groups referenced by the template, and the `SCPolicy` base class giving
+    generic access to Solidcore rules and Rule Groups;
+  - `sc.rulegroups`: `SCRuleGroups` for the Solidcore Rule Groups files of the
+    `scor.rulegroup.export` / `scor.rulegroup.import` API commands (create,
+    copy, edit user defined Rule Groups), with `SCAWLRuleGroup`,
+    `SCCCRuleGroup` and `SCFIMRuleGroup` sharing the policy tab methods, and
+    `add_rule_group()` / `remove_rule_group()` to make a policy use a Rule Group.
+- `SCException` and `SCReputation` constants classes.
+- `SCPolicies.new_empty_policy()`: a new policy without any rule or Rule Group
+  (the ePO "Blank Template" can't be exported).
+- `examples/solidcore_application_control.py` and
+  `examples/solidcore_rule_groups.py`, and three examples working directly
+  against an ePO server with the "mcafee-epo" API client (optional dependency
+  `pip install mcafee_epo_policies[examples]`): Application Control policy
+  with one item per tab and a database Rule Group, Integrity Monitor policy
+  with a "Windows Critical Config Files" Rule Group, and Change Control
+  policy protecting some of those files.
+- Tests built from real ePO 5.10 exports, each policy type also checked end to
+  end: edited with the library, imported into ePO, exported back unchanged and
+  displayed as expected in the ePO console.
 
 ### 0.2.0 - 2026-08-28
 
