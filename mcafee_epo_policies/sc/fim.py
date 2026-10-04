@@ -9,6 +9,7 @@ This module defines the class for the Solidcore "Integrity Monitor" policies
 """
 
 import uuid
+from ..policies import Policy
 from .scpolicies import SCPolicy
 from .rules import SCRules
 
@@ -234,6 +235,50 @@ class SCFIMRules(SCRules):
         return self.remove_rules('mon-advanced', {'rule-uuid': rule_uuid}) > 0
 
 
+    # ------------------------------ Markdown export ------------------------------
+    # Tabs of the console (Integrity Monitoring Rules, ePO 5.10): File,
+    # Registry (Windows only), Extension, Program, User, Filters.
+    ENCODING_LABELS = {'AutoDetect': 'Auto Detect', 'ASCII': 'ASCII', 'UTF8': 'UTF-8',
+                       'UTF-16': 'UTF-16'}
+
+    def md_change_tracking(self, item):
+        """
+        Returns the "Change Tracking Settings" column of the File tab, as the
+        console shows it (e.g. "Tracking:Enabled, Encoding:UTF-8, Directory:No").
+        """
+        if not item['change_tracking']:
+            return 'Tracking:Disabled'
+        text = 'Tracking:Enabled, Encoding:{}, Directory:{}'.format(
+            self.ENCODING_LABELS.get(item['encoding'], item['encoding']),
+            'Yes' if item['is_directory'] else 'No')
+        if item['is_directory']:
+            text += ', Recurse:{}'.format('Yes' if item['recurse'] else 'No')
+        return text
+
+    def md_tabs(self):
+        """
+        Returns the console tabs of the rules as Markdown ("###" per tab).
+        """
+        table = Policy.md_table
+        patterns = lambda items: ', '.join('{{{}}}'.format(item) for item in items)
+        simple = lambda items, column: table(['Filter', column], [
+            [(item['action'] or '').capitalize(), item['pattern']] for item in items])
+        tabs = [('File', table(
+            ['Filter', 'Path', 'Change Tracking Settings', 'Include Patterns', 'Exclude Patterns'],
+            [[(item['action'] or '').capitalize(), item['pattern'], self.md_change_tracking(item),
+              patterns(item['include_patterns']), patterns(item['exclude_patterns'])]
+             for item in self.get_file_list()]))]
+        if not self.is_unix():
+            tabs.append(('Registry', simple(self.get_registry_list(), 'Registry')))
+        tabs += [('Extension', simple(self.get_extension_list(), 'Extension')),
+                 ('Program', simple(self.get_program_list(), 'Program')),
+                 ('User', simple(self.get_user_list(), 'User')),
+                 ('Filters', 'Define filters by using a combination of conditions to exclude '
+                             'events that are not relevant for your setup.\n\n' + table(
+                                 ['Conditions'], [[self.md_conditions(f['conditions'])]
+                                                  for f in self.get_filters()], numbered=True))]
+        return '\n'.join('### {}\n\n{}'.format(title, body) for title, body in tabs)
+
 class SCFIMPolicyRules(SCFIMRules, SCPolicy):
     """
     The SCFIMPolicyRules class can be used to edit the Solidcore policies:
@@ -249,3 +294,15 @@ class SCFIMPolicyRules(SCFIMRules, SCPolicy):
     """
 
     TYPE_IDS = ('Mon Rules (Windows)', 'Mon Rules (Unix)')
+
+    @property
+    def MD_CATEGORY(self):
+        return 'Integrity Monitoring Rules ({})'.format('Unix' if self.is_unix() else 'Windows')
+
+    def md_sections(self):
+        """
+        Returns the policy content as a list of (heading, markdown) tuples:
+        the Rule Groups, then the tabs of each rule group (see
+        Policy.to_markdown).
+        """
+        return self.md_rule_group_sections(self.md_tabs)

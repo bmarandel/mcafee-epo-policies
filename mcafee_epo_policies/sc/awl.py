@@ -10,6 +10,7 @@ This module defines the classes for the Solidcore "Application Control" policies
 
 import re
 import uuid
+from ..policies import Policy
 from .scpolicies import SCPolicy
 from .rules import SCExclusionRules, SCUpdaterRules
 
@@ -643,6 +644,117 @@ class SCAWLPolicyOptions(SCPolicy):
         return self.get_config('GtiTargetURL')
 
 
+    # ------------------------------ Markdown export ------------------------------
+    # One section per console tab (Solidcore > Application Control >
+    # Application Control Options, ePO 5.10 console labels). The Unix policy
+    # only has the Reputation tab, without TIE and ATD. See Policy.to_markdown().
+    REPUTATIONS = {'99': 'Known Trusted', '85': 'Most Likely Trusted', '70': 'Might be Trusted',
+                   '50': 'Unknown', '30': 'Might be Malicious', '15': 'Most Likely Malicious',
+                   '1': 'Known Malicious'}
+    # Messages of the End User Notifications tab, in the console order.
+    MESSAGE_EVENTS = [('ACTX_INSTALL_PREVENTED', 'ActiveX Installation Prevented'),
+                      ('BLOCKED_PROCESS_INTERACTIVE_MODE', 'Blocked Interactive Mode of Process'),
+                      ('EXECUTION_DENIED', 'Execution Denied'),
+                      ('NX_VIOLATION_DETECTED', 'Nx Violation Detected'),
+                      ('PKG_MODIFICATION_PREVENTED', 'Installation Denied'),
+                      ('PREVENTED_FILE_EXECUTION', 'Prevented File Execution'),
+                      ('PROCESS_HIJACKED', 'Process Hijack Attempted'),
+                      ('READ_DENIED', 'File Read Denied'),
+                      ('VASR_VIOLATION_DETECTED', 'VASR Violation Detected'),
+                      ('WRITE_DENIED', 'File Write Denied')]
+
+    @property
+    def MD_CATEGORY(self):
+        return 'Application Control Options ({})'.format('Unix' if self.is_unix() else 'Windows')
+
+    def __md_level(self, value):
+        return None if value is None else self.REPUTATIONS.get(value, value)
+
+    def __md_reputation(self):
+        flag = self.md_flag
+        rows = []
+        if not self.is_unix():
+            rows += [['Use Trellix Threat Intelligence Exchange (TIE) server',
+                      flag(self.get_tie_reputation())],
+                     ['TIE Enterprise Trust Level', flag(self.get_tie_enterprise_trust_level())]]
+        rows.append(['Use Trellix Global Threat Intelligence (Trellix GTI)',
+                     flag(self.get_gti_reputation())])
+        text = self.md_group('Reputation', rows)
+        level = lambda enabled, value, suffix: None if enabled is None else (
+            '{} {}'.format(self.__md_level(value), suffix) if enabled == '1' else 'No')
+        text += '\n' + self.md_group('Reputation-Based Execution Settings', [
+            ['Allow files with', level(self.get_allow_by_reputation(),
+                                       self.get_allow_reputation_level(), 'and above')],
+            ['Ban files with', level(self.get_ban_by_reputation(),
+                                     self.get_ban_reputation_level(), 'and below')]])
+        if not self.is_unix():
+            rows = [['Send files with', level(self.get_atd_submission(),
+                                              self.get_atd_reputation_level(),
+                                              'and below reputation for analysis')]]
+            if self.get_atd_submission() == '1':
+                rows.append(['Limit file size to (1 - 10) MB', self.get_atd_file_size_limit()])
+            text += '\n' + self.md_group('Advanced Threat Defense (ATD) Settings', rows)
+        return text
+
+    def md_sections(self):
+        """
+        Returns the policy content as a list of (heading, markdown) tuples,
+        one per console tab (see Policy.to_markdown).
+        """
+        if self.is_unix():
+            return [('Reputation', self.__md_reputation())]
+        flag = self.md_flag
+        enabled = self.get_self_approval()
+        rows = [['Enable Self-Approval', flag(enabled)]]
+        if enabled == '1':
+            optional = self.get_justification_optional()
+            rows += [['Self-Approval Text', self.get_self_approval_text()],
+                     ['Dialog Timeout (secs)', self.get_self_approval_timeout()],
+                     ['Justification Message', None if optional is None else
+                      ('Optional' if optional == '1' else 'Mandatory')],
+                     ['Advanced Options: allow execution and update of files not included in '
+                      'the allow list at boot time', flag(self.get_self_approval_at_boot())]]
+        self_approval = self.md_settings(rows)
+        notifications = 'Notify local users when detections occur and specify what actions ' \
+                        'can be taken.\n\n' + self.md_settings([
+                            ['User Message: Show the messages dialog box when an event is '
+                             'detected and display the specified text in the message.',
+                             flag(self.get_user_message())]])
+        notifications += '\n' + self.md_group('Helpdesk Information', [
+            ['Mail to', self.get_helpdesk_mail_to()],
+            ['Mail Subject', self.get_helpdesk_mail_subject()],
+            ['Link to Website', self.get_helpdesk_website()],
+            ['Trellix ePO IP Address and Port', self.get_helpdesk_epo_address()]])
+        events = self.get_message_events()
+        known = [name for name, _ in self.MESSAGE_EVENTS]
+        rows = [[label, self.get_message(name), flag(self.get_message_show_in_dialog(name))]
+                for name, label in self.MESSAGE_EVENTS if name in events]
+        rows += [[name, self.get_message(name), flag(self.get_message_show_in_dialog(name))]
+                 for name in events if name not in known]
+        notifications += '\n### Messages\n\n' + self.md_table(
+            ['Event', 'Message', 'Show Event in Dialog'], rows)
+        features = self.md_group('Feature Control', [
+            ['Enforce feature control from Trellix ePO', flag(self.get_enforce_feature_control())],
+            ['Execution Control', flag(self.get_execution_control())],
+            ['Memory Protection (reboot required)', flag(self.get_memory_protection())],
+            ['CASP (reboot required)', flag(self.get_memory_protection_casp())],
+            ['NX (64-Bit) (reboot required)', flag(self.get_memory_protection_nx())],
+            ['Generate Observations', flag(self.get_generate_observations())],
+            ['Package Control', flag(self.get_package_control())],
+            ['Bypass Package Control', flag(self.get_bypass_package_control())],
+            ['Allow Uninstallation', flag(self.get_allow_uninstallation())],
+            ['Script as Updater (SAU) (reboot required)', flag(self.get_script_as_updater())]])
+        inventory = self.md_settings([
+            ['Hide Windows OS Files (inventory items signed with Microsoft certificates will '
+             'not be sent to Trellix ePO)', flag(self.get_hide_windows_os_files())],
+            ['Pull Complete Inventory Interval (days between consecutive inventory pulls)',
+             self.get_pull_inventory_interval()],
+            ['Receive Inventory Updates Interval (hours)', self.get_inventory_updates_interval()]])
+        return [('Self-Approval', self_approval), ('End User Notifications', notifications),
+                ('Features', features), ('Inventory', inventory),
+                ('Reputation', self.__md_reputation())]
+
+
 class SCAWLRules(SCExclusionRules, SCUpdaterRules):
     """
     SCAWLRules gives the methods of the Application Control Rules tabs of the ePO
@@ -918,6 +1030,121 @@ class SCAWLRules(SCExclusionRules, SCUpdaterRules):
                 self.remove_rules('attr', {'file': process_name, 'block_interactive': 'true'}))
 
 
+    # ------------------------------ Markdown export ------------------------------
+    # Tabs of the console (Application Control Rules), with their columns
+    # (ePO 5.10). Unix: Updater Processes, Directories, Executable Files,
+    # Exclusions and Filters (events only).
+    EXECUTION_ACTIONS = {'allow': 'Allow', 'block': 'Block', 'monitor': 'Monitor',
+                         'block_interactive': 'Block interactive mode'}
+    EXECUTION_MATCHES = {'equals': 'Equals', 'notEquals': 'Not equals',
+                         'noArgSpecified': 'No argument specified', 'matches': 'Matches',
+                         'notMatches': 'Not matches'}
+    EXECUTABLE_TYPES = {'name': 'File Name', 'sha1': 'File SHA-1', 'sha256': 'File SHA-256'}
+
+    @staticmethod
+    def md_certificate(pem):
+        """
+        Returns (Issued To, Issued By, Expiration Date) of a PEM certificate,
+        as computed by the console (subject and issuer common names; the
+        expiration date in UTC, the console shows it in the browser time
+        zone), or None if it can't be decoded (uses the certificate decoder
+        of the Python ssl module).
+        """
+        try:
+            import os
+            import ssl
+            import tempfile
+            with tempfile.NamedTemporaryFile('w', suffix='.pem', delete=False) as pem_file:
+                pem_file.write(pem)
+            try:
+                info = ssl._ssl._test_decode_cert(pem_file.name)
+            finally:
+                os.remove(pem_file.name)
+            name = lambda rdns: dict(item for rdn in rdns for item in rdn).get('commonName')
+            import datetime
+            expiration = datetime.datetime.fromtimestamp(
+                ssl.cert_time_to_seconds(info['notAfter']), datetime.timezone.utc)
+            return (name(info['subject']), name(info['issuer']),
+                    expiration.strftime('%Y-%m-%d %H:%M:%S UTC'))
+        except Exception:
+            return None
+
+    def __md_certificates(self, table):
+        rows = []
+        for cert in self.get_certificates():
+            decoded = self.md_certificate(cert['pem']) if cert['pem'] else None
+            if decoded is None:
+                import base64
+                import hashlib
+                body = ''.join(line for line in cert['pem'].splitlines() if '-----' not in line)
+                try:
+                    thumbprint = hashlib.sha1(base64.b64decode(body)).hexdigest()
+                except Exception:
+                    thumbprint = ''
+                decoded = ('SHA-1 ' + thumbprint, '', '')
+            rows.append(list(decoded) + [cert['updater'] or 'No', cert['label'] or ''])
+        return table(['Issued To', 'Issued By', 'Expiration Date', 'Updater', 'Updater Label'],
+                     rows)
+
+    def __md_execution_control(self, table):
+        rows = []
+        for rule in self.get_execution_control_rules():
+            cells = {}
+            for condition in rule['conditions']:
+                cells[condition['condition']] = '{} : {}'.format(
+                    self.EXECUTION_MATCHES.get(condition['match'], condition['match']),
+                    condition['pattern'] or '')
+            rows.append([rule['description'] or '',
+                         self.EXECUTION_ACTIONS.get(rule['action'], rule['action']),
+                         rule['process_name'], cells.get('path', ''),
+                         cells.get('command_line', ''), cells.get('parent_process_name', ''),
+                         cells.get('user', '')])
+        return table(['Rule Description', 'Action', 'Process Name', 'Path',
+                      'Command Line Argument', 'Parent Process Name', 'User Name'], rows)
+
+    def md_tabs(self):
+        """
+        Returns the console tabs of the rules as Markdown ("###" per tab).
+        """
+        table = Policy.md_table
+        unix = self.is_unix()
+        tabs = [('Updater Processes', self.md_updaters_table(table))]
+        if not unix:
+            installers = []
+            for rule in self.get_installers():
+                key = 'cksum' if 'cksum' in rule else 'cksum256'
+                name, _, version = (rule.get('version') or '').rpartition('\\')
+                installers.append([name, 'SHA-1' if key == 'cksum' else 'SHA-256',
+                                   rule.get(key), version, rule.get('vendor'), rule.get('tag')])
+            tabs += [('Certificates', self.__md_certificates(table)),
+                     ('Installers', table(['Installer Name', 'Type', 'SHA-1/SHA-256', 'Version',
+                                           'Vendor', 'Installer Label'], installers))]
+        directories = [[rule.get('path'), rule.get('action')] +
+                       ([] if unix else ['Yes' if rule.get('updater') == 'true' else 'No'])
+                       for rule in self.get_trusted_directories()]
+        tabs.append(('Directories', table(['Path', 'Action'] + ([] if unix else ['Updater']),
+                                          directories)))
+        if not unix:
+            tabs.append(('Users', self.md_users_table(table)))
+        tabs += [('Executable Files', table(
+                     ['Rule Name', 'Allow/Ban', 'Type', 'Value'],
+                     [[rule['name'], rule['action'], self.EXECUTABLE_TYPES.get(rule['type']),
+                       rule['value']] for rule in self.get_executable_files()])),
+                 ('Exclusions', self.md_exclusions_table(table))]
+        filters = '#### {}\n\n'.format('Events' if unix else 'Policy Discovery & Events')
+        filters += table(['Conditions', 'Apply rule to events also'],
+                         [[self.md_conditions(f['conditions']),
+                           'Yes' if f['apply_to_events'] else 'No'] for f in self.get_filters()],
+                         numbered=True)
+        if not unix:
+            filters += '\n#### Inventory\n\n' + table(
+                ['Conditions'], [[self.md_conditions(f['conditions'])]
+                                 for f in self.get_inventory_filters()], numbered=True)
+        tabs.append(('Filters', filters))
+        if not unix:
+            tabs.append(('Execution Control', self.__md_execution_control(table)))
+        return '\n'.join('### {}\n\n{}'.format(title, body) for title, body in tabs)
+
 class SCAWLPolicyRules(SCAWLRules, SCPolicy):
     """
     The SCAWLPolicyRules class can be used to edit the Solidcore policies:
@@ -932,3 +1159,15 @@ class SCAWLPolicyRules(SCAWLRules, SCPolicy):
     """
 
     TYPE_IDS = ('AWL Rules (Windows)', 'AWL Rules (Unix)')
+
+    @property
+    def MD_CATEGORY(self):
+        return 'Application Control Rules ({})'.format('Unix' if self.is_unix() else 'Windows')
+
+    def md_sections(self):
+        """
+        Returns the policy content as a list of (heading, markdown) tuples:
+        the Rule Groups, then the tabs of each rule group (see
+        Policy.to_markdown).
+        """
+        return self.md_rule_group_sections(self.md_tabs)

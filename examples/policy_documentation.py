@@ -8,8 +8,8 @@
 policy_documentation.py
 
 Example for the mcafee_epo_policies package: write one Markdown document per
-policy of an ENS (Threat Prevention, Firewall, Storage Protection) or Trellix Agent
-export, to keep a
+policy of an ENS (Threat Prevention, Firewall, Storage Protection), Trellix Agent or
+Solidcore export, to keep a
 documentation of the enforced security policies (audits, compliance).
 
 Each document has a metadata header, a table of contents, one section per
@@ -30,7 +30,10 @@ from mcafee_epo_policies import (ESTPPolicies, ESFWPolicies, ESTPPolicyOnAccessS
                                  ESFWPolicyOptions, McAfeeAgentPolicies, McAfeeAgentPolicyGeneral,
                                  McAfeeAgentPolicyRepository, McAfeeAgentPolicyTroubleshooting,
                                  McAfeeAgentPolicyCustomProps, McAfeeAgentPolicyTelemetry,
-                                 ESSPPolicies, ESSPPolicyICAP, ESSPPolicyNetApp)
+                                 ESSPPolicies, ESSPPolicyICAP, ESSPPolicyNetApp, SCPolicies,
+                                 SCGENPolicyConfiguration, SCGENPolicyExceptionRules,
+                                 SCAWLPolicyOptions, SCAWLPolicyRules, SCCCPolicyRules,
+                                 SCFIMPolicyRules)
 
 # Policy types with a Markdown export, per product of the export.
 PRODUCTS = {
@@ -52,6 +55,19 @@ PRODUCTS = {
     'VSESTOMD1300': (ESSPPolicies, {
         'VSES1000_Icap_Policies': ESSPPolicyICAP,
         'VSES1000_Netapp_Policies': ESSPPolicyNetApp}),
+    # Solidcore exports hold several features (SCOR_GEN, SCOR_AWL, SCOR_CC, SCOR_FIM).
+    'SCOR': (SCPolicies, {
+        'Lockdown Rules': SCGENPolicyConfiguration,
+        'Attr Rules (Windows)': SCGENPolicyExceptionRules,
+        'Attr Rules (Unix)': SCGENPolicyExceptionRules,
+        'AWL Options (Windows)': SCAWLPolicyOptions,
+        'AWL Options (Unix)': SCAWLPolicyOptions,
+        'AWL Rules (Windows)': SCAWLPolicyRules,
+        'AWL Rules (Unix)': SCAWLPolicyRules,
+        'CC Rules (Windows)': SCCCPolicyRules,
+        'CC Rules (Unix)': SCCCPolicyRules,
+        'Mon Rules (Windows)': SCFIMPolicyRules,
+        'Mon Rules (Unix)': SCFIMPolicyRules}),
 }
 
 
@@ -68,9 +84,11 @@ def main():
         xml_data = export_file.read()
     product = re.search(rb'featureid="([^"]+)"', xml_data)
     product = product.group(1).decode() if product else ''
+    if product.startswith('SCOR_'):
+        product = 'SCOR'
     if product not in PRODUCTS:
         print('Unsupported product "{}": use an ENS Threat Prevention, ENS Firewall, ENS '
-              'Storage Protection or Trellix Agent export.'
+              'Storage Protection, Trellix Agent or Solidcore export.'
               .format(product), file=sys.stderr)
         return 1
     container, classes = PRODUCTS[product]

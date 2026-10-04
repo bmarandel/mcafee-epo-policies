@@ -28,7 +28,7 @@ policy out of a `Policies` collection, or from `Policy.load_from_file`).
 - **`access_protection.py`** - ENS Threat Prevention Access Protection: list
   the rules, create a user-defined rule (executables, user names, subrules),
   block a Trellix-defined rule and add an exclusion.
-- **`policy_documentation.py`** - ENS Threat Prevention / Firewall / Storage Protection and Trellix Agent: from a
+- **`policy_documentation.py`** - ENS Threat Prevention / Firewall / Storage Protection, Trellix Agent and Solidcore: from a
   full product export, write one Markdown document per policy (all ENS
   policy types) (console
   sections, settings tables, document control section for the review and

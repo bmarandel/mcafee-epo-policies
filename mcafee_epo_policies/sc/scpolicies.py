@@ -114,6 +114,57 @@ class SCPolicy(SCRules, Policy):
         epo = self.get_epo_server()
         return '<{} for policy {} from server {}.>'.format(type(self).__name__, name, epo)
 
+    # ------------------------------ Markdown export ------------------------------
+    # Product name of the ePO Policy Catalog ("Solidcore 8.4.5", without its
+    # version). Each class sets MD_CATEGORY and md_sections() (console labels).
+    MD_PRODUCT = 'Solidcore'
+
+    @staticmethod
+    def md_flag(value):
+        """
+        Returns the label of a Solidcore checkbox stored as '1'/'0' or
+        'true'/'false' ('Yes'/'No'), None if missing.
+        """
+        if value is None:
+            return None
+        return 'Yes' if str(value).lower() in ['1', 'true'] else 'No'
+
+    def md_group(self, title, rows):
+        """
+        Returns a "###" group box with its "Setting | Value" table.
+        """
+        return '### {}\n\n{}'.format(title, self.md_settings(rows))
+
+    def md_rule_group_sections(self, tabs):
+        """
+        Returns the sections of a rules policy: the Rule Groups list of the
+        console (My Rules, then the shared Rule Groups), then one section per
+        rule group with its tabs (tabs: method returning the tabs of the
+        rules currently read, see md_tabs() of the rules classes).
+        """
+        groups = self.get_rule_groups()
+        own = [g for g in groups if not g['shared']]
+        shared = [g for g in groups if g['shared']]
+        text = 'The policy rules are the rules of all its rule groups: its own rules ' \
+               '(My Rules) and the shared Rule Groups (Menu > Configuration > Solidcore ' \
+               'Rules), listed below.\n\n'
+        text += self.md_table(['Rule Group', 'Kind'],
+                              [['My Rules', 'Policy rules']] +
+                              [[g['group_name'], 'Shared Rule Group'] for g in shared],
+                              numbered=True)
+        sections = [('Rule Groups', text)]
+        by_name = {settings_obj.get('name'): settings_obj for settings_obj in self.__settings_list()}
+        for group in own + shared:
+            self._md_view = by_name[group['settings']]
+            try:
+                body = tabs()
+            finally:
+                self._md_view = None
+            heading = 'My Rules' if not group['shared'] else 'Rule Group: {}'.format(
+                group['group_name'])
+            sections.append((heading, body))
+        return sections
+
     # ------------------------------ Rule groups ------------------------------
     # group_type values of the policy's own rules flagged as readOnly="true".
     OWN_READ_ONLY_GROUP_TYPES = ('attr',)
@@ -274,7 +325,10 @@ class SCPolicy(SCRules, Policy):
         return self.get_type().endswith('(Unix)')
 
     def _iter_rules(self, all_groups=False):
-        settings_list = self.__settings_list() if all_groups else [self.__my_rules()]
+        # md_rule_group_sections() reads the rules of one group at a time.
+        view = getattr(self, '_md_view', None)
+        settings_list = self.__settings_list() if all_groups else \
+            [view if view is not None else self.__my_rules()]
         for settings_obj in settings_list:
             if settings_obj is None:
                 continue

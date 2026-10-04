@@ -197,6 +197,110 @@ class SCRules():
         return settings
 
 
+    # ------------------------------ Markdown export ------------------------------
+    # Labels of the condition editors of the ePO 5.10 console (Filters tabs,
+    # Execution Control), and of the events of the Event condition.
+    CONDITION_LABELS = {'File': 'File', 'Event': 'Event', 'Process': 'Program',
+                        'Reg': 'Registry', 'User': 'User', 'Type': 'File type',
+                        'app-name': 'Application name', 'app-version': 'Application version',
+                        'vendor-name': 'Application vendor',
+                        'has-certificate': 'File signed by certificate'}
+    MATCH_LABELS = {'equals': 'equals', 'begins': 'begins with', 'ends': 'ends with',
+                    'contains': 'contains', 'doesnt_contain': 'does not contain'}
+    # Event condition values of the console (lower case codes).
+    EVENT_LABELS = {
+        'activex_install_allowed': 'ActiveX Installation Allowed',
+        'activex_install_prevented': 'ActiveX Installation Prevented',
+        'data_stream_created': 'Alternate Data Stream Created',
+        'data_stream_deleted': 'Alternate Data Stream Deleted',
+        'data_stream_modified': 'Alternate Data Stream Modified',
+        'data_stream_renamed': 'Alternate Data Stream Renamed',
+        'data_stream_attr_set': 'Attribute Added in Data Stream',
+        'data_stream_attr_clear': 'Attribute Cleared in Data Stream',
+        'data_stream_attr_modified': 'Attribute Modified in Data Stream',
+        'blocked_process_interactive_mode': 'Blocked Interactive Mode of Process',
+        'booting_inventory_mode': 'Booting Inventory Mode',
+        'clogged_data_deleted': 'Clogged Data Deleted',
+        'end_inventory_mode_deferred': 'Closed Inventory Mode',
+        'closed_update_mode': 'Closed Update Mode', 'command_executed': 'Command Executed',
+        'data_congestion_detected': 'Data Congestion Detected',
+        'throttling_cache_full': 'Data Dropped', 'throttling_started': 'Data Throttled',
+        'local_cli_access_disabled': 'Disabled Local CLI Access',
+        'disabled_on_reboot': 'Disabled Mode deferred',
+        'enabled_on_reboot': 'Enabled Mode deferred', 'end_observe': 'End Observe Mode',
+        'end_observe_on_reboot': 'End Observe Mode deferred',
+        'execution_denied': 'Execution Denied', 'file_acl_modified': 'File ACL Modified',
+        'file_attribute_cleared': 'File Attribute Cleared',
+        'file_attribute_modified': 'File Attribute Modified',
+        'file_attribute_set': 'File Attribute Set', 'file_created': 'File Created',
+        'file_deleted': 'File Deleted', 'file_modified': 'File Modified',
+        'file_ownership_changed': 'File Ownership Changed',
+        'file_read_denied': 'File Read Denied', 'file_read_update': 'File Read in Update mode',
+        'file_renamed': 'File Renamed', 'file_solidified': 'File Solidified',
+        'file_unsolidified': 'File Unsolidified', 'file_write_denied': 'File Write Denied',
+        'initial_scan_task_completed': 'Initial Scan Completed',
+        'package_modification_allowed': 'Installation Allowed',
+        'package_modification_prevented': 'Installation Denied',
+        'inventory_corrupted': 'Inventory Corrupted',
+        'inventory_mode_deferred': 'Inventory Mode deferred',
+        'malicious_file_found': 'Malicious File Found',
+        'malicious_file_is_trusted': 'Malicious File is Trusted',
+        'module_loading_failed': 'Module Loading Failed',
+        'nx_violation_detected': 'Nx Violation Detected',
+        'begin_observe_on_reboot': 'Observe Mode deferred',
+        'observed_file_execution': 'Observed File Execution',
+        'opened_update_mode': 'Opened Update Mode',
+        'prevented_file_execution': 'Prevented File Execution',
+        'process_exited': 'Process Exited', 'process_hijacked': 'Process Hijack Attempted',
+        'process_started': 'Process Started', 'process_terminated': 'Process Terminated',
+        'pull_inventory_ended': 'Pull Inventory Completed',
+        'inventory_recovered': 'Recovered Inventory',
+        'local_cli_recover_success': 'Recovered Local CLI',
+        'registry_created': 'Registry Created', 'registry_deleted': 'Registry Deleted',
+        'registry_modified': 'Registry Modified',
+        'registry_write_denied': 'Registry Write Denied', 'sc_connected': 'SC Connected',
+        'sc_disconnected': 'SC Disconnected', 'sc_divert': 'SC Diverted',
+        'begin_observe': 'Start Observe Mode', 'disabled': 'Started Disabled Mode',
+        'enabled': 'Started Enabled Mode', 'booting_observe': 'Started Observe mode',
+        'booted_in_update_mode': 'Started Update Mode',
+        'trial_license_expired': 'Trial license expired',
+        'inventory_recovery_failed': 'Unable to Recover Inventory',
+        'local_cli_recover_failed': 'Unable to Recover Local CLI',
+        'prevented_unauth_api_call': 'Unauthorized API Call Prevented',
+        'update_mode_on_reboot': 'Update Mode deferred',
+        'user_account_created': 'User Account Created',
+        'user_account_deleted': 'User Account Deleted',
+        'user_account_modified': 'User Account Modified', 'user_logged_off': 'User Logged Off',
+        'user_logged_on': 'User Logged On', 'user_logon_failed': 'User Logon Failed',
+        'vasr_violation_detected': 'VASR Violation Detected', 'vtp_trusted': 'VTP Trusted'}
+    # Stored event codes shown by the console under another value (checked:
+    # a filter stored as WRITE_DENIED is shown "File Write Denied"); the codes
+    # neither listed here nor in EVENT_LABELS are written as stored.
+    EVENT_ALIASES = {'WRITE_DENIED': 'File Write Denied'}
+
+    @classmethod
+    def md_event(cls, code):
+        """
+        Returns the console label of an event code (the code if unknown).
+        """
+        return cls.EVENT_ALIASES.get(code) or cls.EVENT_LABELS.get((code or '').lower(), code)
+
+    @classmethod
+    def md_conditions(cls, conditions):
+        """
+        Returns the conditions of a filter as console text, e.g.
+        "Program equals e2e.exe AND Event equals File Write Denied".
+        """
+        texts = []
+        for condition in conditions:
+            pattern = condition.get('pattern')
+            if condition.get('condition') == 'Event':
+                pattern = cls.md_event(pattern)
+            texts.append('{} {} {}'.format(
+                cls.CONDITION_LABELS.get(condition.get('condition'), condition.get('condition')),
+                cls.MATCH_LABELS.get(condition.get('match'), condition.get('match')), pattern))
+        return ' AND '.join(texts)
+
 class SCExclusionRules(SCRules):
     """
     SCExclusionRules adds the exclusion list methods to the Solidcore policies and
@@ -296,6 +400,39 @@ class SCExclusionRules(SCRules):
         return True
 
 
+    # ------------------------------ Markdown export ------------------------------
+    # Exclusion Type labels of the console list (scor.utils.optionStringMap of
+    # the ePO 5.10 console).
+    EXCLUSION_LABELS = {
+        'casp_bypass': 'Disable buffer overflow protection (CASP)',
+        'dep_bypass': 'Disable buffer overflow protection (NX)',
+        'vasr_force_reloc_bypass': 'Disable ROP protection (Forced Relocation VASR)',
+        'vasr_rand_bypass': 'Disable ROP protection (Randomization VASR)',
+        'vasr_reloc_bypass': 'Disable ROP protection (DLL Relocation VASR)',
+        'uninstall_bypass': 'Bypass uninstaller detection',
+        'process_ctx_bypass': 'Exclude from write-protection and allow script execution',
+        'process_ctx_reg_bypass': 'Bypass process context registry',
+        'skipDenyWrite': 'Exclude path from write-protection rules',
+        'skipFileOperation': 'Ignore path for file operations',
+        'skipFileOperation_f': 'Exclude path from file operations',
+        'skipSolidification': 'Exclude path from the allow list',
+        'skipVolume': 'Exclude volume from protection'}
+
+    def md_exclusions_table(self, table):
+        """
+        Returns the exclusion list as a Markdown table (Exclusion Type,
+        Process Name), in the order of the console (order of the rules).
+        """
+        rows = []
+        for rule in self.get_rules():
+            if rule.get('type') not in ['skiplist', 'attr']:
+                continue
+            name = rule.get('path') if rule.get('type') == 'skiplist' else rule.get('file')
+            for setting in sorted(rule):
+                if rule[setting] == 'true' and setting in self.EXCLUSIONS:
+                    rows.append([self.EXCLUSION_LABELS.get(setting, setting), name])
+        return table(['Exclusion Type', 'Process Name'], rows)
+
 class SCUpdaterRules(SCRules):
     """
     SCUpdaterRules adds the "Updater Processes" and "Users" tabs methods to the
@@ -378,3 +515,35 @@ class SCUpdaterRules(SCRules):
         Remove a trusted user.
         """
         return self.remove_rules('updater-user', {'user': user}) > 0
+
+    # ------------------------------ Markdown export ------------------------------
+    def md_updaters_table(self, table):
+        """
+        Returns the Updater Processes tab as a Markdown table (table: the
+        md_table function of a Policy), with the console columns.
+        """
+        rows = []
+        for rule in self.get_updaters():
+            if rule.get('type') == 'updater-binary':
+                condition, value = ('Parent', rule['parent']) if rule.get('parent') else \
+                    (('Library', rule['library']) if rule.get('library') else ('', ''))
+                rows.append([rule.get('tag'), 'Name', rule.get('binary'), condition, value,
+                             'Yes' if rule.get('inherit') == 'false' else 'No',
+                             'Yes' if rule.get('log') == 'false' else 'No'])
+            else:
+                key = 'cksum' if 'cksum' in rule else 'cksum256'
+                rows.append([rule.get('tag'), 'SHA-1' if key == 'cksum' else 'SHA-256',
+                             rule.get(key), '', '', '', ''])
+        unix = self.is_unix()
+        return table(['Updater Label', 'Updater Type', 'File' if unix else 'File/SHA-1/SHA-256',
+                      'Condition', 'Parent' if unix else 'Parent/Library',
+                      'Disable Inheritance', 'Suppress Events'], rows)
+
+    def md_users_table(self, table):
+        """
+        Returns the Users tab as a Markdown table, with the console columns.
+        """
+        rows = [['Group' if rule.get('groupDN') else 'User', rule.get('user'),
+                 rule.get('displayName'), rule.get('tag'), '']
+                for rule in self.get_trusted_users()]
+        return table(['Type', 'UserID/Group', 'Name', 'User Label', 'Include Subgroups'], rows)

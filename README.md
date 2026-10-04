@@ -34,12 +34,12 @@ below) to keep a documentation of the enforced security policies.
 | ENS Firewall | Options | Full read/write | Yes |
 | ENS Storage Protection | ICAP Policies | Full read/write: connection list, ICAP server, scan items, performance, actions, reports | Yes |
 | ENS Storage Protection | NetApp Policies | Full read/write: filers, filer account, scan items, exclusions, performance, actions, reports | Yes |
-| Solidcore - General | Configuration (Client) | Full read/write (CLI password: raw hashes only) | Not yet |
-| Solidcore - General | Exception Rules (Windows/Unix) | Full read/write | Not yet |
-| Solidcore - Application Control | Application Control Options (Windows/Unix) | Full read/write | Not yet |
-| Solidcore - Application Control | Application Control Rules (Windows/Unix) | Full read/write (all tabs); Rule Groups added/removed | Not yet |
-| Solidcore - Change Control | Change Control Rules (Windows/Unix) | Full read/write (all tabs); Rule Groups added/removed | Not yet |
-| Solidcore - Integrity Monitor | Integrity Monitoring Rules (Windows/Unix) | Full read/write (all tabs); Rule Groups added/removed | Not yet |
+| Solidcore - General | Configuration (Client) | Full read/write (CLI password: raw hashes only) | Yes |
+| Solidcore - General | Exception Rules (Windows/Unix) | Full read/write | Yes |
+| Solidcore - Application Control | Application Control Options (Windows/Unix) | Full read/write | Yes |
+| Solidcore - Application Control | Application Control Rules (Windows/Unix) | Full read/write (all tabs); Rule Groups added/removed | Yes |
+| Solidcore - Change Control | Change Control Rules (Windows/Unix) | Full read/write (all tabs); Rule Groups added/removed | Yes |
+| Solidcore - Integrity Monitor | Integrity Monitoring Rules (Windows/Unix) | Full read/write (all tabs); Rule Groups added/removed | Yes |
 | Solidcore | Rule Groups (Application Control, Change Control, Integrity Monitor) | Full read/write of the `scor.rulegroup.export` / `import` files | Not yet |
 
 The "Markdown report" column tells which policy types support the Markdown
@@ -101,7 +101,9 @@ policy.save_markdown('On-Access Scan - My Custom Policy.md',
 ```
 
 Available for all McAfee (Trellix) Agent policy types (General, Repository,
-Troubleshooting, Custom Properties, Product Improvement Program) and all ENS
+Troubleshooting, Custom Properties, Product Improvement Program), all Solidcore
+policy types (the rules policies list their Rule Groups, then the tabs of My
+Rules and of each shared Rule Group) and all ENS
 policy types: Threat Prevention (On-Access Scan,
 On-Demand Scan, Exploit Prevention, Access Protection, Options) and Firewall
 (Options, and Rules documented as a firewall review: a rule summary numbered
@@ -250,6 +252,19 @@ docstring describing which ePO UI setting it maps to.
 Python 3.8 or later.
 
 ## History
+
+### 0.7.0 - 2026-10-04
+
+**Added**
+- Markdown export of the Solidcore policies: Configuration (Client),
+  Exception Rules, Application Control Options and Rules, Change Control
+  Rules, Integrity Monitoring Rules (Windows and Unix), with the tabs,
+  columns and labels of the ePO 5.10 console (exclusion types, filter
+  conditions and events, Execution Control actions). The rules policies
+  document their own rules (My Rules) and each shared Rule Group they use.
+  Certificates show Issued To / Issued By / Expiration Date decoded from the
+  PEM; the CLI password hashes are never written.
+  `examples/policy_documentation.py` handles Solidcore exports too.
 
 ### 0.6.0 - 2026-10-04
 

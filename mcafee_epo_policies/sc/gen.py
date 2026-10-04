@@ -680,6 +680,79 @@ class SCGENPolicyConfiguration(SCPolicy):
         """
         return self.get_config('InvDiffConfig2')
 
+    # ------------------------------ Markdown export ------------------------------
+    # One section per console tab (Solidcore > General > Configuration
+    # (Client), ePO 5.10 console labels). See Policy.to_markdown().
+    MD_CATEGORY = 'Configuration (Client)'
+
+    def md_sections(self):
+        """
+        Returns the policy content as a list of (heading, markdown) tuples,
+        one per console tab (see Policy.to_markdown).
+        """
+        check = self.md_check
+        # The password is hashed by the ePO server: only whether one is set.
+        password = 'Set' if self.get_cli_password_hash() else 'Not set'
+        enabled = self.get_cli_access()
+        rows = [['Enable', check(enabled)]]
+        if enabled == '1':
+            rows += [['Disable CLI after ... failed attempts within ... minutes',
+                      '{} failed attempts within {} minutes'.format(
+                          self.get_cli_failed_attempts(), self.get_cli_attempts_within_minutes())],
+                     ['Disable CLI for (minutes)', self.get_cli_lockdown_minutes()]]
+        cli = self.md_group('Local CLI Access Password', [['Password', password]]) + '\n' + \
+            self.md_group('Local CLI Access Configuration', rows)
+        throttling = self.md_group('Throttling Settings', [
+            ['Enable Throttling', check(self.get_throttling())],
+            ['Events', check(self.get_throttling_events())],
+            ['Events - Threshold', self.get_events_threshold()],
+            ['Events - Cache Size', self.get_events_cache_size()],
+            ['Inventory Updates', check(self.get_throttling_inventory())],
+            ['Inventory Updates - Threshold', self.get_inventory_threshold()],
+            ['Policy Discovery (Observations)', check(self.get_throttling_policy_discovery())],
+            ['Policy Discovery (Observations) - Threshold', self.get_policy_discovery_threshold()],
+            ['Policy Discovery (Observations) - Cache Size',
+             self.get_policy_discovery_cache_size()]])
+        miscellaneous = self.md_settings([
+            ['Content Change Tracking: Maximum file size (KB)', self.get_file_diff_max_size()],
+            ['Content Change Tracking: File-extensions for attributes-only tracking',
+             self.get_file_diff_attr_only_types()],
+            ['Content Change Tracking: Maximum file limit per rule', self.get_file_diff_max_files()],
+            ['Paths Writable only by Updaters', self.get_paths_writable_only_by_updaters()]])
+        logging = self.md_settings([
+            ['Solidcore log file size (KB)', self.get_log_file_size()],
+            ['Number of solidcore log files', self.get_log_file_num()]])
+        inventory = self.md_settings([
+            ['Inventory merge timeout period (seconds)', self.get_inventory_merge_timeout()],
+            ['Inventory merge by size period (seconds)',
+             self.get_inventory_merge_by_size_period()]])
+        certificate = self.md_settings([
+            ['Enable VTP trust check', self.get_vtp_trust_check()],
+            ['Allow failed CertTrust with VTP', self.get_allow_failed_cert_trust_with_vtp()],
+            ['Catalog certificate extraction disabled', self.get_catalog_cert_extraction_disabled()],
+            ['Embedded certificate extraction disabled',
+             self.get_embedded_cert_extraction_disabled()]])
+        custom = self.md_settings([
+            ['MPCompat', self.get_mp_compat()],
+            ['DisableDeviceGuardCompat', self.get_disable_device_guard_compat()],
+            ['IsInvBackupEnabled', self.get_inventory_backup()],
+            ['IsInvBootBackupEnabled', self.get_inventory_boot_backup()],
+            ['SoIsTidOptimizationEnabled', self.get_tid_optimization()],
+            ['CksumCalcMode', self.get_checksum_calc_mode()],
+            ['CksumParallelCalcMode', self.get_checksum_parallel_calc_mode()],
+            ['EnableBinAllowedByCert OrChecksumToBeUpdaters',
+             self.get_bin_allowed_by_cert_or_checksum_to_be_updaters()],
+            ['VolumeMountRefCountDisabled', self.get_volume_mount_ref_count_disabled()],
+            ['UnloadUnmountedVolumeDisabled', self.get_unload_unmounted_volume_disabled()],
+            ['InventoryCaseSensitivityEnabled', self.get_inventory_case_sensitivity()],
+            ['DisableReputationCache', self.get_disable_reputation_cache()],
+            ['SkipValidateFileLength', self.get_skip_validate_file_length()],
+            ['DisableCertCheck', self.get_disable_cert_check()],
+            ['IsTrustedLocalGroupEnabled', self.get_trusted_local_group()]])
+        return [('CLI', cli), ('Throttling', throttling), ('Miscellaneous', miscellaneous),
+                ('Logging configuration', logging), ('Inventory configuration', inventory),
+                ('Certificate configuration', certificate), ('Custom configuration', custom)]
+
 class SCGENPolicyExceptionRules(SCExclusionRules, SCPolicy):
     """
     The SCGENPolicyExceptionRules class can be used to edit the Solidcore policies:
@@ -690,3 +763,14 @@ class SCGENPolicyExceptionRules(SCExclusionRules, SCPolicy):
     """
 
     TYPE_IDS = ('Attr Rules (Windows)', 'Attr Rules (Unix)')
+
+    @property
+    def MD_CATEGORY(self):
+        return 'Exception Rules ({})'.format('Unix' if self.is_unix() else 'Windows')
+
+    def md_sections(self):
+        """
+        Returns the policy content as a list of (heading, markdown) tuples:
+        the exclusion list of the console (see Policy.to_markdown).
+        """
+        return [('Exception Rules', self.md_exclusions_table(self.md_table))]

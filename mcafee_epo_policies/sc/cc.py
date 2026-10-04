@@ -8,6 +8,7 @@ This module defines the class for the Solidcore "Change Control" policies
 (SCOR_CC): SCCCPolicyRules.
 """
 
+from ..policies import Policy
 from .scpolicies import SCPolicy
 from .rules import SCUpdaterRules
 
@@ -102,6 +103,27 @@ class SCCCRules(SCUpdaterRules):
     #   remove_updater, get_trusted_users, add_trusted_user, remove_trusted_user).
 
 
+    # ------------------------------ Markdown export ------------------------------
+    # Tabs of the console (Change Control Rules, ePO 5.10): Read-Protect,
+    # Write-Protect File, Write-Protect Registry, Updater Processes, Users
+    # (Unix: Read-Protect, Write-Protect File, Updater Processes).
+    def md_tabs(self):
+        """
+        Returns the console tabs of the rules as Markdown ("###" per tab).
+        """
+        table = Policy.md_table
+        protect = lambda items, column: table(['Filter', column], [
+            [(item['action'] or '').capitalize(), item['pattern']] for item in items])
+        tabs = [('Read-Protect', protect(self.get_read_protect_list(), 'File')),
+                ('Write-Protect File', protect(self.get_write_protect_file_list(), 'File'))]
+        if not self.is_unix():
+            tabs.append(('Write-Protect Registry',
+                         protect(self.get_write_protect_registry_list(), 'Registry')))
+        tabs.append(('Updater Processes', self.md_updaters_table(table)))
+        if not self.is_unix():
+            tabs.append(('Users', self.md_users_table(table)))
+        return '\n'.join('### {}\n\n{}'.format(title, body) for title, body in tabs)
+
 class SCCCPolicyRules(SCCCRules, SCPolicy):
     """
     The SCCCPolicyRules class can be used to edit the Solidcore policies:
@@ -118,3 +140,15 @@ class SCCCPolicyRules(SCCCRules, SCPolicy):
     """
 
     TYPE_IDS = ('CC Rules (Windows)', 'CC Rules (Unix)')
+
+    @property
+    def MD_CATEGORY(self):
+        return 'Change Control Rules ({})'.format('Unix' if self.is_unix() else 'Windows')
+
+    def md_sections(self):
+        """
+        Returns the policy content as a list of (heading, markdown) tuples:
+        the Rule Groups, then the tabs of each rule group (see
+        Policy.to_markdown).
+        """
+        return self.md_rule_group_sections(self.md_tabs)
