@@ -36,6 +36,11 @@ below) to keep a documentation of the enforced security policies.
 | ENS Storage Protection | NetApp Policies | Full read/write: filers, filer account, scan items, exclusions, performance, actions, reports | Yes |
 | ENS Adaptive Threat Protection | Options | Full read/write | Yes |
 | ENS Adaptive Threat Protection | Dynamic Application Containment | Full read/write: containment rules (Block/Report), exclusions | Yes |
+| ENS Web Control | Options | Full read/write (Web Reporter password: kept, never set) | Yes |
+| ENS Web Control | Enforcement Messaging | Full read/write (15 languages) | Yes |
+| ENS Web Control | Block and Allow List | Full read/write: sites, file download rating actions | Yes |
+| ENS Web Control | Content Actions | Full read/write: web category blocking, rating actions | Yes |
+| ENS Web Control | Browser Control | Full read/write | Yes |
 | Solidcore - General | Configuration (Client) | Full read/write (CLI password: raw hashes only) | Yes |
 | Solidcore - General | Exception Rules (Windows/Unix) | Full read/write | Yes |
 | Solidcore - Application Control | Application Control Options (Windows/Unix) | Full read/write | Yes |
@@ -108,8 +113,8 @@ policy types (the rules policies list their Rule Groups, then the tabs of My
 Rules and of each shared Rule Group) and all ENS
 policy types: Threat Prevention (On-Access Scan,
 On-Demand Scan, Exploit Prevention, Access Protection, Options), Adaptive
-Threat Protection (Options, Dynamic Application Containment), Storage
-Protection (ICAP, NetApp) and Firewall
+Threat Protection (Options, Dynamic Application Containment), Web Control
+(all 5 policy types), Storage Protection (ICAP, NetApp) and Firewall
 (Options, and Rules documented as a firewall review: a rule summary numbered
 in evaluation order, then one detail card per group/rule). Labels, order and
 displayed items were checked against the ePO 5.10 console (e.g. Exploit
@@ -177,6 +182,34 @@ dac.add_exclusion(DACExclusion('Backup agent', path='**\\backup.exe',
 As in the console, `set_action()` refuses reputation thresholds of enabled
 actions out of order (Clean <= Block <= Contain <= Notify). Containment rules
 are given by their RuleID or console label (`ESATPPolicyDAC.RULES`).
+
+### ENS Web Control
+
+```python
+from mcafee_epo_policies import (ESWCPolicies, ESWCPolicyOptions, ESWCPolicyBlockAllowList, WCSite,
+                                 ESWCPolicyContentActions, ESWCPolicyMessaging, RatingActions)
+
+policies = ESWCPolicies(xml_export)               # policy.export productId=ENDP_WP_1000
+options = ESWCPolicyOptions(policies.get_policy('EWC_General', 'My Default'))
+options.set_option('bGtiFailClose', '1')          # see ESWCPolicyOptions.options()
+options.excluded_ips = ['10.0.0.0/8', '192.168.56-68.1-5']
+
+lists = ESWCPolicyBlockAllowList(policies.get_policy('EWC_BlockAndAllowList', 'My Default'))
+lists.add_site(WCSite('example.com', WCSite.BLOCK, 'Not work related'))
+
+content = ESWCPolicyContentActions(policies.get_policy('EWC_ContentFiltering', 'My Default'))
+content.set_category('Gambling', '1')             # code or console label
+content.site_actions = RatingActions(red=RatingActions.BLOCK, yellow=RatingActions.BLOCK,
+                                     unrated=RatingActions.WARN)
+
+messages = ESWCPolicyMessaging(policies.get_policy('EWC_EnforcementMessaging', 'My Default'))
+messages.set_message('szBlock', 'Ce site est interdit.', 'fr')
+messages.md_languages = ['en', 'fr']              # languages of the Markdown export
+```
+
+`ESWCPolicyBrowserControl` blocks browsers by ID (`set_block('OPERA', '1')`).
+The Web Reporter password is encrypted by the ePO server: it must be defined
+in the console, the library keeps it and never writes it in the Markdown export.
 
 ### ENS Firewall rules
 
@@ -293,6 +326,18 @@ docstring describing which ePO UI setting it maps to.
 Python 3.8 or later.
 
 ## History
+
+### 0.9.0 - 2026-10-04
+
+**Added**
+- Endpoint Security Web Control (ENS WC), new `es/wc` module:
+  `ESWCPolicies` (`policy.export productId=ENDP_WP_1000`),
+  `ESWCPolicyOptions`, `ESWCPolicyMessaging` (Enforcement Messaging),
+  `ESWCPolicyBlockAllowList` and `WCSite`, `ESWCPolicyContentActions`,
+  `ESWCPolicyBrowserControl` and `RatingActions` (Red/Yellow/Unrated
+  actions), with the Markdown export. Storage and labels checked on the ePO
+  5.10 lab (test policies changed in the console, then changed by the
+  library and opened in the console).
 
 ### 0.8.0 - 2026-10-04
 

@@ -9,7 +9,7 @@ policy_documentation.py
 
 Example for the mcafee_epo_policies package: write one Markdown document per
 policy of an ENS (Threat Prevention, Firewall, Storage Protection, Adaptive
-Threat Protection), Trellix Agent or Solidcore export, to keep a
+Threat Protection, Web Control), Trellix Agent or Solidcore export, to keep a
 documentation of the enforced security policies (audits, compliance).
 
 Each document has a metadata header, a table of contents, one section per
@@ -34,7 +34,9 @@ from mcafee_epo_policies import (ESTPPolicies, ESFWPolicies, ESTPPolicyOnAccessS
                                  SCGENPolicyConfiguration, SCGENPolicyExceptionRules,
                                  SCAWLPolicyOptions, SCAWLPolicyRules, SCCCPolicyRules,
                                  SCFIMPolicyRules, ESATPPolicies, ESATPPolicyOptions,
-                                 ESATPPolicyDAC)
+                                 ESATPPolicyDAC, ESWCPolicies, ESWCPolicyOptions,
+                                 ESWCPolicyMessaging, ESWCPolicyBlockAllowList,
+                                 ESWCPolicyContentActions, ESWCPolicyBrowserControl)
 
 # Policy types with a Markdown export, per product of the export.
 PRODUCTS = {
@@ -59,6 +61,12 @@ PRODUCTS = {
     'TIEClientMETA': (ESATPPolicies, {
         'General': ESATPPolicyOptions,
         'TIE_DynamicApplicationContainment_Policies': ESATPPolicyDAC}),
+    'ENDP_WP_1000': (ESWCPolicies, {
+        'EWC_General': ESWCPolicyOptions,
+        'EWC_EnforcementMessaging': ESWCPolicyMessaging,
+        'EWC_BlockAndAllowList': ESWCPolicyBlockAllowList,
+        'EWC_ContentFiltering': ESWCPolicyContentActions,
+        'EWC_BrowserControl': ESWCPolicyBrowserControl}),
     # Solidcore exports hold several features (SCOR_GEN, SCOR_AWL, SCOR_CC, SCOR_FIM).
     'SCOR': (SCPolicies, {
         'Lockdown Rules': SCGENPolicyConfiguration,
@@ -92,7 +100,8 @@ def main():
         product = 'SCOR'
     if product not in PRODUCTS:
         print('Unsupported product "{}": use an ENS Threat Prevention, ENS Firewall, ENS '
-              'Storage Protection, ENS Adaptive Threat Protection, Trellix Agent or '
+              'Storage Protection, ENS Adaptive Threat Protection, ENS Web Control, '
+              'Trellix Agent or '
               'Solidcore export.'
               .format(product), file=sys.stderr)
         return 1
