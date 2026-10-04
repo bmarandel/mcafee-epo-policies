@@ -8,6 +8,7 @@ This module defines the class McAfeeAgentPolicyTroubleshooting.
 """
 
 from ..policies import Policy
+from .markdown import MD_PRODUCT, labelled
 
 class McAfeeAgentPolicyTroubleshooting(Policy):
     """
@@ -83,3 +84,27 @@ class McAfeeAgentPolicyTroubleshooting(Policy):
         return self.set_setting_value('General', 'IsHealthcheckEnabled', mode)
 
     health_check = property(get_health_check, set_health_check)
+
+    # ------------------------------ Markdown export ------------------------------
+    # Console: Trellix Agent > Troubleshooting, tab General (ePO 5.10).
+    MD_PRODUCT = MD_PRODUCT
+    MD_CATEGORY = 'Troubleshooting'
+    LANGUAGES = {'0000': 'UI Default Language', '0804': 'Chinese (Simplified)',
+                 '0404': 'Chinese (Traditional)', '0405': 'Czech', '0406': 'Danish',
+                 '0413': 'Dutch', '0409': 'English', '040b': 'Finnish', '040c': 'French',
+                 '0407': 'German', '0410': 'Italian', '0411': 'Japanese', '0412': 'Korean',
+                 '0414': 'Norwegian', '0415': 'Polish', '0816': 'Portuguese',
+                 '0416': 'Portuguese (Brazilian)', '0419': 'Russian', '040a': 'Spanish',
+                 '041d': 'Swedish', '041f': 'Turkish'}
+
+    def md_sections(self):
+        """
+        Returns the policy content as a list of (heading, markdown) tuples
+        (see Policy.to_markdown).
+        """
+        enabled = self.get_enable_agent_language_selection()
+        rows = [['Select language used by agent (Windows, Mac OSX and EWS agents only)',
+                 self.md_check(enabled)]]
+        if enabled == '1':
+            rows.append(['Language', labelled(self.get_agent_language(), self.LANGUAGES)])
+        return [('General', '### Language options\n\n' + self.md_settings(rows))]

@@ -229,7 +229,7 @@ def test_fw_sections(fw_policy):
     assert headings == ['## Contents', '## 1. Rules summary', '## 2. Rule details',
                         '## 3. Document control']
     assert '56 rule(s) in 10 group(s).' in text
-    assert '| 1 | [Group] McAfee core networking | Enabled |  | Either | Any protocol | All Protocols |' in text
+    assert '| 1 | \\[Group\\] McAfee core networking | Enabled |  | Either | Any protocol | All Protocols |' in text
     assert '| 1.8 | Allow DNS traffic | Enabled | Allow | Out | Any protocol | UDP | ' \
         'Any (port Any) | Any (port 53) | All | No |' in text
     assert 'SYSTEM (path: \\*\\*\\\\SYSTEM)' in text
@@ -246,6 +246,14 @@ def test_fw_sections(fw_policy):
 def test_md_heading():
     assert Policy.md_heading('<b>x</b>\n# y') == '&lt;b&gt;x&lt;/b&gt; # y'
     assert Policy.md_heading(None) == ''
+
+
+def test_md_escape_links_and_images():
+    # A policy value must not become a link or a remote image (tracking pixel).
+    assert Policy.md_escape('![x](https://a.example/p.png)') == \
+        '!\\[x\\](https://a.example/p.png)'
+    assert Policy.md_heading('[Approve](https://a.example/login)') == \
+        '\\[Approve\\](https://a.example/login)'
 
 
 def test_no_html_injection(oas_policy, fw_policy):

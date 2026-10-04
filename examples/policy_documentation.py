@@ -8,7 +8,8 @@
 policy_documentation.py
 
 Example for the mcafee_epo_policies package: write one Markdown document per
-policy of an ENS export (Threat Prevention or Firewall), to keep a
+policy of an ENS (Threat Prevention, Firewall, Storage Protection) or Trellix Agent
+export, to keep a
 documentation of the enforced security policies (audits, compliance).
 
 Each document has a metadata header, a table of contents, one section per
@@ -26,7 +27,10 @@ import sys
 from mcafee_epo_policies import (ESTPPolicies, ESFWPolicies, ESTPPolicyOnAccessScan,
                                  ESTPPolicyOnDemandScan, ESTPPolicyExploitPrevention,
                                  ESTPPolicyOptions, ESTPPolicyAccessProtection, ESFWPolicyRules,
-                                 ESFWPolicyOptions)
+                                 ESFWPolicyOptions, McAfeeAgentPolicies, McAfeeAgentPolicyGeneral,
+                                 McAfeeAgentPolicyRepository, McAfeeAgentPolicyTroubleshooting,
+                                 McAfeeAgentPolicyCustomProps, McAfeeAgentPolicyTelemetry,
+                                 ESSPPolicies, ESSPPolicyICAP, ESSPPolicyNetApp)
 
 # Policy types with a Markdown export, per product of the export.
 PRODUCTS = {
@@ -39,6 +43,15 @@ PRODUCTS = {
     'ENDP_FW_META_FW': (ESFWPolicies, {
         'FireCore_FW_Rules': ESFWPolicyRules,
         'FW_StatusMode': ESFWPolicyOptions}),
+    'EPOAGENTMETA': (McAfeeAgentPolicies, {
+        'General': McAfeeAgentPolicyGeneral,
+        'Repository': McAfeeAgentPolicyRepository,
+        'Troubleshooting': McAfeeAgentPolicyTroubleshooting,
+        'CustomProps': McAfeeAgentPolicyCustomProps,
+        'Telemetry': McAfeeAgentPolicyTelemetry}),
+    'VSESTOMD1300': (ESSPPolicies, {
+        'VSES1000_Icap_Policies': ESSPPolicyICAP,
+        'VSES1000_Netapp_Policies': ESSPPolicyNetApp}),
 }
 
 
@@ -56,7 +69,8 @@ def main():
     product = re.search(rb'featureid="([^"]+)"', xml_data)
     product = product.group(1).decode() if product else ''
     if product not in PRODUCTS:
-        print('Unsupported product "{}": use an ENS Threat Prevention or Firewall export.'
+        print('Unsupported product "{}": use an ENS Threat Prevention, ENS Firewall, ENS '
+              'Storage Protection or Trellix Agent export.'
               .format(product), file=sys.stderr)
         return 1
     container, classes = PRODUCTS[product]

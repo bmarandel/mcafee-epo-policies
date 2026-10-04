@@ -1312,7 +1312,7 @@ class ESFWPolicyRules(Policy):
         seq_list = self.seq[seq_id]
         for seq in seq_list:
             rul = self.rul[seq]
-            toc += '{}- [{}](#{})'.format(header, rul['Name'], rul['GUID'])
+            toc += '{}- [{}](#{})'.format(header, self.md_heading(rul['Name']), rul['GUID'])
             if rul['Action'] == "JUMP":
                 toc += '/'
             toc += '\r\n'
@@ -1412,7 +1412,7 @@ class ESFWPolicyRules(Policy):
     def __get_location(self, agg_ref):
         txt = ''
         agg = self.agg[agg_ref]
-        txt = '  - Name: ' + agg['Name'] + '\r\n'
+        txt = '  - Name: ' + self.md_heading(agg['Name']) + '\r\n'
         txt += '  - Isolated: '
         txt += 'Yes\r\n' if agg['Isolated'] == '1' else 'No\r\n'
         txt += '  - Require ePO Reachability: '
@@ -1422,47 +1422,47 @@ class ESFWPolicyRules(Policy):
         if dgs is not None:
             txt += '  - Default Gateway:\r\n'
             for dg in dgs:
-                txt += '    - ' + self.__get_ipaddress(dg) + '\r\n'
+                txt += '    - ' + self.md_heading(self.__get_ipaddress(dg)) + '\r\n'
         # Print DHCP Server
         dss = agg.get('DhcpServer', None)
         if dss is not None:
             txt += '  - DHCP Server:\r\n'
             for ds in dss:
-                txt += '    - ' + self.__get_ipaddress(ds) + '\r\n'
+                txt += '    - ' + self.md_heading(self.__get_ipaddress(ds)) + '\r\n'
         # Print DNS Server
         dns = agg.get('DnsServer', None)
         if dns is not None:
             txt += '  - DNS Server:\r\n'
             for ds in dns:
-                txt += '    - ' + self.__get_ipaddress(ds) + '\r\n'
+                txt += '    - ' + self.md_heading(self.__get_ipaddress(ds)) + '\r\n'
         # Print DNS Suffix
         dsu = agg.get('DnsSuffix', None)
         if dsu is not None:
             txt += '  - DNS Suffix:\r\n'
             for ds in dsu:
-                txt += '    - ' + ds + '\r\n'
+                txt += '    - ' + self.md_heading(ds) + '\r\n'
         # Print Primary WINS Server
         pws = agg.get('PrimaryWINS', None)
         if pws is not None:
             txt += '  - Primary WINS Server:\r\n'
             for ds in pws:
-                txt += '    - ' + self.__get_ipaddress(ds) + '\r\n'
+                txt += '    - ' + self.md_heading(self.__get_ipaddress(ds)) + '\r\n'
         # Print Secondary WINS Server
         sws = agg.get('SecondaryWINS', None)
         if sws is not None:
             txt += '  - Secondary WINS Server:\r\n'
             for ds in sws:
-                txt += '    - ' + self.__get_ipaddress(ds) + '\r\n'
+                txt += '    - ' + self.md_heading(self.__get_ipaddress(ds)) + '\r\n'
         # Print Domain reachability (HTTPS)
         drs = agg.get('DomainReachable', None)
         if drs is not None:
             txt += '  - Domain reachability (HTTPS):\r\n'
             for ds in drs:
-                txt += '    - ' + ds + '\r\n'
+                txt += '    - ' + self.md_heading(ds) + '\r\n'
         # Print Registry Key/Value
         reg_key = agg.get('RegKey', None)
         if reg_key is not None:
-            txt += '  - Registry Key: ' + reg_key[0] + '\r\n'
+            txt += '  - Registry Key: ' + self.md_heading(reg_key[0]) + '\r\n'
         return txt
 
     def __get_local_networks(self, agg_ref):
@@ -1475,9 +1475,9 @@ class ESFWPolicyRules(Policy):
                 lns = obj.get('LocalAddress', None)
                 if lns is not None:
                     is_local = True
-                    tmp += '  - ' + obj['Name'] + ':\r\n'
+                    tmp += '  - ' + self.md_heading(obj['Name']) + ':\r\n'
                     for ln in lns:
-                        tmp += '    - ' + self.__get_ipaddress(ln) + '\r\n'
+                        tmp += '    - ' + self.md_heading(self.__get_ipaddress(ln)) + '\r\n'
         if is_local:
             txt = 'Local networks:\r\n' + tmp
         return txt
@@ -1486,7 +1486,7 @@ class ESFWPolicyRules(Policy):
         txt = ''
         lp = self.rul[seq].get('LocalPort', None)
         if lp is not None:
-            txt += 'Local port: ' + lp[0] + '\r\n'
+            txt += 'Local port: ' + self.md_heading(lp[0]) + '\r\n'
         return txt
 
     def __get_remote_networks(self, agg_ref):
@@ -1499,9 +1499,9 @@ class ESFWPolicyRules(Policy):
                 rns = obj.get('RemoteAddress', None)
                 if rns is not None:
                     is_remote = True
-                    tmp += '  - ' + obj['Name'] + ':\r\n'
+                    tmp += '  - ' + self.md_heading(obj['Name']) + ':\r\n'
                     for rn in rns:
-                        tmp += '    - ' + self.__get_ipaddress(rn) + '\r\n'
+                        tmp += '    - ' + self.md_heading(self.__get_ipaddress(rn)) + '\r\n'
         if is_remote:
             txt = 'Remote networks:\r\n' + tmp
         return txt
@@ -1510,7 +1510,7 @@ class ESFWPolicyRules(Policy):
         txt = ''
         rp = self.rul[seq].get('RemotePort', None)
         if rp is not None:
-            txt += 'Remote port: ' + rp[0] + '\r\n'
+            txt += 'Remote port: ' + self.md_heading(rp[0]) + '\r\n'
         return txt
 
     def __get_scheduled(self, seq):
@@ -1548,7 +1548,7 @@ class ESFWPolicyRules(Policy):
             if toc:
                 txt += '<div id="{}" />\r\n'.format(rul['GUID'])
             txt += '#' + '#'*level + ' '  #-- Heading is computed based on the level
-            txt += rul['Name']
+            txt += self.md_heading(rul['Name'])
 
             # Is it a folder?
             if rul['Action'] == "JUMP":
@@ -1591,8 +1591,8 @@ class ESFWPolicyRules(Policy):
                 txt += self.__get_scheduled(seq)
 
             # Print end of the common section
-            txt += 'Note: ' + rul['Note'] + '\r\n'
-            txt += 'Last Changed: ' + self.__get_last_changed(seq) + '\r\n'
+            txt += 'Note: ' + self.md_escape(rul['Note']) + '\r\n'
+            txt += 'Last Changed: ' + self.md_heading(self.__get_last_changed(seq)) + '\r\n'
             txt += '\r\n'
 
             #  Is there a child sequence under the current one ?

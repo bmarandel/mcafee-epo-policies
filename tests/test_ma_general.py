@@ -72,3 +72,26 @@ def test_cert_authentication_loads_ca_files_relative_to_module(general_policy, m
     # must not raise FileNotFoundError anymore.
     monkeypatch.chdir(tmp_path)
     assert general_policy.set_test_cert_authentication('1') in (True, False)
+
+
+def test_getters_read_the_console_section_first():
+    # The console shows the section named after its fields when the
+    # "service" section differs (checked on the ePO 5.10 lab).
+    root = et.parse(str(FIXTURE)).getroot()
+    policy = McAfeeAgentPolicyGeneral(root)
+    # AgentListenServer.IsRelayClientEnabled 0, RelayService.EnableClient 1.
+    assert policy.get_relay_client() == '0'
+    assert policy.get_policy_enforcement_interval() == 60
+    systray = McAfeeAgentPolicyGeneral(
+        et.parse(str(FIXTURE.with_name('ma_general_systray.xml'))).getroot())
+    # AgentListenServer.bEnableLazyCaching 1, HttpServerService.IsLazyCachingEnabled 0.
+    assert systray.get_sa_lazy_caching() == '1'
+    assert systray.get_sa_repo_path_windows() == 'DEFAULT'
+    assert systray.get_asci() == 5
+
+
+def test_set_lazy_caching_writes_both_sections(general_policy):
+    general_policy.set_sa_lazy_caching('0')
+    assert general_policy.get_setting_value('AgentListenServer', 'bEnableLazyCaching') == '0'
+    assert general_policy.get_setting_value('HttpServerService', 'IsLazyCachingEnabled') == '0'
+    assert general_policy.get_sa_lazy_caching() == '0'

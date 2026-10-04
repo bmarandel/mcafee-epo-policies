@@ -49,3 +49,17 @@ def test_icmp_message_type(fw_policy):
     rule['MessageType'] = ['254']
     assert 'Message Type: Type 254' in fw_policy.get_content()
     assert 'ICMP (Type 254)' in fw_policy.to_markdown()
+
+
+def test_get_content_escapes_policy_values(fw_policy):
+    # Names/notes from the policy must not become Markdown links or images.
+    rule = next(rul for rul in fw_policy.rul.values() if rul['Name'] == 'Test All')
+    rule['Name'] = '[Approve](https://a.example/login)'
+    rule['Note'] = '![x](https://a.example/p.png)'
+    content = fw_policy.get_content() + fw_policy.get_toc()
+    assert '](https://a.example' not in content.replace('\\](', '')
+    assert '\\[Approve\\](https://a.example/login)' in content
+    assert '!\\[x\\](https://a.example/p.png)' in content
+    # The Markdown export table escapes the user name once only.
+    rule['LastModifyingUsername'] = 'mcafee_epo_policies'
+    assert 'By mcafee\\_epo\\_policies on' in fw_policy.to_markdown()

@@ -20,11 +20,11 @@ below) to keep a documentation of the enforced security policies.
 
 | Product | Policy | Status | Markdown report |
 |---|---|---|---|
-| McAfee Agent | General | Full read/write | Not yet |
-| McAfee Agent | Repository | Full read/write | Not yet |
-| McAfee Agent | Troubleshooting | Full read/write | Not yet |
-| McAfee Agent | Custom Properties | Full read/write | Not yet |
-| McAfee Agent | Product Improvement Program (Telemetry) | Full read/write | Not yet |
+| McAfee Agent | General | Full read/write | Yes |
+| McAfee Agent | Repository | Full read/write | Yes |
+| McAfee Agent | Troubleshooting | Full read/write | Yes |
+| McAfee Agent | Custom Properties | Full read/write | Yes |
+| McAfee Agent | Product Improvement Program (Telemetry) | Full read/write | Yes |
 | ENS Threat Prevention | On-Access Scan | Full read/write | Yes |
 | ENS Threat Prevention | On-Demand Scan | Full read/write | Yes |
 | ENS Threat Prevention | Exploit Prevention | Full read/write: signatures/expert rules, exclusions, Application Protection Rules (user-defined created/edited/removed, Trellix-defined status/inclusion/executables/notes) | Yes |
@@ -32,6 +32,8 @@ below) to keep a documentation of the enforced security policies.
 | ENS Threat Prevention | Options | Full read/write | Yes |
 | ENS Firewall | Rules | Full read/write: rules, groups (sub groups, location, timed group), networks, applications, schedule | Yes |
 | ENS Firewall | Options | Full read/write | Yes |
+| ENS Storage Protection | ICAP Policies | Full read/write: connection list, ICAP server, scan items, performance, actions, reports | Yes |
+| ENS Storage Protection | NetApp Policies | Full read/write: filers, filer account, scan items, exclusions, performance, actions, reports | Yes |
 | Solidcore - General | Configuration (Client) | Full read/write (CLI password: raw hashes only) | Not yet |
 | Solidcore - General | Exception Rules (Windows/Unix) | Full read/write | Not yet |
 | Solidcore - Application Control | Application Control Options (Windows/Unix) | Full read/write | Not yet |
@@ -98,7 +100,9 @@ policy.save_markdown('On-Access Scan - My Custom Policy.md',
                      author='Jane Doe', reviewers=['CISO'])
 ```
 
-Available for all ENS policy types: Threat Prevention (On-Access Scan,
+Available for all McAfee (Trellix) Agent policy types (General, Repository,
+Troubleshooting, Custom Properties, Product Improvement Program) and all ENS
+policy types: Threat Prevention (On-Access Scan,
 On-Demand Scan, Exploit Prevention, Access Protection, Options) and Firewall
 (Options, and Rules documented as a firewall review: a rule summary numbered
 in evaluation order, then one detail card per group/rule). Labels, order and
@@ -123,6 +127,25 @@ policy.set_rule_block('PREVENT_MIMIKATZ_CREATION', '1')  # Trellix-defined rule
 
 Subrule types and operation codes are listed in `APSubRule.OPERATIONS` (Windows)
 and `APSubRule.LINUX_OPERATIONS` (Linux rules), with the console labels.
+
+### ENS Storage Protection
+
+```python
+from mcafee_epo_policies import ESSPPolicies, ESSPPolicyNetApp, SPExclusion
+
+policies = ESSPPolicies(xml_export)               # policy.export productId=VSESTOMD1300
+policy = ESSPPolicyNetApp(policies.get_policy('VSES1000_Netapp_Policies', 'My Default'))
+policy.overwrite_filer_list = '1'
+policy.filer_list = ['nas01.example.com', '10.0.0.20']
+policy.set_file_types_to_scan(ESSPPolicyNetApp.SPECIFIED_ONLY, ['doc', 'pdf'], no_extension=True)
+policy.add_exclusion(SPExclusion.pattern('D:\\Backup\\', subfolders=True))
+policy.add_exclusion(SPExclusion.file_age(30, SPExclusion.CREATED))
+policy.set_threat_actions(ESSPPolicyNetApp.CLEAN, ESSPPolicyNetApp.DELETE)
+```
+
+`ESSPPolicyICAP` handles the ICAP Policies (connection list, ICAP server bind
+address and port) with the same Scan Items, Performance, Actions and Reports
+methods.
 
 ### ENS Firewall rules
 
@@ -227,6 +250,51 @@ docstring describing which ePO UI setting it maps to.
 Python 3.8 or later.
 
 ## History
+
+### 0.6.0 - 2026-10-04
+
+**Added**
+- Markdown export of the McAfee (Trellix) Agent policies: General (General,
+  SuperAgent, Events, Logging, Updates, Peer-to-Peer, Deployment tabs),
+  Repository (repository list, proxy - passwords are never written, only
+  whether one is set), Troubleshooting, Custom Properties and Product
+  Improvement Program, with the labels of the ePO 5.10 console. When a
+  setting is stored twice, the value shown by the console is used (the
+  section named after the console fields, e.g. AgentListenServer, rather than
+  the "service" section, e.g. HttpServerService - checked on lab policies
+  where they differ). `examples/policy_documentation.py` handles Trellix
+  Agent exports too.
+
+- Endpoint Security Storage Protection (ENSSP), new `es/sp` module: ICAP
+  Policies (`ESSPPolicyICAP`: connection list, ICAP server configuration) and
+  NetApp Policies (`ESSPPolicyNetApp`: filers list, administrator account,
+  exclusions as `SPExclusion` by pattern/file type/file age), both with the
+  Scan Items (file types to scan, options, heuristics), Performance, Actions
+  and Reports tabs, and their Markdown export (console labels). The filer
+  account must be defined in the console: ePO encrypts its password with
+  the server key ("EPOAES128:..."), which the library can't decrypt nor
+  produce; the library keeps it and can only enable/disable the account. Storage learnt from test policies changed in
+  the ePO 5.10 console; a NetApp policy built by the library was imported
+  and displayed as expected. `examples/policy_documentation.py` handles
+  ENSSP exports too.
+
+**Fixed**
+- McAfee Agent General: 19 getters read the "service" section first (e.g.
+  `get_relay_client()` read RelayService.EnableClient) and could return the
+  opposite of what the console shows when the two sections differ; they now
+  read the section of the console first (AgentListenServer, General,
+  Network...). `set_sa_lazy_caching()` also writes
+  AgentListenServer.bEnableLazyCaching (read by the console).
+  `get_policy_enforcement_interval()` and `get_asci()` return an int.
+
+**Security**
+- Markdown export: `[` and `]` are now escaped too (`Policy.md_escape()`,
+  `md_heading()`), and the ENS Firewall `get_content()`/`get_toc()` reports
+  (used by `examples/firewall_rules.py`) escape the policy values (names,
+  notes, networks, addresses, location criteria, ports). In 0.5.0 a policy
+  value such as `![x](https://...)` or `[text](https://...)`, written in ePO
+  by someone allowed to edit the policy, was rendered as a remote image
+  (tracking pixel) or a link in the generated document.
 
 ### 0.5.0 - 2026-10-03
 

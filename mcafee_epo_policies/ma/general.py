@@ -10,6 +10,7 @@ This module defines the class McAfeeAgentPolicyGeneral.
 import os
 import xml.etree.ElementTree as et
 from ..policies import Policy
+from .markdown import MD_PRODUCT, first_value, minutes, labelled
 
 class McAfeeAgentPolicyGeneral(Policy):
     """
@@ -25,6 +26,20 @@ class McAfeeAgentPolicyGeneral(Policy):
         name = self.get_name()
         epo = self.get_epo_server()
         return '<McAfeeAgentPolicyGeneral for policy {} from server {}.>'.format(name, epo)
+
+    def __console_value(self, console, service):
+        """
+        Returns the value of a setting stored twice: the section read by the
+        ePO console form (named after its fields, e.g. AgentListenServer)
+        first, the "service" section (e.g. HttpServerService) if missing.
+        Both are equal in policies saved by the console, not always in
+        imported ones, and the console shows the first one (checked on the
+        ePO 5.10 lab).
+        """
+        value = self.get_setting_value(*console)
+        if value is None and service is not None:
+            value = self.get_setting_value(*service)
+        return value
 
     def get_table_value(self, section, keys):
         """
@@ -49,9 +64,9 @@ class McAfeeAgentPolicyGeneral(Policy):
         """
         Get Policy enforcement interval (minutes)
         """
-        value = self.get_setting_value('PolicyService', 'PolicyEnforcementTimeout')
-        return int(value) if value is not None else int(
-            self.get_setting_value('General', 'PolicyEnforcementInterval'))/60
+        value = self.__console_value(('General', 'PolicyEnforcementInterval'), None)
+        return int(value) // 60 if value is not None else int(
+            self.get_setting_value('PolicyService', 'PolicyEnforcementTimeout'))
 
     def set_policy_enforcement_interval(self, int_minutes):
         """
@@ -117,9 +132,8 @@ class McAfeeAgentPolicyGeneral(Policy):
         """
         Get state of Enable agent wake-up call support
         """
-        value = self.get_setting_value('HttpServerService', 'IsAgentPingEnabled')
-        return value if value is not None else self.get_setting_value(
-            'AgentListenServer', 'bEnableAgentPing')
+        return self.__console_value(('AgentListenServer', 'bEnableAgentPing'),
+                                    ('HttpServerService', 'IsAgentPingEnabled'))
 
     def set_agent_wakeup_call(self, mode):
         """
@@ -135,9 +149,8 @@ class McAfeeAgentPolicyGeneral(Policy):
         """
         Get state of Enable super agent wake-up call support
         """
-        value = self.get_setting_value('UdpService', 'IsBroadcastPingEnabled')
-        return value if value is not None else self.get_setting_value(
-            'AgentListenServer', 'bEnableBroadcastPing')
+        return self.__console_value(('AgentListenServer', 'bEnableBroadcastPing'),
+                                    ('UdpService', 'IsBroadcastPingEnabled'))
 
     def set_super_agent_wakeup_call(self, mode):
         """
@@ -155,9 +168,8 @@ class McAfeeAgentPolicyGeneral(Policy):
         """
         Get state of Accept connections only from the ePO server
         """
-        value = self.get_setting_value('HttpServerService', 'IsListenToEPOServerOnly')
-        return value if value is not None else self.get_setting_value(
-            'AgentListenServer', 'bListenToEPOServerOnly')
+        return self.__console_value(('AgentListenServer', 'bListenToEPOServerOnly'),
+                                    ('HttpServerService', 'IsListenToEPOServerOnly'))
 
     def set_listen_eposerver_only(self, mode):
         """
@@ -233,8 +245,7 @@ class McAfeeAgentPolicyGeneral(Policy):
         """
         Get state of Prompt user when a reboot is required
         """
-        value = self.get_setting_value('UpdaterService', 'EnableRebootUI')
-        return value if value is not None else self.get_setting_value('General', 'ShowRebootUI')
+        return self.__console_value(('General', 'ShowRebootUI'), ('UpdaterService', 'EnableRebootUI'))
 
     def set_prompt_user_on_reboot(self, mode):
         """
@@ -286,9 +297,9 @@ class McAfeeAgentPolicyGeneral(Policy):
         """
         Get Agent-to-server communication interval (minutes).
         """
-        value = self.get_setting_value('PropertyService', 'PropertyCollectionTimeout')
-        return int(value) if value is not None else int(self.get_setting_value(
-            'Network', 'CheckNetworkMessageInterval'))/60
+        value = self.__console_value(('Network', 'CheckNetworkMessageInterval'), None)
+        return int(value) // 60 if value is not None else int(
+            self.get_setting_value('PropertyService', 'PropertyCollectionTimeout'))
 
     def set_asci(self, int_minutes):
         """
@@ -308,9 +319,8 @@ class McAfeeAgentPolicyGeneral(Policy):
         Get Initiate agent-to-server communication within 10 minutes
             after startup if policies are older than (days)
         """
-        value = self.get_setting_value('PropertyService', 'PropertyCollectionIfDelayByDays')
-        return int(value) if value is not None else int(
-            self.get_setting_value('Network', 'AsciDoWhen'))
+        return int(self.__console_value(('Network', 'AsciDoWhen'),
+                                        ('PropertyService', 'PropertyCollectionIfDelayByDays')))
 
     def set_asci_do_when(self, int_days):
         """
@@ -328,9 +338,8 @@ class McAfeeAgentPolicyGeneral(Policy):
         """
         Get state of Retrieve all system and product properties (recommended).
         """
-        value = self.get_setting_value('PropertyService', 'PropertyCollectFullProps')
-        return value if value is not None else self.get_setting_value(
-            'General', 'bCollectFullProps')
+        return self.__console_value(('General', 'bCollectFullProps'),
+                                    ('PropertyService', 'PropertyCollectFullProps'))
 
     def set_retrieve_full_props(self, mode):
         """
@@ -350,9 +359,8 @@ class McAfeeAgentPolicyGeneral(Policy):
         """
         Get state of Convert agents to SuperAgents
         """
-        value = self.get_setting_value('HttpServerService', 'IsSuperAgentEnabled')
-        return value if value is not None else self.get_setting_value(
-            'AgentListenServer', 'bEnableSuperAgent')
+        return self.__console_value(('AgentListenServer', 'bEnableSuperAgent'),
+                                    ('HttpServerService', 'IsSuperAgentEnabled'))
 
     def set_super_agent(self, mode):
         """
@@ -368,9 +376,8 @@ class McAfeeAgentPolicyGeneral(Policy):
         """
         Get state of Use systems running SuperAgents as distributed repositories
         """
-        value = self.get_setting_value('HttpServerService', 'IsSuperAgentRepositoryEnabled')
-        return value if value is not None else self.get_setting_value(
-            'AgentListenServer', 'bEnableSuperAgentRepository')
+        return self.__console_value(('AgentListenServer', 'bEnableSuperAgentRepository'),
+                                    ('HttpServerService', 'IsSuperAgentRepositoryEnabled'))
 
     def set_sa_repository(self, mode):
         """
@@ -386,9 +393,8 @@ class McAfeeAgentPolicyGeneral(Policy):
         """
         Get Repository path (Windows)
         """
-        value = self.get_setting_value('HttpServerService', 'VirtualDirectory')
-        return value if value is not None else self.get_setting_value(
-            'AgentListenServer', 'VirtualDirectory')
+        return self.__console_value(('AgentListenServer', 'VirtualDirectory'),
+                                    ('HttpServerService', 'VirtualDirectory'))
 
     def set_sa_repo_path_windows(self, path):
         """
@@ -404,9 +410,8 @@ class McAfeeAgentPolicyGeneral(Policy):
         """
         Get Repository path (Unix)
         """
-        value = self.get_setting_value('HttpServerService', 'VirtualDirectoryUnix')
-        return value if value is not None else self.get_setting_value(
-            'AgentListenServer', 'VirtualDirectoryUnix')
+        return self.__console_value(('AgentListenServer', 'VirtualDirectoryUnix'),
+                                    ('HttpServerService', 'VirtualDirectoryUnix'))
 
     def set_sa_repo_path_unix(self, path):
         """
@@ -422,7 +427,8 @@ class McAfeeAgentPolicyGeneral(Policy):
         """
         Get state of Enable LazyCaching
         """
-        return self.get_setting_value('HttpServerService', 'IsLazyCachingEnabled')
+        return self.__console_value(('AgentListenServer', 'bEnableLazyCaching'),
+                                    ('HttpServerService', 'IsLazyCachingEnabled'))
 
     def set_sa_lazy_caching(self, mode):
         """
@@ -430,7 +436,8 @@ class McAfeeAgentPolicyGeneral(Policy):
 
         Note: Ensure one or more Repository is enabled.
         """
-        return self.set_setting_value('HttpServerService', 'IsLazyCachingEnabled', mode)
+        self.set_setting_value('HttpServerService', 'IsLazyCachingEnabled', mode)
+        return self.set_setting_value('AgentListenServer', 'bEnableLazyCaching', mode)
 
     sa_lazy_caching = property(get_sa_lazy_caching, set_sa_lazy_caching)
 
@@ -439,9 +446,8 @@ class McAfeeAgentPolicyGeneral(Policy):
         """
         Get Interval to flush cache (minutes)
         """
-        value = self.get_setting_value('HttpServerService', 'RepositorySyncInterval')
-        return int(value) if value is not None else int(self.get_setting_value(
-            'AgentListenServer', 'NewRepositoryContentInterval'))
+        return int(self.__console_value(('AgentListenServer', 'NewRepositoryContentInterval'),
+                                        ('HttpServerService', 'RepositorySyncInterval')))
 
     def set_sa_cache_sync_interval(self, int_minutes):
         """
@@ -458,9 +464,8 @@ class McAfeeAgentPolicyGeneral(Policy):
         """
         Get Max disk quota (GB)
         """
-        value = self.get_setting_value('HttpServerService', 'DiskQuota')
-        return int(value) if value is not None else int(
-            self.get_setting_value('AgentListenServer', 'LCDiskQuota'))
+        return int(self.__console_value(('AgentListenServer', 'LCDiskQuota'),
+                                        ('HttpServerService', 'DiskQuota')))
 
     def set_sa_cache_disk_quota(self, int_gigabytes):
         """
@@ -476,9 +481,8 @@ class McAfeeAgentPolicyGeneral(Policy):
         """
         Get Purge Interval (Days)
         """
-        value = self.get_setting_value('HttpServerService', 'ContentLongevity')
-        return int(value) if value is not None else int(
-            self.get_setting_value('AgentListenServer', 'ContentLongevity'))
+        return int(self.__console_value(('AgentListenServer', 'ContentLongevity'),
+                                        ('HttpServerService', 'ContentLongevity')))
 
     def set_sa_cache_purge_interval(self, int_days):
         """
@@ -495,9 +499,8 @@ class McAfeeAgentPolicyGeneral(Policy):
         """
         Get state of Enable Relay Communication
         """
-        value = self.get_setting_value('RelayService', 'EnableClient')
-        return value if value is not None else self.get_setting_value(
-            'AgentListenServer', 'IsRelayClientEnabled')
+        return self.__console_value(('AgentListenServer', 'IsRelayClientEnabled'),
+                                    ('RelayService', 'EnableClient'))
 
     def set_relay_client(self, mode):
         """
@@ -547,9 +550,8 @@ class McAfeeAgentPolicyGeneral(Policy):
         """
         Get state of Enable RelayServer
         """
-        value = self.get_setting_value('RelayService', 'IsEnabled')
-        return value if value is not None else self.get_setting_value(
-            'AgentListenServer', 'bEnableRelayService')
+        return self.__console_value(('AgentListenServer', 'bEnableRelayService'),
+                                    ('RelayService', 'IsEnabled'))
 
     def set_relay_server(self, mode):
         """
@@ -565,9 +567,8 @@ class McAfeeAgentPolicyGeneral(Policy):
         """
         Get Service Manager port (RelayServer)
         """
-        value = self.get_setting_value('RelayService', 'RelayServerPort')
-        return int(value) if value is not None else int(
-            self.get_setting_value('AgentListenServer', 'AgtServiceMgrPort'))
+        return int(self.__console_value(('AgentListenServer', 'AgtServiceMgrPort'),
+                                        ('RelayService', 'RelayServerPort')))
 
     def set_relay_server_port(self, int_port):
         """
@@ -1015,3 +1016,239 @@ class McAfeeAgentPolicyGeneral(Policy):
         return self.set_setting_value('Deployment', 'EnableCompatibilityCheck', mode)
 
     dep_compatibility_check = property(get_dep_compatibility_check, set_dep_compatibility_check)
+    # ------------------------------ Markdown export ------------------------------
+    # One section per console tab, one "###" table per group box, with the
+    # labels of the ePO 5.10 console (Trellix Agent > General). See
+    # Policy.to_markdown() and ma/markdown.py for the settings read.
+    MD_PRODUCT = MD_PRODUCT
+    MD_CATEGORY = 'General'
+    IP_REPORTING_MODES = {'2': 'Default', '1': 'IPv4', '0': 'IPv6'}
+    EVENT_PRIORITIES = {'4': 'Critical', '3': 'Major', '2': 'Minor', '1': 'Warning',
+                        '0': 'Informational'}
+    # Update type and Repository branch to use: products known by the
+    # library (product ID -> console name and group). The console lists the
+    # products checked in to the ePO master repository, with their version.
+    SIGNATURES, PATCHES = 'Signatures and engines', 'Patches and service packs'
+    UPDATE_PRODUCTS = {
+        'AMCORDAT2000': ('AMCore Content Package', SIGNATURES),
+        'VSCANDAT1000': ('DAT', SIGNATURES),
+        'VSCANENG1000': ('Engine', SIGNATURES),
+        'MSCANENG1000': ('Mac Engine', SIGNATURES),
+        'LV2SNENG1000': ('Linux Engine', SIGNATURES),
+        'MED_DAT_1000': ('MEDDAT', SIGNATURES),
+        'ENDPCNT_1000': ('Endpoint Security Exploit Prevention Content', SIGNATURES),
+        'ENDPCNT_1000_LYNX': ('Endpoint Security Exploit Prevention Linux Content', SIGNATURES),
+        'MVEDR_R_3000': ('Trellix EDR Rules for Windows', SIGNATURES),
+        'MVEDR_R_3000WINX': ('Trellix EDR Rules for Windows', SIGNATURES),
+        'MVEDR_R_3000LYNX': ('Trellix EDR Rules for Linux', SIGNATURES),
+        'MVEDR_R_3000MACX': ('Trellix EDR Rules for macOS', SIGNATURES),
+        'MAR_CONTENT_1000': ('McAfee Active Response Content Update', PATCHES),
+        'JTICLIENTMETA': ('Threat Intelligence Exchange module Content', PATCHES),
+        'ENDP_GS_1070LYNX': ('Trellix Endpoint Security Kernel Modules for Linux', PATCHES),
+        'EPOAGENT3000META': ('ePO Agent Key Updater', PATCHES),
+        'EPOAGENT5000META': ('MsgBus Cert Updater', PATCHES),
+        'SOLIDCOR_KMOD_5000_LNX': ('Solidcore Kernel Modules for Linux', PATCHES),
+    }
+
+    def __md(self, *pairs):
+        return first_value(self, *pairs)
+
+    def __md_check(self, *pairs):
+        return self.md_check(first_value(self, *pairs))
+
+    def __md_group(self, title, rows):
+        return '### {}\n\n{}'.format(title, self.md_settings(rows))
+
+    def __md_general_tab(self):
+        reboot = self.__md(('General', 'RebootTimeOut'), ('UpdaterService', 'RebootTimeout'))
+        if reboot is not None:
+            reboot = 'No' if reboot == '-1' else 'Yes, {} seconds'.format(reboot)
+        text = self.__md_group('General options', [
+            ['Policy enforcement interval (minutes)',
+             minutes(self.__md(('General', 'PolicyEnforcementInterval')))],
+            ['Show the Trellix system tray icon (Windows only)',
+             self.__md_check(('General', 'ShowAgentUI'))],
+            ['Allow end users to update security from the Trellix system tray menu',
+             self.__md_check(('General', 'bAllowUpdateSecurity'))],
+            ['Enable About box in the Trellix system tray menu',
+             self.__md_check(('General', 'bEnableAboutBox'))],
+            ['Enable Trellix system tray icon in a remote desktop session',
+             self.__md_check(('General', 'bAllowMcTrayRDP'))],
+            ['Enable agent wake-up call support',
+             self.__md_check(('AgentListenServer', 'bEnableAgentPing'),
+                             ('HttpServerService', 'IsAgentPingEnabled'))],
+            ['Enable super agent wake-up call support',
+             self.__md_check(('AgentListenServer', 'bEnableBroadcastPing'),
+                             ('UdpService', 'IsBroadcastPingEnabled'))],
+            ['Accept connections only from the ePO server',
+             self.__md_check(('AgentListenServer', 'bListenToEPOServerOnly'),
+                             ('HttpServerService', 'IsListenToEPOServerOnly'))],
+            ['Run agent processes at lower CPU priority (Windows only)',
+             self.__md_check(('General', 'ReduceProcessPriority'))],
+            ['Enable self protection (Windows only)',
+             self.__md_check(('General', 'IsSelfProtectionEnabled'))],
+            ['Enable msgbus authentication using test certificates',
+             self.__md_check(('General', 'IsTestCertAuthenticationEnabled'))],
+            ['IP reporting mode', labelled(self.__md(('General', 'IPVersionPreference')),
+                                           self.IP_REPORTING_MODES)]])
+        text += '\n' + self.__md_group('Reboot options after product deployment (Windows only)', [
+            ['Prompt user when a reboot is required',
+             self.__md_check(('General', 'ShowRebootUI'), ('UpdaterService', 'EnableRebootUI'))],
+            ['Force automatic reboot after (seconds)', reboot]])
+        text += '\n' + self.__md_group('Agent-server communication', [
+            ['Enable agent-to-server communication', self.__md_check(('Network', 'bAgentASCI'))],
+            ['Agent-to-server communication interval (minutes)',
+             minutes(self.__md(('Network', 'CheckNetworkMessageInterval')))],
+            ['Initiate agent-to-server communication within 10 minutes after startup if '
+             'policies are older than (days)',
+             self.__md(('Network', 'AsciDoWhen'),
+                       ('PropertyService', 'PropertyCollectionIfDelayByDays'))],
+            ['Retrieve all system and product properties (recommended). If unchecked retrieve '
+             'only a subset of properties.',
+             self.__md_check(('General', 'bCollectFullProps'),
+                             ('PropertyService', 'PropertyCollectFullProps'))]])
+        return text
+
+    def __md_superagent_tab(self):
+        # "DEFAULT" (default repository path) is shown empty by the console.
+        def path(setting):
+            value = self.__md(('AgentListenServer', setting), ('HttpServerService', setting))
+            return '' if value == 'DEFAULT' else value
+        text = self.__md_group('Repository options', [
+            ['Convert agents to SuperAgents',
+             self.__md_check(('AgentListenServer', 'bEnableSuperAgent'),
+                             ('HttpServerService', 'IsSuperAgentEnabled'))],
+            ['Use systems running SuperAgents as distributed repositories',
+             self.__md_check(('AgentListenServer', 'bEnableSuperAgentRepository'),
+                             ('HttpServerService', 'IsSuperAgentRepositoryEnabled'))],
+            ['Repository path (Windows)', path('VirtualDirectory')],
+            ['Repository path (Unix)', path('VirtualDirectoryUnix')],
+            ['Enable LazyCaching (Ensure one or more Repository is enabled)',
+             self.__md_check(('AgentListenServer', 'bEnableLazyCaching'),
+                             ('HttpServerService', 'IsLazyCachingEnabled'))],
+            ['Interval to flush cache (minutes)',
+             self.__md(('AgentListenServer', 'NewRepositoryContentInterval'),
+                       ('HttpServerService', 'RepositorySyncInterval'))],
+            ['Max disk quota (GB)', self.__md(('AgentListenServer', 'LCDiskQuota'),
+                                              ('HttpServerService', 'DiskQuota'))],
+            ['Purge Interval (Days)', self.__md(('AgentListenServer', 'ContentLongevity'),
+                                                ('HttpServerService', 'ContentLongevity'))]])
+        text += '\n' + self.__md_group('Relay Client options', [
+            ['Enable Relay Communication',
+             self.__md_check(('AgentListenServer', 'IsRelayClientEnabled'),
+                             ('RelayService', 'EnableClient'))],
+            ['Disable Discovery', self.__md_check(('RelayService', 'IsRelayDiscoveryDisabled'))]])
+        servers = self.get_relay_server_list() or []
+        text += '\nIP Address / DNS Name : Port\n\n' + self.md_table(
+            ['Address type', 'IP Address / DNS Name', 'Port'],
+            [[server.get('relayselect'), server.get('relayip'), server.get('relayport')]
+             for server in servers if server.get('relayip')], numbered=True)
+        text += '\n' + self.__md_group('RelayServer options', [
+            ['Enable RelayServer', self.__md_check(('AgentListenServer', 'bEnableRelayService'),
+                                                   ('RelayService', 'IsEnabled'))],
+            ['Service Manager port (RelayServer)',
+             self.__md(('AgentListenServer', 'AgtServiceMgrPort'),
+                       ('RelayService', 'RelayServerPort'))]])
+        return text
+
+    def __md_events_tab(self):
+        return self.__md_group('Priority event forwarding', [
+            ['Enable priority event forwarding',
+             self.__md_check(('AgentEvents', 'AgPlcyEnableEventTrigger'),
+                             ('EventService', 'EventIsEnabledPriorityForward'))],
+            ['Also forward non-priority events',
+             self.__md_check(('AgentEvents', 'AgPlcySendNonPriorityEventsAlso'),
+                             ('EventService', 'NonPriorityEventsAlso'))],
+            ['Forward events with a priority equal or greater than',
+             labelled(self.__md(('AgentEvents', 'AgPlcyEventTriggerThreshold'),
+                                ('EventService', 'EventPriorityLevel')), self.EVENT_PRIORITIES)],
+            ['Interval between uploads (minutes)',
+             self.__md(('AgentEvents', 'AgPlcyEventTriggerDelayMins'),
+                       ('EventService', 'EventUploadTimeout'))],
+            ['Maximum number of events per upload',
+             self.__md(('AgentEvents', 'AgPlcyMaxEventsPerTrigger'),
+                       ('EventService', 'EventUploadThreshold'))]])
+
+    def __md_logging_tab(self):
+        text = self.__md_group('Application logging', [
+            ['Enable application logging',
+             self.__md_check(('AgentLogging', 'IsApplicationLogEnabled'),
+                             ('LoggerService', 'IsApplicationLogEnabled'))],
+            ['Enable detailed logging', self.__md_check(('AgentLogging', 'bVerbose'),
+                                                        ('LoggerService', 'bVerbose'))],
+            ['Log file size limit (MB)', self.__md(('AgentLogging', 'LogSizeLimit'),
+                                                   ('LoggerService', 'LogSizeLimit'))],
+            ['Roll over count', self.__md(('AgentLogging', 'LogMaxRollover'),
+                                          ('LoggerService', 'LogMaxRollover'))]])
+        text += '\n' + self.__md_group('Remote logging', [
+            ['Enable remote Logging', self.__md_check(('AgentLogging', 'bEnableLog'),
+                                                      ('LoggerService', 'IsLogRecordingEnabled'))],
+            ['Limit in lines', self.__md(('AgentLogging', 'nLogSizeLimit'),
+                                         ('LoggerService', 'LogRecordsSize'))],
+            ['Enable remote access to log',
+             self.__md_check(('AgentLogging', 'bEnableRemoteLog'),
+                             ('LoggerService', 'IsRemoteLogEnabled'))]])
+        # Shown with 50 by the console when the setting is missing.
+        size = self.__md(('AgentLogging', 'sstZipSizeLimitMB'))
+        text += '\n' + self.__md_group('Product Logs / File Retrieval', [
+            ['Zipped log file size limit (MB)', size if size is not None else '50 (default)']])
+        return text
+
+    def __md_updates_tab(self):
+        # The "Sensor options" group (bEnablePowerOption, SensorAvoidUpdateMins)
+        # stays hidden in the console, even when the policy holds them.
+        text = self.__md_group('Product update log file', [
+            ['Product update log file', self.__md(('UpdateOptions', 'szLogFileName'),
+                                                  ('UpdaterService', 'UpdateLogFileName'))]])
+        text += '\n' + self.__md_group('Post-update options', [
+            ['Enter an executable to run after an update completes',
+             self.__md(('UpdateOptions', 'szRunAfterUpdateEXE'),
+                       ('UpdaterService', 'ExeNameToRunAfterUpdate'))],
+            ['Run only after successful updates',
+             self.__md_check(('UpdateOptions', 'bRunIfUpdateSuccess'))]])
+        text += '\n' + self.__md_group('DAT file downgrades', [
+            ['Enable DAT file downgrades when the version in the repository is older than '
+             'local version', self.__md_check(('UpdateOptions', 'bAllowDATDowngrade'),
+                                              ('UpdaterService', 'EnableDatDowngrade'))]])
+        text += '\n' + self.__md_group('Update options', [
+            ['Enable update after deployment',
+             self.__md_check(('UpdateOptions', 'bUpdateAfterDeployment'),
+                             ('UpdaterService', 'EnableUpdateAfterDeployment'))]])
+        rows = []
+        for item in self.get_upd_branch_selection() or []:
+            product = item.get('SoftwareID', '')
+            name, group = self.UPDATE_PRODUCTS.get(product, ('', 'Other products'))
+            rows.append([group, name, product, self.md_check(item.get('OneClickEnabled')),
+                         item.get('BranchType')])
+        order = [self.SIGNATURES, self.PATCHES, 'Other products']
+        rows.sort(key=lambda row: order.index(row[0]))
+        text += '\n### Update type and Repository branch to use\n\n' \
+                'Select branch for the update type (the checkbox enables/disables the updates ' \
+                'for One Click update and Update after deployment). The console only lists ' \
+                'the products checked in to the ePO repository.\n\n'
+        text += self.md_table(['Update type', 'Product', 'Product ID', 'Enabled', 'Branch'], rows)
+        return text
+
+    def __md_p2p_tab(self):
+        return self.__md_group('Peer-to-Peer Options', [
+            ['Enable Peer-to-Peer Communication', self.__md_check(('P2pService', 'EnableClient'))],
+            ['Enable Peer-to-Peer Serving', self.__md_check(('P2pService', 'EnableServing'))],
+            ['Repository path (Windows)', self.__md(('P2pService', 'P2pRepoPath'))],
+            ['Repository path (Unix)', self.__md(('P2pService', 'P2pRepoPathUnix'))],
+            ['Max disk quota (MB)', self.__md(('P2pService', 'DiskQuota'))],
+            ['Purge Interval (Days)', self.__md(('P2pService', 'ContentLongevity'))]])
+
+    def md_sections(self):
+        """
+        Returns the policy content as a list of (heading, markdown) tuples,
+        one per console tab (see Policy.to_markdown).
+        """
+        return [('General', self.__md_general_tab()),
+                ('SuperAgent', self.__md_superagent_tab()),
+                ('Events', self.__md_events_tab()),
+                ('Logging', self.__md_logging_tab()),
+                ('Updates', self.__md_updates_tab()),
+                ('Peer-to-Peer', self.__md_p2p_tab()),
+                ('Deployment', self.__md_group('Incompatibility check', [
+                    ['Enable Incompatibility check',
+                     self.__md_check(('Deployment', 'EnableCompatibilityCheck'))]]))]

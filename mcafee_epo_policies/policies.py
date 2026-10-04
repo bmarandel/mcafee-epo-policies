@@ -432,7 +432,9 @@ class Policy(XmlObject):
         if value is None:
             return ''
         text = str(value).replace('\\', '\\\\')
-        for char in '|*_`':
+        # [ and ] too: a value such as [text](url) or ![x](url) would else be
+        # rendered as a link or a remote image (tracking pixel).
+        for char in '|*_`[]':
             text = text.replace(char, '\\' + char)
         text = text.replace('<', '&lt;').replace('>', '&gt;')
         return text.replace('\r\n', '<br>').replace('\n', '<br>')

@@ -8,6 +8,7 @@ This module defines the class McAfeeAgentPolicyTelemetry.
 """
 
 from ..policies import Policy
+from .markdown import MD_PRODUCT
 
 class McAfeeAgentPolicyTelemetry(Policy):
     """
@@ -72,3 +73,18 @@ class McAfeeAgentPolicyTelemetry(Policy):
         Get Hidden setting - Telemetry upload timer (milliseconds)
         """
         return self.get_setting_value('Telemetry', 'timer')
+
+    # ------------------------------ Markdown export ------------------------------
+    # Console: Trellix Agent > Product Improvement Program (ePO 5.10).
+    MD_PRODUCT = MD_PRODUCT
+    MD_CATEGORY = 'Product Improvement Program'
+
+    def md_sections(self):
+        """
+        Returns the policy content as a list of (heading, markdown) tuples
+        (see Policy.to_markdown).
+        """
+        opt_in = self.get_product_improvement_program()
+        value = None if opt_in is None else ('Yes' if opt_in == 'true' else 'No')
+        return [('Product Improvement Program', '### Options\n\n' + self.md_settings(
+            [['Allow Trellix to collect usage, threat and diagnostic data', value]]))]

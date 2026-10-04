@@ -9,6 +9,7 @@ This module defines the class McAfeeAgentPolicyRepository and RepositoryList.
 
 import xml.etree.ElementTree as et
 from ..policies import Policy
+from .markdown import MD_PRODUCT, labelled
 
 class McAfeeAgentPolicyRepository(Policy):
     """
@@ -49,6 +50,85 @@ class McAfeeAgentPolicyRepository(Policy):
         sites = [row[0] for row in table]
         return self.set_indexed_list('InetManager', 'SitelistOrderNum',
                                      'SitelistOrder_{}', sites) and success
+
+    # ------------------------------ Markdown export ------------------------------
+    # One section per console tab (Repositories, Proxy), with the labels of
+    # the ePO 5.10 console (Trellix Agent > Repository). See Policy.to_markdown().
+    MD_PRODUCT = MD_PRODUCT
+    MD_CATEGORY = 'Repository'
+    LIST_SELECTION = {'1': 'Use this repository list', '0': 'Use other repository list'}
+    SELECT_BY = {'0': 'Ping time', '1': 'Subnet distance', '2': 'Use order in repository list'}
+    PROXY_TYPES = {'0': 'Do not use a proxy',
+                   '1': 'Use Internet Explorer settings (For Windows) / System Preferences '
+                        'settings (For Mac OSX) / System environment variables (For Linux)',
+                   '2': 'Manually configure the proxy settings'}
+
+    def __md(self, setting, section='ProxySettings'):
+        return self.get_setting_value(section, setting)
+
+    def __md_repositories(self):
+        method = self.__md('uiFindNearestMethod', 'Advanced')
+        text = '### Repository list selection\n\n' + self.md_settings([
+            ['Repository list selection',
+             labelled(self.__md('OverwriteClientSites', 'Advanced'), self.LIST_SELECTION)]])
+        rows = [['Select repository by', labelled(method, self.SELECT_BY)]]
+        if method == '0':
+            rows.append(['Ping timeout (seconds)', self.__md('nMaxPingTimeout', 'Advanced')])
+        elif method == '1':
+            rows.append(['Maximum number of hops', self.__md('nMaxHopLimit', 'Advanced')])
+        text += '\n### Select repository by\n\n' + self.md_settings(rows)
+        # The Type column of the console (Global, Fallback...) comes from the
+        # ePO server, not from the policy.
+        text += '\n### Repository list\n\n' + self.md_settings([
+            ['Automatically allow clients to access newly-added repositories',
+             self.md_check(self.__md('includeReposByDefault', 'InetManager'))]])
+        text += '\n' + self.md_table(['Name', 'State'], self.get_site_list() or [],
+                                     numbered=True)
+        return text
+
+    def __md_proxy(self):
+        proxy_type = self.__md('uiUseProxyType')
+        rows = [['Proxy settings', labelled(proxy_type, self.PROXY_TYPES)]]
+        if proxy_type == '1':
+            rows.append(['Allow user to configure proxy settings',
+                         self.md_check(self.__md('bAllowUserToConfigureProxy'))])
+        if proxy_type == '2':
+            single = self.__md('bUseSingleProxySettings')
+            rows += [['HTTP address', self.__md('szHttpProxyServer')],
+                     ['HTTP port', self.__md('uiHttpProxyPort')],
+                     ['Use these settings for all proxy types', self.md_check(single)]]
+            if single != '1':
+                rows += [['FTP address', self.__md('szFtpProxyServer')],
+                         ['FTP port', self.__md('uiFtpProxyPort')]]
+            exceptions = [value for name, value in self.__settings('ProxySettings')
+                          if 'Exception' in name and name != 'uiNumExceptions' and value]
+            rows += [['Specify exceptions', self.md_check(self.__md('bBypassLocalAddress'))],
+                     ['Exceptions', '; '.join(exceptions)]]
+        # The passwords are never written: only whether one is set.
+        for kind in ['Http', 'Ftp']:
+            label = 'HTTP' if kind == 'Http' else 'FTP'
+            enabled = self.__md('bUse{}Authentication'.format(kind))
+            rows.append(['Use {} proxy authentication'.format(label), self.md_check(enabled)])
+            if enabled == '1':
+                password = self.__md('sz{}ProxyPassword'.format(kind)) or \
+                    self.__md('256_sz{}ProxyPassword'.format(kind))
+                rows += [['{} user name'.format(label), self.__md('sz{}ProxyUser'.format(kind))],
+                         ['{} password'.format(label), 'Set' if password else 'Not set']]
+        return '### Proxy settings\n\n' + self.md_settings(rows)
+
+    def __settings(self, section):
+        section_obj = self.root.find('.//Section[@name="{}"]'.format(section))
+        if section_obj is None:
+            return []
+        return [(setting.get('name'), setting.get('value')) for setting in section_obj]
+
+    def md_sections(self):
+        """
+        Returns the policy content as a list of (heading, markdown) tuples,
+        one per console tab (see Policy.to_markdown).
+        """
+        return [('Repositories', self.__md_repositories()), ('Proxy', self.__md_proxy())]
+
 
 class RepositoryList():
     """

@@ -8,6 +8,7 @@ This module defines the class McAfeeAgentPolicyCustomProps.
 """
 
 from ..policies import Policy
+from .markdown import MD_PRODUCT
 
 class McAfeeAgentPolicyCustomProps(Policy):
     """
@@ -62,3 +63,20 @@ class McAfeeAgentPolicyCustomProps(Policy):
         return self.set_setting_value('CustomProps', 'OverwriteBlanks', mode)
 
     overwrite_blanks = property(get_overwrite_blanks, set_overwrite_blanks)
+
+    # ------------------------------ Markdown export ------------------------------
+    # Console: Trellix Agent > Custom Properties (ePO 5.10): one row per
+    # custom property with the "Allow view" and "Allow edit" checkboxes.
+    MD_PRODUCT = MD_PRODUCT
+    MD_CATEGORY = 'Custom Properties'
+
+    def md_sections(self):
+        """
+        Returns the policy content as a list of (heading, markdown) tuples
+        (see Policy.to_markdown).
+        """
+        rows = [['Custom Property {}'.format(index), self.md_check(prop.get('Visibility')),
+                 self.md_check(prop.get('AllowClientEditing'))]
+                for index, prop in enumerate(self.get_custom_properties() or [], 1)]
+        return [('Custom Properties', '### End user access to Custom Properties\n\n' +
+                 self.md_table(['Custom Property', 'Allow view', 'Allow edit'], rows))]
