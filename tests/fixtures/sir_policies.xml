@@ -1,0 +1,126 @@
+<ns0:EPOPolicySchema xmlns:ns0="mcafee-epo-policy">
+<EPOPolicyVerInfo vermjr="5" vermin="10" verrel="0" verbld="0" />
+<EPOPolicySettings name="My Default::Settings (A022744E-BB1E-4BF3-891D-1EF43732DBBA)" featureid="SIR_____1000_COLLECT_DATA" categoryid="General" typeid="General" param_int="0" param_str="">
+<Section name="Custom">
+<Setting name="dwDebugLog" value="0" />
+</Section>
+<Section name="FindFile">
+<Setting name="FileCount" value="0" />
+</Section>
+<Section name="General">
+<Setting name="CollectionFlags" value="0" />
+</Section>
+<Section name="List">
+<Setting name="dwItemCount" value="0" />
+</Section>
+<Section name="SpecialEnvironment">
+<Setting name="CustomEnvVar" value="" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo (All)::Settings (0216D90D-7A60-407F-AF42-F651C9F4603F)" featureid="SIR_____1000_COLLECT_DATA" categoryid="General" typeid="General" param_int="0" param_str="">
+<Section name="Custom">
+<Setting name="dwDebugLog" value="0" />
+</Section>
+<Section name="FindFile">
+<Setting name="FileCount" value="1" />
+<Setting name="SearchPattern0" value="[SystemRoot]\psexec.exe" />
+</Section>
+<Section name="General">
+<Setting name="CollectionFlags" value="4095" />
+</Section>
+<Section name="List">
+<Setting name="Branch0" value="[HKLM]\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\EnableLUA" />
+<Setting name="Branch1" value="[HKLM]\SYSTEM\CurrentControlSet\Control\Terminal Server\fDenyTSConnections" />
+<Setting name="dwItemCount" value="2" />
+</Section>
+<Section name="SpecialEnvironment">
+<Setting name="CustomEnvVar" value="DEFLOGDIR" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - SIR Collect Test::Settings (CAF9C306-BA9E-412B-B245-324A99E1FEFF)" featureid="SIR_____1000_COLLECT_DATA" categoryid="General" typeid="General" param_int="0" param_str="">
+<Section name="Custom">
+<Setting name="PolicyChangeVersionGetProps" value="a123151a-97ad-4211-8384-b90c57dd0a80" />
+<Setting name="dwDebugLog" value="0" />
+<Setting name="dwHourlyInterval" value="12" />
+<Setting name="dwOnPolicyChangeGetProps" value="0" />
+<Setting name="szPolicyStartDateTime" value="2026-10-04 15:15:00" />
+</Section>
+<Section name="FindFile">
+<Setting name="FileCount" value="2" />
+<Setting name="FolderCount" value="1" />
+<Setting name="FolderPattern0" value="{C}\ClaudeFolder" />
+<Setting name="SearchPattern0" value="[SystemRoot]\claude1.exe" />
+<Setting name="SearchPattern1" value="[PROGRAMFILES]\Claude\claude2.dll" />
+<Setting name="dwSearchDepth" value="3" />
+</Section>
+<Section name="General">
+<Setting name="CollectionFlags" value="1638" />
+</Section>
+<Section name="List">
+<Setting name="Branch0" value="[HKLM]\SOFTWARE\Claude\Value1" />
+<Setting name="Branch1" value="[HKCU]\Software\Claude\Value2" />
+<Setting name="dwItemCount" value="2" />
+</Section>
+<Section name="SpecialEnvironment">
+<Setting name="CustomEnvVar" value="CLAUDEVAR" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="My Default::Settings (E9734A54-979E-415A-A199-D0743C3BD0CC)" featureid="SIR_____1000_SET_REGISTRY" categoryid="RegistryGeneral" typeid="General" param_int="0" param_str="">
+<Section name="SetRegistry">
+<Setting name="PolicyChangeVersion" value="0" />
+<Setting name="RegRestoreFile" value="" />
+<Setting name="RegistryBackupFile" value="" />
+<Setting name="RegistryBackupFileDateList" value="" />
+<Setting name="RegistryBackupFileList" value="" />
+<Setting name="dwSetRegistryCount" value="0" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Demo (Run TestKey)::Settings (0F51C000-19E9-4254-A202-69AF019259B5)" featureid="SIR_____1000_SET_REGISTRY" categoryid="RegistryGeneral" typeid="General" param_int="0" param_str="">
+<Section name="SetRegistry">
+<Setting name="PolicyChangeVersion" value="5c187117-cded-4c48-b942-208cc43761c4" />
+<Setting name="RegKey_1" value="[HKLM]\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\TestKey" />
+<Setting name="RegName_1" value="TestKey" />
+<Setting name="RegRestoreFile" value="" />
+<Setting name="RegType_1" value="REG_SZ" />
+<Setting name="RegValue_1" value="demo.exe" />
+<Setting name="RegistryBackupFile" value="Demo.txt" />
+<Setting name="RegistryBackupFileDateList" value=";18 nov. 2024, 11:15 PM;18 nov. 2024, 11:23 PM;18 nov. 2024, 11:27 PM" />
+<Setting name="RegistryBackupFileList" value=";DemoBackup;DemoBackup2;Demo.txt" />
+<Setting name="action_name_1" value="0" />
+<Setting name="dwSetRegistryCount" value="1" />
+<Setting name="flag_1" value="1" />
+<Setting name="szBackupKeyList" value=";[HKLM]\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\, ;[HKLM]\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\, ;[HKLM]\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\, " />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - SIR Registry Test::Settings (33D33DDE-1241-41F0-81AA-3C2F0F508196)" featureid="SIR_____1000_SET_REGISTRY" categoryid="RegistryGeneral" typeid="General" param_int="0" param_str="">
+<Section name="SetRegistry">
+<Setting name="PolicyChangeVersion" value="10e15474-9086-4ae0-bda1-ddf03d7b3407" />
+<Setting name="RegKey_1" value="[HKLM]\SOFTWARE\Claude\ClaudeValue" />
+<Setting name="RegName_1" value="ClaudeValue" />
+<Setting name="RegRestoreFile" value="" />
+<Setting name="RegType_1" value="REG_DWORD" />
+<Setting name="RegValue_1" value="1" />
+<Setting name="RegistryBackupFile" value="ClaudeBackup" />
+<Setting name="RegistryBackupFileDateList" value=";04 oct. 2026, 07:14 PM" />
+<Setting name="RegistryBackupFileList" value=";ClaudeBackup" />
+<Setting name="action_name_1" value="0" />
+<Setting name="dwSetRegistryCount" value="1" />
+<Setting name="flag_1" value="1" />
+<Setting name="szBackupKeyList" value=";[HKLM]\\SOFTWARE\\Claude\\, " />
+</Section>
+</EPOPolicySettings>
+
+<EPOPolicyObject name="My Default" featureid="SIR_____1000_COLLECT_DATA" categoryid="General" serverid="W2022EPO510" editflag="0" typeid="General">
+<description /><PolicySettings>My Default::Settings (A022744E-BB1E-4BF3-891D-1EF43732DBBA)</PolicySettings>
+</EPOPolicyObject><EPOPolicyObject name="Demo (All)" featureid="SIR_____1000_COLLECT_DATA" categoryid="General" serverid="W2022EPO510" editflag="0" typeid="General">
+<description /><PolicySettings>Demo (All)::Settings (0216D90D-7A60-407F-AF42-F651C9F4603F)</PolicySettings>
+</EPOPolicyObject><EPOPolicyObject name="Claude - SIR Collect Test" featureid="SIR_____1000_COLLECT_DATA" categoryid="General" serverid="W2022EPO510" editflag="0" typeid="General">
+<description /><PolicySettings>Claude - SIR Collect Test::Settings (CAF9C306-BA9E-412B-B245-324A99E1FEFF)</PolicySettings>
+</EPOPolicyObject><EPOPolicyObject name="My Default" featureid="SIR_____1000_SET_REGISTRY" categoryid="RegistryGeneral" serverid="W2022EPO510" editflag="0" typeid="General">
+<description /><PolicySettings>My Default::Settings (E9734A54-979E-415A-A199-D0743C3BD0CC)</PolicySettings>
+</EPOPolicyObject><EPOPolicyObject name="Demo (Run TestKey)" featureid="SIR_____1000_SET_REGISTRY" categoryid="RegistryGeneral" serverid="W2022EPO510" editflag="0" typeid="General">
+<description /><PolicySettings>Demo (Run TestKey)::Settings (0F51C000-19E9-4254-A202-69AF019259B5)</PolicySettings>
+</EPOPolicyObject><EPOPolicyObject name="Claude - SIR Registry Test" featureid="SIR_____1000_SET_REGISTRY" categoryid="RegistryGeneral" serverid="W2022EPO510" editflag="0" typeid="General">
+<description /><PolicySettings>Claude - SIR Registry Test::Settings (33D33DDE-1241-41F0-81AA-3C2F0F508196)</PolicySettings>
+</EPOPolicyObject>
+</ns0:EPOPolicySchema>

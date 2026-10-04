@@ -41,6 +41,8 @@ below) to keep a documentation of the enforced security policies.
 | ENS Web Control | Block and Allow List | Full read/write: sites, file download rating actions | Yes |
 | ENS Web Control | Content Actions | Full read/write: web category blocking, rating actions | Yes |
 | ENS Web Control | Browser Control | Full read/write | Yes |
+| System Information Reporter | Collect Data - General | Full read/write: collected items, custom environment variable, registry queries, schedule, file and folder search | Yes |
+| System Information Reporter | Set Registry - Registry General | Full read/write: registry values (create/delete), backup files, registry restore | Yes |
 | Solidcore - General | Configuration (Client) | Full read/write (CLI password: raw hashes only) | Yes |
 | Solidcore - General | Exception Rules (Windows/Unix) | Full read/write | Yes |
 | Solidcore - Application Control | Application Control Options (Windows/Unix) | Full read/write | Yes |
@@ -108,7 +110,8 @@ policy.save_markdown('On-Access Scan - My Custom Policy.md',
 ```
 
 Available for all McAfee (Trellix) Agent policy types (General, Repository,
-Troubleshooting, Custom Properties, Product Improvement Program), all Solidcore
+Troubleshooting, Custom Properties, Product Improvement Program), System
+Information Reporter (Collect Data, Set Registry), all Solidcore
 policy types (the rules policies list their Rule Groups, then the tabs of My
 Rules and of each shared Rule Group) and all ENS
 policy types: Threat Prevention (On-Access Scan,
@@ -210,6 +213,32 @@ messages.md_languages = ['en', 'fr']              # languages of the Markdown ex
 `ESWCPolicyBrowserControl` blocks browsers by ID (`set_block('OPERA', '1')`).
 The Web Reporter password is encrypted by the ePO server: it must be defined
 in the console, the library keeps it and never writes it in the Markdown export.
+
+### System Information Reporter
+
+```python
+import datetime
+from mcafee_epo_policies import (SIRPolicies, SIRPolicyCollectData, SIRPolicySetRegistry,
+                                 SIRRegistryValue)
+
+policies = SIRPolicies(xml_export)                # policy.export productId=SIR_____1000
+collect = SIRPolicyCollectData(policies.get_policy(SIRPolicies.COLLECT_DATA, 'My Default'))
+collect.set_collect('software', '1')              # see SIRPolicyCollectData.ITEMS
+collect.registry_queries = ['[HKLM]\\SOFTWARE\\Example\\Version']
+collect.files = ['[PROGRAMFILES]\\Example\\example.exe']
+collect.start_datetime = datetime.datetime(2026, 11, 1, 6, 0)
+
+registry = SIRPolicySetRegistry(policies.get_policy(SIRPolicies.SET_REGISTRY, 'My Default'))
+registry.set_values([SIRRegistryValue.create('Enabled', '[HKLM]\\SOFTWARE\\Example\\Enabled',
+                                             'REG_DWORD', '1', overwrite=True)],
+                    backup_file='Example-1')      # required by the console
+```
+
+The two SIR policy categories share the typeid "General": `SIRPolicies` uses
+the feature IDs (`SIRPolicies.COLLECT_DATA`, `SIRPolicies.SET_REGISTRY`) as
+policy types. Paths are checked as in the console: registry paths start with
+a hive (`[HKLM]\\`...), files and folders with `[SYSTEMDRIVE]\\`,
+`[SystemRoot]\\`, `[PROGRAMFILES]\\`, `[COMMONPROGRAMFILES]\\` or `{A}\\` to `{Z}\\`.
 
 ### ENS Firewall rules
 
@@ -326,6 +355,19 @@ docstring describing which ePO UI setting it maps to.
 Python 3.8 or later.
 
 ## History
+
+### 1.0.0 - 2026-10-04
+
+**Added**
+- System Information Reporter (SIR), new `sir` module: `SIRPolicies`
+  (`policy.export productId=SIR_____1000`), `SIRPolicyCollectData` (Collect
+  Data > General), `SIRPolicySetRegistry` and `SIRRegistryValue` (Set
+  Registry > Registry General, with the registry backup bookkeeping of the
+  console), with the Markdown export. Storage and labels checked on the ePO
+  5.10 lab.
+- `Policies.TYPE_ATTRIBUTE`: the EPOPolicyObject attribute used as policy
+  type (`typeid`, or `featureid` for products whose categories share a
+  typeid).
 
 ### 0.9.0 - 2026-10-04
 

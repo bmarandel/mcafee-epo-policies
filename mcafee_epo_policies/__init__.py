@@ -12,7 +12,7 @@ try:
 except PackageNotFoundError:
     __version__ = "0.0.0"
 
-__all__ = ["constants", "policies", "ma", "es", "sc"]
+__all__ = ["constants", "policies", "ma", "es", "sc", "sir"]
 
 from .constants import State, Priority, Gti, OASState, Severity, Language, SCException, SCReputation
 from .policies import Policies, Policy
@@ -40,6 +40,7 @@ from .es.wc import (ESWCPolicies, ESWCPolicy, RatingActions, ESWCPolicyOptions, 
                     ESWCPolicyBlockAllowList, WCSite, ESWCPolicyContentActions,
                     ESWCPolicyBrowserControl)
 from .sc.scpolicies import SCPolicies, SCPolicy
+from .sir import SIRPolicies, SIRPolicyCollectData, SIRPolicySetRegistry, SIRRegistryValue
 from .sc.rules import SCRules, SCExclusionRules, SCUpdaterRules
 from .sc.gen import SCGENPolicyConfiguration, SCGENPolicyExceptionRules
 from .sc.awl import SCAWLPolicyOptions, SCAWLPolicyRules

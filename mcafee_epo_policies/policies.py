@@ -98,6 +98,11 @@ class Policies(XmlObject):
     Policies is a class object containing the policies returned by the ePO API.
     """
 
+    # The EPOPolicyObject attribute that identifies the policy type. A product
+    # whose policy categories share the same typeid (e.g. System Information
+    # Reporter) uses the featureid instead.
+    TYPE_ATTRIBUTE = 'typeid'
+
     def __init__(self, xml_policies=None):
         super(Policies, self).__init__()
         if xml_policies is not None:
@@ -113,7 +118,7 @@ class Policies(XmlObject):
         :return: True or False.
         """
         policy_obj = self.root.find('./EPOPolicyObject[@name="{}"]'.format(name) +
-                                    '[@typeid="{}"]'.format(type_id))
+                                    '[@{}="{}"]'.format(self.TYPE_ATTRIBUTE, type_id))
         return policy_obj is not None
 
     def list_name(self):
@@ -129,7 +134,7 @@ class Policies(XmlObject):
         """
         Returns a list of policy type found in Policies.
         """
-        distinct_types = list(set(policy_obj.attrib['typeid']
+        distinct_types = list(set(policy_obj.attrib[self.TYPE_ATTRIBUTE]
                                   for policy_obj in self.root.findall('EPOPolicyObject')))
         sorted_types = sorted(distinct_types)
         return sorted_types
@@ -138,7 +143,8 @@ class Policies(XmlObject):
         """
         Returns a table containing the list of policy name for each policy type found in Policies.
         """
-        full_list = [{'typeid': policy_obj.attrib['typeid'], 'name': policy_obj.attrib['name']}
+        full_list = [{'typeid': policy_obj.attrib[self.TYPE_ATTRIBUTE],
+                      'name': policy_obj.attrib['name']}
                      for policy_obj in self.root.findall('EPOPolicyObject')]
         sorted_list = sorted(full_list, key=lambda x: (x['typeid'], x['name']))
         return sorted_list
@@ -151,7 +157,8 @@ class Policies(XmlObject):
             policy = copy.deepcopy(self.root)
             settings = list()
             for policy_obj in policy.findall('EPOPolicyObject'):
-                if (policy_obj.attrib['typeid'] == type_id) and (policy_obj.attrib['name'] == name):
+                if (policy_obj.attrib[self.TYPE_ATTRIBUTE] == type_id) and \
+                        (policy_obj.attrib['name'] == name):
                     for policy_ref in policy_obj.findall('PolicySettings'):
                         settings.append(policy_ref.text)
                 else:

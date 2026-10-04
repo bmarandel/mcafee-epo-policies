@@ -9,7 +9,8 @@ policy_documentation.py
 
 Example for the mcafee_epo_policies package: write one Markdown document per
 policy of an ENS (Threat Prevention, Firewall, Storage Protection, Adaptive
-Threat Protection, Web Control), Trellix Agent or Solidcore export, to keep a
+Threat Protection, Web Control), Trellix Agent, System Information Reporter or
+Solidcore export, to keep a
 documentation of the enforced security policies (audits, compliance).
 
 Each document has a metadata header, a table of contents, one section per
@@ -36,7 +37,8 @@ from mcafee_epo_policies import (ESTPPolicies, ESFWPolicies, ESTPPolicyOnAccessS
                                  SCFIMPolicyRules, ESATPPolicies, ESATPPolicyOptions,
                                  ESATPPolicyDAC, ESWCPolicies, ESWCPolicyOptions,
                                  ESWCPolicyMessaging, ESWCPolicyBlockAllowList,
-                                 ESWCPolicyContentActions, ESWCPolicyBrowserControl)
+                                 ESWCPolicyContentActions, ESWCPolicyBrowserControl,
+                                 SIRPolicies, SIRPolicyCollectData, SIRPolicySetRegistry)
 
 # Policy types with a Markdown export, per product of the export.
 PRODUCTS = {
@@ -67,6 +69,10 @@ PRODUCTS = {
         'EWC_BlockAndAllowList': ESWCPolicyBlockAllowList,
         'EWC_ContentFiltering': ESWCPolicyContentActions,
         'EWC_BrowserControl': ESWCPolicyBrowserControl}),
+    # SIR policy types are the feature IDs (both categories have the typeid "General").
+    'SIR': (SIRPolicies, {
+        SIRPolicies.COLLECT_DATA: SIRPolicyCollectData,
+        SIRPolicies.SET_REGISTRY: SIRPolicySetRegistry}),
     # Solidcore exports hold several features (SCOR_GEN, SCOR_AWL, SCOR_CC, SCOR_FIM).
     'SCOR': (SCPolicies, {
         'Lockdown Rules': SCGENPolicyConfiguration,
@@ -98,10 +104,12 @@ def main():
     product = product.group(1).decode() if product else ''
     if product.startswith('SCOR_'):
         product = 'SCOR'
+    if product.startswith('SIR_____1000'):
+        product = 'SIR'
     if product not in PRODUCTS:
         print('Unsupported product "{}": use an ENS Threat Prevention, ENS Firewall, ENS '
               'Storage Protection, ENS Adaptive Threat Protection, ENS Web Control, '
-              'Trellix Agent or '
+              'Trellix Agent, System Information Reporter or '
               'Solidcore export.'
               .format(product), file=sys.stderr)
         return 1
