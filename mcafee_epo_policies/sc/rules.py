@@ -311,11 +311,25 @@ class SCExclusionRules(SCRules):
     Each exclusion is one flag set to 'true' on a rule: an 'attr' rule for a
     process/file name, a 'skiplist' rule for a path or a volume. Use the
     SCException constants to select an exclusion.
+
+    "Allow uninstallations" (required) and "Exclude file from write-protection
+    rules and allow script execution" (optional) also take a Parent Process
+    Name, stored in the 'parent' setting of the rule; "Disable ROP protection
+    for a process using Forced Relocation (VASR)" takes an optional Library
+    Name, stored in the 'module' setting (all the exclusion types checked on
+    the ePO 5.10 lab, Windows).
     """
+
+    # Exclusions with a Parent Process Name (Windows): required or optional.
+    PARENT_REQUIRED = ('uninstall_bypass',)
+    PARENT_OPTIONAL = ('process_ctx_bypass',)
+    # Exclusions with an optional Library Name (Windows).
+    LIBRARY_OPTIONAL = ('vasr_force_reloc_bypass',)
 
     # Exclusions stored as 'skiplist' rules (path), the others are 'attr' rules (file).
     SKIPLIST_EXCLUSIONS = ('skipFileOperation', 'skipFileOperation_f', 'skipDenyWrite',
-                           'skipSolidification', 'skipVolume')
+                           'skipSolidification', 'skipVolume', 'skipRegistry',
+                           'skipChangeTracking')
     UNIX_EXCLUSIONS = ('process_ctx_bypass', 'skipSolidification')
     # All the exclusions of the console (the SCException constants).
     EXCLUSIONS = ('casp_bypass', 'dep_bypass', 'vasr_force_reloc_bypass', 'vasr_reloc_bypass',
@@ -341,36 +355,60 @@ class SCExclusionRules(SCRules):
         return 'attr', 'file'
 
     # ------------------------------ Exclusion list ------------------------------
-    #   Columns: Exclusion Type, Process Name (process, file, path or volume)
+    #   Columns: Exclusion Type, Process Name (process, file, path or volume),
+    #   Parent Process Name, Library Name
     def get_exclusion_list(self):
         """
         Get the list of exclusions (Exclusion Type, Process Name columns), as dicts
-        {'exclusion': <SCException constant>, 'name': <process, file, path or volume>}.
+        {'exclusion': <SCException constant>, 'name': <process, file, path or volume>},
+        with 'parent' (Parent Process Name) and 'library' (Library Name,
+        stored as 'module') keys when the rule has them.
         """
         exclusions = []
         for rule_type, key in (('skiplist', 'path'), ('attr', 'file')):
             for rule in self.get_rules(rule_type):
                 for setting, value in sorted(rule.items()):
                     if value == 'true' and setting in self.EXCLUSIONS:
-                        exclusions.append({'exclusion': setting, 'name': rule.get(key)})
+                        exclusion = {'exclusion': setting, 'name': rule.get(key)}
+                        if rule.get('parent'):
+                            exclusion['parent'] = rule['parent']
+                        if rule.get('module'):
+                            exclusion['library'] = rule['module']
+                        exclusions.append(exclusion)
         return exclusions
 
-    def contains_exclusion(self, exclusion, name):
+    def contains_exclusion(self, exclusion, name, parent=None):
         """
-        Returns True if the policy contains an exclusion (SCException) for a name.
+        Returns True if the policy contains an exclusion (SCException) for a
+        name (and a Parent Process Name, if given).
         """
         rule_type, key = self.__rule_kind(exclusion)
-        return bool(self.get_rules(rule_type, {key: name, exclusion: 'true'}))
+        match = {key: name, exclusion: 'true'}
+        if parent:
+            match['parent'] = parent
+        return bool(self.get_rules(rule_type, match))
 
-    def add_exclusion(self, exclusion, name):
+    def add_exclusion(self, exclusion, name, parent=None, library=None):
         """
-        Add an exclusion (SCException constant) for a process, file, path or volume.
+        Add an exclusion (SCException constant) for a process, file, path,
+        volume or registry path.
 
+        :param: parent: Parent Process Name, required by ALLOW_UNINSTALLATIONS
+                        and optional for PROCESS_CONTEXT (Windows only).
+        :param: library: Library Name, optional for VASR_FORCED_RELOCATION
+                         (Windows only).
         :return: True, or False if the exclusion already exists.
         """
+        if library and (self.is_unix() or exclusion not in self.LIBRARY_OPTIONAL):
+            raise ValueError('Exclusion "{}" has no Library Name.'.format(exclusion))
         if self.is_unix() and exclusion not in self.UNIX_EXCLUSIONS:
             raise ValueError('Exclusion "{}" is not available on Unix.'.format(exclusion))
-        if self.contains_exclusion(exclusion, name):
+        if exclusion in self.PARENT_REQUIRED and not parent:
+            raise ValueError('Exclusion "{}" needs a Parent Process Name.'.format(exclusion))
+        if parent and (self.is_unix() or exclusion not in self.PARENT_REQUIRED +
+                       self.PARENT_OPTIONAL):
+            raise ValueError('Exclusion "{}" has no Parent Process Name.'.format(exclusion))
+        if self.contains_exclusion(exclusion, name, parent):
             return False
         rule_type, key = self.__rule_kind(exclusion)
         if rule_type == 'skiplist':
@@ -379,19 +417,26 @@ class SCExclusionRules(SCRules):
             flags = self.__UNIX_ATTR_FLAGS if self.is_unix() else self.__WINDOWS_ATTR_FLAGS
         rule = {flag: 'false' for flag in flags}
         rule.update({'type': rule_type, key: name, exclusion: 'true'})
+        if parent:
+            rule['parent'] = parent
+        if library:
+            rule['module'] = library
         if rule_type == 'attr':
             rule['is_general_attr'] = 'true'
         return self.add_rule(rule)
 
-    def remove_exclusion(self, exclusion, name):
+    def remove_exclusion(self, exclusion, name, parent=None):
         """
-        Remove an exclusion (SCException constant) for a name. The rule is
-        removed once none of its exclusions is set anymore.
+        Remove an exclusion (SCException constant) for a name (and a Parent
+        Process Name, if given). The rule is removed once none of its
+        exclusions is set anymore.
 
         :return: True if the exclusion was found.
         """
         rule_type, key = self.__rule_kind(exclusion)
         match = {key: name, exclusion: 'true'}
+        if parent:
+            match['parent'] = parent
         if self.update_rules(rule_type, match, {exclusion: 'false'}) == 0:
             return False
         for rule in self.get_rules(rule_type, {key: name}):
@@ -416,12 +461,15 @@ class SCExclusionRules(SCRules):
         'skipFileOperation': 'Ignore path for file operations',
         'skipFileOperation_f': 'Exclude path from file operations',
         'skipSolidification': 'Exclude path from the allow list',
-        'skipVolume': 'Exclude volume from protection'}
+        'skipVolume': 'Exclude volume from protection',
+        'skipRegistry': 'Skip registry protection',
+        'skipChangeTracking': 'Skip Change Tracking'}
 
     def md_exclusions_table(self, table):
         """
         Returns the exclusion list as a Markdown table (Exclusion Type,
-        Process Name), in the order of the console (order of the rules).
+        Process Name, Parent Process Name, Library Name), in the order of the
+        console (order of the rules).
         """
         rows = []
         for rule in self.get_rules():
@@ -430,8 +478,10 @@ class SCExclusionRules(SCRules):
             name = rule.get('path') if rule.get('type') == 'skiplist' else rule.get('file')
             for setting in sorted(rule):
                 if rule[setting] == 'true' and setting in self.EXCLUSIONS:
-                    rows.append([self.EXCLUSION_LABELS.get(setting, setting), name])
-        return table(['Exclusion Type', 'Process Name'], rows)
+                    rows.append([self.EXCLUSION_LABELS.get(setting, setting), name,
+                                 rule.get('parent', ''), rule.get('module', '')])
+        return table(['Exclusion Type', 'Process Name', 'Parent Process Name', 'Library Name'],
+                     rows)
 
 class SCUpdaterRules(SCRules):
     """

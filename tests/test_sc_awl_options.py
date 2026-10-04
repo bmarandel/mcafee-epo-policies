@@ -82,6 +82,10 @@ def test_features_tab(win_policy):
         'enforce': 'true', 'name': 'mp-nx', 'status': '0', 'type': 'features'}
     # TIE/GTI/Self-Approval are always enforced, untouched by the Features tab.
     assert win_policy.get_rule('features', {'name': 'self-approval'})['enforce'] == 'true'
+    # Not in the Features tab: the console leaves mp-vasr unenforced (checked
+    # on the ePO 5.10 lab); the hidden activex rule is kept (the console drops
+    # it at any save of the policy, whatever the change).
+    assert win_policy.get_rule('features', {'name': 'mp-vasr'})['enforce'] == 'false'
 
 
 def test_inventory_tab(win_policy):

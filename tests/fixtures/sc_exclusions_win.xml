@@ -1,0 +1,277 @@
+<ns0:EPOPolicySchema xmlns:ns0="mcafee-epo-policy">
+<EPOPolicyVerInfo vermjr="5" vermin="10" verrel="0" verbld="0" />
+<EPOPolicySettings name="Claude - SC Exclusions Test::Settings (DCD30ADD-9E25-4278-BBA1-CE60318B4B1C)" featureid="SCOR_AWL" categoryid="AWL Rules (Windows)" typeid="AWL Rules (Windows)" param_int="0" param_str="">
+<Section name="General_Rule_10">
+<Setting name="always_auth" value="false" />
+<Setting name="always_unauth" value="false" />
+<Setting name="anti_debugging_bypass" value="false" />
+<Setting name="casp_bypass" value="false" />
+<Setting name="ccv_bypass" value="false" />
+<Setting name="dep_bypass" value="true" />
+<Setting name="dep_bypass_inherit" value="false" />
+<Setting name="file" value="claudenx.exe" />
+<Setting name="full_crawl" value="false" />
+<Setting name="installer_detection_bypass" value="false" />
+<Setting name="is_general_attr" value="true" />
+<Setting name="mangling_bypass" value="false" />
+<Setting name="process_ctx_bypass" value="false" />
+<Setting name="process_ctx_reg_bypass" value="false" />
+<Setting name="rebase_dll" value="false" />
+<Setting name="relocate_dll" value="false" />
+<Setting name="type" value="attr" />
+<Setting name="uninstall_bypass" value="false" />
+<Setting name="vasr_force_reloc_bypass" value="false" />
+<Setting name="vasr_rand_bypass" value="false" />
+<Setting name="vasr_reloc_bypass" value="false" />
+</Section>
+<Section name="General_Rule_11">
+<Setting name="always_auth" value="false" />
+<Setting name="always_unauth" value="false" />
+<Setting name="anti_debugging_bypass" value="false" />
+<Setting name="casp_bypass" value="false" />
+<Setting name="ccv_bypass" value="false" />
+<Setting name="dep_bypass" value="false" />
+<Setting name="dep_bypass_inherit" value="false" />
+<Setting name="file" value="claudevf.exe" />
+<Setting name="full_crawl" value="false" />
+<Setting name="installer_detection_bypass" value="false" />
+<Setting name="is_general_attr" value="true" />
+<Setting name="mangling_bypass" value="false" />
+<Setting name="module" value="claudelib.dll" />
+<Setting name="process_ctx_bypass" value="false" />
+<Setting name="process_ctx_reg_bypass" value="false" />
+<Setting name="rebase_dll" value="false" />
+<Setting name="relocate_dll" value="false" />
+<Setting name="type" value="attr" />
+<Setting name="uninstall_bypass" value="false" />
+<Setting name="vasr_force_reloc_bypass" value="true" />
+<Setting name="vasr_rand_bypass" value="false" />
+<Setting name="vasr_reloc_bypass" value="false" />
+</Section>
+<Section name="General_Rule_12">
+<Setting name="always_auth" value="false" />
+<Setting name="always_unauth" value="false" />
+<Setting name="anti_debugging_bypass" value="false" />
+<Setting name="casp_bypass" value="false" />
+<Setting name="ccv_bypass" value="false" />
+<Setting name="dep_bypass" value="false" />
+<Setting name="dep_bypass_inherit" value="false" />
+<Setting name="file" value="claudereloc.dll" />
+<Setting name="full_crawl" value="false" />
+<Setting name="installer_detection_bypass" value="false" />
+<Setting name="is_general_attr" value="true" />
+<Setting name="mangling_bypass" value="false" />
+<Setting name="process_ctx_bypass" value="false" />
+<Setting name="process_ctx_reg_bypass" value="false" />
+<Setting name="rebase_dll" value="false" />
+<Setting name="relocate_dll" value="false" />
+<Setting name="type" value="attr" />
+<Setting name="uninstall_bypass" value="false" />
+<Setting name="vasr_force_reloc_bypass" value="false" />
+<Setting name="vasr_rand_bypass" value="false" />
+<Setting name="vasr_reloc_bypass" value="true" />
+</Section>
+<Section name="General_Rule_13">
+<Setting name="always_auth" value="false" />
+<Setting name="always_unauth" value="false" />
+<Setting name="anti_debugging_bypass" value="false" />
+<Setting name="casp_bypass" value="false" />
+<Setting name="ccv_bypass" value="false" />
+<Setting name="dep_bypass" value="false" />
+<Setting name="dep_bypass_inherit" value="false" />
+<Setting name="file" value="claudestack.exe" />
+<Setting name="full_crawl" value="false" />
+<Setting name="installer_detection_bypass" value="false" />
+<Setting name="is_general_attr" value="true" />
+<Setting name="mangling_bypass" value="false" />
+<Setting name="process_ctx_bypass" value="false" />
+<Setting name="process_ctx_reg_bypass" value="false" />
+<Setting name="rebase_dll" value="false" />
+<Setting name="relocate_dll" value="false" />
+<Setting name="type" value="attr" />
+<Setting name="uninstall_bypass" value="false" />
+<Setting name="vasr_force_reloc_bypass" value="false" />
+<Setting name="vasr_rand_bypass" value="true" />
+<Setting name="vasr_reloc_bypass" value="false" />
+</Section>
+<Section name="General_Rule_14">
+<Setting name="always_auth" value="false" />
+<Setting name="always_unauth" value="false" />
+<Setting name="anti_debugging_bypass" value="false" />
+<Setting name="casp_bypass" value="false" />
+<Setting name="ccv_bypass" value="false" />
+<Setting name="dep_bypass" value="false" />
+<Setting name="dep_bypass_inherit" value="false" />
+<Setting name="file" value="claudereg.exe" />
+<Setting name="full_crawl" value="false" />
+<Setting name="installer_detection_bypass" value="false" />
+<Setting name="is_general_attr" value="true" />
+<Setting name="mangling_bypass" value="false" />
+<Setting name="process_ctx_bypass" value="false" />
+<Setting name="process_ctx_reg_bypass" value="true" />
+<Setting name="rebase_dll" value="false" />
+<Setting name="relocate_dll" value="false" />
+<Setting name="type" value="attr" />
+<Setting name="uninstall_bypass" value="false" />
+<Setting name="vasr_force_reloc_bypass" value="false" />
+<Setting name="vasr_rand_bypass" value="false" />
+<Setting name="vasr_reloc_bypass" value="false" />
+</Section>
+<Section name="General_Rule_15">
+<Setting name="path" value="C:\ClaudeTest\Ignore" />
+<Setting name="skipChangeTracking" value="false" />
+<Setting name="skipDenyWrite" value="false" />
+<Setting name="skipFileOperation" value="true" />
+<Setting name="skipFileOperation_f" value="false" />
+<Setting name="skipRegistry" value="false" />
+<Setting name="skipSolidification" value="false" />
+<Setting name="skipVolume" value="false" />
+<Setting name="type" value="skiplist" />
+</Section>
+<Section name="General_Rule_16">
+<Setting name="path" value="C:\ClaudeTest\Exclude" />
+<Setting name="skipChangeTracking" value="false" />
+<Setting name="skipDenyWrite" value="false" />
+<Setting name="skipFileOperation" value="false" />
+<Setting name="skipFileOperation_f" value="true" />
+<Setting name="skipRegistry" value="false" />
+<Setting name="skipSolidification" value="false" />
+<Setting name="skipVolume" value="false" />
+<Setting name="type" value="skiplist" />
+</Section>
+<Section name="General_Rule_17">
+<Setting name="path" value="C:\ClaudeTest\Write" />
+<Setting name="skipChangeTracking" value="false" />
+<Setting name="skipDenyWrite" value="true" />
+<Setting name="skipFileOperation" value="false" />
+<Setting name="skipFileOperation_f" value="false" />
+<Setting name="skipRegistry" value="false" />
+<Setting name="skipSolidification" value="false" />
+<Setting name="skipVolume" value="false" />
+<Setting name="type" value="skiplist" />
+</Section>
+<Section name="General_Rule_18">
+<Setting name="path" value="C:\ClaudeTest\Allow\" />
+<Setting name="skipChangeTracking" value="false" />
+<Setting name="skipDenyWrite" value="false" />
+<Setting name="skipFileOperation" value="false" />
+<Setting name="skipFileOperation_f" value="false" />
+<Setting name="skipRegistry" value="false" />
+<Setting name="skipSolidification" value="true" />
+<Setting name="skipVolume" value="false" />
+<Setting name="type" value="skiplist" />
+</Section>
+<Section name="General_Rule_19">
+<Setting name="path" value="D:" />
+<Setting name="skipChangeTracking" value="false" />
+<Setting name="skipDenyWrite" value="false" />
+<Setting name="skipFileOperation" value="false" />
+<Setting name="skipFileOperation_f" value="false" />
+<Setting name="skipRegistry" value="false" />
+<Setting name="skipSolidification" value="false" />
+<Setting name="skipVolume" value="true" />
+<Setting name="type" value="skiplist" />
+</Section>
+<Section name="General_Rule_20">
+<Setting name="path" value="HKEY_LOCAL_MACHINE\SOFTWARE\ClaudeTest" />
+<Setting name="skipChangeTracking" value="false" />
+<Setting name="skipDenyWrite" value="false" />
+<Setting name="skipFileOperation" value="false" />
+<Setting name="skipFileOperation_f" value="false" />
+<Setting name="skipRegistry" value="true" />
+<Setting name="skipSolidification" value="false" />
+<Setting name="skipVolume" value="false" />
+<Setting name="type" value="skiplist" />
+</Section>
+<Section name="General_Rule_21">
+<Setting name="path" value="C:\ClaudeTest\Track" />
+<Setting name="skipChangeTracking" value="true" />
+<Setting name="skipDenyWrite" value="false" />
+<Setting name="skipFileOperation" value="false" />
+<Setting name="skipFileOperation_f" value="false" />
+<Setting name="skipRegistry" value="false" />
+<Setting name="skipSolidification" value="false" />
+<Setting name="skipVolume" value="false" />
+<Setting name="type" value="skiplist" />
+</Section>
+<Section name="General_Rule_7">
+<Setting name="always_auth" value="false" />
+<Setting name="always_unauth" value="false" />
+<Setting name="anti_debugging_bypass" value="false" />
+<Setting name="casp_bypass" value="false" />
+<Setting name="ccv_bypass" value="false" />
+<Setting name="dep_bypass" value="false" />
+<Setting name="dep_bypass_inherit" value="false" />
+<Setting name="file" value="claudesetup.exe" />
+<Setting name="full_crawl" value="false" />
+<Setting name="installer_detection_bypass" value="false" />
+<Setting name="is_general_attr" value="true" />
+<Setting name="mangling_bypass" value="false" />
+<Setting name="parent" value="msiexec.exe" />
+<Setting name="process_ctx_bypass" value="false" />
+<Setting name="process_ctx_reg_bypass" value="false" />
+<Setting name="rebase_dll" value="false" />
+<Setting name="relocate_dll" value="false" />
+<Setting name="type" value="attr" />
+<Setting name="uninstall_bypass" value="true" />
+<Setting name="vasr_force_reloc_bypass" value="false" />
+<Setting name="vasr_rand_bypass" value="false" />
+<Setting name="vasr_reloc_bypass" value="false" />
+</Section>
+<Section name="General_Rule_8">
+<Setting name="always_auth" value="false" />
+<Setting name="always_unauth" value="false" />
+<Setting name="anti_debugging_bypass" value="false" />
+<Setting name="casp_bypass" value="false" />
+<Setting name="ccv_bypass" value="false" />
+<Setting name="dep_bypass" value="false" />
+<Setting name="dep_bypass_inherit" value="false" />
+<Setting name="file" value="claudetool.exe" />
+<Setting name="full_crawl" value="false" />
+<Setting name="installer_detection_bypass" value="false" />
+<Setting name="is_general_attr" value="true" />
+<Setting name="mangling_bypass" value="false" />
+<Setting name="parent" value="explorer.exe" />
+<Setting name="process_ctx_bypass" value="true" />
+<Setting name="process_ctx_reg_bypass" value="false" />
+<Setting name="rebase_dll" value="false" />
+<Setting name="relocate_dll" value="false" />
+<Setting name="type" value="attr" />
+<Setting name="uninstall_bypass" value="false" />
+<Setting name="vasr_force_reloc_bypass" value="false" />
+<Setting name="vasr_rand_bypass" value="false" />
+<Setting name="vasr_reloc_bypass" value="false" />
+</Section>
+<Section name="General_Rule_9">
+<Setting name="always_auth" value="false" />
+<Setting name="always_unauth" value="false" />
+<Setting name="anti_debugging_bypass" value="false" />
+<Setting name="casp_bypass" value="true" />
+<Setting name="ccv_bypass" value="false" />
+<Setting name="dep_bypass" value="false" />
+<Setting name="dep_bypass_inherit" value="false" />
+<Setting name="file" value="claudecasp.exe" />
+<Setting name="full_crawl" value="false" />
+<Setting name="installer_detection_bypass" value="false" />
+<Setting name="is_general_attr" value="true" />
+<Setting name="mangling_bypass" value="false" />
+<Setting name="process_ctx_bypass" value="false" />
+<Setting name="process_ctx_reg_bypass" value="false" />
+<Setting name="rebase_dll" value="false" />
+<Setting name="relocate_dll" value="false" />
+<Setting name="type" value="attr" />
+<Setting name="uninstall_bypass" value="false" />
+<Setting name="vasr_force_reloc_bypass" value="false" />
+<Setting name="vasr_rand_bypass" value="false" />
+<Setting name="vasr_reloc_bypass" value="false" />
+</Section>
+<Section name="scor_info">
+<Setting name="group_name" value="My Rules" />
+<Setting name="group_type" value="application_control" />
+<Setting name="platforms" value="WIN" />
+<Setting name="readOnly" value="false" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicyObject name="Claude - SC Exclusions Test" featureid="SCOR_AWL" categoryid="AWL Rules (Windows)" serverid="W2022EPO510" editflag="0" typeid="AWL Rules (Windows)">
+<description /><PolicySettings>Claude - SC Exclusions Test::Settings (DCD30ADD-9E25-4278-BBA1-CE60318B4B1C)</PolicySettings>
+</EPOPolicyObject></ns0:EPOPolicySchema>

@@ -107,21 +107,24 @@ class SCException():
         NX                          Disable buffer overflow protection (NX) for a process on
                                     64-bit Windows
         VASR_FORCED_RELOCATION      Disable ROP protection for a process using Forced
-                                    Relocation (VASR)
+                                    Relocation (VASR) (optional Library Name)
         VASR_DLL_RELOCATION         Disable ROP protection for a DLL using DLL Relocation (VASR)
         VASR_STACK_RANDOMIZATION    Disable ROP protection for a process using Stack
                                     Randomization (VASR)
-        ALLOW_UNINSTALLATIONS       Allow uninstallations
+        ALLOW_UNINSTALLATIONS       Allow uninstallations (with a Parent Process Name)
         PROCESS_CONTEXT             Exclude file from write-protection rules and allow script
-                                    execution (Windows and Unix)
+                                    execution (Windows and Unix; optional Parent Process
+                                    Name on Windows)
         PROCESS_CONTEXT_REGISTRY    Exclude file from registry operations
-    Exclusions applying to a path or a volume (stored as a 'skiplist' rule):
+    Exclusions applying to a path, a volume or a registry path (stored as a 'skiplist' rule):
         IGNORE_FILE_OPERATIONS      Ignore path for file operations
         EXCLUDE_FILE_OPERATIONS     Exclude path from file operations
         EXCLUDE_WRITE_PROTECTION    Exclude path from write-protection rules
         EXCLUDE_ALLOW_LIST          Exclude local path and all its files and sub-directories
                                     from the allow list (Windows and Unix)
         EXCLUDE_VOLUME              Exclude volume from Application Control protection
+        SKIP_REGISTRY               Do not enforce deny write operation for this registry path
+        SKIP_CHANGE_TRACKING        Do not track changes for this path
     Only the two exclusions marked "(Windows and Unix)" are offered for Unix.
     """
     CASP = 'casp_bypass'
@@ -137,6 +140,8 @@ class SCException():
     EXCLUDE_WRITE_PROTECTION = 'skipDenyWrite'
     EXCLUDE_ALLOW_LIST = 'skipSolidification'
     EXCLUDE_VOLUME = 'skipVolume'
+    SKIP_REGISTRY = 'skipRegistry'
+    SKIP_CHANGE_TRACKING = 'skipChangeTracking'
 
 class SCReputation():
     """

@@ -37,7 +37,12 @@ class SCAWLPolicyOptions(SCPolicy):
          'rule-uuid': '718a4d26-b107-4a1d-9d67-1eeeddd2f30f'},
     )
 
-    # Features shown in the Features tab (set to enforced by "Enforce feature control").
+    # Features shown in the Features tab (set to enforced by "Enforce feature
+    # control"). Checked on the ePO 5.10 lab: the console leaves the hidden
+    # 'mp-vasr' feature unenforced, and drops the obsolete hidden 'activex'
+    # feature at any save of the policy (whatever the change, even with
+    # "Enforce feature control" left as is); the library keeps 'activex', like
+    # a policy never saved in the console (e.g. "My Default").
     FEATURES = ('execution-control', 'mp', 'mp-casp', 'mp-nx', 'ob-logging', 'pkg-ctrl',
                 'pkg-ctrl-bypass', 'pkg-ctrl-allow-uninstall', 'sau')
 
@@ -767,6 +772,9 @@ class SCAWLRules(SCExclusionRules, SCUpdaterRules):
     #   Columns: Issued To, Issued By, Expiration Date, Friendly Name, Updater,
     #   Updater Label. ePO stores the PEM certificate split in 2048 characters
     #   chunks (pem_1, pem_2...); the console extracts the other columns from it.
+    #   Friendly Name is a Windows certificate store label, not part of the PEM:
+    #   the console always shows it empty (24 certificates checked on the ePO
+    #   5.10 lab), so the Markdown export leaves it out.
     __PEM_CHUNK = 2048
 
     def get_certificates(self):
@@ -1048,7 +1056,9 @@ class SCAWLRules(SCExclusionRules, SCUpdaterRules):
         as computed by the console (subject and issuer common names; the
         expiration date in UTC, the console shows it in the browser time
         zone), or None if it can't be decoded (uses the certificate decoder
-        of the Python ssl module).
+        of the Python ssl module). The full common name is kept: the console
+        cuts it at the first comma (e.g. "McAfee" for "McAfee, Inc." or
+        "McAfee, LLC"), a display bug seen on the ePO 5.10 lab.
         """
         try:
             import os

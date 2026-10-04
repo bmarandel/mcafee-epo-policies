@@ -356,6 +356,23 @@ Python 3.8 or later.
 
 ## History
 
+### 1.1.0 - 2026-10-04
+
+**Added**
+- Solidcore exclusions (Exclusions tab, Exception Rules): Parent Process Name
+  ("Allow uninstallations", "Exclude file from write-protection rules and
+  allow script execution") and Library Name ("Disable ROP protection ...
+  Forced Relocation (VASR)") in `get_exclusion_list()`, `add_exclusion()`,
+  `contains_exclusion()`, `remove_exclusion()` and the Markdown export (new
+  columns); new exclusion types `SCException.SKIP_REGISTRY` and
+  `SCException.SKIP_CHANGE_TRACKING`. All the exclusion types of the console
+  dialog checked on the ePO 5.10 lab.
+
+**Changed**
+- Solidcore certificates: comments on the Friendly Name column (always empty
+  in the console, not exported) and on Issued To (the console cuts the name
+  at the first comma, the export keeps the full certificate name).
+
 ### 1.0.1 - 2026-10-04
 
 **Changed**
