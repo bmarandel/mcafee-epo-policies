@@ -2,7 +2,7 @@
 
 ![PyPI](https://img.shields.io/pypi/v/mcafee_epo_policies)
 ![Python](https://img.shields.io/badge/python-3.8%2B-blue)
-![Status](https://img.shields.io/badge/status-alpha-orange)
+![Status](https://img.shields.io/badge/status-stable-brightgreen)
 ![License](https://img.shields.io/github/license/bmarandel/mcafee-epo-policies)
 ![Top language](https://img.shields.io/github/languages/top/bmarandel/mcafee-epo-policies)
 
@@ -355,6 +355,18 @@ docstring describing which ePO UI setting it maps to.
 Python 3.8 or later.
 
 ## History
+
+### 1.0.1 - 2026-10-04
+
+**Changed**
+- Project status: Stable (README badge and PyPI classifier "Development
+  Status :: 5 - Production/Stable").
+- ENS Firewall Rules Markdown export: each rule or group detail card is one
+  compact two-column table: "Status: Enabled | Action: Allow" (group:
+  "Status | Direction") in its header line, then the other settings two per
+  line as "**Label:** value" (e.g. Local networks | Local port), the group
+  Location and number of Rules included; the platform notes (Windows & Linux
+  only...) are given once before the cards. About 38 % fewer lines.
 
 ### 1.0.0 - 2026-10-04
 

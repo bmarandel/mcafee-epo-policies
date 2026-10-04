@@ -236,11 +236,22 @@ def test_fw_sections(fw_policy):
     assert 'McAfee signed executables 7 (signer: CN=McAfee VTP signed)' in text
     assert '### 1 McAfee core networking (group)\n' in text
     assert '### 1.8 Allow DNS traffic\n' in text
+    # Detail cards: compact two-column tables, two settings per line.
+    assert 'Treat match as intrusion and Schedule: Windows & Linux only. ' \
+        'Applications: Windows & Mac only.' in text
+    assert '### 1.8 Allow DNS traffic\n\n| Status: Enabled | Action: Allow |\n|---|---|\n' \
+        '| **Direction:** Out | **Log:** No |\n' \
+        '| **Treat match as intrusion:** No | **Connection types:** ' in text
+    assert '| **Remote networks:** Any | **Remote port:** 53 |' in text
+    assert '| **Notes:** | **Last changed:** By ' in text
+    assert '### 1 McAfee core networking (group)\n\n| Status: Enabled | Direction: Either |\n' \
+        '|---|---|\n| **Location:** None | **Rules:** 11 |\n' in text
+    assert '| Location name |' not in text and '| Status | Enabled |' not in text
     assert '| 3.1 | Allow outbound ePolicy Orchestrator server - APACHE | Enabled | Allow | Out | ' \
         'IPv4 protocol, IPv6 protocol | All Protocols |' in text
-    assert '| Location name | LAN |' in text
-    assert '| Default gateway | 10.10.1.1<br>192.168.1.1 |' in text
-    assert '| Last changed | By admin on 2014/03/28 at 19:00:00 UTC+01:00 |' in text
+    assert '| **Location:** LAN | **Rules:**' in text
+    assert '**Default gateway:** 10.10.1.1<br>192.168.1.1' in text
+    assert '**Last changed:** By admin on 2014/03/28 at 19:00:00 UTC+01:00 |' in text
 
 
 def test_md_heading():

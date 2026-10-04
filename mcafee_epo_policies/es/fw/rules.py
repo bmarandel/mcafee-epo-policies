@@ -1687,11 +1687,11 @@ class ESFWPolicyRules(Policy):
 
     def __md_location(self, agg):
         """
-        Returns the rows of a location (group aggregate).
+        Returns the rows of a location (group aggregate), its name being in
+        the header line of the group card.
         """
         check = self.md_check
-        rows = [['Location name', agg['Name']],
-                ['Isolate this connection', check(agg.get('Isolated'))],
+        rows = [['Isolate this connection', check(agg.get('Isolated'))],
                 ['Require ePO reachability', check(agg.get('RequireEpoReachable'))]]
         for key, label in [('DnsSuffix', 'Connection-specific DNS suffix'),
                            ('DefaultGateway', 'Default gateway'),
@@ -1707,6 +1707,22 @@ class ESFWPolicyRules(Policy):
                     values = [self.__get_ipaddress(value) for value in values]
                 rows.append([label, '\n'.join(values)])
         return rows
+
+    def __md_card(self, header, items):
+        """
+        Returns the detail card of a group or rule as one compact two-column
+        table, to keep the document short: the two main settings in the
+        header line (e.g. "Status: Enabled | Action: Allow"), then the other
+        settings two per line, each cell "**Label:** value" (Markdown tables
+        can't span columns). A None item leaves its cell empty.
+        """
+        cell = lambda item: '' if item is None else '**{}:** {}'.format(
+            item[0], self.md_escape(item[1])).rstrip()
+        lines = ['| ' + ' | '.join(self.md_escape(value) for value in header) + ' |', '|---|---|']
+        for index in range(0, len(items), 2):
+            pair = list(items[index:index + 2]) + [None]
+            lines.append('| {} | {} |'.format(cell(pair[0]), cell(pair[1])).replace('|  |', '| |'))
+        return '\n'.join(lines) + '\n'
 
     def md_sections(self):
         """
@@ -1738,31 +1754,35 @@ class ESFWPolicyRules(Policy):
                                 self.__md_applications(rul), self.md_check(rul.get('Logged'))])
             details += '\n### {} {}{}\n\n'.format(number, self.md_heading(name),
                                                      ' (group)' if is_group else '')
-            rows = [['Status', status]]
-            if not is_group:
-                rows += [['Action', rul['Action'].capitalize()],
-                         ['Treat match as intrusion (Windows & Linux only)',
-                          self.md_check(rul.get('Intrusion'))],
-                         ['Log matching traffic', self.md_check(rul.get('Logged'))]]
-            rows += [['Direction', rul['Direction'].capitalize()],
-                     ['Connection types', self.__get_connection_type(seq)],
-                     ['Network protocol', network], ['Transport protocol', transport]]
+            direction = rul['Direction'].capitalize()
+            protocols = [('Network protocol', network), ('Transport protocol', transport)]
+            last = [('Notes', rul.get('Note', '')),
+                    ('Last changed', self.__get_last_changed(seq).rstrip('.'))]
             if is_group:
                 locations = [self.agg[ref] for ref in rul.get('AggRef', []) or []
                              if ref in self.agg and 'Isolated' in self.agg[ref]]
-                rows += [['Location', 'Yes' if locations else 'No']]
+                rules = len([item for item in walk if item[0].startswith(number + '.')
+                             and self.rul[item[1]]['Action'] != 'JUMP'])
+                header = ['Status: ' + status, 'Direction: ' + direction]
+                items = [('Location', ', '.join(agg['Name'] for agg in locations) or 'None'),
+                         ('Rules', rules),
+                         ('Connection types', self.__get_connection_type(seq))] + protocols
                 for agg in locations:
-                    rows += self.__md_location(agg)
+                    items += [tuple(row) for row in self.__md_location(agg)]
+                if len(items) % 2:
+                    items.append(None)  # Notes and Last changed on the same line
             else:
-                rows += [['Local networks', self.__md_networks(rul, 'LocalAddress')],
-                         ['Local port', self.__md_ports(rul, 'LocalPort')],
-                         ['Remote networks', self.__md_networks(rul, 'RemoteAddress')],
-                         ['Remote port', self.__md_ports(rul, 'RemotePort')],
-                         ['Applications (Windows & Mac only)', self.__md_applications(rul)],
-                         ['Schedule (Windows & Linux only)', self.__md_schedule(rul)]]
-            rows += [['Notes', rul.get('Note', '')],
-                     ['Last changed', self.__get_last_changed(seq).rstrip('.')]]
-            details += self.md_settings(rows)
+                header = ['Status: ' + status, 'Action: ' + rul['Action'].capitalize()]
+                items = [('Direction', direction), ('Log', self.md_check(rul.get('Logged'))),
+                         ('Treat match as intrusion', self.md_check(rul.get('Intrusion'))),
+                         ('Connection types', self.__get_connection_type(seq))] + protocols + [
+                    ('Local networks', self.__md_networks(rul, 'LocalAddress')),
+                    ('Local port', self.__md_ports(rul, 'LocalPort')),
+                    ('Remote networks', self.__md_networks(rul, 'RemoteAddress')),
+                    ('Remote port', self.__md_ports(rul, 'RemotePort')),
+                    ('Applications', self.__md_applications(rul)),
+                    ('Schedule', self.__md_schedule(rul))]
+            details += self.__md_card(header, items + last)
         groups = len([item for item in walk if self.rul[item[1]]['Action'] == 'JUMP'])
         text = 'Rules are evaluated from top to bottom; the first rule matching the ' \
                'traffic applies. {} rule(s) in {} group(s).\n\n'.format(
@@ -1770,4 +1790,6 @@ class ESFWPolicyRules(Policy):
         text += self.md_table(['#', 'Name', 'Status', 'Action', 'Direction', 'Network protocol',
                                'Transport protocol', 'Local', 'Remote', 'Applications', 'Log'],
                               summary)
-        return [('Rules summary', text), ('Rule details', details.lstrip('\n'))]
+        platforms = 'Treat match as intrusion and Schedule: Windows & Linux only. ' \
+                    'Applications: Windows & Mac only.\n\n'
+        return [('Rules summary', text), ('Rule details', platforms + details.lstrip('\n'))]

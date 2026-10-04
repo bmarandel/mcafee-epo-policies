@@ -4,14 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mcafee_epo_policies"
-version = "1.0.0"
+version = "1.0.1"
 description = "McAfee ePolicy Orchestrator Policies Python Class Library"
 readme = "README.md"
 license = "Apache-2.0"
 authors = [{ name = "Benjamin Marandel" }]
 requires-python = ">=3.8"
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: System Administrators",
     "Operating System :: OS Independent",
     "Topic :: Software Development :: Libraries :: Python Modules",
