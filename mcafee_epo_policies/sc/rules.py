@@ -496,6 +496,9 @@ class SCUpdaterRules(SCRules):
     # ------------------------------ USERS TAB ------------------------------
     #   Columns: Type, UserID/Group, Name, User Label, Include Subgroups.
     #   Trusted users ('updater-user' rules) can modify any protected file.
+    #   Not tested: the Active Directory groups imported with "AD Import"
+    #   (groupDN, activeDirectoryId, netbiosName settings and the "Include
+    #   Subgroups" column) - only single users were checked on the ePO lab.
     def get_trusted_users(self):
         """
         Get the list of trusted users ('updater-user' rules).
@@ -504,7 +507,8 @@ class SCUpdaterRules(SCRules):
 
     def add_trusted_user(self, user, label, display_name=''):
         """
-        Add a trusted user (Domain\\User, User Label, Name).
+        Add a trusted user (Domain\\User, User Label, Name). Active Directory
+        groups ("AD Import" of the console) are not supported (not tested).
         """
         return self.add_rule({'type': 'updater-user', 'user': user, 'tag': label,
                               'displayName': display_name, 'activeDirectoryId': '',

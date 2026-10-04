@@ -34,6 +34,8 @@ below) to keep a documentation of the enforced security policies.
 | ENS Firewall | Options | Full read/write | Yes |
 | ENS Storage Protection | ICAP Policies | Full read/write: connection list, ICAP server, scan items, performance, actions, reports | Yes |
 | ENS Storage Protection | NetApp Policies | Full read/write: filers, filer account, scan items, exclusions, performance, actions, reports | Yes |
+| ENS Adaptive Threat Protection | Options | Full read/write | Yes |
+| ENS Adaptive Threat Protection | Dynamic Application Containment | Full read/write: containment rules (Block/Report), exclusions | Yes |
 | Solidcore - General | Configuration (Client) | Full read/write (CLI password: raw hashes only) | Yes |
 | Solidcore - General | Exception Rules (Windows/Unix) | Full read/write | Yes |
 | Solidcore - Application Control | Application Control Options (Windows/Unix) | Full read/write | Yes |
@@ -105,7 +107,9 @@ Troubleshooting, Custom Properties, Product Improvement Program), all Solidcore
 policy types (the rules policies list their Rule Groups, then the tabs of My
 Rules and of each shared Rule Group) and all ENS
 policy types: Threat Prevention (On-Access Scan,
-On-Demand Scan, Exploit Prevention, Access Protection, Options) and Firewall
+On-Demand Scan, Exploit Prevention, Access Protection, Options), Adaptive
+Threat Protection (Options, Dynamic Application Containment), Storage
+Protection (ICAP, NetApp) and Firewall
 (Options, and Rules documented as a firewall review: a rule summary numbered
 in evaluation order, then one detail card per group/rule). Labels, order and
 displayed items were checked against the ePO 5.10 console (e.g. Exploit
@@ -148,6 +152,31 @@ policy.set_threat_actions(ESSPPolicyNetApp.CLEAN, ESSPPolicyNetApp.DELETE)
 `ESSPPolicyICAP` handles the ICAP Policies (connection list, ICAP server bind
 address and port) with the same Scan Items, Performance, Actions and Reports
 methods.
+
+### ENS Adaptive Threat Protection
+
+```python
+from mcafee_epo_policies import ESATPPolicies, ESATPPolicyOptions, ESATPPolicyDAC, DACExclusion
+
+policies = ESATPPolicies(xml_export)              # policy.export productId=TIEClientMETA
+options = ESATPPolicyOptions(policies.get_policy('General', 'My Default'))
+options.observe_mode = '1'                        # operationMode 2
+options.rule_group = 'High'                       # Security
+options.set_action('block', '1', '30')            # Block at Might be Malicious
+options.set_notifications('1', '50', default_action='0', timeout=5,
+                          message='Contact the service desk.')
+options.set_sandboxing('1', '50', size_limit=10)
+
+dac = ESATPPolicyDAC(policies.get_policy(ESATPPolicyDAC.TYPE, 'My Default'))
+dac.set_rule('DAC_BLOCK_PROCESS_TERMINATE', block='1')
+dac.set_rule('Executing any child process', block='0', report='0')   # disabled
+dac.add_exclusion(DACExclusion('Backup agent', path='**\\backup.exe',
+                               signer='C=US, O=Example Corp, CN=Example Corp'))
+```
+
+As in the console, `set_action()` refuses reputation thresholds of enabled
+actions out of order (Clean <= Block <= Contain <= Notify). Containment rules
+are given by their RuleID or console label (`ESATPPolicyDAC.RULES`).
 
 ### ENS Firewall rules
 
@@ -229,6 +258,18 @@ the policy that uses it. An existing Rule Group is only replaced by
 though the API answers success - check the "Import Solidcore Rule Groups"
 server task).
 
+Not tested: the Users tab of Application Control and Change Control was only
+checked with single users (`add_trusted_user()`); the Active Directory groups
+imported with "AD Import" (and their "Include Subgroups" column) are kept as
+they are but were not tested.
+
+To rename a Rule Group in ePO, use `scor.rulegroup.rename <WIN|UNIX>
+<APPLICATION_CONTROL|CHANGE_CONTROL|INTEGRITY_MONITOR> <old name> <new name>`:
+ePO renames it in the policies using it too. `SCRuleGroups.rename_rule_group()`
+renames a user defined Rule Group in an export file (importing it creates a new
+Rule Group), and `SCPolicy.rename_rule_group()` updates a policy export taken
+before the rename.
+
 Note: ePO stores some Solidcore policies under an internal type name, used as
 `type_id` (e.g. `Lockdown Rules` for Configuration (Client), `Attr Rules
 (Windows)` for Exception Rules (Windows), `Mon Rules (Unix)` for Integrity
@@ -252,6 +293,24 @@ docstring describing which ePO UI setting it maps to.
 Python 3.8 or later.
 
 ## History
+
+### 0.8.0 - 2026-10-04
+
+**Added**
+- Endpoint Security Adaptive Threat Protection (ENS ATP), new `es/atp`
+  module: `ESATPPolicies` (`policy.export productId=TIEClientMETA`),
+  `ESATPPolicyOptions` (Options), `ESATPPolicyDAC` and `DACExclusion`
+  (Dynamic Application Containment: containment rules, exclusions), with
+  the Markdown export. Storage and labels checked on the ePO 5.10 lab (test
+  policies changed in the console, then changed by the library and opened in
+  the console).
+- `Policies.new_policy()` also gives new IDs to the Dynamic Application
+  Containment exclusions of a copy.
+- Solidcore Rule Groups renaming: `SCRuleGroups.rename_rule_group()` (export
+  files, user defined Rule Groups only) and `SCPolicy.rename_rule_group()`
+  (reference in a policy export). Checked on the ePO 5.10 lab: a Rule Group
+  renamed with `scor.rulegroup.rename` is renamed by ePO in the policies
+  using it too.
 
 ### 0.7.0 - 2026-10-04
 

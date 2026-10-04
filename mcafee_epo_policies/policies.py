@@ -188,10 +188,13 @@ class Policies(XmlObject):
         console fails to open a policy whose exclusion IDs are already used
         by another policy ("An unexpected error occurred."). The same old ID
         gets the same new ID in every section (current and down-level ones).
+        The ENS ATP Dynamic Application Containment exclusions (dacGeneral)
+        get new IDs too.
         """
         new_ids = {}
         for section_obj in policy.findall('EPOPolicySettings/Section'):
-            if not section_obj.get('name').startswith('bopExclusions'):
+            name = section_obj.get('name')
+            if not (name.startswith('bopExclusions') or name == 'dacGeneral'):
                 continue
             for setting in section_obj.findall('Setting'):
                 value = setting.get('value')

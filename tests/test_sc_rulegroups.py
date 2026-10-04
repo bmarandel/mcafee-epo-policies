@@ -155,3 +155,33 @@ def test_new_empty_policy():
     template = SCAWLPolicyRules(policies.get_policy('AWL Rules (Windows)', 'Claude - RG Policy (Windows)'))
     assert len(template.get_rule_group_names()) == 3
     assert policies.new_empty_policy('CC Rules (Unix)', 'X') is None
+
+
+def test_rename_rule_group_in_export(awl_groups):
+    renamed = awl_groups.rename_rule_group('Claude - RG Lib AWL (Windows)',
+                                           'Claude - RG Lib AWL Renamed (Windows)')
+    assert renamed.get_name() == 'Claude - RG Lib AWL Renamed (Windows)'
+    assert not awl_groups.contain('Claude - RG Lib AWL (Windows)')
+    assert awl_groups.contain('Claude - RG Lib AWL Renamed (Windows)')
+    assert awl_groups.rename_rule_group('Unknown', 'x') is None
+    with pytest.raises(ValueError):
+        awl_groups.rename_rule_group('Claude - RG AWL (Windows)', 'Claude - RG Import (Windows)')
+    with pytest.raises(ValueError):
+        awl_groups.rename_rule_group('Claude - RG AWL (Windows)', ' ')
+    # The Rule Groups predefined by Trellix can't be renamed.
+    predefined = load('sc_rulegroups_ie.xml')
+    name = [g['name'] for g in predefined.list() if g['read_only']][0]
+    with pytest.raises(ValueError):
+        predefined.rename_rule_group(name, 'Renamed')
+
+
+def test_rename_rule_group_in_policy():
+    policy = SCAWLPolicyRules(et.parse(str(FIXTURES / 'sc_awl_rules_win_groups.xml')).getroot())
+    assert policy.rename_rule_group('Claude - RG Lib AWL (Windows)',
+                                    'Claude - RG Lib AWL Renamed (Windows)')
+    assert 'Claude - RG Lib AWL Renamed (Windows)' in policy.get_rule_group_names()
+    assert 'Claude - RG Lib AWL (Windows)' not in policy.get_rule_group_names()
+    # My Rules is not a shared Rule Group.
+    assert not policy.rename_rule_group('My Rules', 'Other')
+    with pytest.raises(ValueError):
+        policy.rename_rule_group('Claude - RG Copy IE (Windows)', 'Internet Explorer (32 bit)')

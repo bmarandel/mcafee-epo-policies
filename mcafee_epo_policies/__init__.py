@@ -35,6 +35,7 @@ from .es.fw.rules import (ESFWPolicyRules, FWRule, FWGroup, FWNetwork, FWApplica
                           FWExecutable, FWLocation, FWAddress)
 from .es.fw.options import ESFWPolicyOptions
 from .es.sp import ESSPPolicies, ESSPPolicy, ESSPPolicyICAP, ESSPPolicyNetApp, SPExclusion
+from .es.atp import ESATPPolicies, ESATPPolicyOptions, ESATPPolicyDAC, DACExclusion
 from .sc.scpolicies import SCPolicies, SCPolicy
 from .sc.rules import SCRules, SCExclusionRules, SCUpdaterRules
 from .sc.gen import SCGENPolicyConfiguration, SCGENPolicyExceptionRules

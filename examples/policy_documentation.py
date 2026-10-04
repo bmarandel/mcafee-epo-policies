@@ -8,8 +8,8 @@
 policy_documentation.py
 
 Example for the mcafee_epo_policies package: write one Markdown document per
-policy of an ENS (Threat Prevention, Firewall, Storage Protection), Trellix Agent or
-Solidcore export, to keep a
+policy of an ENS (Threat Prevention, Firewall, Storage Protection, Adaptive
+Threat Protection), Trellix Agent or Solidcore export, to keep a
 documentation of the enforced security policies (audits, compliance).
 
 Each document has a metadata header, a table of contents, one section per
@@ -33,7 +33,8 @@ from mcafee_epo_policies import (ESTPPolicies, ESFWPolicies, ESTPPolicyOnAccessS
                                  ESSPPolicies, ESSPPolicyICAP, ESSPPolicyNetApp, SCPolicies,
                                  SCGENPolicyConfiguration, SCGENPolicyExceptionRules,
                                  SCAWLPolicyOptions, SCAWLPolicyRules, SCCCPolicyRules,
-                                 SCFIMPolicyRules)
+                                 SCFIMPolicyRules, ESATPPolicies, ESATPPolicyOptions,
+                                 ESATPPolicyDAC)
 
 # Policy types with a Markdown export, per product of the export.
 PRODUCTS = {
@@ -55,6 +56,9 @@ PRODUCTS = {
     'VSESTOMD1300': (ESSPPolicies, {
         'VSES1000_Icap_Policies': ESSPPolicyICAP,
         'VSES1000_Netapp_Policies': ESSPPolicyNetApp}),
+    'TIEClientMETA': (ESATPPolicies, {
+        'General': ESATPPolicyOptions,
+        'TIE_DynamicApplicationContainment_Policies': ESATPPolicyDAC}),
     # Solidcore exports hold several features (SCOR_GEN, SCOR_AWL, SCOR_CC, SCOR_FIM).
     'SCOR': (SCPolicies, {
         'Lockdown Rules': SCGENPolicyConfiguration,
@@ -88,7 +92,8 @@ def main():
         product = 'SCOR'
     if product not in PRODUCTS:
         print('Unsupported product "{}": use an ENS Threat Prevention, ENS Firewall, ENS '
-              'Storage Protection, Trellix Agent or Solidcore export.'
+              'Storage Protection, ENS Adaptive Threat Protection, Trellix Agent or '
+              'Solidcore export.'
               .format(product), file=sys.stderr)
         return 1
     container, classes = PRODUCTS[product]

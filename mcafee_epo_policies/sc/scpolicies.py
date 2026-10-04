@@ -232,6 +232,29 @@ class SCPolicy(SCRules, Policy):
                 return True
         return False
 
+    def rename_rule_group(self, group_name, new_name):
+        """
+        Renames the reference to a shared Rule Group in the policy (scor_info
+        group_name, by which ePO links the policy to the Rule Group).
+
+        A Rule Group renamed in ePO (scor.rulegroup.rename) is renamed by ePO
+        in the policies using it too (checked on the ePO 5.10 lab): this method
+        is only needed to keep a policy export taken before the rename
+        consistent, e.g. before importing it again.
+
+        :return: True if the Rule Group was found and renamed.
+        """
+        if new_name != group_name and new_name in self.get_rule_group_names():
+            raise ValueError('The policy already references a Rule Group named "{}".'.format(
+                new_name))
+        for settings_obj in self.__settings_list():
+            setting_obj = settings_obj.find('Section[@name="scor_info"]/Setting[@name="group_name"]')
+            if self.is_shared_group(settings_obj) and setting_obj is not None and \
+                    setting_obj.get('value') == group_name:
+                setting_obj.set('value', new_name)
+                return True
+        return False
+
     # Policy type -> (rule group type, platform) of the Rule Groups it can use.
     RULE_GROUP_TYPES = {
         'AWL Rules (Windows)': ('application_control', 'WIN'),

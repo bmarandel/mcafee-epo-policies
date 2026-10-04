@@ -247,6 +247,33 @@ class SCRuleGroups(XmlObject):
         self.__insert(new_obj)
         return self.__wrap(new_obj)
 
+    def rename_rule_group(self, name, new_name):
+        """
+        Renames a user defined Rule Group of the export (the Rule Groups
+        predefined by Trellix can't be renamed).
+
+        Note: importing the renamed export creates a new Rule Group in ePO
+        (Rule Groups are identified by their name). To rename a Rule Group in
+        ePO, use the API: scor.rulegroup.rename <WIN|UNIX>
+        <APPLICATION_CONTROL|CHANGE_CONTROL|INTEGRITY_MONITOR> <name> <new_name>;
+        ePO then renames it in the policies using it too (checked on the ePO
+        5.10 lab), see SCPolicy.rename_rule_group() for older policy exports.
+
+        :return: The renamed Rule Group, or None if name doesn't exist.
+        """
+        rule_group_obj = self.__find(name)
+        if rule_group_obj is None:
+            return None
+        if rule_group_obj.get('is-read-only') == 'true':
+            raise ValueError('Rule Group "{}" is predefined by Trellix and can\'t be '
+                             'renamed.'.format(name))
+        if not new_name or not new_name.strip():
+            raise ValueError('A Rule Group needs a name.')
+        if new_name != name and self.contain(new_name):
+            raise ValueError('A Rule Group named "{}" already exists.'.format(new_name))
+        rule_group_obj.set('name', new_name)
+        return self.__wrap(rule_group_obj)
+
     def remove_rule_group(self, name):
         """
         Removes a Rule Group from the export (to leave it out of the next import;
