@@ -1,0 +1,180 @@
+<ns0:EPOPolicySchema xmlns:ns0="mcafee-epo-policy">
+<EPOPolicyVerInfo vermjr="5" vermin="10" verrel="0" verbld="0" />
+<EPOPolicySettings name="My Default::Settings (346D9D08-98F8-4D5A-A669-F66A14108A11)" featureid="ENDP_GS_1000" categoryid="EGS_Product_Configuration_Policies" typeid="EGS_Product_Configuration_Policies" param_int="0" param_str="">
+<Section name="ClientGTIProxy">
+<Setting name="enableHTTPAuth" value="false" />
+<Setting name="gtiProxyServerAddress" value="" />
+<Setting name="gtiProxyServerPort" value="80" />
+<Setting name="gtiProxyType" value="0" />
+<Setting name="httpAuthPassword" value="" />
+<Setting name="httpAuthUserName" value="" />
+<Setting name="proxyServerExclusions" value="" />
+</Section>
+<Section name="ClientInterfaceAccess">
+<Setting name="showManagedTasks" value="true" />
+</Section>
+<Section name="ClientInterfaceStatus">
+<Setting name="adminPassword" value="" />
+<Setting name="adminSalt" value="" />
+<Setting name="clientInterfaceLanguage" value="0000" />
+<Setting name="clientUIAccessLevel" value="0" />
+<Setting name="clientUILockOutInterval" value="15" />
+<Setting name="clientUILockOutRepeatAttemptsWithin" value="5" />
+<Setting name="clientUIPasswordAttemptCount" value="3" />
+<Setting name="enableClientUI" value="false" />
+<Setting name="enableTimeBasedPassword" value="false" />
+</Section>
+<Section name="ClientLoggingOptions">
+<Setting name="IsSendEventsToepoEnabled" value="true" />
+<Setting name="IsWindowsApplicationLoggingEnabled" value="true" />
+<Setting name="clientLogFilesLocation" value="%DEFLOGDIR%" />
+<Setting name="enableATPClientDebugLogging" value="false" />
+<Setting name="enableATPDACClientDebugLogging" value="false" />
+<Setting name="enableATPTIClientDebugLogging" value="false" />
+<Setting name="enableClientActivityLogging" value="true" />
+<Setting name="enableClientActivityLoggingSizeLimits" value="true" />
+<Setting name="enableClientDebugLoggingSizeLimits" value="true" />
+<Setting name="enableClientEventLoggingSizeLimits" value="true" />
+<Setting name="enableDFClientDebugLogging" value="false" />
+<Setting name="enableMAMBOClientDebugLogging" value="false" />
+<Setting name="enableODSClientActivityLogging" value="false" />
+<Setting name="enableSPAPClientDebugLogging" value="false" />
+<Setting name="enableSPBOClientDebugLogging" value="false" />
+<Setting name="enableSPOASClientDebugLogging" value="false" />
+<Setting name="enableSPODSClientDebugLogging" value="false" />
+<Setting name="enableSTPClientDebugLogging" value="false" />
+<Setting name="enableWPClientDebugLogging" value="false" />
+<Setting name="enableclientLoggingUTC" value="true" />
+<Setting name="maxClientActivityLogSizeMB" value="10" />
+<Setting name="maxClientDebugLogSizeMB" value="50" />
+<Setting name="maxClientEventLogSizeMB" value="50" />
+<Setting name="suppressAlertsBelowAP" value="3" />
+<Setting name="suppressAlertsBelowATP" value="3" />
+<Setting name="suppressAlertsBelowBO" value="3" />
+<Setting name="suppressAlertsBelowFW" value="3" />
+<Setting name="suppressAlertsBelowOAS" value="3" />
+<Setting name="suppressAlertsBelowODS" value="3" />
+<Setting name="suppressAlertsBelowWP" value="3" />
+</Section>
+<Section name="ClientUninstall">
+<Setting name="clientUninstallPassword" value="" />
+<Setting name="clientUninstallSalt" value="" />
+<Setting name="enableClientUninstallPassword" value="false" />
+</Section>
+<Section name="ClientUpdate">
+<Setting name="enableDefaultUpdateTask" value="true" />
+<Setting name="enableUpdateNowButton" value="true" />
+<Setting name="whatToUpdateLevel" value="1" />
+</Section>
+<Section name="SelfProtectionStatus">
+<Setting name="spEnable" value="true" />
+<Setting name="spFiles" value="true" />
+<Setting name="spFilesAction" value="3" />
+<Setting name="spProcessExclCount" value="0" />
+<Setting name="spProcesses" value="true" />
+<Setting name="spProcessesAction" value="3" />
+<Setting name="spRegistry" value="true" />
+<Setting name="spRegistryAction" value="3" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="Claude - Common Options Test::Settings (268C98B7-49C2-4240-85BE-7F1A2DB8BA4A)" featureid="ENDP_GS_1000" categoryid="EGS_Product_Configuration_Policies" typeid="EGS_Product_Configuration_Policies" param_int="0" param_str="">
+<Section name="ClientGTIProxy">
+<Setting name="enableHTTPAuth" value="false" />
+<Setting name="gtiProxyServerAddress" value="proxy.claude.test" />
+<Setting name="gtiProxyServerPort" value="8080" />
+<Setting name="gtiProxyType" value="2" />
+<Setting name="httpAuthPassword" value="" />
+<Setting name="httpAuthUserName" value="" />
+<Setting name="proxyServerExclusions" value="*.claude.test;10.0.0.1" />
+</Section>
+<Section name="ClientInterfaceAccess">
+<Setting name="showManagedTasks" value="false" />
+</Section>
+<Section name="ClientInterfaceStatus">
+<Setting name="adminPassword" value="" />
+<Setting name="adminSalt" value="" />
+<Setting name="clientInterfaceLanguage" value="040C" />
+<Setting name="clientUIAccessLevel" value="2" />
+<Setting name="clientUILockOutInterval" value="15" />
+<Setting name="clientUILockOutRepeatAttemptsWithin" value="5" />
+<Setting name="clientUIPasswordAttemptCount" value="3" />
+<Setting name="enableClientUI" value="true" />
+<Setting name="enableTimeBasedPassword" value="true" />
+</Section>
+<Section name="ClientLoggingOptions">
+<Setting name="EDREventLevelAP" value="2" />
+<Setting name="EDREventLevelATP" value="0" />
+<Setting name="EDREventLevelBO" value="0" />
+<Setting name="EDREventLevelFW" value="1" />
+<Setting name="EDREventLevelOAS" value="2" />
+<Setting name="EDREventLevelODS" value="0" />
+<Setting name="EDREventLevelWP" value="2" />
+<Setting name="IsSendEventsToepoEnabled" value="true" />
+<Setting name="IsWindowsApplicationLoggingEnabled" value="true" />
+<Setting name="clientActivityLoggingLanguage" value="0407" />
+<Setting name="clientLogFilesLocation" value="%DEFLOGDIR%" />
+<Setting name="enableATPClientDebugLogging" value="false" />
+<Setting name="enableATPDACClientDebugLogging" value="false" />
+<Setting name="enableATPTIClientDebugLogging" value="false" />
+<Setting name="enableClientActivityLogging" value="true" />
+<Setting name="enableClientActivityLoggingSizeLimits" value="true" />
+<Setting name="enableClientDebugLoggingSizeLimits" value="true" />
+<Setting name="enableClientEventLoggingSizeLimits" value="true" />
+<Setting name="enableDFClientDebugLogging" value="true" />
+<Setting name="enableMAMBOClientDebugLogging" value="false" />
+<Setting name="enableODSClientActivityLogging" value="true" />
+<Setting name="enableSPAPClientDebugLogging" value="true" />
+<Setting name="enableSPBOClientDebugLogging" value="false" />
+<Setting name="enableSPOASClientDebugLogging" value="false" />
+<Setting name="enableSPODSClientDebugLogging" value="false" />
+<Setting name="enableSTPClientDebugLogging" value="false" />
+<Setting name="enableWPClientDebugLogging" value="false" />
+<Setting name="enableclientLoggingUTC" value="false" />
+<Setting name="maxClientActivityLogSizeMB" value="20" />
+<Setting name="maxClientDebugLogSizeMB" value="60" />
+<Setting name="maxClientEventLogSizeMB" value="70" />
+<Setting name="suppressAlertsBelowAP" value="0" />
+<Setting name="suppressAlertsBelowATP" value="2" />
+<Setting name="suppressAlertsBelowBO" value="1" />
+<Setting name="suppressAlertsBelowFW" value="5" />
+<Setting name="suppressAlertsBelowOAS" value="2" />
+<Setting name="suppressAlertsBelowODS" value="4" />
+<Setting name="suppressAlertsBelowWP" value="3" />
+</Section>
+<Section name="ClientUninstall">
+<Setting name="clientUninstallPassword" value="" />
+<Setting name="clientUninstallSalt" value="" />
+<Setting name="enableClientUninstallPassword" value="true" />
+</Section>
+<Section name="ClientUpdate">
+<Setting name="enableDefaultUpdateTask" value="false" />
+<Setting name="enableUpdateNowButton" value="false" />
+<Setting name="whatToUpdateLevel" value="2" />
+</Section>
+<Section name="GlobalExclusions">
+<Setting name="GlobalExclusion_0" value="C:\Tools\claudeaac.exe|0123456789abcdef0123456789abcdef|fedcba9876543210fedcba9876543210|Claude AAC note" />
+<Setting name="dwExclCount" value="1" />
+</Section>
+<Section name="NetworkConfigurations">
+<Setting name="useIPv6Url" value="true" />
+</Section>
+<Section name="SelfProtectionStatus">
+<Setting name="spEnable" value="true" />
+<Setting name="spFiles" value="true" />
+<Setting name="spFilesAction" value="2" />
+<Setting name="spProcessExclCount" value="2" />
+<Setting name="spProcessExclusion_0" value="claudeone.exe" />
+<Setting name="spProcessExclusion_1" value="claudetwo.exe" />
+<Setting name="spProcesses" value="true" />
+<Setting name="spProcessesAction" value="1" />
+<Setting name="spRegistry" value="false" />
+<Setting name="spRegistryAction" value="3" />
+</Section>
+</EPOPolicySettings>
+
+<EPOPolicyObject name="My Default" featureid="ENDP_GS_1000" categoryid="EGS_Product_Configuration_Policies" serverid="W2022EPO510" editflag="0" typeid="EGS_Product_Configuration_Policies">
+<description /><PolicySettings>My Default::Settings (346D9D08-98F8-4D5A-A669-F66A14108A11)</PolicySettings>
+</EPOPolicyObject><EPOPolicyObject name="Claude - Common Options Test" featureid="ENDP_GS_1000" categoryid="EGS_Product_Configuration_Policies" serverid="W2022EPO510" editflag="0" typeid="EGS_Product_Configuration_Policies">
+<description /><PolicySettings>Claude - Common Options Test::Settings (268C98B7-49C2-4240-85BE-7F1A2DB8BA4A)</PolicySettings>
+</EPOPolicyObject>
+</ns0:EPOPolicySchema>

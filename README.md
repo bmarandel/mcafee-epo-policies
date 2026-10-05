@@ -25,6 +25,7 @@ below) to keep a documentation of the enforced security policies.
 | McAfee Agent | Troubleshooting | Full read/write | Yes |
 | McAfee Agent | Custom Properties | Full read/write | Yes |
 | McAfee Agent | Product Improvement Program (Telemetry) | Full read/write | Yes |
+| ENS Common | Options | Full read/write (passwords: see the note below) | Yes |
 | ENS Threat Prevention | On-Access Scan | Full read/write | Yes |
 | ENS Threat Prevention | On-Demand Scan | Full read/write | Yes |
 | ENS Threat Prevention | Exploit Prevention | Full read/write: signatures/expert rules, exclusions, Application Protection Rules (user-defined created/edited/removed, Trellix-defined status/inclusion/executables/notes) | Yes |
@@ -57,6 +58,15 @@ these methods raise `NotImplementedError` for now (`SCRuleGroups` has no
 Markdown export method yet).
 
 McAfee Agent policy coverage is complete - all 5 McAfee Agent policy types are implemented.
+
+Endpoint Security (ENS) policy coverage is complete - all 15 ENS policy types
+of the ePO Policy Catalog are implemented: Common (Options), Threat Prevention
+(On-Access Scan, On-Demand Scan, Exploit Prevention, Access Protection,
+Options), Firewall (Rules, Options), Adaptive Threat Protection (Options,
+Dynamic Application Containment) and Web Control (Options, Enforcement
+Messaging, Block and Allow List, Content Actions, Browser Control), in the
+`es` subpackage (`es.common`, `es.tp`, `es.fw`, `es.atp`, `es.wc`). ENS
+Storage Protection, a separate product, is supported too (`es.sp`).
 
 Solidcore (Trellix Application and Change Control) policy coverage is complete -
 all 13 Solidcore policy types of the ePO Policy Catalog are implemented, in the
@@ -160,6 +170,30 @@ policy.set_threat_actions(ESSPPolicyNetApp.CLEAN, ESSPPolicyNetApp.DELETE)
 `ESSPPolicyICAP` handles the ICAP Policies (connection list, ICAP server bind
 address and port) with the same Scan Items, Performance, Actions and Reports
 methods.
+
+### ENS Common
+
+```python
+from mcafee_epo_policies import ESCommonPolicies, ESCommonPolicyOptions, AACExclusion
+
+policies = ESCommonPolicies(xml_export)           # policy.export productId=ENDP_GS_1000
+policy = ESCommonPolicyOptions(policies.get_policy(ESCommonPolicyOptions.TYPE, 'My Default'))
+policy.interface_language = '040C'                # French (see ESCommonPolicyOptions.LANGUAGES)
+policy.set_option('ipv6', '1')                    # see options() and number_options()
+policy.set_sp_action('files', '3')                # Self Protection: Block and report
+policy.add_aac_exclusion(AACExclusion('C:\\Tools\\agent.exe', md5='0123456789abcdef0123456789abcdef'))
+policy.set_event_level('FW', '3')                 # Firewall events: Critical and Alert
+policy.set_proxy('2', 'proxy.example.com', 8080, ['*.example.com'])
+```
+
+**Passwords are not in the export.** ePO doesn't export the client interface
+administrator password, the uninstall password, the HTTP proxy password nor the
+time of the time-based password (checked on the ePO 5.10 lab), and importing an
+exported Common policy - with this library or with the console Import - erases
+the passwords defined in the console. After importing a policy in Standard
+access or Lock client interface mode, or with "Require password to uninstall
+the client", define its passwords again in the ePO console. The library never
+sets them; the Markdown export only says they are defined in the console.
 
 ### ENS Adaptive Threat Protection
 
@@ -355,6 +389,20 @@ docstring describing which ePO UI setting it maps to.
 Python 3.8 or later.
 
 ## History
+
+### 1.2.0 - 2026-10-05
+
+**Added**
+- Endpoint Security Common (ENS Common), new `es/common` module:
+  `ESCommonPolicies` (`policy.export productId=ENDP_GS_1000`),
+  `ESCommonPolicyOptions` (client interface, uninstallation, language, Self
+  Protection and its process exclusions, AAC exclusions with `AACExclusion`,
+  client logging, event and EDR levels, proxy, IPv6, default client update,
+  managed tasks) with the Markdown export; ENS policy coverage is now
+  complete. Checked on the ePO 5.10 lab (the policy changed by the library is
+  identical to the one saved by the console). The passwords are not exported
+  by ePO and are erased by an import (see "ENS Common" above). The trusted
+  vendor Certificates list is not supported (no certificate on the lab).
 
 ### 1.1.0 - 2026-10-04
 

@@ -8,8 +8,8 @@
 policy_documentation.py
 
 Example for the mcafee_epo_policies package: write one Markdown document per
-policy of an ENS (Threat Prevention, Firewall, Storage Protection, Adaptive
-Threat Protection, Web Control), Trellix Agent, System Information Reporter or
+policy of an ENS (Common, Threat Prevention, Firewall, Storage Protection,
+Adaptive Threat Protection, Web Control), Trellix Agent, System Information Reporter or
 Solidcore export, to keep a
 documentation of the enforced security policies (audits, compliance).
 
@@ -38,7 +38,8 @@ from mcafee_epo_policies import (ESTPPolicies, ESFWPolicies, ESTPPolicyOnAccessS
                                  ESATPPolicyDAC, ESWCPolicies, ESWCPolicyOptions,
                                  ESWCPolicyMessaging, ESWCPolicyBlockAllowList,
                                  ESWCPolicyContentActions, ESWCPolicyBrowserControl,
-                                 SIRPolicies, SIRPolicyCollectData, SIRPolicySetRegistry)
+                                 SIRPolicies, SIRPolicyCollectData, SIRPolicySetRegistry,
+                                 ESCommonPolicies, ESCommonPolicyOptions)
 
 # Policy types with a Markdown export, per product of the export.
 PRODUCTS = {
@@ -60,6 +61,8 @@ PRODUCTS = {
     'VSESTOMD1300': (ESSPPolicies, {
         'VSES1000_Icap_Policies': ESSPPolicyICAP,
         'VSES1000_Netapp_Policies': ESSPPolicyNetApp}),
+    'ENDP_GS_1000': (ESCommonPolicies, {
+        'EGS_Product_Configuration_Policies': ESCommonPolicyOptions}),
     'TIEClientMETA': (ESATPPolicies, {
         'General': ESATPPolicyOptions,
         'TIE_DynamicApplicationContainment_Policies': ESATPPolicyDAC}),
@@ -107,7 +110,7 @@ def main():
     if product.startswith('SIR_____1000'):
         product = 'SIR'
     if product not in PRODUCTS:
-        print('Unsupported product "{}": use an ENS Threat Prevention, ENS Firewall, ENS '
+        print('Unsupported product "{}": use an ENS Common, ENS Threat Prevention, ENS Firewall, ENS '
               'Storage Protection, ENS Adaptive Threat Protection, ENS Web Control, '
               'Trellix Agent, System Information Reporter or '
               'Solidcore export.'
